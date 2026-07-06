@@ -50,18 +50,12 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 <h2>Code Sample: Send SMS Without a Phone Number (Python)</h2>
 <pre><code>import requests
 
-url = "https://api.smsroute.cc/v1/send"
-headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-payload = {
-    "to": "+1234567890",
-    "text": "Your verification code is 4821",
-    "sender": "MyBrand"  # alphanumeric, no phone number
-}
-response = requests.post(url, json=payload, headers=headers)
-print(response.json())</code></pre><p>Full examples in <a href="https://github.com/SMSRoute-cc/smsroute-examples">Python, PHP, Go, Node on GitHub</a>. The <code>sender</code> field accepts any alphanumeric string (up to 11 characters) – no phone number required. For routes that require a numeric sender, the API falls back to the shared pool automatically. See the <a href="https://smsroute.cc/sms-api/">SMS API documentation</a> for more endpoints, including batch send, scheduled sending, and link shortening. You can also integrate via SMPP for high-volume, low-latency delivery.</p>
+resp = requests.post(
+    "https://api.smsroute.cc/sms/send",
+    headers={"Authorization": "Bearer YOUR_API_KEY"},
+    json={"to": "+14155550123", "from": "INFO", "message": "Your code is 482913"},
+)
+print(resp.json())  # message ID + status</code></pre><p>Full examples in <a href="https://github.com/SMSRoute-cc/smsroute-examples">Python, PHP, Go, Node on GitHub</a>. The <code>from</code> field accepts any alphanumeric string (up to 11 characters) – no phone number required. For routes that require a numeric sender, the API falls back to the shared pool automatically. See the <a href="https://smsroute.cc/sms-api/">SMS API documentation</a> for more endpoints, including batch send, scheduled sending, and link shortening. You can also integrate via SMPP for high-volume, low-latency delivery.</p>
 <h2>Comparison: SMSRoute vs. Twilio, Vonage, Plivo</h2>
 <p>Most competitors force you to buy a phone number and complete business verification before sending. SMSRoute eliminates both. Below is a factual comparison based on publicly available documentation. For a deeper technical look, see our <a href="https://smsroute.cc/blog/twilio-vs-smsroute-deep-technical-comparison/">Twilio vs SMSRoute comparison</a>.</p><p>While Twilio, Vonage, and Plivo require identity documents, business registration, and often days of vetting, SMSRoute requires only an email. They also mandate US 10DLC registration for A2P traffic in the United States and India DLT registration for Indian routes, adding weeks of bureaucracy. SMSRoute handles those routes without any registration on your part, relying on its shared sender pools and carrier relationships. This means you can start sending to 149 countries immediately, with pricing as low as $0.004 per message. No minimum spend, no monthly contracts.</p>
 <h2>When Would You Need a Phone Number? (And When Not)</h2>
