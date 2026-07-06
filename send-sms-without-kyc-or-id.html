@@ -50,15 +50,15 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 <h2>5-Step SMSRoute Quickstart: Send Your First SMS Without KYC</h2>
 <p>Follow these steps to send SMS via SMSRoute without any ID or KYC. You'll be live in under 10 minutes.</p><ol><li><strong>Sign up at SMSRoute.cc</strong> – Go to <a href="https://smsroute.cc/">smsroute.cc</a> and create an account with just your email. No documents, no business verification.</li><li><strong>Fund your wallet with crypto</strong> – Deposit BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL. Top-ups confirm automatically. No card needed. Learn more about <a href="https://smsroute.cc/crypto-payments/">crypto payments</a>.</li><li><strong>Generate an API key</strong> – From the dashboard, create a REST API key. You'll use this to authenticate requests.</li><li><strong>Send your first SMS via API</strong> – Use the code example below. Replace <code>YOUR_API_KEY</code> and recipient number. See the <a href="https://smsroute.cc/api/">API documentation</a> for full details.</li><li><strong>Track delivery</strong> – Check real-time DLR in the dashboard or via webhook. Failed messages auto-credit back to your balance.</li></ol><p>Python example (full examples in <a href="https://github.com/SMSRoute-cc/smsroute-examples">GitHub repo</a>):</p><pre><code>import requests
 
-url = "https://api.smsroute.cc/v1/send"
+url = "https://api.smsroute.cc/sms/send"
 headers = {"Authorization": "Bearer YOUR_API_KEY", "Content-Type": "application/json"}
 data = {
     "to": "+1234567890",
-    "text": "Hello from SMSRoute! No KYC needed.",
+    "message": "Hello from SMSRoute! No KYC needed.",
     "from": "SMSRoute"
 }
 response = requests.post(url, json=data, headers=headers)
-print(response.json())</code></pre>
+print(response.json())  # returns JSON with the message ID and status</code></pre>
 <h2>How Does SMSRoute Compare to Twilio, Vonage, and Plivo?</h2>
 <p>Traditional providers like Twilio, Vonage, and Plivo require identity verification, business documents, and often days of vetting. They also mandate card or invoice billing, US 10DLC registration, and India DLT registration. SMSRoute requires none of that. See the table below for a direct comparison.</p>
 <h2>Is SMS Without KYC Secure?</h2>
