@@ -51,10 +51,10 @@ const client = require('twilio')(accountSid, authToken);
 client.messages.create({body: 'Hello', from: '+1234567890', to: '+0987654321'});
 
 // After (SMSRoute)
-const response = await fetch('https://api.smsroute.cc/send', {
+const response = await fetch('https://api.smsroute.cc/sms/send', {
   method: 'POST',
-  headers: {'X-API-Key': 'your_key', 'Content-Type': 'application/json'},
-  body: JSON.stringify({to: '+0987654321', text: 'Hello', sender: 'MyApp'})
+  headers: {'Authorization': 'Bearer YOUR_API_KEY', 'Content-Type': 'application/json'},
+  body: JSON.stringify({to: '+0987654321', message: 'Hello', from: 'MyApp'})
 });</code></pre>
 <h2>Migration Checklist: Moving from Twilio to SMSRoute</h2>
 <ol><li><strong>Sign up</strong> at <a href="https://smsroute.cc/">smsroute.cc</a> with your email, no documents, no business name.</li><li><strong>Fund your account</strong> with BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL. Top-ups confirm automatically.</li><li><strong>Generate an API key</strong> from the dashboard and replace your Twilio credentials in code.</li><li><strong>Update sender IDs</strong>, use the smart shared pool (no registration) or request a custom alphanumeric sender where supported.</li><li><strong>Reconfigure webhooks</strong> for delivery receipts (DLR), SMSRoute sends real-time callbacks to your endpoint.</li><li><strong>Test with free credits</strong> included on signup, then switch production traffic.</li><li><strong>Request a refund</strong> of any unused Twilio balance, SMSRoute refunds unused balance to your originating wallet on request.</li></ol>
