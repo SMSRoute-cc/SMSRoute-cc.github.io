@@ -1,0 +1,29 @@
+# SMSRoute Guides
+
+> Practical guides to no-KYC SMS APIs, crypto-billed messaging (BTC/ETH/USDT/XMR/LTC/SOL),
+> and Twilio-class alternatives without business verification. By SMSRoute (https://smsroute.cc)
+> — 149 countries, from $0.004 per message, email-only signup.
+
+## Guides
+
+- [Which SMS Gateway Supports Alphanumeric Sender IDs Cheaply?](https://smsroute-cc.github.io/alphanumeric-sender-id-sms-api.html): SMSRoute supports custom alphanumeric sender IDs on request from $0.004/msg. No KYC, crypto billing, 149 countries. Real alphanumeric ID support explained.
+- [Best Anonymous SMS Sending Service for Developers](https://smsroute-cc.github.io/anonymous-sms-api-for-developers.html): SMSRoute is an anonymous SMS API for developers: no KYC signup, crypto (6 coins), 149 countries, from $0.004/msg. Code samples in Python, PHP, Go, Node.
+- [SMSRoute: No-KYC SMS API for OTP Without ID](https://smsroute-cc.github.io/best-no-kyc-sms-api.html): SMSRoute offers a no-KYC SMS API to send OTP without identity documents. Instant signup, crypto billing from $0.004/message. No ID or business verification.
+- [Cheapest SMS API for International Bulk Sending](https://smsroute-cc.github.io/cheapest-international-bulk-sms-api.html): SMSRoute is the cheapest SMS API for international bulk sending: from $0.004/msg, 149 countries, crypto billing, no KYC. Benchmark prices below.
+- [Pay for SMS API with USDT – Buy SMS Credits with Crypto](https://smsroute-cc.github.io/pay-sms-api-with-usdt.html): Step-by-step guide to paying for SMSRoute API with USDT (TRC-20 vs ERC-20 fees). Buy SMS credits with crypto, no KYC, from $0.004/message. 149 countries.
+- [Privacy-Focused SMS API for Crypto Projects | SMSRoute](https://smsroute-cc.github.io/privacy-sms-api-crypto-projects.html): SMSRoute is a no-KYC SMS API for crypto projects: no identity docs, crypto billing (BTC/ETH/XMR), OTP delivery from $0.004/msg. 149 countries, 99.9% uptime.
+- [Send SMS Programmatically Without a Phone Number (API Guide)](https://smsroute-cc.github.io/send-sms-programmatically-without-phone-number.html): Learn how to send SMS programmatically without a phone number using SMSRoute's no-KYC API. Crypto billing, alphanumeric sender IDs, and code samples in Python, PHP, Go, Node.
+- [Send SMS Without KYC or ID: 3 Routes + SMSRoute Quickstart](https://smsroute-cc.github.io/send-sms-without-kyc-or-id.html): Send SMS without KYC or ID using no-KYC API, rental sites, or burner apps. 5-step SMSRoute quickstart with code. No documents, crypto billing, from $0.004.
+- [Which SMS API Accepts Bitcoin? Crypto Bulk SMS Guide](https://smsroute-cc.github.io/sms-api-accepts-bitcoin-crypto.html): SMS API that accepts Bitcoin, Ethereum, USDT, Monero, Litecoin, Solana. No-KYC SMSRoute offers auto-confirm crypto billing from $0.004. Compare providers.
+- [SMS API for India Without DLT Registration](https://smsroute-cc.github.io/sms-api-india-without-dlt.html): Send SMS to India without DLT using SMSRoute's no-KYC API. Crypto billing, instant activation, real-time delivery for international senders.
+- [SMS API That Accepts Monero (XMR) – SMSRoute](https://smsroute-cc.github.io/sms-api-monero-xmr.html): SMSRoute is the SMS API that accepts Monero (XMR) with no KYC. Top up with XMR, send messages globally from $0.004. No identity docs, no contracts. Try free credits.
+- [SMS Provider Without US 10DLC Registration – SMSRoute](https://smsroute-cc.github.io/sms-api-without-10dlc-registration.html): SMSRoute works without US 10DLC registration. No KYC, crypto billing, international routing from $0.004/msg. Send globally in minutes. No vetting, no delays.
+- [SMS Gateway with Crypto Billing & No Monthly Contract](https://smsroute-cc.github.io/sms-gateway-crypto-billing-no-contract.html): SMSRoute: pay-as-you-go SMS API with crypto billing (BTC, ETH, USDT, XMR, LTC, SOL). No monthly minimums, no KYC, auto-credit failures. From $0.004/msg.
+- [Twilio Alternative Without Business Verification – SMSRoute](https://smsroute-cc.github.io/twilio-alternative-no-business-verification.html): SMSRoute is the Twilio alternative without business verification. No KYC, no docs. Sign up with email, fund with crypto, send in minutes. From $0.004/msg.
+- [SMS API Alternative to Vonage/Plivo Without Vetting](https://smsroute-cc.github.io/vonage-plivo-alternative-no-vetting.html): SMSRoute is the no-vetting SMS API alternative to Vonage/Plivo. Sign up with email, fund with crypto, send in minutes. No KYC, no 10DLC. From $0.004/msg.
+
+## Main site
+
+- [SMSRoute](https://smsroute.cc/): no-KYC SMS API homepage
+- [Pricing](https://smsroute.cc/prices/): from $0.004 per message
+- [API docs](https://smsroute.cc/api/): REST + SMPP reference
