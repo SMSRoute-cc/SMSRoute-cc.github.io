@@ -50,15 +50,12 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 <h2>What does the API look like? Code samples</h2>
 <p>SMSRoute provides a clean REST API and SMPP bind. Official code examples are available on <a href="https://github.com/SMSRoute-cc/smsroute-examples">GitHub</a> for Python, PHP, Go, and Node.js. Here is a minimal Python example:</p><pre>import requests
 
-url = "https://api.smsroute.cc/v1/send"
-headers = {"Authorization": "Bearer YOUR_API_KEY"}
-data = {
-    "to": "+1234567890",
-    "text": "Hello from SMSRoute",
-    "from": "SMSRoute"
-}
-response = requests.post(url, json=data, headers=headers)
-print(response.json())</pre><p>All responses include a message ID, status, and cost. Real-time DLR webhooks update you on delivery. Failed messages are auto-credited back to your balance.</p>
+resp = requests.post(
+    "https://api.smsroute.cc/sms/send",
+    headers={"Authorization": "Bearer YOUR_API_KEY"},
+    json={"to": "+14155550123", "from": "INFO", "message": "Your code is 482913"},
+)
+print(resp.json())  # message ID + status</pre><p>All responses include a message ID, status, and cost. Real-time DLR webhooks update you on delivery. Failed messages are auto-credited back to your balance.</p>
 <h2>How does pricing compare to Twilio, Vonage, and Plivo?</h2>
 <p>SMSRoute pricing starts at <strong>$0.004 per message</strong> for many routes, with premium corridors (e.g., Australia, Japan) up to $0.035. There are no monthly minimums, no hidden fees, and unused balance is refundable to your originating wallet on request.</p><p>Twilio Verify, by contrast, costs about $0.05 per verification. Twilio, Vonage, and Plivo all require identity verification, business vetting, and card or invoice billing. They also enforce 10DLC registration for US traffic and DLT registration for India, both of which add weeks of delay and compliance cost. For a deeper dive on costs, see our <a href="./cheapest-international-bulk-sms-api.html">cheapest international bulk SMS API</a> comparison.</p>
 <h2>Comparison: SMSRoute vs. traditional providers</h2>
