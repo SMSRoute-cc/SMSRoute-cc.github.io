@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0D14">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Was ist ein SMS-Gateway? Einfache Definition und Funktionsweise</title>
+<link rel="alternate" hreflang="x-default" href="https://smsroute-cc.github.io/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="en" href="https://smsroute-cc.github.io/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="de" href="https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html">
+<meta name="description" content="What is an SMS gateway? The translator that accepts your API call and hands a message to the network handling routing billing sender IDs and receipts.">
+<link rel="canonical" href="https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Is an SMS Gateway? Plain Definition and How It Works">
+<meta property="og:description" content="What is an SMS gateway? The translator that accepts your API call and hands a message to the network handling routing billing sender IDs and receipts.">
+<meta property="og:url" content="https://smsroute.cc/blog/what-is-an-sms-gateway">
+<meta property="og:image" content="https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is an SMS gateway the same thing as an SMS API?", "acceptedAnswer": {"@type": "Answer", "text": "No. An SMS gateway is the routing infrastructure that actually moves the message to a carrier. The SMS API is the interface developers use to talk to that infrastructure, in SMSRoute's case a REST API and SMPP binds. Some providers expose only one protocol, so teams locked into the other must add a separate vendor or rewrite their client stack."}}, {"@type": "Question", "name": "Do SMS gateways handle replies and opt-outs?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the gateway and route. Some only push outbound messages while others manage inbound replies and automatic opt-outs. SMSRoute has STOP-keyword handling and suppression lists built in by default, blocking further sends to numbers that reply STOP."}}, {"@type": "Question", "name": "Can an SMS gateway reach any country in the world?", "acceptedAnswer": {"@type": "Answer", "text": "SMS gateways do not reach every country in the world. Coverage varies by provider and by which carrier connections they maintain. SMSRoute covers 149 countries with published per-country rates at GET /prices."}}, {"@type": "Question", "name": "What is HLR lookup and why does a gateway offer it?", "acceptedAnswer": {"@type": "Answer", "text": "HLR lookup checks whether a phone number is active and reachable before you send to it, which reduces wasted sends on dead or invalid numbers. A gateway offers it so applications skip known-bad destinations and protect route capacity. The check is a snapshot only, an edge case being numbers that deactivate seconds after a positive result."}}, {"@type": "Question", "name": "How fast does a message move through a gateway?", "acceptedAnswer": {"@type": "Answer", "text": "Speed depends on the destination carrier and route quality. Once an account is funded and an API key generated, minutes (fund, API key, send) is the practical time to a first send. Default use of the smart shared sender pool adds no extra steps, though custom alphanumeric sender IDs are available on request where destination routes support them."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://smsroute.cc/#organization","name":"smsroute","url":"https://smsroute.cc/","logo":"https://smsroute.cc/logo.png","sameAs":[]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMSRoute SMS API","serviceType":"SMS sending API","provider":{"@type":"Organization","name":"SMSRoute"},"areaServed":"149 countries","offers":{"@type":"Offer","price":"0.004","priceCurrency":"USD","description":"Per-message price from $0.004, paid in BTC, ETH, USDT, XMR, LTC or SOL"}}</script>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/inter-var.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/intertight-var.woff2') format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/jbmono-var.woff2') format('woff2')}
+
+:root{
+  --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+  --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
+  --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--warn:#FBBF24;--pill-bg:rgba(182,89,255,.12);
+  --max-w:1200px;--content-w:820px;--hero-w:1040px;
+  --sp-5:24px;--sp-6:32px;--sp-8:64px;
+  --r-sm:6px;--r-md:10px;--line:1px solid var(--border);--frame-head:#10141C;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-primary);color:var(--fg-secondary);font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(182,89,255,.35);color:#fff}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:#B4E5FD}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent-purple);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--accent-purple);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* ---------- CTA buttons ---------- */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border:0;cursor:pointer;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,box-shadow .15s,filter .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 22px 46px -10px rgba(147,51,234,.7);color:#fff}
+.btn-primary--sm{padding:8px 18px;font-size:.9rem}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;padding:13px 28px;font-size:.95rem;background:transparent;color:var(--fg-primary);border:1px solid rgba(255,255,255,.2);transition:background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.32);color:#fff}
+
+/* ---------- Nav ---------- */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(10,13,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.site-nav-inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.12rem;color:var(--fg-primary);font-family:'Inter Tight',Inter,sans-serif}
+.brand-mark{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,var(--accent-purple),var(--accent-cyan));display:inline-block}
+.site-links{display:flex;gap:22px;margin-left:8px}
+.site-links a{color:var(--fg-secondary);font-size:.94rem;font-weight:500}
+.site-links a:hover{color:var(--fg-primary)}
+.site-links a.current{color:var(--fg-primary);font-weight:600}
+.site-cta{margin-left:auto;display:flex;align-items:center;gap:16px}
+.site-cta .signin{color:var(--fg-secondary);font-size:.94rem}
+.site-cta .signin:hover{color:var(--fg-primary)}
+@media(max-width:720px){.site-links{display:none}}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb{max-width:var(--max-w);margin:0 auto;padding:16px 24px;font-size:.85rem;color:var(--fg-muted)}
+.breadcrumb ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;align-items:center}
+.breadcrumb li{display:inline-flex;align-items:center}
+.breadcrumb li+li::before{content:"›";padding:0 8px;color:var(--fg-muted)}
+.breadcrumb a{color:var(--fg-muted)}
+.breadcrumb a:hover{color:var(--accent-cyan)}
+.breadcrumb li[aria-current="page"]{color:var(--fg-secondary)}
+
+/* ---------- Hero (2-col: copy + terminal card) ---------- */
+.hero{position:relative;padding:72px 24px 48px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(182,89,255,.07),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(125,211,252,.04),transparent 55%);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-inner{max-width:var(--hero-w);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--pill-bg);border:1px solid rgba(182,89,255,.25);border-radius:999px;font-size:.85rem;color:#E8ECF3;margin-bottom:22px}
+h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;font-size:2.9rem;line-height:1.06;letter-spacing:-.02em;color:var(--fg-primary);margin:0 0 18px}
+.hero-sub{font-size:1.08rem;color:var(--fg-secondary);max-width:560px;margin:0 0 26px;line-height:1.6}
+.hero-sub p{margin:0 0 10px}
+.hero-ctas{display:inline-flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.byline{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:.85rem;color:var(--fg-muted)}
+.byline-sep{opacity:.6}
+.byline-author{color:var(--fg-secondary);font-weight:500;border-bottom:1px dotted rgba(184,189,199,.35)}
+.byline-author:hover{color:var(--fg-primary);border-bottom-color:rgba(255,255,255,.6)}
+.byline-date{color:var(--fg-muted)}
+.brand-word{color:var(--fg-primary)}
+/* terminal card (static, ~1KB, text only) */
+.hero-term{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);overflow:hidden;font:400 .82rem var(--mono);line-height:1.75;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)}
+.hero-term-head{display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--frame-head);border-bottom:var(--line);color:var(--fg-muted);font-size:.75rem}
+.tdots i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2A3340;margin-right:5px}
+.hero-term-body{padding:16px 18px;color:var(--fg-secondary);white-space:pre-wrap;word-break:break-word}
+.hero-term-body .c{color:var(--fg-muted)}
+.hero-term-body .k{color:var(--accent-cyan)}
+.hero-term-body .ok{color:var(--success)}
+@media(max-width:960px){.hero-inner{grid-template-columns:1fr}.hero-term{display:none}}
+
+/* ---------- Stat strip (single instrument bar, replaces fact tiles) ---------- */
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:28px auto 36px;max-width:var(--content-w)}
+.statstrip>div{padding:16px 20px;border-right:var(--line)}
+.statstrip>div:last-child{border-right:0}
+.statstrip b{display:block;font:700 1.3rem var(--mono);font-variant-numeric:tabular-nums;color:var(--fg-primary);letter-spacing:-.02em}
+.statstrip b::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--success);margin-left:8px;vertical-align:3px}
+.statstrip span{font-size:.78rem;color:var(--fg-muted)}
+.statwrap{padding:0 20px}
+@media(max-width:640px){.statstrip{grid-template-columns:1fr 1fr}.statstrip>div:nth-child(2){border-right:0}.statstrip>div:nth-child(-n+2){border-bottom:var(--line)}}
+
+/* ---------- Article body ---------- */
+.post{max-width:var(--content-w);margin:0 auto;padding:0 20px 80px}
+.toc-box{background:var(--bg-elevated);border:var(--line);border-left:3px solid var(--accent-purple);border-radius:var(--r-md);padding:18px 22px;margin:0 0 24px}
+.toc-box strong{color:var(--fg-primary);display:block;margin-bottom:8px;font-size:.95rem}
+.toc-box ol{list-style:none;padding:0;margin:0}
+.toc-box li{margin-bottom:6px}
+.toc-box a{color:var(--fg-secondary);font-size:.92rem;border-bottom:1px dotted rgba(184,189,199,.35)}
+.toc-box a:hover{color:var(--accent-cyan);border-bottom-color:var(--accent-cyan)}
+.secs{counter-reset:sec}
+.secs h2{position:relative;font-family:'Inter Tight',Inter,sans-serif;font-size:1.45rem;font-weight:700;letter-spacing:-.01em;color:var(--fg-primary);border-top:var(--line);padding-top:var(--sp-5);margin:var(--sp-8) 0 14px}
+.secs h2::before{content:"§ " counter(sec,decimal-leading-zero);counter-increment:sec;display:block;font:600 .72rem var(--mono);letter-spacing:.1em;color:var(--accent-cyan);margin-bottom:6px}
+.post h2{font-family:'Inter Tight',Inter,sans-serif;font-size:1.45rem;font-weight:700;margin:44px 0 14px;letter-spacing:-.01em;color:var(--fg-primary)}
+.post h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1.1rem;line-height:1.35;color:var(--fg-primary);margin:32px 0 12px}
+.post p{color:var(--fg-secondary);line-height:1.75;margin:0 0 16px;font-size:1.02rem}
+.post strong{color:var(--fg-primary)}
+.post a{color:var(--accent-cyan);border-bottom:1px solid rgba(125,211,252,.35)}
+.post a:hover{border-bottom-color:var(--accent-cyan)}
+.post code{font-family:var(--mono);font-size:.9em;background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);padding:1px 6px;color:var(--accent-cyan)}
+.post table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.95rem}
+.post ul.blist{padding-left:22px;margin:16px 0}
+.post ul.blist li{color:var(--fg-secondary);line-height:1.7;margin-bottom:8px}
+
+/* ---------- Instrument frame (shared shell: tables / diagrams / code) ---------- */
+.a2-inst{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-inst-head{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted);letter-spacing:.02em}
+.a2-inst-head::before{content:"";width:8px;height:8px;border-radius:50%;background:#2A3340;box-shadow:14px 0 0 #2A3340,28px 0 0 #2A3340;margin-right:26px;flex:none}
+.a2-inst-body{padding:0}
+
+/* ---------- Comparison table ---------- */
+.a2-tablewrap{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-tablewrap caption{caption-side:top;text-align:left;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted);letter-spacing:.02em}
+.a2-compare{width:100%;border-collapse:collapse;font-size:.92rem;display:table}
+.a2-compare th{font:600 .75rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--fg-muted);text-align:left;padding:10px 16px;border-bottom:var(--line);background:transparent;white-space:normal}
+.a2-compare td{padding:11px 16px;border-bottom:var(--line);color:var(--fg-secondary);line-height:1.5}
+.a2-compare tr:last-child td{border-bottom:0}
+.a2-compare td.dim{color:var(--fg-primary);font-weight:600;font-size:.88rem}
+.a2-compare td.ours{color:var(--fg-primary);background:rgba(125,211,252,.05);font-weight:500}
+.a2-compare td.ours::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 6px rgba(74,222,128,.6);margin-right:8px;vertical-align:1px}
+.a2-compare td.np{color:var(--fg-muted);font-style:italic}
+.a2-footnote{font-size:.8rem;color:var(--fg-muted);margin:8px 2px 0;line-height:1.6}
+@media(max-width:640px){.a2-tablewrap{overflow-x:auto}.a2-compare{min-width:560px}}
+
+/* ---------- Stat strip inline (component version) ---------- */
+.a2-statstrip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-5) 0}
+.a2-statstrip .a2-stat{padding:14px 18px;border-right:var(--line)}
+.a2-statstrip .a2-stat:last-child{border-right:0}
+.a2-statstrip b{display:block;font:700 1.2rem var(--mono);font-variant-numeric:tabular-nums;color:var(--fg-primary)}
+.a2-statstrip span{font-size:.76rem;color:var(--fg-muted)}
+@media(max-width:640px){.a2-statstrip{grid-template-columns:1fr 1fr}.a2-statstrip .a2-stat:nth-child(2){border-right:0}.a2-statstrip .a2-stat:nth-child(-n+2){border-bottom:var(--line)}}
+
+/* ---------- Callout / note ---------- */
+.a2-callout{border:var(--line);border-left:3px solid var(--accent-cyan);border-radius:var(--r-sm);background:var(--bg-sunken);padding:14px 18px;margin:var(--sp-5) 0}
+.a2-callout p{margin:0;color:var(--fg-secondary);font-size:.96rem}
+.a2-callout b{color:var(--accent-cyan);font:600 .8rem var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-right:6px}
+.a2-warn{border-left-color:var(--warn)}
+.a2-warn b{color:var(--warn)}
+.a2-ok{border-left-color:var(--success)}
+.a2-ok b{color:var(--success)}
+
+/* ---------- TL;DR ---------- */
+.a2-tldr{border:var(--line);border-top:2px solid var(--accent-purple);border-radius:var(--r-md);background:var(--bg-sunken);padding:18px 22px;margin:0 0 var(--sp-6)}
+.a2-tldr>b{font:700 .78rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent-purple)}
+.a2-tldr ul{list-style:none;margin:10px 0 0;padding:0}
+.a2-tldr li{padding:6px 0;border-bottom:1px solid rgba(31,38,49,.6);color:var(--fg-secondary);font-size:.97rem}
+.a2-tldr li:last-child{border-bottom:0}
+
+/* ---------- Step timeline ---------- */
+.a2-steps{counter-reset:s;list-style:none;margin:var(--sp-6) 0;padding:0}
+.a2-steps li{counter-increment:s;position:relative;padding:0 0 var(--sp-5) 48px;color:var(--fg-secondary);line-height:1.6}
+.a2-steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:var(--r-sm);background:var(--bg-sunken);border:var(--line);color:var(--accent-purple);font:700 .8rem var(--mono);display:flex;align-items:center;justify-content:center}
+.a2-steps li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:1px;background:var(--border)}
+.a2-steps li:last-child::after{display:none}
+.a2-steps b{display:block;color:var(--fg-primary);margin-bottom:4px}
+.a2-steps span{display:block;font-size:.95rem}
+
+/* ---------- Key facts (definition grid) ---------- */
+.a2-keyfacts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--line);border-radius:var(--r-md);background:var(--bg-sunken);overflow:hidden;margin:var(--sp-5) 0}
+.a2-keyfacts>div{padding:12px 16px;border-bottom:var(--line);border-right:var(--line)}
+.a2-keyfacts>div:nth-child(2n){border-right:0}
+.a2-keyfacts>div:nth-last-child(-n+2){border-bottom:0}
+.a2-keyfacts dt{font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--fg-muted);margin:0 0 4px}
+.a2-keyfacts dd{margin:0;color:var(--fg-primary);font-size:.95rem}
+@media(max-width:640px){.a2-keyfacts{grid-template-columns:1fr}.a2-keyfacts>div{border-right:0}}
+
+/* ---------- Diagrams ---------- */
+.a2-diagwrap{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-diagwrap .a2-inst-head{border-radius:0}
+.a2-diagbody{padding:16px 12px;overflow-x:auto}
+.a2-diagbody svg{min-width:560px}
+.a2-diagram{border:0!important;background:transparent!important}
+
+/* ---------- Artifact (code block) ---------- */
+.artifact{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:26px 0;overflow:hidden}
+.artifact figcaption{display:flex;align-items:center;padding:8px 14px;font:500 .78rem var(--mono);color:var(--fg-muted);border-bottom:var(--line);background:var(--frame-head)}
+.artifact figcaption::before{content:"";width:8px;height:8px;border-radius:50%;background:#2A3340;box-shadow:14px 0 0 #2A3340,28px 0 0 #2A3340;margin-right:26px;flex:none}
+.artifact pre{margin:0;padding:18px;overflow-x:auto}
+.artifact code{font-family:var(--mono);font-size:.86rem;line-height:1.6;color:#E4E7EE;background:none;border:0;padding:0}
+
+/* ---------- FAQ (flattened, mono Q) ---------- */
+.faq-card{border:var(--line);border-radius:var(--r-md);background:var(--bg-elevated);margin:0 0 10px;overflow:hidden}
+.faq-card summary{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;font-weight:600;color:var(--fg-primary);list-style:none}
+.faq-card summary::-webkit-details-marker{display:none}
+.faq-card summary::before{content:"Q";font:700 .72rem var(--mono);color:var(--accent-purple);background:var(--pill-bg);border-radius:var(--r-sm);padding:3px 7px;flex:none}
+.faq-card summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--fg-muted);border-bottom:2px solid var(--fg-muted);transform:rotate(45deg);transition:transform .15s;flex:none}
+.faq-card[open] summary::after{transform:rotate(-135deg)}
+.faq-card .faq-answer{padding:0 18px 16px 47px;color:var(--fg-secondary);line-height:1.7}
+
+/* ---------- legacy aliases (callout/steps from older gen paths) ---------- */
+.callout{border:var(--line);border-left:3px solid var(--accent-cyan);border-radius:var(--r-sm);background:var(--bg-sunken);padding:14px 18px;margin:22px 0}
+.callout p{margin:0;color:var(--fg-secondary)}
+.steps{counter-reset:step;list-style:none;padding:0;margin:20px 0}
+.steps li{counter-increment:step;position:relative;padding:0 0 20px 48px;color:var(--fg-secondary);line-height:1.65}
+.steps li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:var(--r-sm);background:var(--bg-sunken);border:var(--line);color:var(--accent-purple);font:700 .8rem var(--mono);display:flex;align-items:center;justify-content:center}
+.steps b{color:var(--fg-primary);display:block;margin-bottom:4px}
+.post th{color:var(--fg-primary);text-align:left;padding:10px 14px;border-bottom:2px solid var(--accent-purple);background:var(--bg-elevated)}
+.post td{color:var(--fg-secondary);padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.55}
+
+/* ---------- CTA band ---------- */
+.cta{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);padding:0;margin:48px 0 0;overflow:hidden;text-align:left}
+.cta::before{content:"$ get started";display:flex;align-items:center;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted)}
+.cta p{margin:0;padding:20px 22px 16px;color:var(--fg-secondary)}
+.cta a.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;margin:0 22px 8px;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s}
+.cta a.btn:hover{transform:translateY(-1px);color:#fff}
+.cta .alt{display:block;margin:0;padding:0 22px 20px;font-size:.88rem;color:var(--fg-muted)}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--bg-sunken);border-top:1px solid var(--border);color:var(--fg-secondary);padding:56px 24px 28px}
+.site-footer__inner{max-width:var(--max-w);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand p{font-size:.9rem;margin:0 0 14px;max-width:220px}
+.footer-brand .socials{display:flex;gap:8px}
+.footer-brand .socials a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;color:var(--fg-secondary)}
+.footer-brand .socials a:hover{border-color:var(--border-glow);color:#fff}
+.footer-heading{font-weight:600;margin:0 0 .6em;font-size:.95rem;color:var(--fg-primary);letter-spacing:.02em}
+.footer-col ul{list-style:none;padding:0;margin:0}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--fg-secondary);font-size:.92rem}
+.footer-col a:hover{color:#fff}
+.footer-legal{padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--fg-muted);font-size:.86rem}
+.footer-legal .legal-links{display:inline-flex;gap:16px}
+.footer-legal .legal-links a{color:var(--fg-muted)}
+.footer-legal .legal-links a:hover{color:var(--fg-secondary)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:2fr 1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .hero{padding:52px 20px 36px}
+  h1.hero-title{font-size:2.1rem;line-height:1.08}
+  .hero-sub{font-size:1rem}
+  .secs h2,.post h2{font-size:1.3rem}
+  .secs h2{margin-top:44px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .breadcrumb{padding:12px 20px;font-size:.8rem}
+  .byline{font-size:.8rem;gap:8px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Zum Inhalt springen</a>
+<header class="site-nav"><div class="site-nav-inner">
+<a href="https://smsroute.cc/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+<nav class="site-links" aria-label="Primary">
+  <a href="https://smsroute.cc/">Funktionen</a><a href="https://smsroute.cc/prices">Preise</a><a href="https://smsroute.cc/developers">API</a>
+  <a href="https://smsroute.cc/developers">Dokumentation</a><a href="https://smsroute.cc/blog/" class="current">Blog</a>
+</nav>
+<div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Anmelden</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Loslegen</a></div>
+</div></header>
+
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <ol>
+    <li><a href="https://smsroute.cc/">Startseite</a></li>
+    <li><a href="https://smsroute.cc/blog/">Blog</a></li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow-pill">149 Länder · Krypto-nativ · Anmeldung nur per E-Mail</span>
+      <h1 class="hero-title">Was genau ist ein SMS-Gateway?</h1>
+      <div class="hero-sub"><p>Ein SMS-Gateway ist der Übersetzer, der die HTTP- oder SMPP-Aufrufe Ihrer Anwendung entgegennimmt und jede Nachricht an die Mobilfunknetze zur Zustellung an Telefone weiterleitet – inklusive Routing, Abrechnung, Absenderkennungen und Empfangsbestätigungen.</p>
+<p>Diese Seite richtet sich an Entwickler und technische Betreiber, die zum ersten Mal recherchieren, wie man programmatische SMS versendet, und eine einfache Definition der Gateway-Ebene benötigen, bevor sie Typen bewerten oder Integrationscode schreiben.</p></div>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://smsroute.cc/signup">SMS versenden starten <span aria-hidden="true">→</span></a>
+        <a class="btn-ghost" href="https://smsroute.cc/developers">API-Dokumentation ansehen</a>
+      </div>
+      <div class="byline">
+        <a href="https://smsroute.cc/about" class="byline-author">SMSRoute Engineering</a>
+        <span class="byline-sep">·</span>
+        <span class="byline-date">Zuletzt geprüft am 23.07.2026</span>
+      </div>
+    </div>
+    <figure class="hero-term" aria-hidden="true">
+      <figcaption class="hero-term-head"><span class="tdots"><i></i><i></i><i></i></span>send.sh</figcaption>
+      <div class="hero-term-body"><span class="c"># ein Aufruf, jedes Land</span>
+$ curl -X POST api.smsroute.cc<span class="k">/sms/send</span> \
+    -d to=+491701234567 \
+    -d text="Your code: 314159"
+
+{ "status": <span class="ok">"accepted"</span>, "id": "m_8h2k" }
+<span class="c"># DLR-Webhook →</span> <span class="ok">zugestellt ✓</span></div>
+    </figure>
+  </div>
+</section>
+
+<section class="statwrap" aria-label="service facts">
+  <div class="statstrip">
+    <div><b>ab 0,004 $</b><span>pro Nachricht</span></div>
+    <div><b>149</b><span>Länder</span></div>
+    <div><b>Minuten</b><span>bis zur ersten Nachricht</span></div>
+    <div><b>6</b><span>Kryptowährungen</span></div>
+  </div>
+</section>
+
+<main id="content" class="post">
+  <article>
+    <div class="toc-box"><strong>Auf dieser Seite</strong><ol><li><a href="#s1">Was ist ein SMS-Gateway?</a></li><li><a href="#s2">Wie funktioniert ein SMS-Gateway Schritt für Schritt?</a></li><li><a href="#s3">Welche Arten von SMS-Gateways gibt es?</a></li><li><a href="#s4">Worauf sollte man bei der Bewertung eines SMS-Gateways achten?</a></li><li><a href="#s5">Wo passen Krypto-abgerechnete Gateways ohne Anmeldung in dieses Bild?</a></li></ol></div>
+    <div class="a2-tldr"><b>Kurzfassung</b><ul><li>Ein SMS-Gateway verbindet den API-Aufruf Ihrer App mit einem Mobilfunkanbieter.</li><li>Es routet, authentifiziert und gibt den Zustellstatus an Sie zurück.</li><li>Typen: direkte Carrier-Verbindungen, Aggregator-Gateways und Browser-Webformulare.</li><li>Prüfen Sie API-Dokumentation, Zustellberichte, Preise, Rückerstattungen und Support.</li><li>Krypto-abgerechnete Gateways sind eine Kategorie, finanziert durch Coins, nicht Karten.</li></ul></div>
+    <div class="secs">
+    <section><h2 id="s1">Was ist ein SMS-Gateway?</h2><p>Ein SMS-Gateway ist ein Dienst, der Software, eine Website, App oder ein Skript mit Mobilfunknetzen verbindet, eine API-Anfrage in eine Textnachricht umwandelt und sie zum Carrier des Empfängers weiterleitet. Ihre Anwendung spricht HTTP oder SMPP. Endgeräte und Carrier sprechen SS7 oder Diameter-Signalisierung. Das Gateway sitzt dazwischen als Übersetzungs- und Zustellungsschicht.</p>
+<p>Ihr Code sendet einen POST. Das Gateway authentifiziert die Anfrage, wählt eine Route, setzt die Absenderkennung, übermittelt die PDU an den Carrier und gibt eine Nachrichten-ID sowie später einen Zustellbericht zurück. Es übernimmt Abrechnung und Failover über mehrere Upstream-Pfade, sodass eine einzige API viele Ziele abdeckt. Ohne diese Schicht müssten Sie selbst Interconnects mit jedem Betreiber aushandeln.</p></section><section><h2 id="s2">Wie funktioniert ein SMS-Gateway tatsächlich, Schritt für Schritt?</h2><p>Ein SMS-Gateway empfängt Ihre Sendeanfrage mit Ziel und Nachrichtentext, ermittelt das Zielnetz, leitet über Carrier-Verbindungen weiter und gibt Status zur Zustellbestätigung zurück.</p>
+<p>Routing ist nicht auf einen Pfad festgelegt. Der eigentliche Haken ist, dass jede einzelne Carrier-Verbindung ohne Vorwarnung Traffic verwirft. Daher wechseln Multi-Route-Systeme mit adaptiver Zustellung und automatischem Failover pro Ziel automatisch auf eine andere Verbindung für dieses Ziel. Das ist wichtig, weil Nachrichten weiterlaufen, während Ihre Anwendung vom Upstream-Wechsel nichts mitbekommt. Die Entscheidungsregel bei der Gateway-Wahl ist, ob Failover pro Ziel ohne manuellen Eingriff erfolgt.</p><figure class="a2-diagwrap"><figcaption class="a2-inst-head">Nachrichtenpfad · App zum Endgerät</figcaption><div class="a2-diagbody"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 116" role="img" aria-label="How a message travels: Your app to Gateway API to Carrier network to Handset" class="a2-diagram" style="width:100%;height:auto;background:#0f1419;border:1px solid #2d3a4f;border-radius:10px"><rect x="20" y="38" width="120" height="44" rx="8" fill="#1a2332" stroke="#3b82f6"/><text x="80" y="65" font-size="13" fill="#e7ecf3" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="600">Your app</text><text x="80" y="102" font-size="11" fill="#8b9bb4" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif">POST /sms/send</text><line x1="144" y1="60" x2="168" y2="60" stroke="#8b9bb4" stroke-width="2"/><path d="M168,55 L176,60 L168,65" fill="#8b9bb4"/><rect x="180" y="38" width="120" height="44" rx="8" fill="#1a2332" stroke="#2d3a4f"/><text x="240" y="65" font-size="13" fill="#e7ecf3" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="600">Gateway API</text><text x="240" y="102" font-size="11" fill="#8b9bb4" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif">auth, route lookup</text><line x1="304" y1="60" x2="328" y2="60" stroke="#8b9bb4" stroke-width="2"/><path d="M328,55 L336,60 L328,65" fill="#8b9bb4"/><rect x="340" y="38" width="120" height="44" rx="8" fill="#1a2332" stroke="#2d3a4f"/><text x="400" y="65" font-size="13" fill="#e7ecf3" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="600">Carrier network</text><text x="400" y="102" font-size="11" fill="#8b9bb4" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif">SMPP delivery</text><line x1="464" y1="60" x2="488" y2="60" stroke="#8b9bb4" stroke-width="2"/><path d="M488,55 L496,60 L488,65" fill="#8b9bb4"/><rect x="500" y="38" width="120" height="44" rx="8" fill="#1a2332" stroke="#3b82f6"/><text x="560" y="65" font-size="13" fill="#e7ecf3" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-weight="600">Handset</text><text x="560" y="102" font-size="11" fill="#8b9bb4" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif">message arrives</text></svg></div></figure></section><section><h2 id="s3">Welche Arten von SMS-Gateways gibt es?</h2><p>SMS-Gateways gibt es als direkte Carrier-Verbindungen mit Protokollen wie SMPP, als Aggregator-Gateways, die Kapazität über viele Carrier einkaufen und für Sie routen, sowie als einfache browserbasierte Web-SMS-Tools, die keine echten programmatischen Gateways sind.</p>
+<p>Direkte Verbindungen zwingen Sie, Verbindungen mit jedem Mobilfunknetz selbst auszuhandeln und zu pflegen. Aggregatoren übernehmen Routing, Abrechnung und Failover, sodass Ihre Anwendung nur mit einer Schnittstelle spricht. Ein Aggregator wie SMSRoute bietet REST-API und SMPP-Bindungen mit Codebeispielen in Python, PHP, Go und Node auf GitHub (SMSRoute-cc). Browser-Tools erfordern manuelle Eingabe in ein Webformular und brechen bei echtem Volumen oder Automatisierung zusammen.</p></section><section><h2 id="s4">Worauf sollten Sie bei der Bewertung eines SMS-Gateways achten?</h2><p>Achten Sie auf eine echte API mit funktionierender Dokumentation, Zustellberichte über <a href="https://en.wikipedia.org/wiki/Delivery_report" rel="noopener">DLR-Webhooks</a> und Logs, transparente Preise pro Land, eine klare Rückerstattungsrichtlinie für fehlgeschlagene Sendungen und Support, der rund um die Uhr reagiert.</p>
+<p>Diese Kriterien trennen Gateways, auf denen Sie aufbauen können, von solchen, die Sie im Unklaren lassen. Unvollständige Docs verschwenden Integrationszeit. Ohne Echtzeit-DLR können Sie zugestellt von abgewiesen nicht unterscheiden. Undurchsichtige Preise verbergen teure Routen, bis die Rechnung kommt. Keine automatische Gutschrift bei Fehlern macht jede unzustellbare Nachricht zum Ticket-Kampf. Langsamer oder fehlender Support lässt Ausfälle ungelöst. Erfüllen Sie alle fünf, bevor Sie einzahlen, denn ein späterer Wechsel kostet mehr als jede Tariflücke.</p><dl class="a2-keyfacts"><div><dt>API-Dokumentation</dt><dd>REST + SMPP, Codebeispiele auf GitHub</dd></div><div><dt>Zustellberichte</dt><dd>Echtzeit-DLR per Webhook oder Status-Endpunkt</dd></div><div><dt>Preise</dt><dd>Veröffentlichte Preise pro Land unter GET /prices</dd></div><div><dt>Rückerstattungsrichtlinie</dt><dd>Fehlgeschlagene Sendungen werden automatisch gutgeschrieben</dd></div><div><dt>Support</dt><dd>24/7 Telegram und E-Mail</dd></div></dl></section><section><h2 id="s5">Wo passen Krypto-abgerechnete Gateways ohne Anmeldung in dieses Bild?</h2><p>Krypto-abgerechnete Gateways ohne Anmeldung passen als eine Kategorie innerhalb der Aggregator-Gateways. Sie lassen Sie das Kontoguthaben mit Kryptowährung statt mit Karte aufladen und benötigen nur eine E-Mail, ohne jemals Ausweisdokumente.</p>
+<p>Diese Gateways sind für Entwickler und Projekte gebaut, die keine Ausweisdokumente vorlegen möchten, nur um eine Testnachricht zu senden. Kostenlose Testguthaben bei der Anmeldung lassen Sie Routen vor der Einzahlung prüfen. Kontoguthaben akzeptieren BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC und SOL. Das passt zu Teams, die Krypto-Abrechnung bevorzugen und einen schnellen Start von E-Mail-Anmeldung bis zu verifizierten Testsendungen ohne Dokumentenprüfung wünschen.</p></section>
+    </div>
+    <figure class="artifact"><figcaption>Der Gateway-Ablauf von Anfrage bis Zustellung, in echten Endpunkten</figcaption><pre><code>1. POST /sms/send  {&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;, &quot;callback_url&quot;: &quot;https://your-app.example/dlr&quot;}
+2. Gateway routes to the destination carrier for that number
+3. GET /sms/single/:messageId/status  returns current delivery status
+4. callback_url receives real-time delivery updates as the carrier reports them
+
+# check the gateway is reachable
+curl https://api.smsroute.cc/health</code></pre></figure>
+    <h2 id="faq">Häufig gestellte Fragen</h2>
+    <details class="faq-card"><summary>Ist ein SMS-Gateway dasselbe wie eine SMS-API?</summary><div class="faq-answer"><p>Nein. Ein SMS-Gateway ist die Routing-Infrastruktur, die die Nachricht tatsächlich zu einem Carrier bewegt. Die SMS-API ist die Schnittstelle, die Entwickler nutzen, um mit dieser Infrastruktur zu sprechen, im Fall von SMSRoute eine REST-API und SMPP-Bindungen. Manche Anbieter bieten nur ein Protokoll, sodass Teams, die auf das andere angewiesen sind, einen separaten Anbieter hinzufügen oder ihren Client-Stack umschreiben müssen.</p></div></details><details class="faq-card"><summary>Verarbeiten SMS-Gateways Antworten und Opt-Outs?</summary><div class="faq-answer"><p>Das hängt vom Gateway und der Route ab. Manche versenden nur ausgehende Nachrichten, andere verwalten eingehende Antworten und automatische Opt-Outs. SMSRoute hat standardmäßig STOP-Keyword-Behandlung und Unterdrückungslisten integriert und blockiert weitere Sendungen an Nummern, die mit STOP antworten.</p></div></details><details class="faq-card"><summary>Kann ein SMS-Gateway jedes Land der Welt erreichen?</summary><div class="faq-answer"><p>SMS-Gateways erreichen nicht jedes Land der Welt. Die Abdeckung variiert je nach Anbieter und den Carrier-Verbindungen, die sie unterhalten. SMSRoute deckt 149 Länder mit veröffentlichten Preisen pro Land unter GET /prices ab.</p></div></details><details class="faq-card"><summary>Was ist eine HLR-Abfrage und warum bietet ein SMS-Gateway sie an?</summary><div class="faq-answer"><p>Eine HLR-Abfrage prüft, ob eine Telefonnummer aktiv und erreichbar ist, bevor Sie eine Nachricht senden. Das reduziert unnötige Sendungen an tote oder ungültige Nummern. Ein SMS-Gateway bietet dies an, damit Anwendungen bekannte ungültige Ziele überspringen und die Routenkapazität schonen. Die Prüfung ist nur eine Momentaufnahme – ein Sonderfall sind Nummern, die Sekunden nach einem positiven Ergebnis deaktiviert werden.</p></div></details><details class="faq-card"><summary>Wie schnell läuft eine Nachricht durch ein SMS-Gateway?</summary><div class="faq-answer"><p>Die Geschwindigkeit hängt vom Zielnetzbetreiber und der Routenqualität ab. Sobald ein Konto aufgeladen und ein API-Schlüssel erstellt ist, dauert es praktisch Minuten (Aufladung, API-Schlüssel, Senden) bis zur ersten Nachricht. Die Standardnutzung des intelligenten gemeinsamen Absenderpools erfordert keine zusätzlichen Schritte, jedoch sind benutzerdefinierte <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alphanumerische IDs</a> auf Anfrage verfügbar, sofern die Zielrouten diese unterstützen.</p></div></details>
+    <div class="cta"><p>Sehen Sie den tatsächlichen Request- und Response-Flow des SMS-Gateways.</p><a class="btn" href="https://smsroute.cc/developers">API-Dokumentation lesen</a><span class="alt">oder <a href="https://smsroute.cc/prices">Live-Preise prüfen</a></span></div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://smsroute.cc/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+        <p>Liefern Sie Zufriedenheit: SMS-Verbindungen zu Ihren Kunden, wie Sie sie noch nie erlebt haben.</p>
+        <div class="socials">
+          </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Blog</p>
+        <ul>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs. gebührenfrei vs. Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumerisch vs. Shortcode-Absenderkennung</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">DSGVO Double-Opt-in-SMS-Vorlage</a></li>
+          <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs. UCS-2: Welches für meinen Text?</a></li>
+          <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Wie OTP-Zustellung funktioniert</a></li>
+          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Internationaler SMS-Guide 2026</a></li>
+          <li><a href="https://smsroute.cc/blog/">Alle Beiträge anzeigen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Beliebte Länder</p>
+        <ul>
+          <li><a href="https://smsroute.cc/united-states">Vereinigte Staaten</a></li>
+          <li><a href="https://smsroute.cc/united-kingdom">Vereinigtes Königreich</a></li>
+          <li><a href="https://smsroute.cc/india">Indien</a></li>
+          <li><a href="https://smsroute.cc/germany">Deutschland</a></li>
+          <li><a href="https://smsroute.cc/brazil">Brasilien</a></li>
+          <li><a href="https://smsroute.cc/australia">Australien</a></li>
+          <li><a href="https://smsroute.cc/send-sms-to/">Alle Länder anzeigen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Krypto-Zahlungen</p>
+        <ul>
+          <li><a href="https://smsroute.cc/pay-with/bitcoin">Mit Bitcoin bezahlen</a></li>
+          <li><a href="https://smsroute.cc/pay-with/monero">Mit Monero bezahlen</a></li>
+          <li><a href="https://smsroute.cc/pay-with/usdt">Mit USDT bezahlen</a></li>
+        </ul>
+        <p class="footer-heading">Anwendungsfälle</p>
+        <ul>
+          <li><a href="https://smsroute.cc/for/2fa">SMS für 2FA</a></li>
+          <li><a href="https://smsroute.cc/for/otp">SMS für OTP</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Integrationen</p>
+        <ul>
+          <li><a href="https://smsroute.cc/integrate/node-js">Node.js-Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/python">Python-Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio-Migration</a></li>
+        </ul>
+        <p class="footer-heading">Vergleiche</p>
+        <ul>
+          <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
+          <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
+          <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
+          <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 smsroute</span>
+      <span class="legal-links">
+        <a href="https://smsroute.cc/privacy">Datenschutz</a>
+        <a href="https://smsroute.cc/terms">AGB</a>
+        <a href="https://smsroute.cc/privacy">Sicherheit</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
