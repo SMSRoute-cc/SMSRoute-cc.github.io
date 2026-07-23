@@ -243,9 +243,9 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>The whole path from funded balance to first outbound SMS is measured in minutes. Code samples for the exact call sit in the artifact below the sections, covering Python, PHP, Go and Node.</p></section><section><h2 id="s3">What does a no-KYC SMS API cost?</h2><p>A no-KYC SMS API costs from $0.004 per message, with per-country rates of $0.009 to $0.035 depending on the destination route across 149 countries.</p>
 <p>You pay the rate for the route you hit. Most destinations sit in the middle of that band. Australia and Japan land at the top because those carriers charge more. The dashboard shows the live price for each country before you fire anything, so there are no surprises after the fact. Failed messages are automatically credited back. Unused balance is refundable to the originating wallet on request.</p>
 <p>KYC providers bury extra costs under the sticker price. Registration fees, monthly number rental, and multi-day vetting plus A2P carrier approval all hit before a single production message leaves. That friction is the real bill. Here the rate on the screen is the full cost. Fund, grab the key, send.</p></section><section><h2 id="s4">How does it compare with Twilio-style providers?</h2><p>SMSRoute removes the identity verification, A2P 10DLC brand registration and card-tied billing that Twilio, Vonage and Plivo require, using email signup and crypto payment instead.</p>
-<p>Twilio, Vonage and Plivo demand government ID verification and business checks. For US traffic they also require A2P 10DLC brand registration before production messages can leave. Billing stays tied to cards, and account suspension reviews are common for grey-area content categories.</p>
+<p>Twilio, Vonage and Plivo demand government ID verification and business checks. For US traffic they also require <a href="https://www.twilio.com/docs/messaging/compliance/a2p-10dlc" rel="noopener">A2P 10DLC brand registration</a> before production messages can leave. Billing stays tied to cards, and account suspension reviews are common for grey-area content categories.</p>
 <p>SMSRoute opens with an email address alone and never requests identity documents. You fund with BTC, ETH, USDT (TRC-20 or ERC-20), XMR, LTC or SOL. Messages ride adaptive multi-route delivery with automatic failover per destination. Real-time delivery reports arrive via DLR webhooks and the dashboard log. Uptime has held at 99.9%+ over the trailing twelve months.</p>
-<p>REST API and SMPP binds are both available, with working code examples in Python, PHP, Go and Node on GitHub under SMSRoute-cc.</p></section><section><h2 id="s5">Is using a no-KYC SMS API legal?</h2><p>Yes, using a no-KYC SMS API is legal in itself. What gets regulated is the messages you send, under rules like TCPA and GDPR that bind the sender no matter which provider you pick.</p>
+<p>REST API and SMPP binds are both available, with working code examples in Python, PHP, Go and Node on GitHub under SMSRoute-cc.</p></section><section><h2 id="s5">Is using a no-KYC SMS API legal?</h2><p>Yes, using a no-KYC SMS API is legal in itself. What gets regulated is the messages you send, under rules like the <a href="https://www.fcc.gov/consumers/guides/stop-unwanted-robocalls-and-texts" rel="noopener">TCPA</a> and <a href="https://gdpr.eu/" rel="noopener">GDPR</a> that bind the sender no matter which provider you pick.</p>
 <p>Spam and consent laws attach to the originator of the traffic. If you blast unsolicited marketing without prior opt-in, you violate those statutes whether the pipe is Twilio or a crypto-funded endpoint. The signup method of the gateway changes nothing about your obligations as the party who composed and triggered the SMS.</p>
 <p>SMSRoute enforces STOP-keyword handling and suppression lists on every route. Recipients who reply STOP are automatically blocked from further traffic on that number, and the block list is honored across REST and SMPP sessions. Failed or opted-out messages are credited back so you never pay for traffic that never should have left.</p>
 <p>Legitimate traffic is the only traffic that lasts. OTP delivery for privacy-focused apps, transactional alerts, teams operating in places where card billing is impractical, journalists and NGOs all run cleanly on this model. We publish the rules because hiding from the legality question fools no one and wastes both sides' time.</p></section>
@@ -272,12 +272,6 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
  <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
  <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
  <div class="socials">
- <a href="https://x.com/smsroute" aria-label="X (Twitter)">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
- </a>
- <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
- </a>
  </div>
  </div>
  <div class="footer-col">
@@ -338,7 +332,7 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
  <span class="legal-links">
  <a href="https://smsroute.cc/privacy">Privacy</a>
  <a href="https://smsroute.cc/terms">Terms</a>
- <a href="https://smsroute.cc/security">Security</a>
+ <a href="https://smsroute.cc/privacy">Security</a>
  </span>
  </div>
  </div>
