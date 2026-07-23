@@ -237,7 +237,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
  <section><h2 id="s1">Which cryptocurrencies can you pay with to send SMS?</h2><p>You fund SMS with BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC or SOL. No cards, no identity attached to the payment.</p>
 <p>Account signup takes an email address alone. No identity documents are collected ever, for the account or anything tied to how you pay. Choose the coin already in your wallet, transfer to the deposit address, and the balance updates after network confirmation so the API key is live.</p>
 <p>From that point you move straight to sending. Free test credits arrive at signup for route checks first. Failed messages credit back automatically and unused balance returns to the originating wallet on request.</p></section><section><h2 id="s2">How does a crypto top-up actually work end-to-end?</h2><p>You start a crypto top-up with a POST /deposits-2 call that includes crypto_currency and amount, balance credits once the on-chain payment confirms, and status is available anytime at GET /payment/status-2/:orderId.</p>
-<p>The endpoint returns a deposit address and order identifier. Send the exact amount from your wallet. After the blockchain records the transaction and reaches the required confirmations for that asset, the balance appears in your account ready for API sends. Confirmation time depends on the coin's own network conditions, not on us.</p>
+<p>The endpoint returns a deposit address and order identifier. Send the exact amount from your wallet. After the blockchain records the transaction and reaches the <a href="https://en.bitcoin.it/wiki/Confirmation" rel="noopener">required confirmations</a> for that asset, the balance appears in your account ready for API sends. Confirmation time depends on the coin's own network conditions, not on us.</p>
 <p>Free test credits arrive on signup to verify routes before funding. Run real messages through the REST API or SMPP, inspect the delivery reports, and only then commit a deposit when the paths look solid for your destinations.</p>
 <p>If you need the current state of an order you hit GET /payment/status-2/:orderId at any moment. Unused balance is refundable to the originating wallet on request.</p></section><section><h2 id="s3">What does it cost to send SMS with crypto?</h2><p>Sending an SMS with crypto costs from $0.004 per message, with rates between $0.009 and $0.035 by destination across 149 countries and live figures at GET /prices.</p>
 <p>Rates sit at the $0.004 floor on the least expensive routes. The bulk of destinations price between $0.009 and $0.035. That upper number is strictly the ceiling for costly routes like Australia and Japan, never the typical rate. Pull the precise figure for your target country from GET /prices before you queue any traffic.</p>
@@ -276,12 +276,6 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
  <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
  <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
  <div class="socials">
- <a href="https://x.com/smsroute" aria-label="X (Twitter)">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
- </a>
- <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
- </a>
  </div>
  </div>
  <div class="footer-col">
@@ -342,7 +336,7 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
  <span class="legal-links">
  <a href="https://smsroute.cc/privacy">Privacy</a>
  <a href="https://smsroute.cc/terms">Terms</a>
- <a href="https://smsroute.cc/security">Security</a>
+ <a href="https://smsroute.cc/privacy">Security</a>
  </span>
  </div>
  </div>
