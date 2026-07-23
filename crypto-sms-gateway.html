@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0D14">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<title>How to Evaluate a Crypto SMS Gateway: A Checklist, Not a Sales Pitch (2026)</title>
+<title>Crypto SMS Gateway: How to Evaluate One Before You Deposit</title>
 <meta name="description" content="Checklist for how to evaluate a crypto sms gateway before you fund one. Run these tests on any provider to separate real services from clones.">
 <link rel="canonical" href="https://smsroute-cc.github.io/crypto-sms-gateway.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Evaluate a Crypto SMS Gateway: A Checklist, Not a Sales Pitch (2026)">
+<meta property="og:title" content="Crypto SMS Gateway: How to Evaluate One Before You Deposit">
 <meta property="og:description" content="Checklist for how to evaluate a crypto sms gateway before you fund one. Run these tests on any provider to separate real services from clones.">
 <meta property="og:url" content="https://smsroute-cc.github.io/crypto-sms-gateway.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -245,7 +245,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Next, hit GET /health on the API base and read the raw response. A live endpoint that returns current status beats any uptime graphic on a landing page. SMSRoute publishes 99.9%+ uptime over the trailing twelve months; the health check lets you watch that claim in real time instead of trusting a static badge. Pair it with the test send: include a callback_url on POST /sms/send so the delivery report posts back to you immediately. You then own the DLR data for that message rather than waiting on a dashboard screenshot someone else prepared.</p>
 <p>Finally, open a support ticket on Telegram or email during the test window and time the first reply. Sub-hour responses under real load matter more than a 24/7 claim written in marketing copy. Once the free credits confirm delivery, the health endpoint answers, and the webhook fires, you have operational proof instead of another identical sales page.</p></section><section><h2 id="s4">How does crypto billing on a gateway actually work end-to-end?</h2><p>Crypto billing works end to end by submitting a deposit request with your chosen coin and amount, then polling the matching payment status endpoint until the network confirms and balance credits.</p>
 <p>You call POST /deposits-2 with crypto_currency and amount in the body. The response returns an orderId plus the deposit address and exact sum to send. From there you hit GET /payment/status-2/:orderId on a short interval. Once the chain shows enough confirmations the gateway marks the order paid and adds the funds to your account balance ready for SMS traffic. Accepted coins are BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC and SOL. Nothing else is required beyond the wallet transaction itself.</p>
-<p>On-chain confirmation time is controlled solely by the coin network you picked, not by any SMS provider. A gateway that quotes a fixed minute count for every coin is inventing a number it cannot guarantee. After the balance lands, failed messages are automatically credited back. Unused balance is refundable to the originating wallet on request, so you are never locked into a residual that cannot leave.</p>
+<p><a href="https://en.bitcoin.it/wiki/Confirmation" rel="noopener">On-chain confirmation time</a> is controlled solely by the coin network you picked, not by any SMS provider. A gateway that quotes a fixed minute count for every coin is inventing a number it cannot guarantee. After the balance lands, failed messages are automatically credited back. Unused balance is refundable to the originating wallet on request, so you are never locked into a residual that cannot leave.</p>
 <p>The whole loop from funded wallet to first API send sits in minutes once the chain clears. That is the complete billing path: deposit call, status poll, automatic credit, optional refund-to-wallet.</p></section><section><h2 id="s5">What are the actual sending mechanics once you&#x27;re funded?</h2><p>Once funded you POST /sms/send with to, from, message and callback_url, then retrieve status from GET /sms/single/:messageId/status at $0.004 to $0.035 per message across 149 countries.</p>
 <p>The body takes the destination number, the sender ID or number you want displayed, the text payload, and an optional callback_url that receives the delivery event as soon as the handset or carrier acknowledges it. The response hands back a messageId immediately. You either wait for the webhook or poll the single-message status endpoint; both return the same real-time DLR states we log in the dashboard. Failed messages credit back automatically so you never pay for undelivered traffic.</p>
 <p>Pricing sits at a $0.004 floor on the cheapest routes and climbs through the common $0.009 band up to $0.035 only on expensive destinations such as AU or JP. Adaptive multi-route delivery with automatic failover per destination is what actually moves the traffic; every gateway in this cluster advertises the same POST-and-poll pattern, so the mechanics themselves do not differentiate anyone. The evaluation checklist (uptime window, live DLR access, written refunds, working code samples, responsive support) is what separates a deposit you can trust from one you cannot.</p>
@@ -272,13 +272,7 @@ curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&
         <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
         <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
         <div class="socials">
-          <a href="https://x.com/smsroute" aria-label="X (Twitter)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-          </a>
-        </div>
+          </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
@@ -338,7 +332,7 @@ curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&
       <span class="legal-links">
         <a href="https://smsroute.cc/privacy">Privacy</a>
         <a href="https://smsroute.cc/terms">Terms</a>
-        <a href="https://smsroute.cc/security">Security</a>
+        <a href="https://smsroute.cc/privacy">Security</a>
       </span>
     </div>
   </div>
