@@ -15,15 +15,15 @@
 <meta property="og:description" content="Send sms crypto using an API that takes crypto. See coins accepted how top ups confirm and what it costs so you know before funding a deposit.">
 <meta property="og:url" content="https://smsroute-cc.github.io/send-sms-crypto.html">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I check if my deposit has been credited?", "acceptedAnswer": {"@type": "Answer", "text": "Call GET /payment/status-2/:orderId for the credit status of your deposit. Order history at GET /orders displays it too. If the on-chain transfer is still pending the endpoint reports that state, and support on Telegram and email replies typically under an hour to clear any exception."}}, {"@type": "Question", "name": "Is unused crypto balance refundable to my wallet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, balance left unused returns to the wallet you deposited from once you ask support. Automatic credits cover any failed sends. Our Telegram and email support runs 24/7 with replies typically under an hour."}}, {"@type": "Question", "name": "Do you support stablecoins?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, USDT on TRC-20 and ERC-20 both sit on the accepted list with BTC, ETH, XMR, LTC and SOL. Match the network to your wallet, send the exact amount to the deposit address, and balance credits after confirmation. Code examples for the REST API and SMPP binds in Python, PHP, Go and Node are on GitHub under SMSRoute-cc."}}, {"@type": "Question", "name": "Can I see a history of my top-ups and spend?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, call GET /user/transactions for spend history and GET /orders for your deposit orders. The dashboard log mirrors those records for quick checks. 24/7 support on Telegram and email provides first response typically under an hour if an entry needs clarifying."}}, {"@type": "Question", "name": "Which countries does crypto-paid SMS reach?", "acceptedAnswer": {"@type": "Answer", "text": "SMS paid in crypto reaches 149 countries. Get the exact rate per country from GET /prices before you send. Real-time delivery reports come through DLR webhooks and the dashboard log for every destination."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I check if my deposit has been credited?", "acceptedAnswer": {"@type": "Answer", "text": "Call GET /payment/status-2/:orderId for the credit status of your deposit. Order history at GET /orders displays it too. If the on-chain transfer is still pending the endpoint reports that state."}}, {"@type": "Question", "name": "Is unused crypto balance refundable to my wallet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, balance left unused returns to the wallet you deposited from once you ask support. Automatic credits cover any failed sends."}}, {"@type": "Question", "name": "Do you support stablecoins?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, USDT on TRC-20 and ERC-20 both sit on the accepted list with BTC, ETH, XMR, LTC and SOL. Match the network to your wallet, send the exact amount to the deposit address, and balance credits after confirmation. Code examples for the REST API and SMPP binds in Python, PHP, Go and Node are on GitHub under SMSRoute-cc."}}, {"@type": "Question", "name": "Can I see a history of my top-ups and spend?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, call GET /user/transactions for spend history and GET /orders for your deposit orders. The dashboard log mirrors those records for quick checks."}}, {"@type": "Question", "name": "Which countries does crypto-paid SMS reach?", "acceptedAnswer": {"@type": "Answer", "text": "SMS paid in crypto reaches 149 countries. Get the exact rate per country from GET /prices before you send. Real-time delivery reports come through DLR webhooks and the dashboard log for every destination."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://smsroute.cc/#organization","name":"smsroute","url":"https://smsroute.cc/","logo":"https://smsroute.cc/logo.png","sameAs":["https://x.com/smsroute","https://www.linkedin.com/company/smsroute"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMSRoute SMS API","serviceType":"SMS sending API","provider":{"@type":"Organization","name":"SMSRoute"},"areaServed":"149 countries","offers":{"@type":"Offer","price":"0.004","priceCurrency":"USD","description":"Per-message price from $0.004, paid in BTC, ETH, USDT, XMR, LTC or SOL"}}</script>
 <style>
 :root{
-  --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
-  --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
-  --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--pill-bg:rgba(182,89,255,.12);
-  --max-w:1200px;--content-w:820px;--hero-w:880px;
+ --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+ --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
+ --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--pill-bg:rgba(182,89,255,.12);
+ --max-w:1200px;--content-w:820px;--hero-w:880px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -156,85 +156,85 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 
 /* ---------- Accessibility ---------- */
 @media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+ html{scroll-behavior:auto}
+ *{transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
 
 /* ---------- Mobile ---------- */
 @media(max-width:900px){
-  .footer-grid{grid-template-columns:2fr 1fr 1fr}
-  .footer-brand{grid-column:1/-1}
+ .footer-grid{grid-template-columns:2fr 1fr 1fr}
+ .footer-brand{grid-column:1/-1}
 }
 @media(max-width:720px){
-  .facts-grid{grid-template-columns:1fr 1fr}
+ .facts-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
-  body{font-size:16.5px}
-  .hero{padding:56px 20px 40px}
-  h1.hero-title{font-size:2.1rem;line-height:1.08}
-  .hero-sub{font-size:1rem}
-  .hero-stats{gap:16px;font-size:.86rem}
-  .post h2{font-size:1.3rem;margin-top:36px}
-  .footer-grid{grid-template-columns:1fr;gap:28px}
-  .cta-band h2{font-size:1.4rem}
-  .breadcrumb{padding:12px 20px;font-size:.8rem}
-  .byline{font-size:.8rem;gap:8px}
+ body{font-size:16.5px}
+ .hero{padding:56px 20px 40px}
+ h1.hero-title{font-size:2.1rem;line-height:1.08}
+ .hero-sub{font-size:1rem}
+ .hero-stats{gap:16px;font-size:.86rem}
+ .post h2{font-size:1.3rem;margin-top:36px}
+ .footer-grid{grid-template-columns:1fr;gap:28px}
+ .cta-band h2{font-size:1.4rem}
+ .breadcrumb{padding:12px 20px;font-size:.8rem}
+ .byline{font-size:.8rem;gap:8px}
 }
-</style>
+.cta{background:linear-gradient(135deg,rgba(182,89,255,.14),rgba(125,211,252,.10));border:1px solid var(--border-glow);border-radius:16px;padding:26px;margin:48px 0 0;text-align:center}.cta p{margin:0 0 16px;color:var(--fg-secondary)}.cta a.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,filter .15s}.cta a.btn:hover{transform:translateY(-1px);color:#fff}.cta .alt{display:block;margin-top:12px;font-size:.88rem;color:var(--fg-muted)}.byline-date{color:var(--fg-muted)}.brand-word{color:var(--fg-primary)}</style>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 <header class="site-nav"><div class="site-nav-inner">
 <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
 <nav class="site-links" aria-label="Primary">
-  <a href="/">Features</a><a href="/prices">Pricing</a><a href="/api">API</a>
-  <a href="/developers">Docs</a><a href="/blog" aria-current="page" class="current">Blog</a>
+ <a href="/">Features</a><a href="/prices">Pricing</a><a href="/api">API</a>
+ <a href="/developers">Docs</a><a href="/blog" aria-current="page" class="current">Blog</a>
 </nav>
 <div class="site-cta"><a href="/signup" class="signin">Sign in</a><a href="/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
 </div></header>
 
 <nav class="breadcrumb" aria-label="breadcrumb">
-  <ol>
-    <li><a href="/">Home</a></li>
-    <li aria-current="page"><a href="/blog">Blog</a></li>
-  </ol>
+ <ol>
+ <li><a href="/">Home</a></li>
+ <li aria-current="page"><a href="/blog">Blog</a></li>
+ </ol>
 </nav>
 
 <section class="hero">
-  <div class="hero-inner">
-    <span class="eyebrow-pill">149 countries · crypto-native · no KYC</span>
-    <h1 class="hero-title">How to send SMS paid with crypto: coins accepted, how top-ups confirm, and what it costs</h1>
-    <p class="hero-sub"><p>Send SMS paid with crypto via email-only signup at SMSRoute, deposit BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC or SOL, get API access in minutes after confirmation, and route messages across 149 countries starting at $0.004.</p>
+ <div class="hero-inner">
+ <span class="eyebrow-pill">149 countries · crypto-native · no KYC</span>
+ <h1 class="hero-title">How to send SMS paid with crypto: coins accepted, how top-ups confirm, and what it costs</h1>
+ <p class="hero-sub"><p>Send SMS paid with crypto via email-only signup at SMSRoute, deposit BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC or SOL, get API access in minutes after confirmation, and route messages across 149 countries starting at $0.004.</p>
 <p>Crypto-native marketers and small teams who shop crypto SMS gateways and refuse card billing need the deposit mechanics clear before they fund anything. No identity documents, just email.</p>
 <p>It details the coins accepted, how a top-up confirms to credit balance and issue the API key, costs from $0.004 with routes at $0.009 to $0.035, automatic credits for failed messages, and unused balance refundable to the originating wallet on request. Free test credits on signup let you check routes first.</p></p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="/signup">Start Sending SMS <span aria-hidden="true">→</span></a>
-      <a class="btn-ghost" href="/developers">View API docs</a>
-    </div>
-    <div class="byline">
-      <a href="/about" class="byline-author">smsroute editorial team</a>
-      <span class="byline-sep">·</span>
-      <span class="byline-date">Last reviewed 2026-07-23</span>
-    </div>
-    <div class="hero-stats">
-      <span><strong>from $0.004</strong> per message</span>
-      <span><strong>149</strong> countries</span>
-      <span><strong>6 coins</strong> BTC ETH USDT XMR LTC SOL</span>
-    </div>
-  </div>
+ <div class="hero-ctas">
+ <a class="btn-primary" href="/signup">Start Sending SMS <span aria-hidden="true">→</span></a>
+ <a class="btn-ghost" href="/developers">View API docs</a>
+ </div>
+ <div class="byline">
+ <a href="/about" class="byline-author">smsroute editorial team</a>
+ <span class="byline-sep">·</span>
+ <span class="byline-date">Last reviewed 2026-07-23</span>
+ </div>
+ <div class="hero-stats">
+ <span><strong>from $0.004</strong> per message</span>
+ <span><strong>149</strong> countries</span>
+ <span><strong>6 coins</strong> BTC ETH USDT XMR LTC SOL</span>
+ </div>
+ </div>
 </section>
 
 <section class="facts-band" aria-label="service facts"><div class="facts-grid">
-  <div class="fact-tile"><div class="fact-num">$0.004</div><div class="fact-label">per SMS from</div></div>
-  <div class="fact-tile"><div class="fact-num">149</div><div class="fact-label">countries</div></div>
-  <div class="fact-tile"><div class="fact-num">60s</div><div class="fact-label">to first message</div></div>
-  <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">crypto rails</div></div>
+ <div class="fact-tile"><div class="fact-num">$0.004</div><div class="fact-label">per SMS from</div></div>
+ <div class="fact-tile"><div class="fact-num">149</div><div class="fact-label">countries</div></div>
+ <div class="fact-tile"><div class="fact-num">60s</div><div class="fact-label">to first message</div></div>
+ <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">crypto rails</div></div>
 </div></section>
 
 <main id="content" class="post">
-  <article>
-    <div class="toc-box"><strong>On this page</strong><ol><li><a href="#s1">Which cryptocurrencies can you pay with to send SMS?</a></li><li><a href="#s2">How does a crypto top-up actually work end-to-end?</a></li><li><a href="#s3">What does it cost to send SMS with crypto?</a></li><li><a href="#s4">What happens if a message fails or a payment doesn&#x27;t confirm?</a></li><li><a href="#s5">How does this compare with other crypto SMS gateways?</a></li></ol></div>
-    <section><h2 id="s1">Which cryptocurrencies can you pay with to send SMS?</h2><p>You fund SMS with BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC or SOL. No cards, no identity attached to the payment.</p>
+ <article>
+ <div class="toc-box"><strong>On this page</strong><ol><li><a href="#s1">Which cryptocurrencies can you pay with to send SMS?</a></li><li><a href="#s2">How does a crypto top-up actually work end-to-end?</a></li><li><a href="#s3">What does it cost to send SMS with crypto?</a></li><li><a href="#s4">What happens if a message fails or a payment doesn&#x27;t confirm?</a></li><li><a href="#s5">How does this compare with other crypto SMS gateways?</a></li></ol></div>
+ <section><h2 id="s1">Which cryptocurrencies can you pay with to send SMS?</h2><p>You fund SMS with BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC or SOL. No cards, no identity attached to the payment.</p>
 <p>Account signup takes an email address alone. No identity documents are collected ever, for the account or anything tied to how you pay. Choose the coin already in your wallet, transfer to the deposit address, and the balance updates after network confirmation so the API key is live.</p>
 <p>From that point you move straight to sending. Free test credits arrive at signup for route checks first. Failed messages credit back automatically and unused balance returns to the originating wallet on request.</p></section><section><h2 id="s2">How does a crypto top-up actually work end-to-end?</h2><p>You start a crypto top-up with a POST /deposits-2 call that includes crypto_currency and amount, balance credits once the on-chain payment confirms, and status is available anytime at GET /payment/status-2/:orderId.</p>
 <p>The endpoint returns a deposit address and order identifier. Send the exact amount from your wallet. After the blockchain records the transaction and reaches the required confirmations for that asset, the balance appears in your account ready for API sends. Confirmation time depends on the coin's own network conditions, not on us.</p>
@@ -249,103 +249,103 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Uptime has held at 99.9%+ over the trailing twelve months. That figure is measured from actual operation. Delivery reports arrive in real time via DLR webhooks and the dashboard log so you watch every message status without waiting on a ticket.</p>
 <p>REST API and SMPP binds both ship ready. Code examples in Python, PHP, Go and Node are on GitHub (SMSRoute-cc). Integration starts from working samples rather than a blank file.</p>
 <p>Support runs 24/7 on Telegram and email. First response typically lands under an hour. Buyers verify all of this with free test credits on signup before any deposit moves.</p></section>
-    <figure class="artifact"><figcaption>Live pricing and accepted coins, from the API reference (api.smsroute.cc)</figcaption><pre><code>curl https://api.smsroute.cc/supported/coins \
-  -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
+ <figure class="artifact"><figcaption>Live pricing and accepted coins, from the API reference (api.smsroute.cc)</figcaption><pre><code>curl https://api.smsroute.cc/supported/coins \
+ -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
 
 # accepted: BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, SOL
 
 curl https://api.smsroute.cc/prices \
-  -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
+ -H &quot;Authorization: Bearer YOUR_API_KEY&quot;
 
 # per-country pricing, from $0.004 to $0.035 per message depending on destination route
 # 149 countries covered
 
 curl -X POST https://api.smsroute.cc/deposits-2 \
-  -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
-    <h2 id="faq">Frequently asked questions</h2>
-    <details class="faq-card"><summary>How do I check if my deposit has been credited?</summary><div class="faq-answer"><p>Call GET /payment/status-2/:orderId for the credit status of your deposit. Order history at GET /orders displays it too. If the on-chain transfer is still pending the endpoint reports that state, and support on Telegram and email replies typically under an hour to clear any exception.</p></div></details><details class="faq-card"><summary>Is unused crypto balance refundable to my wallet?</summary><div class="faq-answer"><p>Yes, balance left unused returns to the wallet you deposited from once you ask support. Automatic credits cover any failed sends. Our Telegram and email support runs 24/7 with replies typically under an hour.</p></div></details><details class="faq-card"><summary>Do you support stablecoins?</summary><div class="faq-answer"><p>Yes, USDT on TRC-20 and ERC-20 both sit on the accepted list with BTC, ETH, XMR, LTC and SOL. Match the network to your wallet, send the exact amount to the deposit address, and balance credits after confirmation. Code examples for the REST API and SMPP binds in Python, PHP, Go and Node are on GitHub under SMSRoute-cc.</p></div></details><details class="faq-card"><summary>Can I see a history of my top-ups and spend?</summary><div class="faq-answer"><p>Yes, call GET /user/transactions for spend history and GET /orders for your deposit orders. The dashboard log mirrors those records for quick checks. 24/7 support on Telegram and email provides first response typically under an hour if an entry needs clarifying.</p></div></details><details class="faq-card"><summary>Which countries does crypto-paid SMS reach?</summary><div class="faq-answer"><p>SMS paid in crypto reaches 149 countries. Get the exact rate per country from GET /prices before you send. Real-time delivery reports come through DLR webhooks and the dashboard log for every destination.</p></div></details>
-    <div class="cta"><p>Coins go straight to a balance, no card, no invoice chase, refundable to your wallet.</p><a class="btn" href="https://smsroute.cc/prices">Check live per-country pricing</a><span class="alt">or <a href="https://smsroute.cc/signup">create an account with just an email</a></span></div>
-  </article>
+ -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
+ -H &quot;Content-Type: application/json&quot; \
+ -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
+ <h2 id="faq">Frequently asked questions</h2>
+ <details class="faq-card"><summary>How do I check if my deposit has been credited?</summary><div class="faq-answer"><p>Call GET /payment/status-2/:orderId for the credit status of your deposit. Order history at GET /orders displays it too. If the on-chain transfer is still pending the endpoint reports that state.</p></div></details><details class="faq-card"><summary>Is unused crypto balance refundable to my wallet?</summary><div class="faq-answer"><p>Yes, balance left unused returns to the wallet you deposited from once you ask support. Automatic credits cover any failed sends.</p></div></details><details class="faq-card"><summary>Do you support stablecoins?</summary><div class="faq-answer"><p>Yes, USDT on TRC-20 and ERC-20 both sit on the accepted list with BTC, ETH, XMR, LTC and SOL. Match the network to your wallet, send the exact amount to the deposit address, and balance credits after confirmation. Code examples for the REST API and SMPP binds in Python, PHP, Go and Node are on GitHub under SMSRoute-cc.</p></div></details><details class="faq-card"><summary>Can I see a history of my top-ups and spend?</summary><div class="faq-answer"><p>Yes, call GET /user/transactions for spend history and GET /orders for your deposit orders. The dashboard log mirrors those records for quick checks.</p></div></details><details class="faq-card"><summary>Which countries does crypto-paid SMS reach?</summary><div class="faq-answer"><p>SMS paid in crypto reaches 149 countries. Get the exact rate per country from GET /prices before you send. Real-time delivery reports come through DLR webhooks and the dashboard log for every destination.</p></div></details>
+ <div class="cta"><p>Coins go straight to a balance, no card, no invoice chase, refundable to your wallet.</p><a class="btn" href="https://smsroute.cc/prices">Check live per-country pricing</a><span class="alt">or <a href="https://smsroute.cc/signup">create an account with just an email</a></span></div>
+ </article>
 </main>
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
-        <div class="socials">
-          <a href="https://x.com/smsroute" aria-label="X (Twitter)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <p class="footer-heading">Blog</p>
-        <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
-          <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Which for My Copy?</a></li>
-          <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">How OTP Delivery Works</a></li>
-          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">International SMS Guide 2026</a></li>
-          <li><a href="https://smsroute.cc/blog/">View All Posts</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="footer-heading">Popular Destinations</p>
-        <ul>
-          <li><a href="https://smsroute.cc/united-states">United States</a></li>
-          <li><a href="https://smsroute.cc/united-kingdom">United Kingdom</a></li>
-          <li><a href="https://smsroute.cc/india">India</a></li>
-          <li><a href="https://smsroute.cc/germany">Germany</a></li>
-          <li><a href="https://smsroute.cc/brazil">Brazil</a></li>
-          <li><a href="https://smsroute.cc/australia">Australia</a></li>
-          <li><a href="https://smsroute.cc/send-sms-to/">View All Countries</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="footer-heading">Crypto Payments</p>
-        <ul>
-          <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
-          <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
-          <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
-        </ul>
-        <p class="footer-heading">Use Cases</p>
-        <ul>
-          <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
-          <li><a href="https://smsroute.cc/for/otp">SMS for OTP</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p class="footer-heading">Integrations</p>
-        <ul>
-          <li><a href="https://smsroute.cc/integrate/node-js">Node.js Integration</a></li>
-          <li><a href="https://smsroute.cc/integrate/python">Python Integration</a></li>
-          <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio Migration</a></li>
-        </ul>
-        <p class="footer-heading">Comparisons</p>
-        <ul>
-          <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
-          <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
-          <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
-          <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>© 2026 smsroute</span>
-      <span class="legal-links">
-        <a href="https://smsroute.cc/privacy">Privacy</a>
-        <a href="https://smsroute.cc/terms">Terms</a>
-        <a href="https://smsroute.cc/security">Security</a>
-      </span>
-    </div>
-  </div>
+ <div class="site-footer__inner">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+ <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+ <div class="socials">
+ <a href="https://x.com/smsroute" aria-label="X (Twitter)">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
+ </a>
+ <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
+ <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+ </a>
+ </div>
+ </div>
+ <div class="footer-col">
+ <p class="footer-heading">Blog</p>
+ <ul>
+ <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+ <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
+ <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
+ <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Which for My Copy?</a></li>
+ <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">How OTP Delivery Works</a></li>
+ <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">International SMS Guide 2026</a></li>
+ <li><a href="https://smsroute.cc/blog/">View All Posts</a></li>
+ </ul>
+ </div>
+ <div class="footer-col">
+ <p class="footer-heading">Popular Destinations</p>
+ <ul>
+ <li><a href="https://smsroute.cc/united-states">United States</a></li>
+ <li><a href="https://smsroute.cc/united-kingdom">United Kingdom</a></li>
+ <li><a href="https://smsroute.cc/india">India</a></li>
+ <li><a href="https://smsroute.cc/germany">Germany</a></li>
+ <li><a href="https://smsroute.cc/brazil">Brazil</a></li>
+ <li><a href="https://smsroute.cc/australia">Australia</a></li>
+ <li><a href="https://smsroute.cc/send-sms-to/">View All Countries</a></li>
+ </ul>
+ </div>
+ <div class="footer-col">
+ <p class="footer-heading">Crypto Payments</p>
+ <ul>
+ <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
+ <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
+ <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
+ </ul>
+ <p class="footer-heading">Use Cases</p>
+ <ul>
+ <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
+ <li><a href="https://smsroute.cc/for/otp">SMS for OTP</a></li>
+ </ul>
+ </div>
+ <div class="footer-col">
+ <p class="footer-heading">Integrations</p>
+ <ul>
+ <li><a href="https://smsroute.cc/integrate/node-js">Node.js Integration</a></li>
+ <li><a href="https://smsroute.cc/integrate/python">Python Integration</a></li>
+ <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio Migration</a></li>
+ </ul>
+ <p class="footer-heading">Comparisons</p>
+ <ul>
+ <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
+ <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
+ <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
+ <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="footer-legal">
+ <span>© 2026 smsroute</span>
+ <span class="legal-links">
+ <a href="https://smsroute.cc/privacy">Privacy</a>
+ <a href="https://smsroute.cc/terms">Terms</a>
+ <a href="https://smsroute.cc/security">Security</a>
+ </span>
+ </div>
+ </div>
 </footer>
 </body>
 </html>
