@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0D14">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>SMS API That Doesn&#x27;t Require Verification: No ID, No Waiting (2026)</title>
+<meta name="description" content="api sms that does not require verification no ID upload no business review just email signup pay with crypto and send OTPs without waiting queues">
+<link rel="canonical" href="https://smsroute-cc.github.io/sms-api-without-verification.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SMS API That Doesn&#x27;t Require Verification: No ID, No Waiting (2026)">
+<meta property="og:description" content="api sms that does not require verification no ID upload no business review just email signup pay with crypto and send OTPs without waiting queues">
+<meta property="og:url" content="https://smsroute-cc.github.io/sms-api-without-verification.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need a business license or company to sign up?", "acceptedAnswer": {"@type": "Answer", "text": "No, you need neither a business license nor a company. Sign up with email only and no identity documents, ever. Individual developers and small teams complete the same process as anyone else. 24/7 support sits on Telegram and email, with the first response typically under an hour."}}, {"@type": "Question", "name": "Can I use a custom sender name without going through a review?", "acceptedAnswer": {"@type": "Answer", "text": "By default traffic leaves from our shared sender pool. Custom alphanumeric sender IDs are available on request wherever the destination route supports them, and because signup stays email-only with no identity documents we apply no review step. Message 24/7 support on Telegram or email (first reply typically under an hour) and we enable it; free test credits let you confirm the ID before you fund."}}, {"@type": "Question", "name": "Do I have to commit to bulk volume, or can I send one message at a time?", "acceptedAnswer": {"@type": "Answer", "text": "No bulk commitment is needed. POST /sms/send works for a single message the same way it works inside a batch, and there is no separate onboarding tier for small volume. 24/7 support on Telegram and email gives a first response typically under an hour, useful when you only send occasional OTPs."}}, {"@type": "Question", "name": "Can I confirm a message was actually delivered?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Real-time delivery reports arrive via DLR webhooks and the dashboard log. Add callback_url to your POST /sms/send call to get the webhook, or check GET /sms/single/:messageId/status for the current status. 24/7 support on Telegram and email typically replies in under an hour for any delivery questions."}}, {"@type": "Question", "name": "Is there real support if something goes wrong?", "acceptedAnswer": {"@type": "Answer", "text": "Support is real and staffed around the clock on Telegram and email, with first responses typically under an hour. When a destination route drops or a batch needs manual check, that is the channel. Uptime has stayed at 99.9%+ over the trailing twelve months, which keeps most problems rare."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://smsroute.cc/#organization","name":"smsroute","url":"https://smsroute.cc/","logo":"https://smsroute.cc/logo.png","sameAs":["https://x.com/smsroute","https://www.linkedin.com/company/smsroute"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMSRoute SMS API","serviceType":"SMS sending API","provider":{"@type":"Organization","name":"SMSRoute"},"areaServed":"149 countries","offers":{"@type":"Offer","price":"0.004","priceCurrency":"USD","description":"Per-message price from $0.004, paid in BTC, ETH, USDT, XMR, LTC or SOL"}}</script>
+<style>
+:root{
+  --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+  --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
+  --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--pill-bg:rgba(182,89,255,.12);
+  --max-w:1200px;--content-w:820px;--hero-w:880px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-primary);color:var(--fg-secondary);font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(182,89,255,.35);color:#fff}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:#B4E5FD}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent-purple);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--accent-purple);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* ---------- Unified CTA button (one component, size variants) ---------- */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border:0;cursor:pointer;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,box-shadow .15s,filter .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 22px 46px -10px rgba(147,51,234,.7);color:#fff}
+.btn-primary--sm{padding:8px 18px;font-size:.9rem}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;padding:13px 28px;font-size:.95rem;background:transparent;color:var(--fg-primary);border:1px solid rgba(255,255,255,.2);transition:background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.32);color:#fff}
+
+/* ---------- Nav ---------- */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(10,13,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.site-nav-inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.12rem;color:var(--fg-primary);font-family:'Inter Tight',Inter,sans-serif}
+.brand-mark{width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,var(--accent-purple),var(--accent-cyan));display:inline-block}
+.site-links{display:flex;gap:22px;margin-left:8px}
+.site-links a{color:var(--fg-secondary);font-size:.94rem;font-weight:500}
+.site-links a:hover{color:var(--fg-primary)}
+.site-links a.current{color:var(--fg-primary);font-weight:600}
+.site-cta{margin-left:auto;display:flex;align-items:center;gap:16px}
+.site-cta .signin{color:var(--fg-secondary);font-size:.94rem}
+.site-cta .signin:hover{color:var(--fg-primary)}
+@media(max-width:720px){.site-links{display:none}}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb{max-width:var(--max-w);margin:0 auto;padding:16px 24px;font-size:.85rem;color:var(--fg-muted)}
+.breadcrumb ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;align-items:center}
+.breadcrumb li{display:inline-flex;align-items:center}
+.breadcrumb li+li::before{content:"›";padding:0 8px;color:var(--fg-muted)}
+.breadcrumb a{color:var(--fg-muted)}
+.breadcrumb a:hover{color:var(--accent-cyan)}
+.breadcrumb li[aria-current="page"]{color:var(--fg-secondary)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:88px 24px 56px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(182,89,255,.15),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(125,211,252,.06),transparent 55%);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-inner{max-width:var(--hero-w);margin:0 auto}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--pill-bg);border:1px solid rgba(182,89,255,.25);border-radius:999px;font-size:.85rem;color:#E8ECF3;margin-bottom:22px}
+h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;font-size:3.2rem;line-height:1.05;letter-spacing:-.02em;color:var(--fg-primary);margin:0 0 18px}
+.hero-sub{font-size:1.08rem;color:var(--fg-secondary);max-width:640px;margin:0 auto 28px;line-height:1.6}
+.hero-ctas{display:inline-flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:28px}
+.byline{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;font-size:.85rem;color:var(--fg-muted);margin:0 auto 22px}
+.byline-sep{opacity:.6}
+.byline-author{color:var(--fg-secondary);font-weight:500;border-bottom:1px dotted rgba(184,189,199,.35)}
+.byline-author:hover{color:var(--fg-primary);border-bottom-color:rgba(255,255,255,.6)}
+.hero-stats{display:inline-flex;flex-wrap:wrap;gap:28px;justify-content:center;color:var(--fg-muted);font-size:.92rem}
+.hero-stats strong{color:var(--fg-primary);font-weight:600}
+
+/* ---------- Facts band ---------- */
+.facts-band{max-width:var(--content-w);margin:36px auto 40px;padding:0 20px}
+.facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fact-tile{background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.fact-num{font-family:'Inter Tight',Inter,sans-serif;font-size:1.5rem;font-weight:800;color:var(--fg-primary);letter-spacing:-.02em;line-height:1.1}
+.fact-label{color:var(--fg-muted);font-size:.8rem;margin-top:6px;line-height:1.4}
+
+/* ---------- Article body ---------- */
+.post{max-width:var(--content-w);margin:0 auto;padding:0 20px 80px}
+.toc-box{background:var(--bg-elevated);border:1px solid var(--border);border-left:3px solid var(--accent-purple);border-radius:10px;padding:18px 22px;margin:0 0 32px}
+.toc-box strong{color:var(--fg-primary);display:block;margin-bottom:8px;font-size:.95rem}
+.toc-box ol{list-style:none;padding:0;margin:0}
+.toc-box li{margin-bottom:6px}
+.toc-box a{color:var(--fg-secondary);font-size:.92rem;border-bottom:1px dotted rgba(184,189,199,.35)}
+.toc-box a:hover{color:var(--accent-cyan);border-bottom-color:var(--accent-cyan)}
+.post h2{font-family:'Inter Tight',Inter,sans-serif;font-size:1.45rem;font-weight:700;margin:44px 0 14px;letter-spacing:-.01em;color:var(--fg-primary)}
+.post h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1.1rem;line-height:1.35;color:var(--fg-primary);margin:32px 0 12px}
+.post p{color:var(--fg-secondary);line-height:1.75;margin:0 0 16px;font-size:1.02rem}
+.post strong{color:var(--fg-primary)}
+.post a{color:var(--accent-cyan);border-bottom:1px solid rgba(125,211,252,.35)}
+.post a:hover{border-bottom-color:var(--accent-cyan)}
+.post code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--bg-elevated);border:1px solid var(--border);border-radius:6px;padding:1px 6px;color:var(--accent-cyan)}
+.post table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.95rem;display:block;overflow-x:auto}
+.post th{color:var(--fg-primary);text-align:left;padding:10px 14px;border-bottom:2px solid var(--accent-purple);white-space:nowrap;background:var(--bg-elevated)}
+.post td{color:var(--fg-secondary);padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.55}
+.post ul.blist{padding-left:22px;margin:16px 0}
+.post ul.blist li{color:var(--fg-secondary);line-height:1.7;margin-bottom:8px}
+.callout{background:var(--pill-bg);border:1px solid var(--border-glow);border-radius:14px;padding:18px 20px;margin:22px 0}
+.callout p{margin:0;color:var(--fg-primary)}
+.steps{counter-reset:step;list-style:none;padding:0;margin:20px 0}
+.steps li{counter-increment:step;position:relative;padding:0 0 20px 52px;color:var(--fg-secondary);line-height:1.65}
+.steps li::before{content:counter(step);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:var(--pill-bg);border:1px solid var(--border-glow);color:var(--accent-purple);font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+.steps b{color:var(--fg-primary);display:block;margin-bottom:4px}
+.inline-fig{margin:28px 0}
+.inline-fig img{width:100%;height:auto;border-radius:14px;border:1px solid var(--border);display:block}
+
+/* ---------- Artifact (code / snippet block) ---------- */
+.artifact{background:var(--bg-sunken);border:1px solid var(--border);border-radius:12px;margin:26px 0;overflow:hidden}
+.artifact figcaption{padding:10px 16px;font-size:.85rem;color:var(--fg-muted);border-bottom:1px solid var(--border)}
+.artifact pre{margin:0;padding:18px;overflow-x:auto}
+.artifact code{font-family:'JetBrains Mono',monospace;font-size:.86rem;line-height:1.6;color:#E4E7EE;background:none;border:0;padding:0}
+
+/* ---------- FAQ ---------- */
+.faq-card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:14px;margin:12px 0;overflow:hidden}
+.faq-card summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--fg-primary);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq-card summary::-webkit-details-marker{display:none}
+.faq-card summary::after{content:'+';color:var(--accent-purple);font-weight:700}
+.faq-card[open] summary::after{content:'\2212'}
+.faq-card .faq-answer{padding:0 20px 18px;color:var(--fg-secondary);line-height:1.7}
+
+/* ---------- CTA band ---------- */
+.cta-band{background:linear-gradient(135deg,rgba(182,89,255,.14),rgba(125,211,252,.10));border:1px solid var(--border-glow);border-radius:16px;padding:26px;margin:48px 0 0;text-align:center}
+.cta-band h2{margin:0 0 8px;font-family:'Inter Tight',Inter,sans-serif;color:var(--fg-primary)}
+.cta-band p{margin:0 0 16px;color:var(--fg-secondary)}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--bg-sunken);border-top:1px solid var(--border);color:var(--fg-secondary);padding:56px 24px 28px}
+.site-footer__inner{max-width:var(--max-w);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand p{font-size:.9rem;margin:0 0 14px;max-width:220px}
+.footer-brand .socials{display:flex;gap:8px}
+.footer-brand .socials a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;color:var(--fg-secondary)}
+.footer-brand .socials a:hover{border-color:var(--border-glow);color:#fff}
+.footer-heading{font-weight:600;margin:0 0 .6em;font-size:.95rem;color:var(--fg-primary);letter-spacing:.02em}
+.footer-col ul{list-style:none;padding:0;margin:0}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--fg-secondary);font-size:.92rem}
+.footer-col a:hover{color:#fff}
+.footer-legal{padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--fg-muted);font-size:.86rem}
+.footer-legal .legal-links{display:inline-flex;gap:16px}
+.footer-legal .legal-links a{color:var(--fg-muted)}
+.footer-legal .legal-links a:hover{color:var(--fg-secondary)}
+
+/* ---------- Accessibility ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* ---------- Mobile ---------- */
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:2fr 1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .facts-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .hero{padding:56px 20px 40px}
+  h1.hero-title{font-size:2.1rem;line-height:1.08}
+  .hero-sub{font-size:1rem}
+  .hero-stats{gap:16px;font-size:.86rem}
+  .post h2{font-size:1.3rem;margin-top:36px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .cta-band h2{font-size:1.4rem}
+  .breadcrumb{padding:12px 20px;font-size:.8rem}
+  .byline{font-size:.8rem;gap:8px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-nav"><div class="site-nav-inner">
+<a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+<nav class="site-links" aria-label="Primary">
+  <a href="/">Features</a><a href="/prices">Pricing</a><a href="/api">API</a>
+  <a href="/developers">Docs</a><a href="/blog" aria-current="page" class="current">Blog</a>
+</nav>
+<div class="site-cta"><a href="/signup" class="signin">Sign in</a><a href="/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
+</div></header>
+
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li aria-current="page"><a href="/blog">Blog</a></li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow-pill">149 countries · crypto-native · no KYC</span>
+    <h1 class="hero-title">An SMS API that doesn&#x27;t require verification: no ID upload, no business review</h1>
+    <p class="hero-sub"><p>SMSRoute is an SMS API that does not require verification, using email-only signup with no identity documents and no business review so you send messages in minutes after funding.</p>
+<p>Indie developers and non-technical builders hit this wall constantly. Standard SMS providers stall them in business-verification queues or demand ID scans before any traffic moves. This page is for anyone who needs OTP or alert SMS without that friction.</p>
+<p>Here you get the concrete details: price floor at $0.004, typical routes from $0.009 to $0.035, coverage across 149 countries, payments in BTC, ETH, USDT, XMR, LTC and SOL, REST API and SMPP binds with code examples on GitHub, real-time DLR webhooks, automatic credits for failed messages, unused balance refundable to your wallet, free test credits on signup, and 24/7 support on Telegram and email.</p></p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="/signup">Start Sending SMS <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="/developers">View API docs</a>
+    </div>
+    <div class="byline">
+      <a href="/about" class="byline-author">smsroute editorial team</a>
+      <span class="byline-sep">·</span>
+      <span class="byline-date">Last reviewed 2026-07-23</span>
+    </div>
+    <div class="hero-stats">
+      <span><strong>from $0.004</strong> per message</span>
+      <span><strong>149</strong> countries</span>
+      <span><strong>6 coins</strong> BTC ETH USDT XMR LTC SOL</span>
+    </div>
+  </div>
+</section>
+
+<section class="facts-band" aria-label="service facts"><div class="facts-grid">
+  <div class="fact-tile"><div class="fact-num">$0.004</div><div class="fact-label">per SMS from</div></div>
+  <div class="fact-tile"><div class="fact-num">149</div><div class="fact-label">countries</div></div>
+  <div class="fact-tile"><div class="fact-num">60s</div><div class="fact-label">to first message</div></div>
+  <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">crypto rails</div></div>
+</div></section>
+
+<main id="content" class="post">
+  <article>
+    <div class="toc-box"><strong>On this page</strong><ol><li><a href="#s1">What is an SMS API that doesn&#x27;t require verification?</a></li><li><a href="#s2">How fast can you start sending, without any verification hoops?</a></li><li><a href="#s3">What does an SMS API without ID verification cost?</a></li><li><a href="#s4">Is it reliable if there&#x27;s no verification process?</a></li><li><a href="#s5">Is it legal to send SMS without an ID-verification step?</a></li></ol></div>
+    <section><h2 id="s1">What is an SMS API that doesn&#x27;t require verification?</h2><p>An SMS API that does not require verification is one where you skip ID uploads and business review queues entirely to begin sending messages. You still sign up, but only with an email address and nothing more.</p>
+<p>Most SMS providers demand identity documents or put you in a business-verification queue before any traffic moves. You wait, upload scans, and hope the review clears. That process stops builders who just need OTP or alerts out the door today.</p>
+<p>An email-only API removes those steps. You register with an address, receive free test credits to check routes, then fund the balance with BTC, ETH, USDT, XMR, LTC or SOL. From there the API key lets you send through REST or SMPP. SMSRoute follows exactly this model across 149 countries, with adaptive multi-route delivery and automatic failover. Failed messages credit back automatically. Real-time delivery reports arrive via DLR webhooks and the dashboard log. Uptime has held at 99.9%+ over the trailing twelve months. Prices start from $0.004 per message; per-country rates run $0.009 to $0.035 depending on the destination route. Support answers on Telegram and email 24/7, typically in under an hour. Unused balance refunds to the originating wallet on request. Time from funding to first message is minutes.</p></section><section><h2 id="s2">How fast can you start sending, without any verification hoops?</h2><p>You start sending in minutes: email signup, free test credits, fund with crypto, grab an API key, then call POST /sms/send.</p>
+<p>Sign up with only an email address. No identity documents, no business review, no waiting queue. Right after signup you receive free test credits so you can verify routes on real destinations before you pay anything. Confirm delivery works for your use case, then decide whether to fund.</p>
+<p>Fund the balance with BTC, ETH, USDT (TRC-20 or ERC-20), XMR, LTC, or SOL. Once the payment confirms, your dashboard shows the balance and issues an API key immediately. From there the path is fund to API key to send, and the first live message goes out in minutes.</p>
+<p>The call itself is a plain REST request to POST /sms/send. Code examples in Python, PHP, Go, and Node sit on the SMSRoute-cc GitHub repo if you want a working snippet. Adaptive multi-route delivery with automatic failover handles the rest, and failed messages are credited back automatically.</p></section><section><h2 id="s3">What does an SMS API without ID verification cost?</h2><p>An SMS API without ID verification costs $0.004 at the floor and $0.009 to $0.035 per message depending on destination, covering 149 countries with no registration or monthly number fees.</p>
+<p>Per-message pricing is the only charge. The lowest rate sits at $0.004. Most destinations land between $0.009 and $0.035 depending on the route. Expensive markets like Australia and Japan hit the upper end of that range. You reach 149 countries under the same model.</p>
+<p>Failed messages are automatically credited back so you never pay for undelivered traffic. Unused balance is refundable to the originating wallet on request. No hidden registration fees sit in the fine print. No monthly number fees block you from sending. You fund the account and pay only when messages go out.</p>
+<p>This keeps total spend predictable for OTP and alert traffic. Builders and small teams pay exactly for delivered volume.</p></section><section><h2 id="s4">Is it reliable if there&#x27;s no verification process?</h2><p>Yes, it is reliable. Reliability comes from route quality and monitoring, not from a paperwork gate, and those two things are unrelated.</p>
+<p>We hold 99.9%+ uptime over the trailing twelve months. Delivery uses adaptive multi-route delivery with automatic failover per destination, so if one path stalls the message shifts without you rewriting code or opening a ticket. You see the result in real time through DLR webhooks and the dashboard log.</p>
+<p>The same stack that keeps the routes healthy also gives you clean integration options. You get a REST API and SMPP binds, plus working code examples in Python, PHP, Go and Node on GitHub under SMSRoute-cc. That combination of monitored routes and straightforward tools is what actually moves traffic, not a scanned passport sitting in a review queue.</p></section><section><h2 id="s5">Is it legal to send SMS without an ID-verification step?</h2><p>Yes, using a provider without ID verification is legal. What is regulated is the content you send and the consent you hold, not the provider's account checks.</p>
+<p>Consent rules in the TCPA and GDPR-style frameworks apply directly to you as the sender. They do not change based on whether the SMS API asked for a passport scan or a business license. Recipients must have given permission for the messages, and you stay responsible for that permission trail. We enforce STOP-keyword handling and suppression lists on every route so an opt-out sticks and those numbers stay blocked.</p>
+<p>Common legitimate cases look like this. You ship OTP codes for a side-project login flow. You push status alerts to a small internal team. You reach customers in markets where card billing fails often and crypto-funded SMS is the practical path. None of those require the carrier or the API to collect your identity documents first. The legal line sits on what the message says and whether the person agreed to receive it.</p></section>
+    <figure class="artifact"><figcaption>The actual send call and delivery check, from the live API reference (api.smsroute.cc)</figcaption><pre><code>curl -X POST https://api.smsroute.cc/sms/send \
+  -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;}&#x27;
+
+# response
+{&quot;messageId&quot;: &quot;a91f4c2e&quot;, &quot;status&quot;: &quot;QUEUED&quot;}
+
+# confirm delivery any time
+curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
+  -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+    <h2 id="faq">Frequently asked questions</h2>
+    <details class="faq-card"><summary>Do I need a business license or company to sign up?</summary><div class="faq-answer"><p>No, you need neither a business license nor a company. Sign up with email only and no identity documents, ever. Individual developers and small teams complete the same process as anyone else. 24/7 support sits on Telegram and email, with the first response typically under an hour.</p></div></details><details class="faq-card"><summary>Can I use a custom sender name without going through a review?</summary><div class="faq-answer"><p>By default traffic leaves from our shared sender pool. Custom alphanumeric sender IDs are available on request wherever the destination route supports them, and because signup stays email-only with no identity documents we apply no review step. Message 24/7 support on Telegram or email (first reply typically under an hour) and we enable it; free test credits let you confirm the ID before you fund.</p></div></details><details class="faq-card"><summary>Do I have to commit to bulk volume, or can I send one message at a time?</summary><div class="faq-answer"><p>No bulk commitment is needed. POST /sms/send works for a single message the same way it works inside a batch, and there is no separate onboarding tier for small volume. 24/7 support on Telegram and email gives a first response typically under an hour, useful when you only send occasional OTPs.</p></div></details><details class="faq-card"><summary>Can I confirm a message was actually delivered?</summary><div class="faq-answer"><p>Yes. Real-time delivery reports arrive via DLR webhooks and the dashboard log. Add callback_url to your POST /sms/send call to get the webhook, or check GET /sms/single/:messageId/status for the current status. 24/7 support on Telegram and email typically replies in under an hour for any delivery questions.</p></div></details><details class="faq-card"><summary>Is there real support if something goes wrong?</summary><div class="faq-answer"><p>Support is real and staffed around the clock on Telegram and email, with first responses typically under an hour. When a destination route drops or a batch needs manual check, that is the channel. Uptime has stayed at 99.9%+ over the trailing twelve months, which keeps most problems rare.</p></div></details>
+    <div class="cta"><p>No ID upload, no waiting on a review queue. Sign up with an email and send.</p><a class="btn" href="https://smsroute.cc/signup">Create an account with just an email</a><span class="alt">or see <a href="https://smsroute.cc/prices">pricing</a> first</span></div>
+  </article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <div class="socials">
+          <a href="https://x.com/smsroute" aria-label="X (Twitter)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Blog</p>
+        <ul>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
+          <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Which for My Copy?</a></li>
+          <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">How OTP Delivery Works</a></li>
+          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">International SMS Guide 2026</a></li>
+          <li><a href="https://smsroute.cc/blog/">View All Posts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Popular Destinations</p>
+        <ul>
+          <li><a href="https://smsroute.cc/united-states">United States</a></li>
+          <li><a href="https://smsroute.cc/united-kingdom">United Kingdom</a></li>
+          <li><a href="https://smsroute.cc/india">India</a></li>
+          <li><a href="https://smsroute.cc/germany">Germany</a></li>
+          <li><a href="https://smsroute.cc/brazil">Brazil</a></li>
+          <li><a href="https://smsroute.cc/australia">Australia</a></li>
+          <li><a href="https://smsroute.cc/send-sms-to/">View All Countries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Crypto Payments</p>
+        <ul>
+          <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
+          <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
+          <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
+        </ul>
+        <p class="footer-heading">Use Cases</p>
+        <ul>
+          <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
+          <li><a href="https://smsroute.cc/for/otp">SMS for OTP</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Integrations</p>
+        <ul>
+          <li><a href="https://smsroute.cc/integrate/node-js">Node.js Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/python">Python Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio Migration</a></li>
+        </ul>
+        <p class="footer-heading">Comparisons</p>
+        <ul>
+          <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
+          <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
+          <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
+          <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 smsroute</span>
+      <span class="legal-links">
+        <a href="https://smsroute.cc/privacy">Privacy</a>
+        <a href="https://smsroute.cc/terms">Terms</a>
+        <a href="https://smsroute.cc/security">Security</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
