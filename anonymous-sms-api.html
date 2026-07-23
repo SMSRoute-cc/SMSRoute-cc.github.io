@@ -15,7 +15,7 @@
 <meta property="og:description" content="anonymous sms api with email signup and crypto payments. No identity documents. Anonymity covers account and billing. Real endpoint and pricing inside.">
 <meta property="og:url" content="https://smsroute-cc.github.io/anonymous-sms-api.html">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does anonymous mean the message itself is untraceable to carriers?", "acceptedAnswer": {"@type": "Answer", "text": "No. SMS routing metadata remains visible to carriers for every provider; that is an industry fact, not unique to us. Anonymity here is strictly the account and billing layer: email-only signup, no identity documents ever, and payment in BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL."}}, {"@type": "Question", "name": "Can I get a custom sender ID without revealing a business identity?", "acceptedAnswer": {"@type": "Answer", "text": "Shared sender pool is the default. Custom alphanumeric sender IDs are available on request where the destination country's routing rules allow it. Reach 24/7 support on Telegram or email for the setup, first response typically under an hour, then use free test credits to confirm delivery with that ID."}}, {"@type": "Question", "name": "What happens if I send to an invalid number?", "acceptedAnswer": {"@type": "Answer", "text": "Run numbers through POST /sms/validate first to catch invalids before any spend. If a send fails after the fact, failed messages are automatically credited back and unused balance is refundable to the originating wallet on request."}}, {"@type": "Question", "name": "How many countries can I reach?", "acceptedAnswer": {"@type": "Answer", "text": "You reach 149 countries. Per-country rates live at GET /prices and fall between $0.009 and $0.035, with AU and JP sitting at the expensive end. Adaptive multi-route delivery runs automatic failover for each destination, and free test credits on signup let you confirm a route before funding."}}, {"@type": "Question", "name": "Is there a free way to test before I fund the account?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free test credits are issued on every email-only signup so you verify routes before funding any balance. They apply to the same endpoints you will use in production,."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does anonymous mean the message itself is untraceable to carriers?", "acceptedAnswer": {"@type": "Answer", "text": "No. SMS routing metadata remains visible to carriers for every provider; that is an industry fact, not unique to us. Anonymity here is strictly the account and billing layer: email-only signup, no identity documents ever, and payment in BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL."}}, {"@type": "Question", "name": "Can I get a custom sender ID without revealing a business identity?", "acceptedAnswer": {"@type": "Answer", "text": "Shared sender pool is the default. Custom alphanumeric sender IDs are available on request where the destination country's routing rules allow it. Reach 24/7 support on Telegram or email for the setup, first response typically under an hour, then use free test credits to confirm delivery with that ID."}}, {"@type": "Question", "name": "What happens if I send to an invalid number?", "acceptedAnswer": {"@type": "Answer", "text": "Run numbers through POST /sms/validate first to catch invalids before any spend. If a send fails after the fact, failed messages are automatically credited back and unused balance is refundable to the originating wallet on request."}}, {"@type": "Question", "name": "How many countries can I reach?", "acceptedAnswer": {"@type": "Answer", "text": "You reach 149 countries. Per-country rates live at GET /prices and fall between $0.009 and $0.035, with AU and JP sitting at the expensive end. Adaptive multi-route delivery runs automatic failover for each destination, and free test credits on signup let you confirm a route before funding."}}, {"@type": "Question", "name": "Is there a free way to test before I fund the account?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free test credits are issued on every email-only signup so you verify routes before funding any balance. They apply to the same endpoints you will use in production."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://smsroute.cc/#organization","name":"smsroute","url":"https://smsroute.cc/","logo":"https://smsroute.cc/logo.png","sameAs":["https://x.com/smsroute","https://www.linkedin.com/company/smsroute"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMSRoute SMS API","serviceType":"SMS sending API","provider":{"@type":"Organization","name":"SMSRoute"},"areaServed":"149 countries","offers":{"@type":"Offer","price":"0.004","priceCurrency":"USD","description":"Per-message price from $0.004, paid in BTC, ETH, USDT, XMR, LTC or SOL"}}</script>
 <style>
@@ -132,9 +132,9 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .faq-card .faq-answer{padding:0 20px 18px;color:var(--fg-secondary);line-height:1.7}
 
 /* ---------- CTA band ---------- */
-.cta-band{background:linear-gradient(135deg,rgba(182,89,255,.14),rgba(125,211,252,.10));border:1px solid var(--border-glow);border-radius:16px;padding:26px;margin:48px 0 0;text-align:center}
-.cta-band h2{margin:0 0 8px;font-family:'Inter Tight',Inter,sans-serif;color:var(--fg-primary)}
-.cta-band p{margin:0 0 16px;color:var(--fg-secondary)}
+
+
+
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--bg-sunken);border-top:1px solid var(--border);color:var(--fg-secondary);padding:56px 24px 28px}
@@ -176,27 +176,27 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
  .hero-stats{gap:16px;font-size:.86rem}
  .post h2{font-size:1.3rem;margin-top:36px}
  .footer-grid{grid-template-columns:1fr;gap:28px}
- .cta-band h2{font-size:1.4rem}
+ 
  .breadcrumb{padding:12px 20px;font-size:.8rem}
  .byline{font-size:.8rem;gap:8px}
 }
-.cta{background:linear-gradient(135deg,rgba(182,89,255,.14),rgba(125,211,252,.10));border:1px solid var(--border-glow);border-radius:16px;padding:26px;margin:48px 0 0;text-align:center}.cta p{margin:0 0 16px;color:var(--fg-secondary)}.cta a.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,filter .15s}.cta a.btn:hover{transform:translateY(-1px);color:#fff}.cta .alt{display:block;margin-top:12px;font-size:.88rem;color:var(--fg-muted)}.byline-date{color:var(--fg-muted)}.brand-word{color:var(--fg-primary)}</style>
+.cta{background:linear-gradient(135deg,rgba(182,89,255,.14),rgba(125,211,252,.10));border:1px solid var(--border-glow);border-radius:16px;padding:26px;margin:48px 0 0;text-align:center}.cta p{margin:0 0 16px;color:var(--fg-secondary)}.cta a.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,filter .15s}.cta a.btn:hover{transform:translateY(-1px);color:#fff}.cta .alt{display:block;margin-top:12px;font-size:.88rem;color:var(--fg-muted)}.byline-date{color:var(--fg-muted)}.brand-word{color:var(--fg-primary)}.hero-sub p{margin:0 0 10px}</style>
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 <header class="site-nav"><div class="site-nav-inner">
-<a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+<a href="https://smsroute.cc/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
 <nav class="site-links" aria-label="Primary">
- <a href="/">Features</a><a href="/prices">Pricing</a><a href="/api">API</a>
- <a href="/developers">Docs</a><a href="/blog" aria-current="page" class="current">Blog</a>
+ <a href="https://smsroute.cc/">Features</a><a href="https://smsroute.cc/prices">Pricing</a><a href="https://smsroute.cc/developers">API</a>
+ <a href="https://smsroute.cc/developers">Docs</a><a href="https://smsroute.cc/blog/" class="current">Blog</a>
 </nav>
-<div class="site-cta"><a href="/signup" class="signin">Sign in</a><a href="/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
+<div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Sign in</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
 </div></header>
 
 <nav class="breadcrumb" aria-label="breadcrumb">
  <ol>
- <li><a href="/">Home</a></li>
- <li aria-current="page"><a href="/blog">Blog</a></li>
+ <li><a href="https://smsroute.cc/">Home</a></li>
+ <li><a href="https://smsroute.cc/blog/">Blog</a></li>
  </ol>
 </nav>
 
@@ -204,12 +204,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
  <div class="hero-inner">
  <span class="eyebrow-pill">149 countries · crypto-native · no KYC</span>
  <h1 class="hero-title">Anonymous SMS API: what &quot;anonymous&quot; actually means here and how to send</h1>
- <p class="hero-sub"><p>An anonymous SMS API is a REST or SMPP endpoint you fund with crypto after email-only signup, no ID documents ever, so account and billing stay detached from your identity while messages still route as ordinary SMS traffic.</p>
+ <div class="hero-sub"><p>An anonymous SMS API is a REST or SMPP endpoint you fund with crypto after email-only signup, no ID documents ever, so account and billing stay detached from your identity while messages still route as ordinary SMS traffic.</p>
 <p>This is for developers shipping apps, tools, or side projects who need programmatic SMS without tying the account to business verification or a paper trail.</p>
-<p>The rest of this page states exactly which layer is anonymous, gives the live endpoint and price range of $0.009 to $0.035 across 149 countries, walks through funding to first message in minutes with free test credits, and links the Python, PHP, Go, and Node examples.</p></p>
+<p>The rest of this page states exactly which layer is anonymous, gives the live endpoint and price range of $0.009 to $0.035 across 149 countries, walks through funding to first message in minutes with free test credits, and links the Python, PHP, Go, and Node examples.</p></div>
  <div class="hero-ctas">
- <a class="btn-primary" href="/signup">Start Sending SMS <span aria-hidden="true">→</span></a>
- <a class="btn-ghost" href="/developers">View API docs</a>
+ <a class="btn-primary" href="https://smsroute.cc/signup">Start Sending SMS <span aria-hidden="true">→</span></a>
+ <a class="btn-ghost" href="https://smsroute.cc/developers">View API docs</a>
  </div>
  <div class="byline">
  <a href="/about" class="byline-author">smsroute editorial team</a>
@@ -227,7 +227,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="facts-band" aria-label="service facts"><div class="facts-grid">
  <div class="fact-tile"><div class="fact-num">$0.004</div><div class="fact-label">per SMS from</div></div>
  <div class="fact-tile"><div class="fact-num">149</div><div class="fact-label">countries</div></div>
- <div class="fact-tile"><div class="fact-num">60s</div><div class="fact-label">to first message</div></div>
+ <div class="fact-tile"><div class="fact-num">minutes</div><div class="fact-label">to first message</div></div>
  <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">crypto rails</div></div>
 </div></section>
 
@@ -264,7 +264,7 @@ curl -X POST https://api.smsroute.cc/sms/send \
 # response
 {&quot;messageId&quot;: &quot;a91f4c2e&quot;, &quot;status&quot;: &quot;QUEUED&quot;}</code></pre></figure>
  <h2 id="faq">Frequently asked questions</h2>
- <details class="faq-card"><summary>Does anonymous mean the message itself is untraceable to carriers?</summary><div class="faq-answer"><p>No. SMS routing metadata remains visible to carriers for every provider; that is an industry fact, not unique to us. Anonymity here is strictly the account and billing layer: email-only signup, no identity documents ever, and payment in BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL.</p></div></details><details class="faq-card"><summary>Can I get a custom sender ID without revealing a business identity?</summary><div class="faq-answer"><p>Shared sender pool is the default. Custom alphanumeric sender IDs are available on request where the destination country's routing rules allow it. Reach 24/7 support on Telegram or email for the setup, first response typically under an hour, then use free test credits to confirm delivery with that ID.</p></div></details><details class="faq-card"><summary>What happens if I send to an invalid number?</summary><div class="faq-answer"><p>Run numbers through POST /sms/validate first to catch invalids before any spend. If a send fails after the fact, failed messages are automatically credited back and unused balance is refundable to the originating wallet on request.</p></div></details><details class="faq-card"><summary>How many countries can I reach?</summary><div class="faq-answer"><p>You reach 149 countries. Per-country rates live at GET /prices and fall between $0.009 and $0.035, with AU and JP sitting at the expensive end. Adaptive multi-route delivery runs automatic failover for each destination, and free test credits on signup let you confirm a route before funding.</p></div></details><details class="faq-card"><summary>Is there a free way to test before I fund the account?</summary><div class="faq-answer"><p>Yes. Free test credits are issued on every email-only signup so you verify routes before funding any balance. They apply to the same endpoints you will use in production,.</p></div></details>
+ <details class="faq-card"><summary>Does anonymous mean the message itself is untraceable to carriers?</summary><div class="faq-answer"><p>No. SMS routing metadata remains visible to carriers for every provider; that is an industry fact, not unique to us. Anonymity here is strictly the account and billing layer: email-only signup, no identity documents ever, and payment in BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC, or SOL.</p></div></details><details class="faq-card"><summary>Can I get a custom sender ID without revealing a business identity?</summary><div class="faq-answer"><p>Shared sender pool is the default. Custom alphanumeric sender IDs are available on request where the destination country's routing rules allow it. Reach 24/7 support on Telegram or email for the setup, first response typically under an hour, then use free test credits to confirm delivery with that ID.</p></div></details><details class="faq-card"><summary>What happens if I send to an invalid number?</summary><div class="faq-answer"><p>Run numbers through POST /sms/validate first to catch invalids before any spend. If a send fails after the fact, failed messages are automatically credited back and unused balance is refundable to the originating wallet on request.</p></div></details><details class="faq-card"><summary>How many countries can I reach?</summary><div class="faq-answer"><p>You reach 149 countries. Per-country rates live at GET /prices and fall between $0.009 and $0.035, with AU and JP sitting at the expensive end. Adaptive multi-route delivery runs automatic failover for each destination, and free test credits on signup let you confirm a route before funding.</p></div></details><details class="faq-card"><summary>Is there a free way to test before I fund the account?</summary><div class="faq-answer"><p>Yes. Free test credits are issued on every email-only signup so you verify routes before funding any balance. They apply to the same endpoints you will use in production.</p></div></details>
  <div class="cta"><p>No ID, no business documents, no A2P paperwork. Just an email and an API key.</p><a class="btn" href="https://smsroute.cc/signup">Create an account with just an email</a><span class="alt">or read the <a href="https://smsroute.cc/developers">API reference</a> first</span></div>
  </article>
 </main>
@@ -272,7 +272,7 @@ curl -X POST https://api.smsroute.cc/sms/send \
  <div class="site-footer__inner">
  <div class="footer-grid">
  <div class="footer-brand">
- <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
+ <a href="https://smsroute.cc/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
  <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
  <div class="socials">
  </div>
