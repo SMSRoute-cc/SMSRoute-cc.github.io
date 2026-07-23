@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0D14">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<title>Anonymous SMS API: Send Without Tying Your Identity to the Account (2026)</title>
+<title>Anonymous SMS API: Email-Only Signup, Crypto Billing (2026)</title>
 <meta name="description" content="anonymous sms api with email signup and crypto payments. No identity documents. Anonymity covers account and billing. Real endpoint and pricing inside.">
 <link rel="canonical" href="https://smsroute-cc.github.io/anonymous-sms-api.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anonymous SMS API: Send Without Tying Your Identity to the Account (2026)">
+<meta property="og:title" content="Anonymous SMS API: Email-Only Signup, Crypto Billing (2026)">
 <meta property="og:description" content="anonymous sms api with email signup and crypto payments. No identity documents. Anonymity covers account and billing. Real endpoint and pricing inside.">
 <meta property="og:url" content="https://smsroute-cc.github.io/anonymous-sms-api.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,9 +242,9 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>When the test traffic looks right, fund with BTC, ETH, USDT (TRC-20 or ERC-20), XMR, LTC, or SOL. Balance updates in the dashboard. Create an API key there. From that moment the sequence is fund, key, send.</p>
 <p>Issue the call to POST /sms/send. The exact request body and headers sit in the artifact below. Adaptive multi-route delivery with automatic failover handles the destination; real-time DLR webhooks and the dashboard log report status. Failed messages are credited back automatically.</p></section><section><h2 id="s3">How do you validate a message before you spend on it?</h2><p>You call POST /sms/validate with a body of message and recipients; it returns validation results per recipient so you catch malformed numbers before any spend.</p>
 <p>The endpoint is a pre-flight check, not a send. Hand it the same payload shape you would use for a real batch and it flags bad numbers, formatting issues, and other rejects without touching your balance. That is useful when you are loading a list from a user upload or an external source and want to scrub it first. Free test credits on signup already let you exercise live routes, but validate sits earlier in the flow and keeps the check free even after you fund.</p>
-<p>Failed messages that do go through the real send path are automatically credited back, and unused balance is refundable to the originating wallet on request. So validate is an optional convenience, not the only safety net. Most developers run it once on a new recipient set, then switch to POST /sms/send for production traffic. Real-time delivery reports via DLR webhooks and the dashboard log still cover everything that leaves the API.</p></section><section><h2 id="s4">How does this compare with Twilio&#x27;s approach to anonymous SMS?</h2><p>Twilio's public page matching this query describes number masking inside two-party conversations, a code-exchange pattern, while production still demands their standard KYC and A2P 10DLC brand registration for US traffic.</p>
+<p>Failed messages that do go through the real send path are automatically credited back, and unused balance is refundable to the originating wallet on request. So validate is an optional convenience, not the only safety net. Most developers run it once on a new recipient set, then switch to POST /sms/send for production traffic. Real-time delivery reports via DLR webhooks and the dashboard log still cover everything that leaves the API.</p></section><section><h2 id="s4">How does this compare with Twilio&#x27;s approach to anonymous SMS?</h2><p>Twilio's public page matching this query describes number masking inside two-party conversations, a code-exchange pattern, while production still demands their standard KYC and <a href="https://www.twilio.com/docs/messaging/compliance/a2p-10dlc" rel="noopener">A2P 10DLC brand registration</a> for US traffic.</p>
 <p>That pattern solves a different problem. It lets you hide real numbers from end users during a chat session, yet the account itself remains tied to identity checks and carrier brand registration before live traffic can flow. SMSRoute starts from the opposite constraint: email-only signup with no identity documents ever collected, so the account and billing layer stay detached from personal paperwork.</p>
-<p>Delivery behavior follows the same practical split. Adaptive multi-route delivery with automatic failover per destination keeps messages moving when one path degrades, and real-time delivery reports arrive via DLR webhooks plus the dashboard log. Uptime has held at 99.9%+ over the trailing twelve months. The interface is a REST API plus SMPP binds, with working examples in Python, PHP, Go and Node published on the SMSRoute-cc GitHub repo. You fund, pull a key, and send without waiting on verification queues that Twilio requires for production.</p></section><section><h2 id="s5">Is it legal to use an anonymous SMS API?</h2><p>Yes, using an anonymous SMS API is legal; what is regulated is the content of messages and consent obligations under laws like TCPA and GDPR, which bind the sender regardless of how anonymous the account is.</p>
+<p>Delivery behavior follows the same practical split. Adaptive multi-route delivery with automatic failover per destination keeps messages moving when one path degrades, and real-time delivery reports arrive via DLR webhooks plus the dashboard log. Uptime has held at 99.9%+ over the trailing twelve months. The interface is a REST API plus SMPP binds, with working examples in Python, PHP, Go and Node published on the SMSRoute-cc GitHub repo. You fund, pull a key, and send without waiting on verification queues that Twilio requires for production.</p></section><section><h2 id="s5">Is it legal to use an anonymous SMS API?</h2><p>Yes, using an anonymous SMS API is legal; what is regulated is the content of messages and consent obligations under laws like the <a href="https://www.fcc.gov/consumers/guides/stop-unwanted-robocalls-and-texts" rel="noopener">TCPA</a> and <a href="https://gdpr.eu/" rel="noopener">GDPR</a>, which bind the sender regardless of how anonymous the account is.</p>
 <p>SMSRoute enforces STOP-keyword handling and suppression lists on outbound traffic. Opt-out requests update the suppression list immediately so subsequent sends to that number are blocked. The account stays free of identity documents while the compliance layer still runs.</p>
 <p>Tip lines and whistleblower intake use this setup because the channel must not create a business paper trail that exposes operators. Privacy-preserving app OTP delivery lets developers authenticate users without attaching a verified corporate entity to every message.</p>
 <p>Security research notification systems, journalists, and NGOs operating under threat models where a business paper trail is itself a risk send through accounts like this for operational safety.</p></section>
@@ -275,12 +275,6 @@ curl -X POST https://api.smsroute.cc/sms/send \
  <a href="/" class="brand"><span class="brand-mark"></span><span class="brand-word">smsroute</span></a>
  <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
  <div class="socials">
- <a href="https://x.com/smsroute" aria-label="X (Twitter)">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.53 8.63L22.5 22h-6.8l-5.32-6.92L4.3 22H1.04l8.06-9.23L1 2h6.97l4.81 6.37L18.244 2zm-2.39 18h1.86L7.23 4H5.28l10.575 16z"/></svg>
- </a>
- <a href="https://www.linkedin.com/company/smsroute" aria-label="LinkedIn">
- <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
- </a>
  </div>
  </div>
  <div class="footer-col">
@@ -341,7 +335,7 @@ curl -X POST https://api.smsroute.cc/sms/send \
  <span class="legal-links">
  <a href="https://smsroute.cc/privacy">Privacy</a>
  <a href="https://smsroute.cc/terms">Terms</a>
- <a href="https://smsroute.cc/security">Security</a>
+ <a href="https://smsroute.cc/privacy">Security</a>
  </span>
  </div>
  </div>
