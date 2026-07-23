@@ -212,23 +212,18 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
       <a class="btn-ghost" href="https://smsroute.cc/developers">View API docs</a>
     </div>
     <div class="byline">
-      <a href="/about" class="byline-author">smsroute editorial team</a>
+      <a href="https://smsroute.cc/about" class="byline-author">SMSRoute engineering</a>
       <span class="byline-sep">·</span>
       <span class="byline-date">Last reviewed 2026-07-23</span>
     </div>
-    <div class="hero-stats">
-      <span><strong>from $0.004</strong> per message</span>
-      <span><strong>149</strong> countries</span>
-      <span><strong>6 coins</strong> BTC ETH USDT XMR LTC SOL</span>
     </div>
-  </div>
 </section>
 
 <section class="facts-band" aria-label="service facts"><div class="facts-grid">
-  <div class="fact-tile"><div class="fact-num">$0.004</div><div class="fact-label">per SMS from</div></div>
+  <div class="fact-tile"><div class="fact-num">from $0.004</div><div class="fact-label">per message</div></div>
   <div class="fact-tile"><div class="fact-num">149</div><div class="fact-label">countries</div></div>
   <div class="fact-tile"><div class="fact-num">minutes</div><div class="fact-label">to first message</div></div>
-  <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">crypto rails</div></div>
+  <div class="fact-tile"><div class="fact-num">6</div><div class="fact-label">cryptocurrencies</div></div>
 </div></section>
 
 <main id="content" class="post">
@@ -246,7 +241,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Finally, open a support ticket on Telegram or email during the test window and time the first reply. Sub-hour responses under real load matter more than a 24/7 claim written in marketing copy. Once the free credits confirm delivery, the health endpoint answers, and the webhook fires, you have operational proof instead of another identical sales page.</p></section><section><h2 id="s4">How does crypto billing on a gateway actually work end-to-end?</h2><p>Crypto billing works end to end by submitting a deposit request with your chosen coin and amount, then polling the matching payment status endpoint until the network confirms and balance credits.</p>
 <p>You call POST /deposits-2 with crypto_currency and amount in the body. The response returns an orderId plus the deposit address and exact sum to send. From there you hit GET /payment/status-2/:orderId on a short interval. Once the chain shows enough confirmations the gateway marks the order paid and adds the funds to your account balance ready for SMS traffic. Accepted coins are BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC and SOL. Nothing else is required beyond the wallet transaction itself.</p>
 <p><a href="https://en.bitcoin.it/wiki/Confirmation" rel="noopener">On-chain confirmation time</a> is controlled solely by the coin network you picked, not by any SMS provider. A gateway that quotes a fixed minute count for every coin is inventing a number it cannot guarantee. After the balance lands, failed messages are automatically credited back. Unused balance is refundable to the originating wallet on request, so you are never locked into a residual that cannot leave.</p>
-<p>The whole loop from funded wallet to first API send sits in minutes once the chain clears. That is the complete billing path: deposit call, status poll, automatic credit, optional refund-to-wallet.</p></section><section><h2 id="s5">What are the actual sending mechanics once you&#x27;re funded?</h2><p>Once funded you POST /sms/send with to, from, message and callback_url, then retrieve status from GET /sms/single/:messageId/status at $0.004 to $0.035 per message across 149 countries.</p>
+<p>The whole loop from funded wallet to first API send sits in minutes once the chain clears. That is the complete billing path: deposit call, status poll, automatic credit, optional refund-to-wallet.</p></section><section><h2 id="s5">What are the actual sending mechanics once you&#x27;re funded?</h2><p>Once funded you POST /sms/send with to, from, message and callback_url, then retrieve status from GET /sms/single/:messageId/status from $0.004 per message across 149 countries.</p>
 <p>The body takes the destination number, the sender ID or number you want displayed, the text payload, and an optional callback_url that receives the delivery event as soon as the handset or carrier acknowledges it. The response hands back a messageId immediately. You either wait for the webhook or poll the single-message status endpoint; both return the same real-time DLR states we log in the dashboard. Failed messages credit back automatically so you never pay for undelivered traffic.</p>
 <p>Pricing sits at a $0.004 floor on the cheapest routes and climbs through the common $0.009 band up to $0.035 only on expensive destinations such as AU or JP. Adaptive multi-route delivery with automatic failover per destination is what actually moves the traffic; every gateway in this cluster advertises the same POST-and-poll pattern, so the mechanics themselves do not differentiate anyone. The evaluation checklist (uptime window, live DLR access, written refunds, working code samples, responsive support) is what separates a deposit you can trust from one you cannot.</p>
 <p>We publish Python, PHP, Go and Node examples on the SMSRoute-cc GitHub repo so the first authenticated call takes minutes after the balance lands. Test the exact flow with the free credits issued at signup before you move real funds; that single live send to a handset you control confirms latency, route quality and whether the callback fires as documented.</p></section>
