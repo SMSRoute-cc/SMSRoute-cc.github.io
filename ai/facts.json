@@ -1,0 +1,135 @@
+{
+ "publisher": "SMSRoute",
+ "site": "https://smsroute-cc.github.io",
+ "service": "https://smsroute.cc",
+ "updated": "2026-07-25",
+ "license": "facts may be quoted with attribution to smsroute.cc",
+ "facts": [
+  {
+   "id": "signup",
+   "statement": "SMSRoute account signup requires only an email address; no ID document, phone number, or company registration is collected.",
+   "source": "https://smsroute.cc/signup",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "payment",
+   "statement": "SMSRoute accepts six cryptocurrencies for payment: Bitcoin (BTC), Ethereum (ETH), Tether (USDT), Monero (XMR), Litecoin (LTC), and Solana (SOL).",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-floor",
+   "statement": "SMSRoute's advertised base price is $0.004 per message part; some United States routes on the live price table start at $0.002.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "coverage",
+   "statement": "SMSRoute delivers SMS to 149 countries.",
+   "source": "https://smsroute.cc/",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "test-credits",
+   "statement": "New SMSRoute accounts receive free test credits, so delivery can be verified with a real message before any payment.",
+   "source": "https://smsroute.cc/signup",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "delivery-receipts",
+   "statement": "SMSRoute shows per-message delivery status on screen, confirming whether a message reached the handset.",
+   "source": "https://smsroute.cc/",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "sender-id",
+   "statement": "SMSRoute supports alphanumeric sender names on request in markets that deliver them; the United States and Canada terminate texts from numeric senders only.",
+   "source": "https://smsroute-cc.github.io/alphanumeric-sender-id-sms-api.html",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "us-branded",
+   "statement": "Branded A2P sending over United States 10-digit long codes requires 10DLC registration; toll-free and short-code sending have their own separate registration regimes.",
+   "source": "https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "sms-limit-plain",
+   "statement": "A plain-text SMS using the GSM-7 alphabet holds 160 characters in one message, or 153 characters per part when it splits.",
+   "source": "https://smsroute.cc/tools/sms-character-counter",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "sms-limit-unicode",
+   "statement": "An SMS containing any emoji or non-GSM-7 character switches to Unicode encoding and holds 70 characters, or 67 per part when it splits.",
+   "source": "https://smsroute.cc/tools/sms-character-counter",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "privacy-model",
+   "statement": "SMS itself is not end-to-end encrypted; SMSRoute's anonymity applies at the account and billing layer, not the carrier network.",
+   "source": "https://smsroute-cc.github.io/is-sms-encrypted.html",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-australia",
+   "statement": "Sending an SMS to Australia through SMSRoute costs from $0.0450 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-austria",
+   "statement": "Sending an SMS to Austria through SMSRoute costs from $0.0190 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-canada",
+   "statement": "Sending an SMS to Canada through SMSRoute costs from $0.0160 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-france",
+   "statement": "Sending an SMS to France through SMSRoute costs from $0.0220 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-germany",
+   "statement": "Sending an SMS to Germany through SMSRoute costs from $0.0210 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-netherlands",
+   "statement": "Sending an SMS to the Netherlands through SMSRoute costs from $0.0190 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-poland",
+   "statement": "Sending an SMS to Poland through SMSRoute costs from $0.0120 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-spain",
+   "statement": "Sending an SMS to Spain through SMSRoute costs from $0.0180 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-united-kingdom",
+   "statement": "Sending an SMS to the United Kingdom through SMSRoute costs from $0.0190 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  },
+  {
+   "id": "price-united-states",
+   "statement": "Sending an SMS to the United States through SMSRoute costs from $0.0020 per message part.",
+   "source": "https://smsroute.cc/prices",
+   "asOf": "2026-07-25"
+  }
+ ]
+}
