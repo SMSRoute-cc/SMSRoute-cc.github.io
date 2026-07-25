@@ -32,6 +32,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Pay for SMS API with USDT – Buy SMS Credits with Crypto](https://smsroute-cc.github.io/pay-sms-api-with-usdt.html): Step-by-step guide to paying for SMSRoute API with USDT (TRC-20 vs ERC-20 fees). Buy SMS credits with crypto, no KYC, from $0.004/message. 149 countries.
 - [Privacy-Focused SMS API for Crypto Projects](https://smsroute-cc.github.io/privacy-sms-api-crypto-projects.html): SMSRoute is a no-KYC SMS API for crypto projects: no identity docs, crypto billing (BTC/ETH/XMR), OTP delivery from $0.004/msg. 149 countries, 99.9% uptime.
 - [Send Anonymous Text Free: Online, No Registration](https://smsroute-cc.github.io/send-anonymous-text-free.html): Send anonymous text free no signup no ID with free test credits. Free web senders hit limits and ads burner apps track you. For demos carriers see route.
+- [Send SMS Abroad: What Your Carrier Charges vs the Internet Route](https://smsroute-cc.github.io/send-sms-abroad.html): Send SMS abroad from your home country. Free roaming does not apply. Carrier rates surprise you. Paid web senders confirm the price and delivery.
 - [Send SMS Anonymously: No Name, No ID (2026)](https://smsroute-cc.github.io/send-sms-anonymously.html): Send SMS anonymously so the recipient never sees your number. The real difference is whether the service knows your name. Get free test credits.
 - [Send SMS With Crypto: Coins, Top-Ups, and Real Pricing (2026)](https://smsroute-cc.github.io/send-sms-crypto.html): Send sms crypto via smsroute.cc API. Coins accepted how top ups confirm and what it costs. Crypto billing keeps SMS running when card rails shut off.
 - [Send SMS No KYC: No ID, Email Signup Only](https://smsroute-cc.github.io/send-sms-no-kyc.html): Send sms no kyc via email signup and crypto. No passport, no freeze later. Other SMS services collect ID when traffic grows. This never does.
@@ -87,6 +88,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Kann man anonyme SMS senden? Ja](https://smsroute-cc.github.io/de/can-i-send-sms-anonymously.html): Ja, Sie können anonyme SMS senden – ohne Anmeldung und ohne Nummer. So funktioniert's mit Testguthaben online.
 - [Günstige SMS API – Preise & Tarife](https://smsroute-cc.github.io/de/cheap-sms-api-pricing.html): Günstige SMS API mit klaren Preisen. Pay-as-you-go, Testguthaben, kein Abo – transparent für Entwickler.
 - [Nummer unterdrücken beim SMS-Senden: was wirklich geht](https://smsroute-cc.github.io/de/hide-my-number-when-texting.html): Nummer unterdrücken bei SMS: Warum #31# nur für Anrufe gilt und wie eine SMS ankommt, ohne Ihre Nummer zu zeigen.
+- [SMS ins Ausland verschicken: Kosten und der günstige Weg](https://smsroute-cc.github.io/de/send-sms-abroad.html): SMS ins Ausland verschicken: Warum EU-Roaming nicht gilt, was der Anbieter berechnet und wie der Versand über das Internet mit Zustellstatus funktioniert.
 - [SMS anonym senden ohne Anmeldung](https://smsroute-cc.github.io/de/send-sms-anonymously.html): SMS anonym senden ohne Anmeldung: online, diskret und ohne Handynummer. Jetzt mit gratis Testguthaben ausprobieren.
 - [SMS API mit Crypto bezahlen](https://smsroute-cc.github.io/de/send-sms-crypto.html): SMS API per Crypto bezahlen. Ohne klassisches KYC starten, Testguthaben nutzen, global versenden.
 - [SMS ohne Anmeldung senden – kein KYC](https://smsroute-cc.github.io/de/send-sms-no-kyc.html): Senden Sie SMS ohne Anmeldung und ohne KYC. Kein Konto nötig – mit Testguthaben starten und anonym SMS versenden.
@@ -105,6 +107,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Peut-on envoyer un SMS anonyme ?](https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html): Oui, on peut envoyer un SMS anonyme sans inscription ni numéro. Mode d'emploi avec crédit d'essai.
 - [SMS API pas chère – tarifs clairs](https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html): SMS API pas chère, tarifs transparents. Paiement à l'usage, crédit d'essai, sans abonnement.
 - [Masquer son numéro pour envoyer un SMS : ce qui marche](https://smsroute-cc.github.io/fr/hide-my-number-when-texting.html): Masquer son numéro SMS : pourquoi le #31# ne s'applique qu'aux appels et comment envoyer un texto sans montrer votre numéro.
+- [Envoyer un SMS à l'étranger : tarifs et la voie économique](https://smsroute-cc.github.io/fr/send-sms-abroad.html): Envoyer un SMS à l'étranger : pourquoi l'itinérance UE ne s'applique pas, ce que facture l'opérateur et l'envoi par internet avec statut de livraison.
 - [Envoyer SMS anonyme sans inscription](https://smsroute-cc.github.io/fr/send-sms-anonymously.html): Envoyer un SMS anonyme sans inscription : en ligne, discret, sans numéro. Crédit d'essai pour tester.
 - [Payer la SMS API en crypto](https://smsroute-cc.github.io/fr/send-sms-crypto.html): SMS API payable en crypto. Démarrez sans KYC classique, crédit d'essai, envoi international.
 - [SMS sans inscription – sans KYC](https://smsroute-cc.github.io/fr/send-sms-no-kyc.html): Envoyez des SMS sans inscription et sans KYC. Pas de compte requis – démarrez avec un crédit d'essai.
@@ -123,6 +126,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Czy można wysłać anonimowy SMS?](https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html): Tak – anonimowy SMS bez rejestracji i bez numeru jest możliwy. Zobacz jak, z saldem testowym.
 - [Tanie SMS API – cennik](https://smsroute-cc.github.io/pl/cheap-sms-api-pricing.html): Tanie SMS API z jasnym cennikiem. Pay-as-you-go, saldo testowe, bez abonamentu.
 - [Jak ukryć numer przy wysyłaniu SMS-a](https://smsroute-cc.github.io/pl/hide-my-number-when-texting.html): Ukrycie numeru w SMS-ie: dlaczego #31# działa tylko dla połączeń i jak wysłać wiadomość, która nie pokaże Twojego numeru.
+- [Jak wysłać SMS za granicę: koszty i tańsza droga](https://smsroute-cc.github.io/pl/send-sms-abroad.html): Jak wysłać SMS za granicę: dlaczego roaming UE tu nie działa, ile liczy operator i jak działa wysyłka przez internet ze statusem doręczenia.
 - [Wyślij anonimowy SMS online](https://smsroute-cc.github.io/pl/send-sms-anonymously.html): Wyślij anonimowy SMS bez rejestracji. Dyskretnie z sieci, bez numeru – saldo testowe na start.
 - [SMS API za kryptowaluty](https://smsroute-cc.github.io/pl/send-sms-crypto.html): SMS API z płatnością krypto. Start bez klasycznego KYC, saldo testowe, wysyłka globalna.
 - [SMS bez rejestracji – bez KYC](https://smsroute-cc.github.io/pl/send-sms-no-kyc.html): Wysyłaj SMS bez rejestracji i bez KYC. Bez konta – zacznij od darmowego salda testowego.
@@ -141,6 +145,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [¿Se puede enviar un SMS anónimo?](https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html): Sí: puedes enviar un SMS anónimo sin registro ni número. Te explicamos cómo con crédito test.
 - [SMS API barata – precios claros](https://smsroute-cc.github.io/es/cheap-sms-api-pricing.html): SMS API barata con precios transparentes. Pago por uso, crédito de prueba, sin cuota.
 - [Ocultar mi número al enviar SMS: qué funciona](https://smsroute-cc.github.io/es/hide-my-number-when-texting.html): Ocultar el número en un SMS: por qué #31# solo vale para llamadas y cómo enviar un mensaje sin mostrar tu número.
+- [Enviar SMS al extranjero: tarifas y la vía barata](https://smsroute-cc.github.io/es/send-sms-abroad.html): Enviar SMS al extranjero: por qué el roaming de la UE no aplica, qué cobra tu operador y cómo funciona el envío por internet con estado de entrega.
 - [Enviar SMS anónimo sin registro](https://smsroute-cc.github.io/es/send-sms-anonymously.html): Enviar SMS anónimo sin registro: online, discreto y sin número. Prueba con crédito de test.
 - [Pagar la SMS API con crypto](https://smsroute-cc.github.io/es/send-sms-crypto.html): SMS API pagando con crypto. Empieza sin KYC clásico, crédito de prueba, envío global.
 - [SMS sin registro – sin KYC](https://smsroute-cc.github.io/es/send-sms-no-kyc.html): Envía SMS sin registro y sin KYC. Sin cuenta – empieza con crédito de prueba gratuito.
@@ -159,6 +164,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Kun je anoniem een sms sturen?](https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html): Ja, je kunt anoniem een sms sturen zonder registratie of nummer. Zo werkt het met testtegoed.
 - [Goedkope SMS API – tarieven](https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html): Goedkope SMS API met heldere tarieven. Pay-as-you-go, testtegoed, geen abonnement.
 - [Anoniem sms'en zonder je nummer te tonen](https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html): Nummer verbergen bij sms: waarom #31# alleen voor bellen geldt en hoe een bericht aankomt zonder jouw nummer.
+- [Sms naar het buitenland sturen: kosten en de goedkope route](https://smsroute-cc.github.io/nl/send-sms-abroad.html): Sms naar het buitenland: waarom EU-roaming hier niet geldt, wat je provider rekent en hoe verzenden via internet met bezorgstatus werkt.
 - [Anonieme sms versturen online](https://smsroute-cc.github.io/nl/send-sms-anonymously.html): Anonieme sms versturen zonder registratie. Online, discreet, zonder nummer – met testtegoed.
 - [SMS API betalen met crypto](https://smsroute-cc.github.io/nl/send-sms-crypto.html): SMS API betalen met crypto. Start zonder klassieke KYC, testtegoed, wereldwijd versturen.
 - [SMS zonder registratie – geen KYC](https://smsroute-cc.github.io/nl/send-sms-no-kyc.html): Verstuur SMS zonder registratie en zonder KYC. Geen account nodig – start met testtegoed.
@@ -177,6 +183,7 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [Si può inviare un SMS anonimo?](https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html): Sì: puoi inviare un SMS anonimo senza registrazione né numero. Ecco come, con credito test.
 - [SMS API economica – prezzi chiari](https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html): SMS API economica con prezzi trasparenti. Pay-as-you-go, credito di prova, senza canone.
 - [Nascondere il numero quando invii un SMS](https://smsroute-cc.github.io/it/hide-my-number-when-texting.html): Nascondere il numero in un SMS: perché #31# vale solo per le chiamate e come inviare un messaggio senza mostrare il tuo numero.
+- [Inviare SMS all'estero: costi e la via economica](https://smsroute-cc.github.io/it/send-sms-abroad.html): Inviare SMS all'estero: perché il roaming UE non si applica, cosa addebita l'operatore e come funziona l'invio via internet con stato di consegna.
 - [SMS anonimo senza registrazione](https://smsroute-cc.github.io/it/send-sms-anonymously.html): Inviare un SMS anonimo senza registrazione: online, discreto, senza numero. Credito di prova.
 - [Pagare la SMS API in crypto](https://smsroute-cc.github.io/it/send-sms-crypto.html): SMS API pagabile in crypto. Parti senza KYC classico, credito di prova, invio globale.
 - [SMS senza registrazione – no KYC](https://smsroute-cc.github.io/it/send-sms-no-kyc.html): Invia SMS senza registrazione e senza KYC. Nessun account – inizia con credito di prova.
@@ -186,6 +193,27 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 - [SMS API senza KYC né registrazione](https://smsroute-cc.github.io/it/sms-api-no-kyc.html): SMS API senza KYC e senza verifica. REST, credito di prova, pay-as-you-go – per developer.
 - [Servizio SMS senza KYC: come sceglierlo](https://smsroute-cc.github.io/it/sms-sender-no-kyc.html): Scegliere un servizio SMS senza KYC: tariffe pubbliche, test gratuito, stato di consegna – verificabile prima di pagare.
 - [Cos'è un gateway SMS? Spiegazione](https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html): Gateway SMS: a cosa serve, API e invio anonimo senza KYC – spiegato in modo semplice.
+
+## Svenska (sv)
+- [Kan man skicka SMS anonymt? Regler och sätt](https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html): Kan man skicka SMS anonymt? Ja – mottagaren ser inte ditt nummer. Vad tjänsten vet om dig och varför innehållet avgör lagligheten.
+- [Skicka SMS anonymt: så gör du (2026)](https://smsroute-cc.github.io/sv/send-sms-anonymously.html): Skicka SMS anonymt utan att visa ditt nummer: registrering med bara e-post, betalning i krypto och leveransstatus på skärmen.
+- [Skicka SMS utan ID-kontroll – ingen KYC](https://smsroute-cc.github.io/sv/send-sms-no-kyc.html): Skicka SMS utan KYC eller ID-handlingar: konto med bara e-post, betala i krypto och skicka första meddelandet på några minuter.
+- [Skicka SMS med endast e-postregistrering och verifiering](https://smsroute-cc.github.io/sv/send-sms-no-verification.html): Skicka SMS utan registrering: bara en e-postadress, gratis testkrediter och leveransstatus – ingen ID-kontroll någonstans.
+- [Skicka SMS från datorn utan telefon (2026)](https://smsroute-cc.github.io/sv/send-text-from-computer-without-phone.html): Skicka SMS från datorn utan telefon: vilka vägar som faktiskt fungerar utan mobil – skicka direkt i webbläsaren med leveransstatus.
+
+## Português (pt)
+- [Posso enviar SMS anonimamente? Regras e formas](https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html): Posso enviar SMS anonimamente? Sim – o destinatário não vê o seu número. O que o serviço sabe de si e porque o conteúdo decide a legalidade.
+- [Enviar SMS anónimo: como fazer (2026)](https://smsroute-cc.github.io/pt/send-sms-anonymously.html): Enviar SMS anónimo sem mostrar o seu número: registo apenas com e-mail, pagamento em cripto e estado de entrega no ecrã.
+- [Enviar SMS sem KYC nem documentos](https://smsroute-cc.github.io/pt/send-sms-no-kyc.html): Enviar SMS sem KYC nem documentos de identidade: conta só com e-mail, pagamento em cripto e primeira mensagem em minutos.
+- [Enviar SMS sem registo nem verificação](https://smsroute-cc.github.io/pt/send-sms-no-verification.html): Enviar SMS sem registo: só um endereço de e-mail, créditos de teste grátis e estado de entrega – sem verificação de identidade.
+- [Enviar SMS pelo PC sem telemóvel (2026)](https://smsroute-cc.github.io/pt/send-text-from-computer-without-phone.html): Enviar SMS pelo PC sem telemóvel: os métodos que funcionam mesmo sem telefone – envio no navegador com estado de entrega.
+
+## Čeština (cs)
+- [Dá se poslat SMS anonymně? Pravidla a možnosti](https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html): Dá se poslat SMS anonymně? Ano – příjemce vaše číslo neuvidí. Co o vás služba ví a proč o legálnosti rozhoduje obsah zprávy.
+- [Jak poslat SMS anonymně (2026)](https://smsroute-cc.github.io/cs/send-sms-anonymously.html): Jak poslat SMS anonymně, aniž by příjemce viděl vaše číslo: registrace jen e-mailem, platba v kryptu a stav doručení na obrazovce.
+- [SMS bez KYC a dokladů: jak ji odeslat](https://smsroute-cc.github.io/cs/send-sms-no-kyc.html): Poslat SMS bez KYC a dokladů totožnosti: účet jen s e-mailem, platba v kryptu a první zpráva během několika minut.
+- [Poslat SMS bez ověření a ověření](https://smsroute-cc.github.io/cs/send-sms-no-verification.html): Poslat SMS bez registrace: stačí e-mailová adresa, testovací kredity zdarma a stav doručení – žádné ověřování totožnosti.
+- [Jak poslat SMS z počítače bez telefonu](https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html): Jak poslat SMS z počítače bez telefonu: které postupy opravdu fungují bez mobilu – odeslání v prohlížeči se stavem doručení.
 
 ## Service
 - [Sign up (email only)](https://smsroute.cc/signup)
