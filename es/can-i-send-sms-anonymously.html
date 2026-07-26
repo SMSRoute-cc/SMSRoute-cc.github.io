@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "¿Se puede enviar un SMS anónimo?", "item": "https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html"}]}</script>
 </head>
@@ -398,7 +409,8 @@ de la red:    nunca - el enrutamiento se registra en cada servicio
 ¿legal?               envío: sí, casi en todas partes
                      contenido: las mismas leyes que cualquier mensaje</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-app.html">App para SMS anónimos: qué funciona</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html">SMS anónimo online: cómo elegir la web</a></li><li><a href="https://smsroute-cc.github.io/es/hide-my-number-when-texting.html">Ocultar mi número al enviar SMS: qué funciona</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-app.html">App para SMS anónimos: qué funciona</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html">SMS anónimo online: cómo elegir la web</a></li><li><a href="https://smsroute-cc.github.io/es/hide-my-number-when-texting.html">Ocultar mi número al enviar SMS: qué funciona</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-no-verification.html">SMS sin verificación de identidad</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Puede rastrearse hasta mí un SMS anónimo?</summary><div class="faq-answer"><p>No, ni por el destinatario ni por medios ordinarios. El servicio solo puede facilitar el correo electrónico y el saldo en cripto vinculados a la cuenta. El rastreo a nivel de red existe únicamente para delitos graves y es competencia de las autoridades con órdenes judiciales, no de partes curiosas. Usar XMR para pagar mantiene el pago igual de mínimo.</p></div></details><details class="faq-card"><summary>¿Puedo enviar un SMS anónimo desde mi propio teléfono?</summary><div class="faq-answer"><p>No, no puedes enviar un SMS anónimo desde tu propio teléfono. Tu tarjeta <a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a> firma cada texto que sale de tu dispositivo, así que el destinatario siempre ve tu número real. El envío anónimo real significa que el mensaje sale desde otro lugar: un servicio web que usa su propio pool de remitentes compartidos por defecto. Donde las rutas lo permitan, incluso puedes solicitar un nombre alfanumérico personalizado.</p></div></details><details class="faq-card"><summary>¿Un texto anónimo parecerá sospechoso al destinatario?</summary><div class="faq-answer"><p>No, se ve como cualquier mensaje de servicio, el mismo formato que usan bancos y empresas de mensajería. Un nombre de remitente, donde sea compatible, queda más limpio que un número desconocido. El manejo de la palabra clave STOP está integrado, igual que en las alertas legítimas, así que nada en el mensaje levanta sospechas.</p></div></details><details class="faq-card"><summary>¿Cuál es la forma más anónima que de verdad entrega?</summary><div class="faq-answer"><p>Un servicio que solo retenga un correo, pagado en cripto y que envíe desde su propio pool es la opción más anónima que realmente entrega. El mensaje de prueba gratuito te permite confirmar que llega al destinatario antes de confiar en él.</p></div></details>
     <div class="cta"><p>Si la respuesta que necesitabas era 'sí, sin dar mi nombre' — esa ruta existe, y un mensaje de prueba gratuito lo demuestra.</p><a class="btn" href="https://smsroute.cc/signup">Pruébalo solo con correo electrónico</a><span class="alt">cómo funciona:<a href="https://smsroute-cc.github.io/send-sms-anonymously.html">envía SMS anónimamente, paso a paso</a></span></div>
@@ -406,10 +418,10 @@ de la red:    nunca - el enrutamiento se registra en cada servicio
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/can-i-send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/can-i-send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html" hreflang="cs-CZ" lang="cs">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html" hreflang="da-DK" lang="da">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Inicio SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Satisfacción en la entrega: conecta por SMS con tus clientes como nunca antes</p>
+        <p>SMS fiables. Pago con cripto. Sin identificación.</p>
         <div class="socials">
           </div>
       </div>
@@ -426,7 +438,7 @@ de la red:    nunca - el enrutamiento se registra en cada servicio
         </ul>
       </div>
       <div class="footer-col">
-        <p class="footer-heading">Enviar anónimamenteee por país</p>
+        <p class="footer-heading">Enviar anónimamente por país</p>
         <ul>
           <li><a href="https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html">Estados Unidos</a></li>
           <li><a href="https://smsroute-cc.github.io/send-sms-to-united-kingdom-anonymously.html">Reino Unido</a></li>
