@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Send SMS Without a Number: How It Works (2026)", "item": "https://smsroute-cc.github.io/send-sms-without-number.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 zemí · stavěné pro crypto · registrace jen e-mailem</span>
+      <span class="eyebrow-pill">149 zemí · stavěné pro krypto · registrace jen e-mailem</span>
       <h1 class="hero-title">Odesílejte SMS bez telefonního čísla</h1>
       <div class="hero-sub"><p>SMS můžete odesílat bez telefonního čísla, protože číslo identifikuje jen příjemce a služba doručí text z vlastního poolu odesílatelů.</p>
 <p>Zaregistrujete se e-mailem, získáte bezplatné testovací kredity na vyzkoušení tras a odesíláte ze webu přes čísla služby. Žádná SIM, žádné vlastní telefonní číslo a doklady totožnosti se nikdy nepožadují. Telefonní číslo vždy sloužilo jen jako adresa pro příjem. K odesílání jste ho nikdy nevlastnili.</p></div>
@@ -357,7 +368,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
         <a class="btn-primary" href="https://smsroute.cc/signup">Odeslat první zprávu <span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/prices">Zobrazit ceny za zprávu</a>
       </div>
-      <div class="trust-chips"><span>Registrace e-mailem</span><span>Bez dokladů</span><span>Platba crypto</span></div>
+      <div class="trust-chips"><span>Registrace e-mailem</span><span>Bez dokladů</span><span>Platba krypto</span></div>
       <div class="byline">
         <a href="https://smsroute.cc/about" class="byline-author">SMSRoute engineering</a>
         <span class="byline-sep">·</span>
@@ -393,7 +404,8 @@ příjemce potřebuje: telefonní číslo – své
 nepotřebujete: SIM kartu, vlastní číslo, telefon
 cesta pro odpověď: žádná, záměrně – jen jednosměrné odesílání</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html">Jak poslat SMS z počítače bez telefonu</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html">Jak poslat SMS z počítače bez telefonu</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-abroad.html">Posílání SMS do zahraničí: Co účtuje operátor vs. internetová cesta</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
     <details class="faq-card"><summary>Mohu odeslat text z počítače bez telefonu?</summary><div class="faq-answer"><p>Ano, celý proces běží v prohlížeči. Registrace e-mailem umožní zadat cílové číslo a zprávu přímo tam a doručení se potvrdí na obrazovce bez telefonu na vaší straně. Služba uplatní automatický failover podle destinace, takže zablokovaná trasa text nezastaví.</p></div></details><details class="faq-card"><summary>Co vidí příjemce, když nemám číslo?</summary><div class="faq-answer"><p>Příjemce vidí číslo ze sdíleného poolu odesílatelů služby, nebo jmenného (alfanumerického) odesílatele, pokud cílová země podporuje <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumerické ID</a>. Nikdy to není vaše osobní číslo, protože žádné nemáte. Trasy, které jména odmítají, jednoduše zobrazí jedno z čísel poolu, která operátoři už pro doručení akceptují.</p></div></details><details class="faq-card"><summary>Je odesílání bez čísla zdarma?</summary><div class="faq-answer"><p>První zprávy jsou zdarma, protože registrace zahrnuje testovací kredity, abyste hned ověřili stav doručení. Poté platíte jen za zprávu bez předplatného či měsíčního poplatku. Kredit za neúspěšné zprávy se automaticky vrátí, takže o peníze za nedoručené texty nikdy nepřijdete.</p></div></details><details class="faq-card"><summary>Mohu odesílat do libovolné země bez čísla?</summary><div class="faq-answer"><p>Ano, pokrytí zahrnuje 149 zemí a každá cílová země má zveřejněnou sazbu, kterou si před odesláním zkontrolujete. Adaptivní doručení po více trasách s automatickým failoverem obslouží každou cílovou zemi z poolu odesílatelů služby, takže zpráva odchází bez vašeho vlastního čísla.</p></div></details><details class="faq-card"><summary>Mohu také přijímat SMS bez čísla?</summary><div class="faq-answer"><p>Ne. Příjem ze své podstaty vyžaduje číslo, protože operátoři přes něj doručují na zařízení. Tato služba je určena jen pro odesílání. Produkty s virtuálními čísly jsou jiná kategorie s jinými kompromisy, například dočasnými linkami a průběžnými náklady. Vestavěné zpracování STOP klíčových slov a blokační seznamy udržují odchozí zprávy v souladu i na jednosměrných cestách.</p></div></details>
     <div class="cta"><p>Žádná SIM, žádné číslo, žádná karta - e-mailová adresa založí účet a bezplatné testovací kredity odešlou první text.</p><a class="btn" href="https://smsroute.cc/signup">Odešlete první text</a><span class="alt">nebo viz <a href="https://smsroute.cc/prices">ceny za zprávu</a> podle země</span></div>
@@ -401,10 +413,10 @@ cesta pro odpověď: žádná, záměrně – jen jednosměrné odesílání</co
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html" hreflang="en" lang="en" aria-current="true">Angličtina</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-without-number.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-without-number.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-without-number.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-without-number.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Propojte se se zákazníky přes SMS – tak, jak jste to ještě nezažili.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
