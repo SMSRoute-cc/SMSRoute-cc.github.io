@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "IT", "item": "https://smsroute-cc.github.io/it/"}, {"@type": "ListItem", "position": 3, "name": "SMS anonimo online: quale sito funziona", "item": "https://smsroute-cc.github.io/it/anonymous-texting-website.html"}]}</script>
 </head>
@@ -378,7 +389,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 
 <main id="content" class="post">
   <article>
-    <div class="toc-box"><strong>In questa pagina</strong><ol><li><a href="#s1">I siti di messaggistica anonima funzionano davvero?</a></li><li><a href="#s2">Perché tanti siti di SMS gratuiti falliscono in silenzio</a></li><li><a href="#s3">I quattro segnali di un sito che recapita</a></li><li><a href="#s4">Testare un sito di messaggistica in due minuti</a></li><li><a href="#s5">Cosa significa realmente 'anonimo' su un sito</a></li></ol></div>
+    <div class="toc-box"><strong>In questa pagina</strong><ol><li><a href="#s1">I siti di messaggistica anonima funzionano davvero?</a></li><li><a href="#s2">Perché tanti siti di SMS gratuiti falliscono in silenzio</a></li><li><a href="#s3">I quattro segni di un sito che consegna</a></li><li><a href="#s4">Testare un sito di messaggistica in due minuti</a></li><li><a href="#s5">Cosa significa realmente 'anonimo' su un sito</a></li></ol></div>
     <div class="a2-tldr"><b>In breve</b><ul><li>I siti di messaggistica anonima gratuiti spesso accettano messaggi e li scartano in silenzio.</li><li>I banner 'Inviato' non provano nulla; lo stato di consegna per messaggio prova tutto.</li><li>I siti funzionanti pubblicano la copertura per paese, non un vago 'mondiale'.</li><li>La registrazione solo email impedisce al sito di sapere chi sei.</li><li>I crediti di prova gratuiti ti permettono di verificare la consegna prima di fidarti del sito.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">I siti di messaggistica anonima funzionano davvero?</h2><p>Alcuni siti di messaggistica anonima funzionano, mentre molti falliscono silenziosamente. Un sito funzionante mostra lo stato di consegna per messaggio e pubblica i paesi coperti. Uno non funzionante mostra solo un banner di successo e spera che tu non controlli mai il telefono del destinatario.</p>
@@ -388,10 +399,11 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Il tuo telefono è l'unico arbitro che non può essere ingannato. I siti che eliminano silenziosamente i messaggi ti lasciano con un banner di successo e una casella di posta vuota. Se lo stato rimane in sospeso o fallisce, o il tuo telefono non mostra mai il testo, passa oltre. Questa regola decisionale filtra ogni sito di messaggistica anonima non funzionante in pochi secondi e lascia solo quelli con un vero percorso dietro il modulo.</p><ol class="a2-steps"><li><b>Controlla prima la pagina di copertura</b><span>La tua destinazione è elencata per nome?</span></li><li><b>Registrati con un'email secondaria</b><span>Qualsiasi richiesta di numero/ID significa abbandonare</span></li><li><b>Invia un test al tuo telefono</b><span>I crediti gratuiti lo rendono senza costi</span></li><li><b>Osserva lo stato di consegna</b><span>Arrivato sul tuo dispositivo = sito reale</span></li></ol></section><section><h2 id="s5">Cosa significa anonimo su un sito web, onestamente</h2><p>Anonimo su un sito web significa che il sito non viene mai a conoscenza del tuo nome o identità. Non significa mai che la rete telefonica non veda il messaggio o il numero che raggiunge.</p>
 <p>Questa distinzione è il punto cruciale. Ottieni una reale privacy dall'operatore con niente più di un'email. Non ottieni mai invisibilità dal lato della rete, e qualsiasi sito che suggerisca il contrario vende una fantasia. Decidi con questa sola regola: prendi il primo livello, rifiuta ogni affermazione sul secondo.</p><div class="a2-callout a2-note"><p><b>Il limite onesto:</b> Un buon sito di messaggistica conserva solo un indirizzo email, e il destinatario vede un mittente condiviso, mai te. Ciò che nessun sito può offrire è l'invisibilità di rete: i carrier instradano e registrano ogni testo, sia sui siti gratuiti che su quelli a pagamento.</p></div></section>
     </div>
-    <details class="tech-details"><summary>Dettagli tecnici</summary><figure class="artifact"><figcaption>Sito non funzionante vs sito funzionante, a confronto</figcaption><pre><code>sito morto:     banner &#x27;Messaggio inviato!&#x27;, nessuno stato, nessun elenco copertura
+    <details class="tech-details"><summary>Dettagli tecnici</summary><figure class="artifact"><figcaption>Sito non funzionante vs sito funzionante, a confronto</figcaption><pre><code>sito morto:     banner 'Messaggio inviato!', nessuno stato, nessun elenco copertura
 sito funzionante:  stato di consegna per messaggio, paesi + tariffe pubblicati,
                registrazione solo email, crediti di test gratuiti
 l'arbitro:   un messaggio di test al tuo telefono</code></pre></figure></details>
+    
     
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guide correlate</h2><ul><li><a href="https://smsroute-cc.github.io/it/sms-sender-no-kyc.html">Servizio SMS senza KYC: come sceglierlo</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html">SMS anonimo senza registrazione</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-send-sms.html">SMS anonimo online – senza account</a></li><li><a href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">Nascondere il numero quando invii un SMS</a></li></ul></section>
     <h2 id="faq">Domande frequenti</h2>
@@ -401,10 +413,10 @@ l'arbitro:   un messaggio di test al tuo telefono</code></pre></figure></details
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-website.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/anonymous-texting-website.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Home SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Consegna la soddisfazione: connessioni SMS ai tuoi clienti, più di quanto tu abbia mai sperimentato.</p>
+        <p>SMS affidabili. Paga in crypto. Nessun documento.</p>
         <div class="socials">
           </div>
       </div>
@@ -412,8 +424,8 @@ l'arbitro:   un messaggio di test al tuo telefono</code></pre></figure></details
         <p class="footer-heading">Blog</p>
         <ul>
           <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerico vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Template SMS GDPR Double Opt-in</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerico vs Shortcode e ID mittente</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Modelli SMS GDPR double opt-in</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Quale per i miei testi?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Come funziona la consegna OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Guida SMS Internazionali 2026</a></li>
