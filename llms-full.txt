@@ -254,7 +254,7 @@ Q: Is it legal to hide your number when texting?
 A: Sending without showing your number is generally lawful. What the message says decides everything. Harassment and threats are illegal from any number, hidden or not. Rules are covered in the can-I-send-SMS-anonymously guide. The service includes STOP-keyword handling and suppression lists so opt-outs stay enforced.
 
 ## SMSRoute Guides — no-KYC SMS API, crypto billing, Twilio alternatives
-URL: https://smsroute-cc.github.io/index.html
+URL: https://smsroute-cc.github.io/
 Practical guides to no-KYC SMS APIs, crypto-billed messaging, and Twilio alternatives without business verification. By SMSRoute: 149 countries, from $0.004 per message.
 
 ## Is SMS Encrypted? What's Actually Protected and What Isn't
