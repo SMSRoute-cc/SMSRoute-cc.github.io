@@ -1,0 +1,93 @@
+{
+ "source": "https://github.com/SMSRoute-cc/sms-no-kyc-countries (data as of 2026-07-25)",
+ "countries": [
+  {
+   "country": "United States",
+   "local_branded_registration": "A2P 10DLC registration for branded local traffic",
+   "alphanumeric_sender": "No (numeric senders only)",
+   "price_from_usd": 0.002,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html",
+   "iso2": "US"
+  },
+  {
+   "country": "Canada",
+   "local_branded_registration": "Carrier registration for branded local traffic",
+   "alphanumeric_sender": "No (numeric senders only)",
+   "price_from_usd": 0.016,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-canada-anonymously.html",
+   "iso2": "CA"
+  },
+  {
+   "country": "United Kingdom",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.019,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-united-kingdom-anonymously.html",
+   "iso2": "GB"
+  },
+  {
+   "country": "Germany",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.021,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-germany-anonymously.html",
+   "iso2": "DE"
+  },
+  {
+   "country": "France",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes, with content restrictions on marketing",
+   "price_from_usd": 0.022,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-france-anonymously.html",
+   "iso2": "FR"
+  },
+  {
+   "country": "Poland",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.012,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-poland-anonymously.html",
+   "iso2": "PL"
+  },
+  {
+   "country": "Spain",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.018,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-spain-anonymously.html",
+   "iso2": "ES"
+  },
+  {
+   "country": "Netherlands",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.019,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-netherlands-anonymously.html",
+   "iso2": "NL"
+  },
+  {
+   "country": "Austria",
+   "local_branded_registration": "None for international routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.019,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-austria-anonymously.html",
+   "iso2": "AT"
+  },
+  {
+   "country": "Australia",
+   "local_branded_registration": "Sender ID registration rolling out for local routes",
+   "alphanumeric_sender": "Yes",
+   "price_from_usd": 0.045,
+   "guide": "https://smsroute-cc.github.io/send-sms-to-australia-anonymously.html",
+   "iso2": "AU"
+  },
+  {
+   "country": "India",
+   "local_branded_registration": "DLT registration required for domestic senders",
+   "alphanumeric_sender": "Via registered headers only",
+   "price_from_usd": null,
+   "guide": null,
+   "iso2": "IN"
+  }
+ ]
+}
