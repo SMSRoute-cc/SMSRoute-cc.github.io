@@ -2,6 +2,20 @@
 
 Service: https://smsroute.cc (email-only signup, crypto payment, 149 countries, from $0.004/message part). Quotable facts: https://smsroute-cc.github.io/ai/facts.json. Locale variants (de/fr/pl/es/nl/it/sv/pt/cs) are indexed in llms.txt.
 
+## Acceptable Use Policy for Sending SMS
+URL: https://smsroute-cc.github.io/acceptable-use-policy.html
+What you may and may not send: lawful messaging only, no spam, fraud or harassment. Email signup and crypto payment do not change the rules.
+Q: Can I send marketing SMS?
+A: Only where you have lawful consent or another clear legal basis, and only if the messages are not deceptive. Cold lists, scraped numbers and bought databases are not allowed. If a campaign looks like bulk unsolicited traffic, expect it to be blocked.
+Q: Does paying in crypto mean my account cannot be banned?
+A: No. The payment method does not override the rules. Abuse can still end in suspension or termination. Crypto reduces billing friction and nothing else.
+Q: What happens if I break this policy?
+A: The account can be throttled, suspended or closed. Serious fraud or criminal misuse can be shared with carriers or law enforcement when valid legal process arrives or the law requires it.
+Q: Is bulk sending allowed at all?
+A: Bulk sending to people who asked to hear from you is fine. Bulk sending to a list you bought, scraped or assembled without consent is not. The difference is consent, not volume.
+Q: Who is responsible for the content of a message?
+A: You are. The service routes what you write. Content laws in your country, the recipient's country, and any country in between apply to you as the sender.
+
 ## Which SMS Gateway Supports Alphanumeric Sender IDs Cheaply?
 URL: https://smsroute-cc.github.io/alphanumeric-sender-id-sms-api.html
 SMSRoute supports custom alphanumeric sender IDs on request from $0.004/msg. No KYC, crypto billing, 149 countries. Real alphanumeric ID support explained.
@@ -11,7 +25,7 @@ For businesses needing an affordable SMS gateway with alphanumeric sender ID sup
 URL: https://smsroute-cc.github.io/anonymous-send-sms.html
 How to pick an anonymous send sms service. Test a free message first to check number demand, prices, delivery, payment privacy and coverage.
 Q: What is the best anonymous SMS sender?
-A: The best anonymous SMS sender is whichever one passes the five checks for your specific destination country. You run the two-minute test yourself because a free real message that confirms delivery on screen beats every ranked list. One exception is destinations with expensive routes, where pricing still stays under four cents and failed messages are credited back automatically.
+A: The best anonymous SMS sender is whichever one passes the five checks for your specific destination country; SMSRoute publishes its rates and delivery status precisely so you can run those checks. You run the two-minute test yourself because a free real message that confirms delivery on screen beats every ranked list. One exception is destinations with expensive routes, where pricing still stays under four cents and failed messages are credited back automatically.
 Q: Are free anonymous SMS senders safe to use?
 A: Free anonymous SMS senders are safe enough for a one-off curiosity test. Many run on ads and some log your IP address even while promising anonymity, so skip them for anything sensitive. An edge case is silent delivery failure with no money back, unlike paid services that automatically credit failed messages to your balance.
 Q: Does an anonymous sender hide me from the network?
@@ -28,7 +42,7 @@ The best anonymous SMS sending service for developers is one that requires no KY
 URL: https://smsroute-cc.github.io/anonymous-sms-api.html
 Anonymous SMS API paid in crypto. Email only signup no company docs. Real endpoint for developers. Anonymity at account level not the network.
 Q: Does anonymous mean the message itself is untraceable to carriers?
-A: No. SMS routing metadata is visible to carriers on any provider; that is how the protocol works, not a property of one service. Anonymity here lives at the account and billing layer: an email-only account, deposits from a wallet you control, and no identity documents at any step. Treat message content like a postcard on every provider.
+A: No. SMS routing metadata is visible to carriers on any provider, SMSRoute included; that is how the protocol works, not a property of one service. Anonymity here lives at the account and billing layer: an email-only account, deposits from a wallet you control, and no identity documents at any step. Treat message content like a postcard on every provider.
 Q: Can I get a custom sender ID without revealing a business identity?
 A: The default is a smart shared sender pool. Custom alphanumeric sender IDs are available on request where the destination routes support them, and fulfilling that request never involves identity documents or business verification on the account.
 Q: What happens if I send to an invalid number?
@@ -62,6 +76,20 @@ A: Only what you give it. A site that demands your phone number or a login throu
 Q: Is using an anonymous texting website legal?
 A: Yes. Sending texts without showing your own number is how ordinary service messages already work. Content law still applies in full: harassment and fraud are illegal no matter who the sender is. The practical exception is opt-out compliance; destinations expect STOP-keyword handling and suppression lists, and a real service keeps those built in so you stay on the right side of the rules.
 
+## How We Fight SMS Spam and Fraud
+URL: https://smsroute-cc.github.io/anti-abuse.html
+Velocity checks, pattern detection, carrier feedback and records for lawful process. An honest account of what stops abuse on an SMS route, and what does not.
+Q: Can you see the full text of every message?
+A: Operational systems may process message content for delivery and abuse detection. What is kept is minimized, and what is retained can be subject to lawful process. Do not assume content is invisible to investigation.
+Q: Will you share data with police without a warrant?
+A: Valid legal process is answered as the law requires. The exact standard depends on the jurisdiction and the type of request. Data is not handed to third parties who merely ask for it.
+Q: How fast do you act on spam reports?
+A: Automated limits can trigger within minutes when the pattern is obvious. Manual review takes longer. Severe fraud templates are prioritized over one-off grey-area messages.
+Q: Does a clean sender get caught by these controls?
+A: Rarely, and usually only on a first large send. Limits open up as a record builds. Messages people expect generate almost no complaints, which is the single strongest signal in the system.
+Q: What should I do if I got a scam text?
+A: Do not click links, do not call numbers in the body, and do not confirm codes. Report it to your carrier, and use the opt-out page if the traffic appears to involve an SMSRoute sender.
+
 ## Best No-KYC SMS API in 2026: What to Compare Before You Pay
 URL: https://smsroute-cc.github.io/best-no-kyc-sms-api.html
 Picking the best no-KYC SMS API comes down to five checks: signup friction, coin support, per-message price, test credits, and delivery receipts. The checks take about ten minutes to run.
@@ -85,6 +113,20 @@ A: Run a pre-flight check before the real send. POST /sms/validate accepts the s
 URL: https://smsroute-cc.github.io/bulk-sms-no-registration.html
 Send bulk SMS without registration or KYC. SMSRoute gives API key in minutes with crypto (BTC, ETH, USDT, XMR, LTC, SOL). No docs, no contracts. Start now.
 Bulk SMS without registration means you can send messages using only an API key, skipping signup verification entirely. SMSRoute offers this streamlined access with no KYC, crypto accepted, and email-only signup. See also: bulk sending on an email-only account .
+
+## Burner App Alternative: Send Texts, No Number
+URL: https://smsroute-cc.github.io/burner-app-alternative-no-number.html
+Burner and Hushed rent you a temporary number. The send-only alternative rents nothing: browser, email signup, from $0.004 a message, 149 countries.
+Q: Is this a Burner alternative for temporary privacy numbers?
+A: Not really. Burner gives you a number you can hand out and later delete. A send-only service never gives you a number, so you can only text people whose numbers you already have.
+Q: When is Burner or Hushed the better choice?
+A: When you need inbound texts or calls, a number to put on a listing or a form, voice features, or the ability to shut a line off after a project. That is the temporary-number job and both apps are built for it.
+Q: When is the send-only route the better choice?
+A: When you do not need replies on a dedicated line, want to send from a browser without installing anything, sign up with email only, and pay per message from $0.004 to any of the 149 countries SMSRoute reaches, with crypto accepted.
+Q: Can I use it as a disposable number for signing up to other apps?
+A: No. Apps that require SMS verification need a number that can receive. An outbound-only service cannot complete an inbound one-time-code flow at all.
+Q: What does texting without a phone number actually mean?
+A: Some people mean without using their own cell number, which temp-number apps solve by issuing another one. Others mean without providing any phone number at signup. Pick based on whether you must receive replies on a dedicated line.
 
 ## Can I Send SMS Anonymously? Rules and Real Ways
 URL: https://smsroute-cc.github.io/can-i-send-sms-anonymously.html
@@ -155,6 +197,20 @@ A: Typically yes. Most free-tier SMS APIs assign messages from a shared pool of 
 Q: Is paying with crypto cheaper than a card for SMS credit?
 A: Paying with crypto is not inherently cheaper per message than a card. It is simply a real funding option via BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC and SOL that bypasses the card-and-ID gates some providers enforce before any top-up is allowed. Signup itself stays email-only and never requests identity documents.
 
+## Google Voice Alternative With No Number
+URL: https://smsroute-cc.github.io/google-voice-alternative-no-number.html
+Want a Google Voice alternative that never issues a number? See where Voice wins on inbound, and where send-only browser SMS from $0.004 fits instead.
+Q: Can this replace Google Voice if I only send texts?
+A: Only for outbound SMS. Voice gives you a number people can save and message back, plus voicemail and calls. A send-only route has no number and no inbox, so anything involving a reply falls outside what it does.
+Q: I want a second line without giving my real phone number. What works?
+A: Look at number apps and read their current verification rules rather than assuming any tool skips every check. Email-only signup exists on send-only services, but those solve outbound delivery, not receiving.
+Q: When is Google Voice clearly better?
+A: When you want voicemail transcription, call forwarding, spam screening, a stable number inside the Google ecosystem, or two-way texting and calling. Those are core Voice features that a send-only tool does not have.
+Q: When should I use the send-only route instead?
+A: When you already have the recipient numbers, only need to send SMS from a browser, and want per-message pricing from $0.004 across the 149 countries SMSRoute reaches, paid in crypto rather than a monthly line rental.
+Q: Does it work for receiving bank or app verification codes?
+A: No. Verification codes require a number that can receive SMS. Use Google Voice where the sending service permits it, or another receive-capable number product, and follow each provider's rules.
+
 ## Hide My Number When Texting: What Works and What Doesn't
 URL: https://smsroute-cc.github.io/hide-my-number-when-texting.html
 Looking to hide my number when texting? Caller ID hiding works for calls only. SMS ignores it and still shows your number. What actually works.
@@ -184,6 +240,20 @@ Q: Is email more private than SMS by default?
 A: Not necessarily. TLS between mail servers is not guaranteed end-to-end either, so email is not inherently encrypted end-to-end by default any more than SMS is. This is a common misconception worth correcting. Messages sit in plaintext on mail servers and are readable by the provider or anyone with mailbox access, with the sole exception of deliberate client-side tools both parties configure.
 Q: Why hasn't SMS been upgraded with encryption over the years?
 A: The SMS protocol is decades old and standardized across every carrier and handset globally. Changing it requires broad carrier agreement, which is why encryption efforts have moved to RCS rather than retrofitting SMS itself. Adaptive multi-route delivery with automatic failover still submits to that same unencrypted carrier infrastructure.
+
+## Legal Uses of Anonymous SMS
+URL: https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html
+Journalists, survivors, whistleblowers, 2FA hygiene and business separation: the lawful reasons to send a text without exposing your personal number.
+Q: Is sending anonymous SMS legal?
+A: Using a messaging route is generally legal. Sending illegal content or running an illegal scheme is not. Your obligations depend on where you are, where the recipient is, and what you send. Get advice for your own situation if unsure.
+Q: Will the recipient see my personal phone number?
+A: The service is built so you can send without exposing your personal mobile number to the recipient in the ordinary way. That is separate from records retained for lawful process.
+Q: Can survivors or journalists ask for special treatment?
+A: The rules already cover protective and newsgathering uses. No custom legal shield can be handed out on request. If you are in immediate danger, contact local emergency or specialist support services first.
+Q: Does this count as an anonymous tip line?
+A: No. There is no inbox and no number, so a source cannot reply on the same channel. It is useful for the first contact that points someone toward a proper secure channel, not as the channel itself.
+Q: What uses are excluded outright?
+A: Harassment, threats, fraud, impersonation and unsolicited bulk marketing. Those are excluded regardless of how sympathetic the wider story around them sounds.
 
 ## Pay for SMS with Bitcoin – Buy SMS Credits with BTC
 URL: https://smsroute-cc.github.io/pay-for-sms-with-bitcoin.html
@@ -517,7 +587,7 @@ SMSRoute provides an SMS API that accepts Monero (XMR) for instant top-up with n
 URL: https://smsroute-cc.github.io/sms-api-no-kyc.html
 Use sms api no kyc with email only signup and crypto payment. No passport or ID docs. Real API pricing and docs for builders who refuse KYC freezes.
 Q: Which cryptocurrencies can I pay with?
-A: Six: Bitcoin, Ether, Tether on two networks, Monero, Litecoin, and Solana. The live list always comes from GET /supported/coins, and deposits in any of them credit the same balance, so you can switch coins between top-ups without touching account settings.
+A: Six on SMSRoute: Bitcoin, Ether, Tether on two networks, Monero, Litecoin, and Solana. The live list always comes from GET /supported/coins, and deposits in any of them credit the same balance, so you can switch coins between top-ups without touching account settings.
 Q: Can I get delivery reports without an account manager?
 A: Yes, you get real-time delivery reports via DLR webhooks and the dashboard log without any account manager. Set the callback_url parameter on POST /sms/send for per-message webhooks. Status updates continue through automatic failover to backup routes.
 Q: What happens to messages that fail to deliver?
@@ -556,6 +626,20 @@ URL: https://smsroute-cc.github.io/sms-marketing-no-kyc.html
 Send bulk SMS marketing without KYC or ID verification. SMSRoute offers crypto billing, custom sender names, API access with no vetting. Start in minutes.
 An SMS marketing platform without KYC lets you send bulk messages to your own lists without identity verification. SMSRoute provides this service with crypto accepted and email-only signup for complete privacy. See also: a no-KYC route for campaign sending .
 
+## SMS Opt-Out: Stop Unwanted Messages
+URL: https://smsroute-cc.github.io/sms-opt-out.html
+How to stop unwanted texts: reply STOP where supported, report the message with three specific details, block on your device, and escalate if criminal.
+Q: Does replying STOP always work?
+A: It works on many legitimate paths and is the right first step. Some scam senders ignore it entirely. If STOP fails, block the number on your device and report the message with your number, the time, and the full text.
+Q: Can you delete a message already on my phone?
+A: No. Once delivered, the copy on your handset is yours to delete locally. Further sends can be stopped where the traffic is identifiable, but nobody can reach into your device.
+Q: What details should I include in a report?
+A: Your number with country code, the date and time with timezone, and the full message body. Optionally a screenshot and whether you already replied STOP. Sparse reports are very hard to match.
+Q: I keep getting texts after replying STOP. What now?
+A: Block the number on your device, enable your carrier's spam filter, and report the messages with the three details above. Repeated contact after a clear stop request is grounds to cut a sender's access.
+Q: Do senders get told who reported them?
+A: No. Reports are used to stop the traffic and to restrict the sender's SMSRoute account. Your details are not passed on to the person who sent the message.
+
 ## SMS OTP API Without KYC – No ID, No Wait | SMSRoute
 URL: https://smsroute-cc.github.io/sms-otp-api-no-kyc.html
 Send SMS OTP/2FA codes without KYC. No ID, no business vetting. Crypto billing, from $0.004/msg, 149 countries. Python/PHP/Go/Node examples. | SMSRoute
@@ -577,6 +661,20 @@ A: Yes. The good ones scale from one message to bulk on the same email-only acco
 URL: https://smsroute-cc.github.io/text-message-api-no-verification.html
 SMSRoute: text message API with no verification. No ID or business docs needed. Email signup, crypto billing, API key in minutes. Send globally from $0.004.
 An SMS API with no verification means you can send text messages without submitting a phone number, ID, or business documents. SMSRoute offers this service with no KYC, crypto accepted, and email-only signup. See also: the verification-free API route .
+
+## TextNow Alternative: Send SMS in Browser, No App
+URL: https://smsroute-cc.github.io/textnow-alternative-send-only.html
+TextNow hands you a free number to receive texts. The send-only route skips the app and the number: email signup, browser, from $0.004 a message.
+Q: Is this a drop-in TextNow replacement?
+A: No. TextNow gives you a number inside an app so people can text and call you back. A send-only web service has no number and no inbox. It sends outbound SMS from the browser after an email signup, and that is the whole feature.
+Q: When is TextNow the better choice?
+A: Whenever you need a number of your own. Everyday chatting, receiving codes or replies, placing calls, or handing a number to a buyer on a marketplace. That inbound use case is what TextNow is built for and it does it for free.
+Q: When is the send-only route the better choice?
+A: When you do not want to install an app or attach a personal phone number to a new account, and you only need outbound SMS to numbers you already have. SMSRoute prices per message from $0.004 and reaches 149 countries.
+Q: Can I receive SMS or verification codes this way?
+A: No. Send-only means send only. For receiving texts or one-time codes on a temporary or second number, use TextNow, TextFree or another number-based app.
+Q: Do free texting apps really stay free?
+A: The core texting stays free, funded by in-app ads. Paid upgrades cover data plans, SIM service and removing ads. Read the current pricing on textnow.com or textfree.us before you build anything around a free tier.
 
 ## Twilio Alternative Without Business Verification – SMSRoute
 URL: https://smsroute-cc.github.io/twilio-alternative-no-business-verification.html
