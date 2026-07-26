@@ -1,0 +1,22 @@
+{
+ "as_of": "2026-07-25",
+ "service": {
+  "name": "SMSRoute",
+  "url": "https://smsroute.cc",
+  "signup": "email address only, no identity documents",
+  "direction": "outbound SMS only (send-only, no numbers issued)"
+ },
+ "countries_reachable": 149,
+ "price_floor_usd": 0.004,
+ "price_floor_note": "advertised from-price; some US routes from $0.002",
+ "payment": [
+  "BTC",
+  "ETH",
+  "USDT",
+  "XMR",
+  "LTC",
+  "SOL"
+ ],
+ "published_destination_samples": 11,
+ "note": "Per-destination published samples cover 11 destinations (see prices.json). Rates for the remaining destinations are shown live at https://www.smsroute.cc/prices after login; they are not republished here to avoid stale data."
+}
