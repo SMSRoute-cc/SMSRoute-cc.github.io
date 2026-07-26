@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/anonymous-sms-api.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/anonymous-sms-api.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/anonymous-sms-api.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/anonymous-sms-api.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/anonymous-sms-api.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/anonymous-sms-api.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/anonymous-sms-api.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/anonymous-sms-api.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/anonymous-sms-api.html">
 <meta name="description" content="API SMS anónimo: controla envíos sin número visible. Sin KYC, docs y crédito de prueba.">
 <link rel="canonical" href="https://smsroute-cc.github.io/es/anonymous-sms-api.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "API SMS anónimo – envío discreto", "description": "API SMS anónimo: controla envíos sin número visible. Sin KYC, docs y crédito de prueba.", "url": "https://smsroute-cc.github.io/es/anonymous-sms-api.html", "inLanguage": "es", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/es/anonymous-sms-api.html", "image": "https://smsroute-cc.github.io/og/anonymous-sms-api-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "API SMS anónimo – envío discreto", "item": "https://smsroute-cc.github.io/es/anonymous-sms-api.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Iniciar sesión</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Comenzar</a></div>
 </div></header>
 
-<nav class="migas de pan" aria-label="migas de pan">
+<nav class="breadcrumb" aria-label="migas de pan">
   <ol>
     <li><a href="https://smsroute.cc/">Inicio</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -345,7 +350,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="hero-inner">
     <div>
       <span class="eyebrow-pill">149 países · criptonativo · registro solo con email</span>
-      <h1 class="hero-title">API de SMS anónima</h1>
+      <h1 class="hero-title">API de SMS anónimo</h1>
       <div class="hero-sub"><p>Una API SMS anónima implica registro solo con email, sin necesidad de documentos de identidad para el anonimato de la cuenta y la facturación, mientras que las operadoras siguen viendo el tráfico SMS en la red.</p>
 <p>Esto es para desarrolladores que crean apps, herramientas o proyectos secundarios que necesitan enviar SMS programáticamente sin dejar un rastro documental de verificación empresarial asociado a la cuenta.</p></div>
       <div class="hero-ctas">
@@ -398,16 +403,18 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;message&quot;: &quot;Your code is 482913&quot;, &quot;recipients&quot;: [&quot;+14155550123&quot;, &quot;+442079460018&quot;]}&#x27;
 
-# returns JSON confirming which recipients are valid and ready to send
+# devuelve JSON confirmando qué destinatarios son válidos y están listos para enviar
 
-# then send for real
+# luego envía de verdad
 curl -X POST https://api.smsroute.cc/sms/send \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;}&#x27;
 
-# response
+# respuesta
 {&quot;messageId&quot;: &quot;a91f4c2e&quot;, &quot;status&quot;: &quot;QUEUED&quot;}</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-no-kyc.html">SMS sin registro – sin KYC</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html">Enviar SMS sin número visible</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Significa anónimo que el mensaje en sí no es rastreable para los operadores?</summary><div class="faq-answer"><p>No. Los metadatos de enrutamiento SMS son visibles para los operadores en cualquier proveedor; así funciona el protocolo, no es una propiedad de un servicio. El anonimato aquí reside en la capa de cuenta y facturación: una cuenta solo con correo electrónico, depósitos desde una billetera que controlas y sin documentos de identidad en ningún paso. Trata el contenido del mensaje como una postal en todos los proveedores.</p></div></details><details class="faq-card"><summary>¿Puedo obtener un ID de remitente personalizado sin revelar una identidad comercial?</summary><div class="faq-answer"><p>El valor predeterminado es un grupo compartido inteligente de remitentes. Los ID de remitente alfanuméricos personalizados están disponibles previa solicitud donde las rutas de destino los admitan, y cumplir esa solicitud nunca implica documentos de identidad ni verificación comercial en la cuenta.</p></div></details><details class="faq-card"><summary>¿Qué sucede si envío a un número inválido?</summary><div class="faq-answer"><p>Llama a POST /sms/validate primero para filtrar números inválidos antes de cualquier envío. Los mensajes fallidos que llegan a la red y rebotan se acreditan automáticamente, restaurando el costo exacto sin necesidad de un ticket. Esto cubre tanto números mal formateados como aquellos que el operador marca como no entregables después de la aceptación.</p></div></details><details class="faq-card"><summary>¿A cuántos países puedo llegar?</summary><div class="faq-answer"><p>Llegas a 149 países en la red. Las tarifas por país están en GET /prices para que veas el costo exacto antes de enviar. La entrega adaptativa con múltiples rutas y conmutación automática por destino mantiene los mensajes en movimiento incluso cuando falla una ruta principal.</p></div></details><details class="faq-card"><summary>¿Hay una forma gratuita de probar antes de cargar saldo la cuenta?</summary><div class="faq-answer"><p>Sí. Los créditos de prueba gratuitos llegan al registrarte y te permiten verificar rutas antes de cualquier fondeo. Los informes de entrega de esos mensajes de prueba se muestran en tiempo real a través de webhooks DLR y el registro del panel, igual que en producción.</p></div></details>
     <div class="cta"><p>Sin identificación, sin documentos comerciales, sin papeleo A2P. Solo un correo electrónico y una clave API.</p><a class="btn" href="https://smsroute.cc/signup">Crea una cuenta solo con un correo electrónico</a><span class="alt">o lee la <a href="https://smsroute.cc/developers">referencia de la API</a> primero</span></div>
@@ -456,7 +463,7 @@ curl -X POST https://api.smsroute.cc/sms/send \
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Paga con Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Pagar connnn Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Pagar con USDT</a></li>
-        </ul> <p class="footer-heading">Herramientas gratis</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Contador de caracteres SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculadora de costes SMS</a></li> <li><a href="https://smsroute.cc/tools">Herramientas gratis →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Casos de uso</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS para 2FA</a></li>
