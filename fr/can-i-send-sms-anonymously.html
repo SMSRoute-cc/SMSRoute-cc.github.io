@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html">
 <meta name="description" content="Oui, on peut envoyer un SMS anonyme sans inscription ni numéro. Mode d&#x27;emploi avec crédit d&#x27;essai.">
 <link rel="canonical" href="https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Peut-on envoyer un SMS anonyme ?", "description": "Oui, on peut envoyer un SMS anonyme sans inscription ni numéro. Mode d'emploi avec crédit d'essai.", "url": "https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html", "inLanguage": "fr", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html", "image": "https://smsroute-cc.github.io/og/can-i-send-sms-anonymously-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "FR", "item": "https://smsroute-cc.github.io/fr/"}, {"@type": "ListItem", "position": 3, "name": "Peut-on envoyer un SMS anonyme ?", "item": "https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Connexion</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Commencer</a></div>
 </div></header>
 
-<nav class="fil d'Ariane" aria-label="fil d'Ariane">
+<nav class="breadcrumb" aria-label="fil d'Ariane">
   <ol>
     <li><a href="https://smsroute.cc/">Accueil</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -389,11 +392,13 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Cette limite est importante car les forces de l'ordre peuvent toujours accéder aux journaux sur ordonnance du tribunal même lorsque votre numéro et votre identité restent cachés du destinataire et de l'outil que vous avez choisi. L'écueil est simple : toute affirmation d'intraçabilité totale signale un service à éviter. Prenez cette limite franche comme règle de décision et tenez-vous-en aux outils qui l'énoncent clairement plutôt que de promettre l'impossible.</p><div class="a2-callout a2-warn"><p><b>La couche dont personne ne s'échappe :</b>Les réseaux des opérateurs voient et enregistrent le routage de chaque message texte jamais expédié → tous les SMS jamais envoyés / chaque SMS envoyé - cette couche est identique sur tous les services, applis et sites web. Quiconque promet une invisibilité totale sur le réseau décrit mal le fonctionnement du SMS.</p></div></section><section><h2 id="s5">Est-il légal d'envoyer des SMS de manière anonyme ?</h2><p>Oui, il est légal d'envoyer des SMS de manière anonyme dans le sens où vous n'avez pas à révéler votre numéro de téléphone personnel. Les entreprises envoient constamment des messages de cette façon pour les livraisons, les notifications bancaires et les rappels de rendez-vous. Le fait de cacher votre numéro en soi n'est pas ce que la loi cible.</p>
 <p>Ce que la loi réglemente, c'est le contenu et la conduite. Le harcèlement, les menaces, la fraude et les crimes similaires restent illégaux, que le message montre votre numéro ou provienne d'un expéditeur partagé. Les opérateurs conservent des registres réseau, donc les abus graves font bien l'objet d'enquêtes sur ordonnance du tribunal. L'anonymat protège la vie privée. Il n'offre aucune immunité pour les actes répréhensibles.</p></section>
     </div>
-    <details class="tech-details"><summary>Détails techniques</summary><figure class="artifact"><figcaption>Les trois couches, un seul écran</figcaption><pre><code>from the recipient:  hidden - they see a gateway sender
-from the service:    your choice - email-only is the minimal end
-from the network:    never - routing is logged on every service
-legal?               sending: yes, almost everywhere
-                     content: same laws as any message</code></pre></figure></details>
+    <details class="tech-details"><summary>Détails techniques</summary><figure class="artifact"><figcaption>Les trois couches, un seul écran</figcaption><pre><code>du destinataire :  masqué - ils voient un expéditeur de passerelle
+du service :    votre choix - e-mail uniquement est le minimum
+du réseau :    jamais - le routage est journalisé sur chaque service
+légal ?               envoi : oui, presque partout
+                     contenu : les mêmes lois que pour tout message</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guides associés</h2><ul><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-app.html">Application SMS anonyme : que choisir</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html">SMS anonyme en ligne : choisir un site</a></li><li><a href="https://smsroute-cc.github.io/fr/hide-my-number-when-texting.html">Masquer son numéro pour envoyer un SMS : ce qui marche</a></li></ul></section>
     <h2 id="faq">Questions fréquentes</h2>
     <details class="faq-card"><summary>Un SMS anonyme peut-il être retracé jusqu'à moi ?</summary><div class="faq-answer"><p>Non, pas par le destinataire ni par des moyens ordinaires. Le service ne peut divulguer que l'adresse email et le solde en crypto liés au compte. Le traçage au niveau réseau existe uniquement pour les crimes graves et reste une affaire de forces de l'ordre avec des ordonnances du tribunal, pas de curieux. Utiliser XMR pour le financement maintient le côté paiement tout aussi minimal.</p></div></details><details class="faq-card"><summary>Puis-je envoyer un SMS anonyme depuis mon propre téléphone ?</summary><div class="faq-answer"><p>Non, vous ne pouvez pas envoyer un SMS anonyme depuis votre propre téléphone. Votre carte <a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a> signe chaque texte qui quitte votre appareil, donc le destinataire voit toujours votre vrai numéro. Un véritable envoi anonyme signifie que le message part d'ailleurs, d'un service web qui utilise son propre pool d'expéditeurs partagés par défaut. Là où les routes le permettent, vous pouvez même demander un nom alphanumérique personnalisé à la place.</p></div></details><details class="faq-card"><summary>Un SMS anonyme semblera-t-il suspect au destinataire ?</summary><div class="faq-answer"><p>Non, il ressemble à n'importe quel message de service, au même format que ceux utilisés par les banques et les services de livraison. Un nom d'expéditeur, là où c'est supporté, fait plus net qu'un numéro inconnu. La gestion du mot-clé STOP est intégrée, comme pour les alertes légitimes, donc rien dans le message lui-même n'éveille les soupçons.</p></div></details><details class="faq-card"><summary>Quel est le moyen le plus anonyme qui fonctionne réellement ?</summary><div class="faq-answer"><p>Un service ne détenant rien d'autre qu'un email, payé en crypto et envoyant depuis son propre pool est l'option la plus anonyme qui fonctionne encore. Le message de test gratuit vous permet de confirmer par vous-même qu'il atteint le destinataire avant de vous y fier.</p></div></details>
     <div class="cta"><p>Si la réponse que vous cherchiez était « oui, sans donner mon nom » — cette voie existe, et un message test gratuit le prouve.</p><a class="btn" href="https://smsroute.cc/signup">Essayez avec uniquement un e-mail</a><span class="alt">Comment ça fonctionne :<a href="https://smsroute-cc.github.io/send-sms-anonymously.html">Envoyer un SMS anonymement, étape par étape</a></span></div>
@@ -442,7 +447,7 @@ legal?               sending: yes, almost everywhere
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Payer en Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Payer en Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Payer en USDT</a></li>
-        </ul> <p class="footer-heading">Outils gratuits</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Compteur de caractères SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculateur de coût SMS</a></li> <li><a href="https://smsroute.cc/tools">Outils gratuits →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Cas d'usage</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS pour 2FA</a></li>
