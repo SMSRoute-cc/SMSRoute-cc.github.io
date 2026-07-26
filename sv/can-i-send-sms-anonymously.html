@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html">
 <meta name="description" content="Kan man skicka SMS anonymt? Ja – mottagaren ser inte ditt nummer. Vad tjänsten vet om dig och varför innehållet avgör lagligheten.">
 <link rel="canonical" href="https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Kan man skicka SMS anonymt? Regler och sätt", "description": "Kan man skicka SMS anonymt? Ja – mottagaren ser inte ditt nummer. Vad tjänsten vet om dig och varför innehållet avgör lagligheten.", "url": "https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html", "inLanguage": "sv", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html", "image": "https://smsroute-cc.github.io/og/can-i-send-sms-anonymously-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "SV", "item": "https://smsroute-cc.github.io/sv/"}, {"@type": "ListItem", "position": 3, "name": "Kan man skicka SMS anonymt? Regler och sätt", "item": "https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Logga in</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Kom igång</a></div>
 </div></header>
 
-<nav class="brödsmulor" aria-label="brödsmulor">
+<nav class="breadcrumb" aria-label="brödsmulor">
   <ol>
     <li><a href="https://smsroute.cc/">Hem</a></li>
     <li><a href="https://smsroute.cc/blog/">Blogg</a></li>
@@ -389,11 +392,13 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Den begränsningen spelar roll eftersom brottsbekämpande myndigheter eller en domstol fortfarande kan nå loggarna även när ditt nummer och identitet förblir dolda från mottagaren och verktyget du valde. Haken är enkel: alla påståenden om total ospårbarhet är ett tecken på en tjänst att undvika. Använd den ärliga gränsen som din beslutsregel och håll dig till verktyg som anger det direkt istället för att lova det omöjliga.</p><div class="a2-callout a2-warn"><p><b>Lagret ingen undkommer:</b>Operatörsnätverk ser och loggar dirigeringen av varje textmeddelande som någonsin skickats - det lagret är identiskt på varje tjänst, app och webbplats. Alla som lovar total nätverksosynlighet beskriver felaktigt hur SMS fungerar.</p></div></section><section><h2 id="s5">Är det lagligt att skicka SMS anonymt?</h2><p>Ja, det är lagligt att skicka SMS anonymt i den meningen att du inte måste avslöja ditt personliga telefonnummer. Företag skickar meddelanden på det här sättet ständigt för leveranser, bankaviseringar och bokningspåminnelser. Själva handlingen att dölja ditt nummer är inte vad lagar riktar sig mot.</p>
 <p>Det lagen reglerar är innehåll och beteende. Trakasserier, hot, bedrägeri och liknande brott förblir olagliga oavsett om meddelandet visar ditt nummer eller kommer från en gemensam avsändare. Operatörer behåller nätverksregister, så allvarligt missbruk utreds med stöd av domstolsbeslut. Anonymitet skyddar integritet. Det ger inget skydd för felaktigt beteende.</p></section>
     </div>
-    <details class="tech-details"><summary>Tekniska detaljer</summary><figure class="artifact"><figcaption>De tre lagren, en skärm</figcaption><pre><code>from the recipient:  hidden - they see a gateway sender
-from the service:    your choice - email-only is the minimal end
-from the network:    never - routing is logged on every service
-legal?               sending: yes, almost everywhere
-                     content: same laws as any message</code></pre></figure></details>
+    <details class="tech-details"><summary>Tekniska detaljer</summary><figure class="artifact"><figcaption>De tre lagren, en skärm</figcaption><pre><code>från mottagaren:     dolt - de ser en gateway-avsändare
+från tjänsten:       ditt val - endast e-post är minimum
+från nätverket:      aldrig - routing loggas på varje tjänst
+lagligt?             skicka: ja, nästan överallt
+                     innehåll: samma lagar som vilket meddelande som helst</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Relaterade guider</h2><ul><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-app.html">Anonyma sms-appar: Vad som fungerar 2026</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-website.html">Anonym sms-webbplats: Vad du ska leta efter</a></li><li><a href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">Dölj mitt nummer vid sms: Vad som fungerar och inte</a></li></ul></section>
     <h2 id="faq">Vanliga frågor</h2>
     <details class="faq-card"><summary>Kan ett anonymt SMS spåras tillbaka till mig?</summary><div class="faq-answer"><p>Nej, inte av mottagaren eller på vanligt sätt. Tjänsten kan endast lämna ut e-postadressen och kryptosaldot kopplat till kontot. Spårning på nätverksnivå finns endast för allvarliga brott och förblir en fråga för brottsbekämpning med domstolsorder, inte nyfikna parter. Att använda XMR för finansiering håller betalningssidan lika minimal.</p></div></details><details class="faq-card"><summary>Kan jag skicka ett anonymt SMS från min egen telefon?</summary><div class="faq-answer"><p>Nej, du kan inte skicka ett anonymt SMS från din egen telefon. Ditt <a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a>-kort signerar varje text som lämnar din telefon, så mottagaren ser alltid ditt riktiga nummer. Äkta anonymt skickande innebär att meddelandet skickas någon annanstans ifrån, en webbtjänst som använder sin egen gemensamma avsändarpool som standard. Där rutter tillåter det kan du till och med begära ett anpassat alfanumeriskt namn istället.</p></div></details><details class="faq-card"><summary>Kommer ett anonymt textmeddelande att se misstänkt ut för mottagaren?</summary><div class="faq-answer"><p>Nej, det ser ut som vilket tjänstemeddelande som helst, samma format som banker och leveransföretag använder. Ett avsändarnamn, där det stöds, ser renare ut än ett okänt nummer. STOP-keyword-hantering är inbyggd, i linje med hur legitima aviseringar redan fungerar, så inget med själva meddelandet väcker misstankar.</p></div></details><details class="faq-card"><summary>Vad är det mest anonyma sättet som fortfarande faktiskt levererar?</summary><div class="faq-answer"><p>En tjänst som bara kräver en e-postadress, betalas med krypto och skickar från sin egen pool, är det mest anonyma alternativet som fortfarande levererar. Det kostnadsfria testmeddelandet låter dig själv bekräfta att det når mottagaren innan du litar på det.</p></div></details>
     <div class="cta"><p>Om svaret du behövde var 'ja, utan att ange mitt namn' - den vägen finns, och ett gratis testmeddelande bevisar det.</p><a class="btn" href="https://smsroute.cc/signup">Prova med enbart e-post</a><span class="alt">Hur det fungerar: <a href="https://smsroute-cc.github.io/send-sms-anonymously.html">skicka SMS anonymt, steg för steg</a></span></div>
@@ -442,7 +447,7 @@ legal?               sending: yes, almost everywhere
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betala med Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betala med Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betala med USDT</a></li>
-        </ul> <p class="footer-heading">Gratisverktyg</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-teckenräknare</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostnadskalkylator</a></li> <li><a href="https://smsroute.cc/tools">Gratisverktyg →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Användningsområden</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS för 2FA</a></li>
