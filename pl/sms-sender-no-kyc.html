@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "PL", "item": "https://smsroute-cc.github.io/pl/"}, {"@type": "ListItem", "position": 3, "name": "Wysyłka SMS bez KYC: jak wybrać usługę", "item": "https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html"}]}</script>
 </head>
@@ -393,6 +404,7 @@ twierdzenie: &#x27;niezawodny&#x27;         sprawdź: darmowy test na własny te
 twierdzenie: &#x27;tani&#x27;            sprawdź: publiczna tabela stawek per kraj?
 twierdzenie: &#x27;nie do wyśledzenia&#x27;      sprawdź: nie istnieje - sieci logują routing. odejdź</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-send-sms.html">Anonimowy SMS – bramka online</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html">Czy można wysłać anonimowy SMS?</a></li><li><a href="https://smsroute-cc.github.io/pl/hide-my-number-when-texting.html">Jak ukryć numer przy wysyłaniu SMS-a</a></li></ul></section>
     <h2 id="faq">Często zadawane pytania</h2>
     <details class="faq-card"><summary>Który nadawca SMS nie ma KYC?</summary><div class="faq-answer"><p>Istnieje kilku nadawców SMS bez KYC, większość płatna kryptowalutą. Nie ufaj żadnej liście nazw. Przeprowadź własną listę kontrolną: opublikowane stawki na kraj, darmowy realny test na telefon i status dostarczenia na żywo. Nadawca, który przejdzie wszystkie trzy, jest wart finansowania; ten, który obleje którekolwiek – nie. Automatyczne przełączanie między trasami utrzymuje dostarczanie, nawet gdy jedna ścieżka upada – czego puste strony z obietnicami nigdy nie budują.</p></div></details><details class="faq-card"><summary>Czy wysyłanie SMS-ów bez KYC jest legalne?</summary><div class="faq-answer"><p>Tak, korzystanie z nadawcy SMS bez KYC jest legalne. Uproszczona rejestracja to wybór biznesowy, a nie przestępstwo. Treść wiadomości podlega tym samym regulacjom co w każdej usłudze: nękanie i oszustwa są nielegalne wszędzie. Obsługa słowa STOP i listy blokad są wbudowane, więc rezygnacje są egzekwowane.</p></div></details><details class="faq-card"><summary>Dlaczego nadawcy bez KYC używają płatności kryptowalutami?</summary><div class="faq-answer"><p>Przetwarzanie kart pociąga za sobą wymogi tożsamości, ponieważ sieci zmuszają sprzedawców do weryfikacji płatników. Kryptowaluty pozwalają nadawcy bez KYC wystawić fakturę bez przechowywania danych karty, co jest sednem tej kategorii. Usługa akceptuje BTC, ETH, USDT, XMR, LTC i SOL, aby płatność pozostawała poza tradycyjnym systemem bankowym.</p></div></details><details class="faq-card"><summary>Czy mogę wysyłać masowo u nadawcy bez KYC?</summary><div class="faq-answer"><p>Tak. Dobre usługi skalują się od pojedynczej wiadomości do masowej wysyłki na tym samym koncie e-mail, z wbudowaną obsługą słowa STOP i listami blokad. Wolumen zmienia cenę, a nie zasady identyfikacji.</p></div></details>
@@ -401,10 +413,10 @@ twierdzenie: &#x27;nie do wyśledzenia&#x27;      sprawdź: nie istnieje - sieci
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/sms-sender-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-sender-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-sender-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-sender-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-sender-no-kyc.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/sms-sender-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-sender-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-sender-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-sender-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-sender-no-kyc.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/sms-sender-no-kyc.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/sms-sender-no-kyc.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/sms-sender-no-kyc.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Strona główna SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Dostarczaj satysfakcję: połączenia SMS z Twoimi klientami, jakich jeszcze nie doświadczyłeś.</p>
+        <p>Niezawodne SMS-y. Płatność krypto. Bez ID.</p>
         <div class="socials">
           </div>
       </div>
