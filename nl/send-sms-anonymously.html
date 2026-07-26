@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/send-sms-anonymously.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/send-sms-anonymously.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/send-sms-anonymously.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/send-sms-anonymously.html">
 <meta name="description" content="Anonieme sms versturen zonder registratie. Online, discreet, zonder nummer – met testtegoed.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Anonieme sms versturen online", "description": "Anonieme sms versturen zonder registratie. Online, discreet, zonder nummer – met testtegoed.", "url": "https://smsroute-cc.github.io/nl/send-sms-anonymously.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/send-sms-anonymously.html", "image": "https://smsroute-cc.github.io/og/send-sms-anonymously-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "Anonieme sms versturen online", "item": "https://smsroute-cc.github.io/nl/send-sms-anonymously.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -389,10 +392,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Dit is belangrijk omdat je alles gratis test en geen creditcardspoor achterlaat. Het addertje is dat verdere berichten een crypto-opwaardering nodig hebben. Beslis op basis van of de gratis aflevering naar verwachting aankomt; dat is je signaal om te financieren en door te gaan.</p><ol class="a2-steps"><li><b>Voer een e-mailadres in</b><span>het enige wat de dienst ooit bewaart</span></li><li><b>Verstuur met gratis testtegoed</b><span>een echte sms naar een echt nummer</span></li><li><b>Laad op met crypto als je meer nodig hebt</b><span>geen kaart, geen naam op een afschrift</span></li><li><b>Afleverbevestiging op het scherm</b><span>je ziet het aankomen, live</span></li></ol></section><section><h2 id="s5">De eerlijke beperking: wat altijd zichtbaar blijft, ongeacht wat je doet</h2><p>Providernetwerken routeren elke sms en bewaren de routeringsgegevens, dus die blijven zichtbaar, ongeacht de dienst.</p>
 <p>Anonimiteit betekent dat de dienst geen naam of nummer van jou bewaart. Het betekent niet dat het bericht nooit heeft bestaan. Dit is belangrijk omdat het spoor op netwerkniveau permanent is. Het addertje is dat je dat niet kunt wissen. Beslis op basis van of je de registraties accepteert, en stuur nooit intimidatie of bedreigingen, want die zijn illegaal op elke dienst.</p><div class="a2-callout a2-note"><p><b>Wat geen enkele optie kan verbergen:</b> Providernetwerken routeren elke sms en bewaren routeringsgegevens - bij gratis verzenders, burner-apps en betaalde diensten. Kiezen voor een dienst die nooit je naam leert, beschermt je identiteit; het wist het bericht niet van het netwerk. Wat je verstuurt, valt nog steeds overal onder dezelfde wetten.</p></div></section>
     </div>
-    <details class="tech-details"><summary>Technische details</summary><figure class="artifact"><figcaption>Wat elke partij kan zien wanneer je anoniem verstuurt</figcaption><pre><code>recipient sees:   gateway sender, message text
-service holds:    email address, balance, delivery log
-network sees:     routing metadata (every service, always)
-nobody holds:     your name, your number, your ID</code></pre></figure></details>
+    <details class="tech-details"><summary>Technische details</summary><figure class="artifact"><figcaption>Wat elke partij kan zien wanneer je anoniem verstuurt</figcaption><pre><code>ontvanger ziet:   gateway-afzender, berichttekst
+dienst bewaart:    e-mailadres, saldo, bezorglog
+netwerk ziet:     routingmetadata (elke dienst, altijd)
+niemand bewaart:     je naam, je nummer, je ID</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/anonymous-send-sms.html">Anoniem sms sturen – zonder account</a></li><li><a href="https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html">Kun je anoniem een sms sturen?</a></li><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html">Anoniem sms'en zonder je nummer te tonen</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Kan ik anoniem een gratis SMS versturen?</summary><div class="faq-answer"><p>Ja, gratis webverzenders verwerken een enkele anonieme test zonder naam, of je gebruikt gratis testtegoed op een dienst die alleen een e-mailadres vraagt voor echte bezorging zonder kosten. Uw nummer blijft in beide gevallen verborgen. Gratis webtools stoppen vaak met minder gangbare landen direct na het proefbericht, terwijl die credits die landen nog wel bereiken.</p></div></details><details class="faq-card"><summary>Kan de ontvanger mij antwoorden?</summary><div class="faq-answer"><p>Berichten komen uit een gedeelde afzenderpool, dus antwoorden bereiken u standaard niet. Daardoor blijft je nummer buiten beeld. De dienst verwerkt <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">STOP-sleutelwoorden</a> en houdt afmeldlijsten ingebouwd, wat betekent dat elke afmeldingstekst die de ontvanger stuurt aan hun kant wordt verwerkt zonder ooit bij u te komen.</p></div></details><details class="faq-card"><summary>Werkt het internationaal?</summary><div class="faq-answer"><p>Dekking bereikt 149 landen. Je bericht vertrekt vanaf de kant van de dienst, de provider van de ontvanger beslist of het aankomt, en de bezorgstatus verschijnt op het scherm zodat u het resultaat direct ziet. Als één pad faalt voor die bestemming, schakelt de service automatisch over op andere routes.</p></div></details><details class="faq-card"><summary>Is anoniem sms'en legaal?</summary><div class="faq-answer"><p>Een sms sturen zonder je nummer te onthullen is op de meeste plekken legaal. Wetgeving over de inhoud blijft van toepassing, dus intimidatie, bedreigingen en oplichting zijn illegaal, ongeacht de afzender, anoniem of niet. De service bevat ingebouwde STOP-sleutelwoordverwerking en afmeldlijsten om afmeldingen te verwerken.</p></div></details><details class="faq-card"><summary>Wat is het verschil tussen dit en een anonieme sms-app?</summary><div class="faq-answer"><p>Apps die anoniem sms'en beloven, installeer je op je telefoon en die koppelen het account aan je echte nummer. Een pure webdienst waar je je alleen met een e-mailadres aanmeldt, raakt uw apparaat of nummer nooit aan. U voert de bestemming en tekst in op de site, en het vertrekt vanuit hun pool. Waar routes het toelaten, kunt u zelfs een aangepaste naam aanvragen in plaats van een nummer.</p></div></details>
     <div class="cta"><p>Een e-mailadres is het enige wat u invoert. Met gratis testtegoed verstuur je een echte sms voordat je betaalt.</p><a class="btn" href="https://smsroute.cc/signup">Stuur je eerste sms</a><span class="alt">of bekijk <a href="https://smsroute.cc/prices">prijzen per bericht</a></span></div>
@@ -441,7 +446,7 @@ nobody holds:     your name, your number, your ID</code></pre></figure></details
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betaal met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betaal met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betaal met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
