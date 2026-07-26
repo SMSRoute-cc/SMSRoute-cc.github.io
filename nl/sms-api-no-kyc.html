@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/sms-api-no-kyc.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/sms-api-no-kyc.html">
 <meta name="description" content="SMS API zonder KYC of verificatie. REST, testtegoed, pay-as-you-go – voor developers.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/sms-api-no-kyc.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS API zonder KYC & registratie", "description": "SMS API zonder KYC of verificatie. REST, testtegoed, pay-as-you-go – voor developers.", "url": "https://smsroute-cc.github.io/nl/sms-api-no-kyc.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/sms-api-no-kyc.html", "image": "https://smsroute-cc.github.io/og/sms-api-no-kyc-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "SMS API zonder KYC &amp; registratie", "item": "https://smsroute-cc.github.io/nl/sms-api-no-kyc.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -398,12 +403,14 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;, &quot;callback_url&quot;: &quot;https://your.app/dlr&quot;}&#x27;
 
-# response
+# antwoord
 {&quot;messageId&quot;: &quot;a91f4c2e&quot;, &quot;status&quot;: &quot;QUEUED&quot;}
 
-# check delivery
+# controleer bezorging
 curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-kyc.html">SMS zonder registratie – geen KYC</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Met welke cryptocurrencies kan ik betalen?</summary><div class="faq-answer"><p>Zes: Bitcoin, Ether, Tether op twee netwerken, Monero, Litecoin en Solana. De actuele lijst komt altijd van GET /supported/coins, en stortingen in een van deze crediteren hetzelfde saldo, dus u kunt tussen opwaarderingen van munt wisselen zonder accountinstellingen te wijzigen.</p></div></details><details class="faq-card"><summary>Kan ik leveringsrapporten krijgen zonder een accountmanager?</summary><div class="faq-answer"><p>Ja, u krijgt realtime leveringsrapporten via DLR-webhooks en het dashboardlogboek zonder accountmanager. Stel de callback_url-parameter in op POST /sms/send voor per-bericht-webhooks. Statusupdates gaan door via automatische failover naar back-uproutes.</p></div></details><details class="faq-card"><summary>Wat gebeurt er met berichten die niet worden afgeleverd?</summary><div class="faq-answer"><p>Berichten die niet worden afgeleverd, worden automatisch teruggestort op uw accountsaldo, en elk ongebruikt saldo is op verzoek terugbetaalbaar naar de oorspronkelijke wallet. Dit verschilt van KYC-providers waar terugbetalingen het indienen van supporttickets vereisen. Realtime leveringsrapporten via DLR-webhooks en het dashboardlogboek laten u de mislukkingsstatus direct bevestigen.</p></div></details><details class="faq-card"><summary>Kan ik een aangepaste afzender-ID gebruiken?</summary><div class="faq-answer"><p>Ja. Slimme gedeelde afzenderpool is de standaard. Aangepaste <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumerieke ID</a> zijn op verzoek beschikbaar waar bestemmingsroutes deze ondersteunen (dit varieert per landregelgeving). Op routes die aangepaste ID's blokkeren, wordt de gedeelde pool automatisch gebruikt, zodat verkeer nog steeds vertrekt zonder extra instellingen.</p></div></details><details class="faq-card"><summary>Betekent geen KYC ook geen support?</summary><div class="faq-answer"><p>Nee. Support is 24/7 bereikbaar via Telegram en e-mail, eerste reactie doorgaans binnen een uur. Realtime leveringsrapporten komen binnen via DLR-webhooks en het dashboardlogboek, of u nu contact opneemt of niet.</p></div></details>
     <div class="cta"><p>Routes zijn live in 149 landen. Test ze met gratis credits voordat u geld stort.</p><a class="btn" href="https://smsroute.cc/signup">Maak een account aan met alleen een e-mailadres</a><span class="alt">of lees de <a href="https://smsroute.cc/developers">API-referentie</a> eerst</span></div>
@@ -452,7 +459,7 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betaal met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betaal met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betaal met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
