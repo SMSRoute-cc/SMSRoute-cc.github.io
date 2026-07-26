@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Send SMS With Crypto: Coins, Top-Ups, and Real Pricing (2026)", "item": "https://smsroute-cc.github.io/send-sms-crypto.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 zemí · crypto-native · registrace jen e-mailem</span>
+      <span class="eyebrow-pill">149 zemí · krypto-nativní · registrace jen e-mailem</span>
       <h1 class="hero-title">Jak posílat SMS placené kryptem: přijímané mince, potvrzení dobití a skutečné náklady</h1>
       <div class="hero-sub"><p>SMS můžete platit výhradně kryptoměnami: založte účet e-mailem, vložte jednu z šesti podporovaných mincí a volejte REST API – bez karty a bez identity u platby. To je celý postup.</p>
 <p>Tato stránka vás provede od začátku do konce pro vývojáře a operátory s výdaji on-chain, včetně situací, kdy selže platba nebo zpráva.</p></div>
@@ -411,9 +422,10 @@ curl https://api.smsroute.cc/prices \
 curl -X POST https://api.smsroute.cc/deposits-2 \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
+  -d '{"crypto_currency": "BTC", "amount": 25}'</code></pre></figure>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">SMS bez KYC a dokladů: jak ji odeslat</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html">Odesílání SMS bez čísla: Jak to funguje (2026)</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">SMS bez KYC a dokladů: jak ji odeslat</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html">Odesílání SMS bez čísla: Jak to funguje (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">Co je SMS brána? Jednoduchá definice a jak funguje</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
     <details class="faq-card"><summary>Jak ověřím, že byl vklad připsán?</summary><div class="faq-answer"><p>Dotazujte GET /payment/status-2/:orderId pro stav připsání vkladu. Stejné údaje jsou v historii objednávek přes GET /orders. Potvrzené vklady se stávají použitelným zůstatkem bez dalších kroků z vaší strany.</p></div></details><details class="faq-card"><summary>Je nevyužitý crypto zůstatek vratný na mou peněženku?</summary><div class="faq-answer"><p>Ano, nevyužitý zůstatek je na žádost vratný na původní peněženku a neúspěšné zprávy se automaticky připisují zpět. Návrat vždy míří na stejnou peněženku a síť, která vklad financovala, takže dobití USDT TRC-20 se po žádosti vrátí na TRC-20.</p></div></details><details class="faq-card"><summary>Podporujete stablecoiny?</summary><div class="faq-answer"><p>Ano. Tether je přijímán na TRC-20 i ERC-20 a TRC-20 je obvykle levnější síť pro vklad. Síť zvolte ve volání vkladu parametrem crypto_currency, pak potvrďte připsání na GET /payment/status-2/:orderId před odesíláním objemu.</p></div></details><details class="faq-card"><summary>Mohu vidět historii dobití a výdajů?</summary><div class="faq-answer"><p>Ano. GET /user/transactions vypisuje každý poplatek za zprávu včetně automatických připsání při selhání odeslání. Vklady dobití jsou pod GET /orders, každý spárovaný s původní peněženkou a stavem potvrzení. Použití volného testovacího kreditu je také ve výdajové historii, ledger zůstává souvislý od registrace.</p></div></details><details class="faq-card"><summary>Do kterých zemí dosáhne SMS placená kryptem?</summary><div class="faq-answer"><p>SMS placená kryptem dosahuje 149 zemí, přesná sazba za zemi je na GET /prices. Vlastní <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumerické ID</a> jsou k dispozici na vyžádání, pokud cílová trasa podporuje.</p></div></details>
     <div class="cta"><p>Mince jdou rovnou na zůstatek, bez karty, bez honění faktur, vratné na vaši peněženku.</p><a class="btn" href="https://smsroute.cc/prices">Zkontrolovat aktuální ceny podle zemí</a><span class="alt">nebo <a href="https://smsroute.cc/signup">vytvořit účet jen s e-mailem</a></span></div>
@@ -421,10 +433,10 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-crypto.html" hreflang="en" lang="en" aria-current="true">Angličtina</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-crypto.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-crypto.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-crypto.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-crypto.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-crypto.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-crypto.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-crypto.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-crypto.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-crypto.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-crypto.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-crypto.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-crypto.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-crypto.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-crypto.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-crypto.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-crypto.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Dodávejte spokojenost: SMS spojení se zákazníky, víc než jste kdy zažili.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
