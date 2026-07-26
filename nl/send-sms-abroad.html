@@ -37,6 +37,10 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
 <meta property="og:title" content="Sms naar het buitenland sturen: kosten en de goedkope route">
 <meta property="og:description" content="Sms naar het buitenland: waarom EU-roaming hier niet geldt, wat je provider rekent en hoe verzenden via internet met bezorgstatus werkt.">
 <meta property="og:url" content="https://smsroute-cc.github.io/nl/send-sms-abroad.html">
@@ -311,6 +315,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "Sms naar het buitenland sturen: kosten en de goedkope route", "item": "https://smsroute-cc.github.io/nl/send-sms-abroad.html"}]}</script>
 </head>
@@ -326,7 +341,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2726 2.75447C17.3947 3.99714 19.3176 6.2633 19.5921 9.58947C19.614 9.85409 19.6163 10.1681 19.6043 10.5114C19.4892 13.8152 17.6683 16.7762 15.2541 19.0338C13.7453 20.4447 11.9689 21.6255 9.92385 21.9156C8.69851 22.0894 7.52397 22.0445 7.32034 21.3011C6.91071 19.8057 11.8053 15.9491 11.2047 16.3915C7.5462 17.9151 2.66979 18.8653 0.863871 15.3368C0.407376 14.4449 0.126893 13.4202 0.0352131 12.3092C-0.101367 10.6545 0.160603 8.99244 0.799501 7.46009L0.96822 7.05549C2.20822 4.0813 5.03975 2.06511 8.27703 1.85117L8.73189 1.82112C10.5359 1.70191 12.3449 1.98719 14.0247 2.65581L14.2726 2.75447Z" fill="#B659FF"/>
 <path d="M20.1874 4.78192C20.1874 6.64039 18.7605 8.14697 17.0003 8.14697C15.2401 8.14697 13.8132 6.64039 13.8132 4.78192C13.8132 2.92345 15.2401 1.41686 17.0003 1.41686C18.7605 1.41686 20.1874 2.92345 20.1874 4.78192Z" fill="white"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.6039 4.78192C21.6039 7.34974 19.614 9.56384 17.0003 9.56384C14.3867 9.56384 12.3968 7.34974 12.3968 4.78192C12.3968 2.21409 14.3867 0 17.0003 0C19.614 0 21.6039 2.21409 21.6039 4.78192ZM17.0003 8.14697C18.7605 8.14697 20.1874 6.64039 20.1874 4.78192C20.1874 2.92345 18.7605 1.41686 17.0003 1.41686C15.2401 1.41686 13.8132 2.92345 13.8132 4.78192C13.8132 6.64039 15.2401 8.14697 17.0003 8.14697Z" fill="#070B10"/></symbol></svg>
-<a class="skip" href="#content">Direct naar inhoud</a>
+<a class="skip" href="#content">Naar inhoud springen</a>
 <header class="site-nav"><div class="site-nav-inner">
 <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
 <nav class="site-links" aria-label="Primair">
@@ -390,7 +405,8 @@ gratis SMS-portal: advertenties + je berichtinhoud + stille niet-aflevering
 webverzender: openbare prijslijst, per bericht, vóór verzending
 elke route: ontvanger krijgt een gewone SMS, gratis</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html">SMS versturen vanaf je computer zonder telefoon (2026)</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html">SMS versturen vanaf je computer zonder telefoon (2026)</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">Wat is een SMS-gateway? Uitleg</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Hoe kan ik gratis een sms naar het buitenland sturen?</summary><div class="faq-answer"><p>Gratis portals laten je een sms naar het buitenland sturen zonder kosten, maar ze financieren zichzelf via advertenties en door gebruik te maken van je berichtgegevens, en de meeste geven geen bezorgstatus. Als het bericht moet aankomen, zijn gratis testcredits op een betaalde verzender het dichtst bij gratis dat je kunt komen terwijl de bezorging nog op het scherm zichtbaar is.</p></div></details><details class="faq-card"><summary>Maakt EU-roaming het sturen van sms'jes naar het buitenland gratis?</summary><div class="faq-answer"><p>Nee, EU-roaming dekt je terwijl je reist. Het versturen van een sms naar een buitenlands nummer vanuit je thuisland is internationale SMS en wordt apart in rekening gebracht bij de meeste abonnementen. De enige gedeeltelijke uitzondering is als je provider een apart internationaal SMS-bundel verkoopt, die nog steeds extra kost en buiten de roam-like-at-home-regels valt.</p></div></details><details class="faq-card"><summary>Waarom heeft mijn provider mij kosten in rekening gebracht voor een sms naar een ander land?</summary><div class="faq-answer"><p>Internationale SMS valt buiten de meeste bundels. Het tarief per bericht hangt af van je abonnement en bestemming; providers vermelden die tarieven diep in hun tarievenpagina's, dus de kosten verschijnen meestal op je factuur voordat je de uitleg vindt. Uitzonderingen zijn zeldzame internationale bundels met vast tarief die sommige providers verkopen, maar zelfs dan zijn de inbegrepen bestemmingen beperkt en de rest kost nog steeds extra.</p></div></details><details class="faq-card"><summary>Zal de ontvanger iets betalen om mijn sms te ontvangen?</summary><div class="faq-answer"><p>Het ontvangen van een sms kost de ontvanger in bijna elk land niets. Jij betaalt de volledige kosten aan de verzendende kant, en zij krijgen gewoon een normaal binnenkomend bericht op hun telefoon. De zeldzame uitzonderingen zijn premium-rate korte nummers of abonnementsmeldingen die opzettelijk bij de ontvanger in rekening worden gebracht, wat gewone persoon-tot-persoon sms'jes nooit doen.</p></div></details>
     <div class="cta"><p>Prijs eerst, dan versturen: de lijst per land is openbaar en gratis testcredits bewijzen de route voordat je betaalt.</p><a class="btn" href="https://smsroute.cc/prices">Controleer de prijs voor jouw land</a><span class="alt">dan <a href="https://smsroute.cc/signup">alleen registreren met e-mail</a> - of lees <a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html">hoe je vanaf een computer verzendt</a></span></div>
@@ -398,19 +414,19 @@ elke route: ontvanger krijgt een gewone SMS, gratis</code></pre></figure></detai
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Talen</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl" aria-current="true">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Talen</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl" aria-current="true">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-abroad.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-abroad.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-abroad.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Tevreden klanten: SMS-contact dat beter werkt dan je gewend bent.</p>
+        <p>Betrouwbare sms. Betaal met crypto. Geen ID.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Tolvrij vs Shortcode</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumeriek vs Shortcode Afzender-ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS-sjabloon</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR dubbele opt-in SMS-sjabloon</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Welke voor mijn tekst?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Hoe OTP-bezorging werkt</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Internationale SMS-gids 2026</a></li>
