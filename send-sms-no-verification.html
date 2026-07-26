@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "How to send SMS without registration or verification", "totalTime": "PT5M", "step": [{"@type": "HowToStep", "position": 1, "name": "Open the sender in any browser", "text": "No install or app-store account is needed."}, {"@type": "HowToStep", "position": 2, "name": "Sign up with an email address", "text": "No phone number or ID document is asked at any point."}, {"@type": "HowToStep", "position": 3, "name": "Send with free test credits", "text": "A real message to a real number proves delivery."}, {"@type": "HowToStep", "position": 4, "name": "Watch delivery confirm on screen", "text": "Per-message status shows the text reached the handset."}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Send SMS No Verification: Start in Minutes", "item": "https://smsroute-cc.github.io/send-sms-no-verification.html"}]}</script>
@@ -406,10 +417,10 @@ verified either way: per-message delivery status</code></pre></figure></details>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Languages</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-no-verification.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-no-verification.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-no-verification.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-no-verification.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-no-verification.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-verification.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-no-verification.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-no-verification.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-no-verification.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-verification.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Languages</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-no-verification.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-no-verification.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-no-verification.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-no-verification.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-no-verification.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-verification.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-no-verification.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-no-verification.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-no-verification.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-verification.html" hreflang="cs-CZ" lang="cs">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/send-sms-no-verification.html" hreflang="da-DK" lang="da">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/send-sms-no-verification.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
