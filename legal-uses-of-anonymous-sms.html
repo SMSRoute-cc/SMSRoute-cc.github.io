@@ -290,6 +290,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Legal Uses of Anonymous SMS", "description": "Journalists, survivors, whistleblowers, 2FA hygiene and business separation: the lawful reasons to send a text without exposing your personal number.", "url": "https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html", "datePublished": "2026-07-25", "dateModified": "2026-07-25", "image": "https://smsroute-cc.github.io/og/legal-uses-of-anonymous-sms-og.png", "publishingPrinciples": "https://smsroute-cc.github.io/editorial-standards.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Legal Uses of Anonymous SMS", "item": "https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html"}]}</script>
@@ -358,7 +369,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div class="toc-box"><strong>On this page</strong><ol><li><a href="#s1">Journalists and sources</a></li><li><a href="#s2">Safety cases and people leaving danger</a></li><li><a href="#s3">Account hygiene and two-factor codes</a></li><li><a href="#s4">Business separation for small operators</a></li><li><a href="#s5">Where the protection stops</a></li></ol></div>
     <div class="a2-tldr"><b>TL;DR</b><ul><li>A message arriving without your personal mobile number attached is a normal, lawful thing to want.</li><li>Journalists, survivors, whistleblowers and small operators all have real cases.</li><li>Separating a 2FA number from the number your bank and family know is basic hygiene.</li><li>Anonymous to the recipient is not the same as untraceable by law enforcement.</li><li>Harassment, fraud and unsolicited bulk marketing are excluded, always.</li></ul></div>
     <div class="secs">
-    <section><h2 id="s1">Journalists and sources</h2><p>Reporters use separate channels to reach sources who would not answer a known newsroom line, or to keep a personal phone out of a story&#x27;s blast radius. A short text that sets up a safer follow-up method can decide whether a source talks or goes quiet.</p>
+    <section><h2 id="s1">Journalists and sources</h2><p>Reporters use separate channels to reach sources who would not answer a known newsroom line, or to keep a personal phone out of a story's blast radius. A short text that sets up a safer follow-up method can decide whether a source talks or goes quiet.</p>
 <p>The content still has to be lawful. Bribery, threats and illegal inducements do not become acceptable because a byline is attached to them.</p>
 </section><section><h2 id="s2">Safety cases and people leaving danger</h2><p>People leaving dangerous relationships often need to pass on a logistics detail, a court date or a pointer to a support service without exposing a new number that could be traced, ported or social-engineered back to them.</p>
 <p>This is one of the clearest legitimate privacy cases in consumer messaging. Whistleblowers face a related problem: an employer or institution that punishes disclosure. An opening SMS that does not expose a personal SIM can start a path toward a better channel. Privacy tooling is still not a license to extort.</p>
@@ -370,7 +381,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>The promise SMSRoute makes is narrower and worth stating precisely: the person receiving the text does not automatically get your personal mobile number the way they would from a normal handset send. Those are two different threat models, and mixing them up helps scammers market magic while letting critics dismiss real safety uses.</p>
 <div class="a2-callout a2-ok"><p><b>Honest limit:</b> privacy from the recipient's address book is not invisibility under lawful investigation. Within that frame, short, lawful, targeted SMS still has a place.</p></div></section>
     </div>
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Related guides</h2><ul><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">SMS Opt-Out: Stop Unwanted Messages</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li><li><a href="https://smsroute-cc.github.io/anti-abuse.html">How We Fight SMS Spam and Fraud</a></li><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html">Send SMS Anonymously: No Name, No ID (2026)</a></li></ul></section>
     <h2 id="faq">Frequently asked questions</h2>
     <details class="faq-card"><summary>Is sending anonymous SMS legal?</summary><div class="faq-answer"><p>Using a messaging route is generally legal. Sending illegal content or running an illegal scheme is not. Your obligations depend on where you are, where the recipient is, and what you send. Get advice for your own situation if unsure.</p></div></details><details class="faq-card"><summary>Will the recipient see my personal phone number?</summary><div class="faq-answer"><p>The service is built so you can send without exposing your personal mobile number to the recipient in the ordinary way. That is separate from records retained for lawful process.</p></div></details><details class="faq-card"><summary>Can survivors or journalists ask for special treatment?</summary><div class="faq-answer"><p>The rules already cover protective and newsgathering uses. No custom legal shield can be handed out on request. If you are in immediate danger, contact local emergency or specialist support services first.</p></div></details><details class="faq-card"><summary>Does this count as an anonymous tip line?</summary><div class="faq-answer"><p>No. There is no inbox and no number, so a source cannot reply on the same channel. It is useful for the first contact that points someone toward a proper secure channel, not as the channel itself.</p></div></details><details class="faq-card"><summary>What uses are excluded outright?</summary><div class="faq-answer"><p>Harassment, threats, fraud, impersonation and unsolicited bulk marketing. Those are excluded regardless of how sympathetic the wider story around them sounds.</p></div></details>
     <h2 id="related">Related guides</h2><ul class="blist"><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">the acceptable use policy</a></li><li><a href="https://smsroute-cc.github.io/anti-abuse.html">how spam and fraud are handled</a></li><li><a href="https://smsroute-cc.github.io/is-sms-encrypted.html">whether SMS is encrypted</a></li></ul>
@@ -381,7 +391,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="site-footer__inner">
     <div class="footer-grid"><div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
