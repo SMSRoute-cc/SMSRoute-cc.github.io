@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
 <meta name="description" content="Skicka SMS utan KYC eller ID-handlingar: konto med bara e-post, betala i krypto och skicka första meddelandet på några minuter.">
 <link rel="canonical" href="https://smsroute-cc.github.io/sv/send-sms-no-kyc.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Skicka SMS utan ID-kontroll – ingen KYC", "description": "Skicka SMS utan KYC eller ID-handlingar: konto med bara e-post, betala i krypto och skicka första meddelandet på några minuter.", "url": "https://smsroute-cc.github.io/sv/send-sms-no-kyc.html", "inLanguage": "sv", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/sv/send-sms-no-kyc.html", "image": "https://smsroute-cc.github.io/og/send-sms-no-kyc-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "SV", "item": "https://smsroute-cc.github.io/sv/"}, {"@type": "ListItem", "position": 3, "name": "Skicka SMS utan ID-kontroll – ingen KYC", "item": "https://smsroute-cc.github.io/sv/send-sms-no-kyc.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Logga in</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Kom igång</a></div>
 </div></header>
 
-<nav class="brödsmulor" aria-label="brödsmulor">
+<nav class="breadcrumb" aria-label="brödsmulor">
   <ol>
     <li><a href="https://smsroute.cc/">Hem</a></li>
     <li><a href="https://smsroute.cc/blog/">Blogg</a></li>
@@ -389,14 +392,16 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Att skicka i volym ändrar ekonomin per meddelande, inte identitetskraven. STOP-nyckelordshantering och spärrlistor är inbyggda så att mottagare kan avanmäla sig. Det är viktigt eftersom du kan skala utan frysningen som de flesta tjänster inför när trafiken ökar. Haken är att innehålls- och samtyckesregler fortfarande gäller lokalt. Välj e-postvägen när bulk är målet och pappersarbete är hindret.</p><ol class="a2-steps"><li><b>Registrera dig med en e-postadress</b><span>inga dokument oavsett volym</span></li><li><b>Ladda med krypto</b><span>saldo, inte en prenumeration</span></li><li><b>Skicka ett eller tusentals</b><span>samma konto, bulkutskick inbyggt</span></li><li><b>Se leverans i realtid</b><span>status per meddelande i instrumentpanelen</span></li></ol></section><section><h2 id="s5">Vad avsaknaden av KYC inte döljer</h2><p>Avsaknaden av KYC döljer inte operatörssynlig routingdata som varje SMS-tjänst genererar vid sändning.</p>
 <p>Den separationen är poängen. Dina dokument sparas inte hos leverantören, men nätverket loggar fortfarande ursprung och väg av samma efterlevnadsskäl som det gör för Twilio eller någon annan. Haken finns där för alla tjänster: metadata är inte valfritt. Välj avsaknad av KYC när hotet du bryr dig om är dokumentinsamling och senare frysningar, inte när du behöver absolut osynlighet som ingen SMS-väg levererar.</p><div class="a2-callout a2-note"><p><b>Den ärliga gränsen:</b>Ingen KYC innebär att leverantören aldrig innehar dina identitetshandlingar. Det innebär inte att meddelanden är osynliga: operatörsnätverk ser routingmetadata på varje SMS-tjänst som någonsin byggts. Det som skyddas är vem du är, inte att ett meddelande skickades.</p></div></section>
     </div>
-    <details class="tech-details"><summary>Tekniska detaljer</summary><figure class="artifact"><figcaption>Vad tjänsten faktiskt lagrar om ett konto utan KYC</figcaption><pre><code>account record (complete):
+    <details class="tech-details"><summary>Tekniska detaljer</summary><figure class="artifact"><figcaption>Vad tjänsten faktiskt lagrar om ett konto utan KYC</figcaption><pre><code>kontopost (komplett):
   email:      you@example.com
-  balance:    prepaid credit
-  messages:   destination, text, delivery status
+  saldo:      förbetald kredit
+  meddelanden: destination, text, leveransstatus
 
-not stored, never collected:
-  legal name, ID documents, selfie,
-  your phone number, card number, billing address</code></pre></figure></details>
+lagras inte, samlas aldrig in:
+  juridiskt namn, ID-handlingar, selfie,
+  ditt telefonnummer, kortnummer, faktureringsadress</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Relaterade guider</h2><ul><li><a href="https://smsroute-cc.github.io/sv/send-sms-no-verification.html">Skicka SMS med endast e-postregistrering och verifiering</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-anonymously.html">Skicka SMS anonymt: så gör du (2026)</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Vanliga frågor</h2>
     <details class="faq-card"><summary>Vad innebär ingen KYC?</summary><div class="faq-answer"><p>Kundkännedom, eller KYC, är kontroller som innefattar ID-handling, adressbevis och ibland selfie-steg som online-tjänster kräver. En KYC-fri tjänst hoppar över dem helt. Här är registrering en e-postadress och anpassad <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumeriskt ID</a> finns tillgängliga på begäran där destinationsvägar stöder dem, fortfarande utan att några dokument krävs.</p></div></details><details class="faq-card"><summary>Kan jag skicka bulk-SMS utan KYC?</summary><div class="faq-answer"><p>Ja, bulk-utskick fungerar på samma e-postbaserade konto och utlöser aldrig ett ID-krav oavsett volym. Operatörer filtrerar spam oberoende, och spärrlistor för STOP-nyckelord är inbyggda. Adaptiv flervägsleverans med automatisk failover per destination hanterar belastningen utan identitetskontroller.</p></div></details><details class="faq-card"><summary>Varför kräver de flesta SMS-leverantörer KYC egentligen?</summary><div class="faq-answer"><p>De flesta SMS-leverantörer kräver KYC eftersom regler för bedrägeri med kortbetalningar och operatörers efterlevnadsprogram tvingar dem att samla in företagsdokument. En tjänst som tar betalt i krypto med e-postregistrering gjorde ett annat onboarding-val och tar på sig routingkvaliteten själv genom adaptiv flervägsleverans med automatisk failover per destination.</p></div></details><details class="faq-card"><summary>Är det lagligt att skicka SMS utan KYC?</summary><div class="faq-answer"><p>Att använda en tjänst med enkel registrering är inte olagligt; det är vad du skickar som spelar roll. Samma lagar om trakasserier och spam gäller på alla tjänster, med eller utan KYC. Även när du begär ett anpassat alfanumeriskt avsändar-ID för destinationer som stöder det, samlar leverantören fortfarande aldrig in identitetsdokument.</p></div></details><details class="faq-card"><summary>Behöver jag ett eget telefonnummer för att skicka?</summary><div class="faq-answer"><p>Nej. Du behöver inget eget telefonnummer för att skicka. Meddelanden skickas från tjänstens smarta gemensamma avsändarpool som standard, så du registrerar eller avslöjar aldrig ett personligt nummer. Anpassade alfanumeriska avsändar-ID finns tillgängliga på begäran där destinationsvägar stöder dem.</p></div></details>
     <div class="cta"><p>Registrering är en e-postadress, och gratis testkrediter låter dig skicka ett riktigt meddelande innan du betalar något.</p><a class="btn" href="https://smsroute.cc/signup">Skicka ditt första SMS</a><span class="alt">eller kolla <a href="https://smsroute.cc/prices">priser per meddelande</a> först</span></div>
@@ -445,7 +450,7 @@ not stored, never collected:
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betala med Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betala med Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betala med USDT</a></li>
-        </ul> <p class="footer-heading">Gratisverktyg</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-teckenräknare</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostnadskalkylator</a></li> <li><a href="https://smsroute.cc/tools">Gratisverktyg →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Användningsområden</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS för 2FA</a></li>
