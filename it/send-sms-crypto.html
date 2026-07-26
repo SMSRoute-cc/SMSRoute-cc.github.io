@@ -45,7 +45,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://smsroute-cc.github.io/og/send-sms-crypto-og.png">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Come verifico se il mio deposito è stato accreditato?", "acceptedAnswer": {"@type": "Answer", "text": "Interroga GET /payment/status-2/:orderId per lo stato di accredito del tuo deposito. Le stesse informazioni sono nella cronologia ordini tramite GET /orders. I depositi confermati diventano saldo spendibile senza ulteriori passaggi da parte tua."}}, {"@type": "Question", "name": "Il saldo crypto non utilizzato è rimborsabile sul mio wallet?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, il saldo non utilizzato è rimborsabile sul wallet di origine su richiesta, e i messaggi non riusciti vengono automaticamente riaccreditati. Il rimborso torna sempre allo stesso wallet e network del deposito originale, quindi un versamento USDT TRC-20 viene rimborsato su TRC-20 dopo l'invio della richiesta."}}, {"@type": "Question", "name": "Supportate le stablecoin?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Tether è accettato sia su TRC-20 che ERC-20, e TRC-20 è solitamente il network più economico per depositare. Scegli il network nella chiamata di deposito con crypto_currency, poi conferma l'accredito su GET /payment/status-2/:orderId prima di inviare volume."}}, {"@type": "Question", "name": "Posso vedere la cronologia dei miei versamenti e spese?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. GET /user/transactions elenca ogni addebito per messaggio insieme ai riaccrediti automatici quando un invio fallisce. I depositi appaiono in GET /orders, ciascuno abbinato al wallet di origine e allo stato di conferma. Anche l'uso del credito test gratuito appare nella cronologia spese, mantenendo il registro continuo dalla registrazione."}}, {"@type": "Question", "name": "Quali paesi raggiunge l'SMS pagato in crypto?", "acceptedAnswer": {"@type": "Answer", "text": "L'SMS pagato in crypto raggiunge 149 paesi, con la tariffa esatta per paese elencata su GET /prices. ID alfanumerico personalizzato ID alfanumerico sono disponibili su richiesta dove la route di destinazione li supporta."}}], "inLanguage": "it"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Come verifico se il mio deposito è stato accreditato?", "acceptedAnswer": {"@type": "Answer", "text": "Interroga GET /payment/status-2/:orderId per lo stato di accredito del tuo deposito. Le stesse informazioni sono nella cronologia ordini tramite GET /orders. I depositi confermati diventano saldo spendibile senza ulteriori passaggi da parte tua."}}, {"@type": "Question", "name": "Il saldo crypto non utilizzato è rimborsabile sul mio wallet?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, il saldo non utilizzato è rimborsabile sul wallet di origine su richiesta, e i messaggi non riusciti vengono automaticamente riaccreditati. Il rimborso torna sempre allo stesso wallet e network del deposito originale, quindi un versamento USDT TRC-20 viene rimborsato su TRC-20 dopo l'invio della richiesta."}}, {"@type": "Question", "name": "Supportate le stablecoin?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Tether è accettato sia su TRC-20 che ERC-20, e TRC-20 è solitamente il network più economico per depositare. Scegli il network nella chiamata di deposito con crypto_currency, poi conferma l'accredito su GET /payment/status-2/:orderId prima di inviare volume."}}, {"@type": "Question", "name": "Posso vedere la cronologia dei miei versamenti e spese?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. GET /user/transactions elenca ogni addebito per messaggio insieme ai riaccrediti automatici quando un invio fallisce. I depositi appaiono in GET /orders, ciascuno abbinato al wallet di origine e allo stato di conferma. Anche l'uso del credito test gratuito appare nella cronologia spese, mantenendo il registro continuo dalla registrazione."}}, {"@type": "Question", "name": "Quali paesi raggiunge l'SMS pagato in crypto?", "acceptedAnswer": {"@type": "Answer", "text": "L'SMS pagato in crypto raggiunge 149 paesi, con la tariffa esatta per paese elencata su GET /prices. ID alfanumerici personalizzati sono disponibili su richiesta dove la route di destinazione li supporta."}}], "inLanguage": "it"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://smsroute.cc/#organization", "name": "SMSRoute", "url": "https://smsroute.cc/", "logo": "https://smsroute.cc/logo.svg", "sameAs": ["https://smsroute.cc", "https://github.com/SMSRoute-cc"], "description": "Web-based SMS sending service: email-only signup, per-message pricing, crypto payment, 149 countries."}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SMSRoute SMS API","serviceType":"SMS sending API","provider":{"@type":"Organization","name":"SMSRoute"},"inLanguage":"it","areaServed":"149 countries","offers":{"@type":"Offer","price":"0.004","priceCurrency":"USD","description":"Per-message price from $0.004, paid in BTC, ETH, USDT, XMR, LTC or SOL"}}</script>
 <style>
@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "IT", "item": "https://smsroute-cc.github.io/it/"}, {"@type": "ListItem", "position": 3, "name": "Pagare la SMS API in crypto", "item": "https://smsroute-cc.github.io/it/send-sms-crypto.html"}]}</script>
 </head>
@@ -349,12 +360,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 paesi · crypto-native / nato per le crypto · registrazione solo email</span>
+      <span class="eyebrow-pill">149 paesi · nato per le crypto · registrazione solo email</span>
       <h1 class="hero-title">Inviare SMS e pagare in crypto</h1>
       <div class="hero-sub"><p>Puoi inviare SMS pagati interamente in criptovaluta: crea un account con un indirizzo email, deposita una delle sei monete supportate e chiama una REST API, senza carta e senza identità legata al pagamento. Questo è l'intero flusso.</p>
 <p>Questa pagina lo illustra dall'inizio alla fine per sviluppatori e operatori che mantengono le spese on-chain, incluso cosa succede quando un pagamento o un messaggio fallisce.</p></div>
       <div class="hero-ctas">
-        <a class="btn-primary" href="https://smsroute.cc/signup">Inizia a Inviare SMS<span aria-hidden="true">→</span></a>
+        <a class="btn-primary" href="https://smsroute.cc/signup">Inizia a inviare SMS<span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/developers">Vedi documentazione API</a>
       </div>
       <div class="trust-chips"><span>Registrazione via email</span><span>Nessun documento</span><span>Pagamento crypto</span></div>
@@ -413,7 +424,8 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guide correlate</h2><ul><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html">SMS anonimo senza registrazione</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-no-kyc.html">SMS senza registrazione – no KYC</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html">Inviare SMS senza numero mittente</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guide correlate</h2><ul><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html">SMS anonimo senza registrazione</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-no-kyc.html">SMS senza registrazione – no KYC</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html">Inviare SMS senza numero mittente</a></li><li><a href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">Cos'è un gateway SMS? Spiegazione</a></li></ul></section>
     <h2 id="faq">Domande frequenti</h2>
     <details class="faq-card"><summary>Come verifico se il mio deposito è stato accreditato?</summary><div class="faq-answer"><p>Interroga GET /payment/status-2/:orderId per lo stato di accredito del tuo deposito. Le stesse informazioni sono nella cronologia ordini tramite GET /orders. I depositi confermati diventano saldo spendibile senza ulteriori passaggi da parte tua.</p></div></details><details class="faq-card"><summary>Il saldo crypto non utilizzato è rimborsabile sul mio wallet?</summary><div class="faq-answer"><p>Sì, il saldo non utilizzato è rimborsabile sul wallet di origine su richiesta, e i messaggi non riusciti vengono automaticamente riaccreditati. Il rimborso torna sempre allo stesso wallet e network del deposito originale, quindi un versamento USDT TRC-20 viene rimborsato su TRC-20 dopo l'invio della richiesta.</p></div></details><details class="faq-card"><summary>Supportate le stablecoin?</summary><div class="faq-answer"><p>Sì. Tether è accettato sia su TRC-20 che ERC-20, e TRC-20 è solitamente il network più economico per depositare. Scegli il network nella chiamata di deposito con crypto_currency, poi conferma l'accredito su GET /payment/status-2/:orderId prima di inviare volume.</p></div></details><details class="faq-card"><summary>Posso vedere la cronologia dei miei versamenti e spese?</summary><div class="faq-answer"><p>Sì. GET /user/transactions elenca ogni addebito per messaggio insieme ai riaccrediti automatici quando un invio fallisce. I depositi appaiono in GET /orders, ciascuno abbinato al wallet di origine e allo stato di conferma. Anche l'uso del credito test gratuito appare nella cronologia spese, mantenendo il registro continuo dalla registrazione.</p></div></details><details class="faq-card"><summary>Quali paesi raggiunge l'SMS pagato in crypto?</summary><div class="faq-answer"><p>L'SMS pagato in crypto raggiunge 149 paesi, con la tariffa esatta per paese elencata su GET /prices. ID alfanumerico personalizzato<a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">ID alfanumerico</a> sono disponibili su richiesta dove la route di destinazione li supporta.</p></div></details>
     <div class="cta"><p>Le monete vanno direttamente a un saldo, niente carta, niente solleciti di fatture, rimborsabili sul tuo wallet.</p><a class="btn" href="https://smsroute.cc/prices">Controlla i prezzi live per paese</a><span class="alt">o <a href="https://smsroute.cc/signup">crea un account con una sola email</a></span></div>
@@ -421,17 +433,17 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-crypto.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-crypto.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-crypto.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-crypto.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-crypto.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-crypto.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-crypto.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-crypto.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-crypto.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-crypto.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-crypto.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-crypto.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-crypto.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-crypto.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-crypto.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-crypto.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-crypto.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Home SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Offri ai tuoi clienti connessioni SMS come non le hai mai sperimentate prima.</p>
+        <p>SMS affidabili. Paga in crypto. Nessun documento.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Numero Verde vs Shortcode</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">ID mittente alfanumerico vs Shortcode</a></li>
           <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Template SMS GDPR con doppio opt-in</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: quale per i tuoi testi?</a></li>
@@ -441,7 +453,7 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
         </ul>
       </div>
       <div class="footer-col">
-        <p class="footer-heading">Invia in modo anonimoooo per paese</p>
+        <p class="footer-heading">Invia in modo anonimo per paese</p>
         <ul>
           <li><a href="https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html">Stati Uniti</a></li>
           <li><a href="https://smsroute-cc.github.io/send-sms-to-united-kingdom-anonymously.html">Regno Unito</a></li>
