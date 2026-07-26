@@ -290,6 +290,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How We Fight SMS Spam and Fraud", "description": "Velocity checks, pattern detection, carrier feedback and records for lawful process. An honest account of what stops abuse on an SMS route, and what does not.", "url": "https://smsroute-cc.github.io/anti-abuse.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/anti-abuse.html", "datePublished": "2026-07-25", "dateModified": "2026-07-25", "image": "https://smsroute-cc.github.io/og/anti-abuse-og.png", "publishingPrinciples": "https://smsroute-cc.github.io/editorial-standards.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "How We Fight SMS Spam and Fraud", "item": "https://smsroute-cc.github.io/anti-abuse.html"}]}</script>
@@ -326,7 +337,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">pattern controls &middot; complaint loops &middot; lawful process</span>
+      <span class="eyebrow-pill">pattern controls · complaint loops · lawful process</span>
       <h1 class="hero-title">How We Fight Spam and Fraud</h1>
       <div class="hero-sub"><p>Spam and fraud destroy SMS routes. Carriers shut down traffic that looks dirty, and honest users lose a channel they need.</p>
 <p>This page explains what actually happens in practice to keep abuse down, without theater.</p></div>
@@ -356,7 +367,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <main id="content" class="post">
   <article>
     <div class="toc-box"><strong>On this page</strong><ol><li><a href="#s1">What the pattern controls look for</a></li><li><a href="#s2">Why email-only signup is not a blind pipe</a></li><li><a href="#s3">Complaint loops and carrier feedback</a></li><li><a href="#s4">Phishing and downstream harm</a></li><li><a href="#s5">What this stack does not promise</a></li></ol></div>
-    <div class="a2-tldr"><b>TL;DR</b><ul><li>Sending patterns on SMSRoute are watched: spikes, identical copy, and known scam templates.</li><li>Anonymous to the recipient is not the same as untraceable by law enforcement.</li><li>Recipient complaints and carrier error codes shrink a sender&#x27;s limits.</li><li>New accounts start with volume caps that grow only as behavior stays clean.</li><li>No single filter ends SMS fraud, and pretending otherwise would be dishonest.</li></ul></div>
+    <div class="a2-tldr"><b>TL;DR</b><ul><li>Sending patterns on SMSRoute are watched: spikes, identical copy, and known scam templates.</li><li>Anonymous to the recipient is not the same as untraceable by law enforcement.</li><li>Recipient complaints and carrier error codes shrink a sender's limits.</li><li>New accounts start with volume caps that grow only as behavior stays clean.</li><li>No single filter ends SMS fraud, and pretending otherwise would be dishonest.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">What the pattern controls look for</h2><p>Sudden spikes, long lists of numbers with no prior conversation shape, repeated identical copy, and high complaint rates are all signals. So are messages that match known scam templates: fake parcel fees, fake bank locks, crypto support links, and one-time passcodes aimed at accounts the recipient does not hold.</p>
 <p>When those patterns appear the traffic is slowed or stopped. Volume caps for new accounts, progressive limits as a sender builds a record, blocklists for known bad destinations, and manual review for edge cases all play a part. None of it is perfect. Determined abusers adapt, and accounts that keep testing the line get removed.</p>
@@ -370,7 +381,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Researchers and journalists documenting scam patterns should get in touch through the channels on the site rather than replaying live fraud traffic. Recipients of unwanted messages should use the opt-out page and keep copies of the texts.</p>
 <div class="a2-callout"><p><b>The short version:</b> clear rules, pattern controls, complaint loops, and records for lawful process. That will not satisfy anyone who wanted a guarantee of invisibility from the state.</p></div></section>
     </div>
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Related guides</h2><ul><li><a href="https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html">Legal Uses of Anonymous SMS</a></li><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">SMS Opt-Out: Stop Unwanted Messages</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html">Send SMS Anonymously: No Name, No ID (2026)</a></li></ul></section>
     <h2 id="faq">Frequently asked questions</h2>
     <details class="faq-card"><summary>Can you see the full text of every message?</summary><div class="faq-answer"><p>Operational systems may process message content for delivery and abuse detection. What is kept is minimized, and what is retained can be subject to lawful process. Do not assume content is invisible to investigation.</p></div></details><details class="faq-card"><summary>Will you share data with police without a warrant?</summary><div class="faq-answer"><p>Valid legal process is answered as the law requires. The exact standard depends on the jurisdiction and the type of request. Data is not handed to third parties who merely ask for it.</p></div></details><details class="faq-card"><summary>How fast do you act on spam reports?</summary><div class="faq-answer"><p>Automated limits can trigger within minutes when the pattern is obvious. Manual review takes longer. Severe fraud templates are prioritized over one-off grey-area messages.</p></div></details><details class="faq-card"><summary>Does a clean sender get caught by these controls?</summary><div class="faq-answer"><p>Rarely, and usually only on a first large send. Limits open up as a record builds. Messages people expect generate almost no complaints, which is the single strongest signal in the system.</p></div></details><details class="faq-card"><summary>What should I do if I got a scam text?</summary><div class="faq-answer"><p>Do not click links, do not call numbers in the body, and do not confirm codes. Report it to your carrier, and use the opt-out page if the traffic appears to involve an SMSRoute sender.</p></div></details>
     <h2 id="related">Related guides</h2><ul class="blist"><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">the acceptable use policy</a></li><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">the opt-out page</a></li><li><a href="https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html">legitimate uses of anonymous SMS</a></li></ul>
@@ -381,7 +391,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="site-footer__inner">
     <div class="footer-grid"><div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
