@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/cheap-sms-api-pricing.html">
 <meta name="description" content="SMS API pas chère, tarifs transparents. Paiement à l&#x27;usage, crédit d&#x27;essai, sans abonnement.">
 <link rel="canonical" href="https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS API pas chère – tarifs clairs", "description": "SMS API pas chère, tarifs transparents. Paiement à l'usage, crédit d'essai, sans abonnement.", "url": "https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html", "inLanguage": "fr", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html", "image": "https://smsroute-cc.github.io/og/cheap-sms-api-pricing-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "FR", "item": "https://smsroute-cc.github.io/fr/"}, {"@type": "ListItem", "position": 3, "name": "SMS API pas chère – tarifs clairs", "item": "https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Connexion</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Commencer</a></div>
 </div></header>
 
-<nav class="fil d'Ariane" aria-label="fil d'Ariane">
+<nav class="breadcrumb" aria-label="fil d'Ariane">
   <ol>
     <li><a href="https://smsroute.cc/">Accueil</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -399,6 +404,8 @@ Remboursement des envois échoués : les messages échoués sont automatiquement
 
 # pull current rates yourself
 curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guides associés</h2><ul><li><a href="https://smsroute-cc.github.io/fr/send-sms-anonymously.html">Envoyer SMS anonyme sans inscription</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-no-kyc.html">SMS sans inscription – sans KYC</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html">Envoyer SMS sans numéro affiché</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Questions fréquentes</h2>
     <details class="faq-card"><summary>Un minimum mensuel a-t-il un sens ?</summary><div class="faq-answer"><p>Cela peut être le cas à très haut volume fixe avec support dédié et liaisons SMPP, mais un expéditeur à volume faible ou variable finit souvent par payer pour une capacité jamais utilisée. La tarification au message évite totalement ce décalage.</p></div></details><details class="faq-card"><summary>Le tarif en masse est-il différent du tarif unitaire ?</summary><div class="faq-answer"><p>L'envoi en masse via POST /sms/send/bulk est facturé exactement aux mêmes tarifs par pays que ceux publiés pour les messages unitaires. Il n'y a pas de palier de remise séparé pour le volume. Récupérez la grille actuelle via GET /prices pour chaque destination du lot. Chaque message dans un lot multi-pays est facturé indépendamment à son propre tarif de corridor, donc le coût total est simplement la somme des coûts individuels.</p></div></details><details class="faq-card"><summary>Payer en crypto réduit-il le coût par message ?</summary><div class="faq-answer"><p>Pas automatiquement. L'acceptation de BTC, ETH, USDT sur TRC-20 ou ERC-20, XMR, LTC et SOL via l'appel de dépôt est une préférence de paiement, pas une remise garantie. Le tarif par message provient de la consultation des prix, quel que soit le mode de financement du solde ; un dépôt en SOL donne donc le même coût unitaire qu'un dépôt en BTC sur une route donnée.</p></div></details><details class="faq-card"><summary>Pouvez-vous exporter les rapports de coûts pour une campagne en masse ?</summary><div class="faq-answer"><p>Oui : GET /sms/bulk/reports et GET /sms-bulk/:batchid/export fournissent un enregistrement du coût réel d'une campagne, utile pour rapprocher les coûts des tarifs publiés par pays. Les exportations s'appliquent également au trafic soumis via l'API REST ou les liaisons SMPP et détaillent le total facturé par lot.</p></div></details><details class="faq-card"><summary>Une couverture de pays plus large signifie-t-elle des tarifs uniformes entre les pays ?</summary><div class="faq-answer"><p>Non. 149 pays sont couverts, mais le tarif varie toujours par destination ; vérifiez toujours le tarif spécifique du pays via GET /prices plutôt que de supposer une moyenne mondiale. La livraison multi-route adaptative avec basculement automatique maintient les messages sur le chemin actif pour cette destination sans modifier le tarif par pays qui vous a été communiqué.</p></div></details>
     <div class="cta"><p>Consultez les tarifs en direct par pays avant de vous engager auprès d'un fournisseur.</p><a class="btn" href="https://smsroute.cc/prices">Voir les tarifs en direct</a><span class="alt">ou lisez la <a href="https://smsroute.cc/developers">documentation de l'API</a></span></div>
@@ -447,7 +454,7 @@ curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Payer en Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Payer en Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Payer en USDT</a></li>
-        </ul> <p class="footer-heading">Outils gratuits</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Compteur de caractères SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculateur de coût SMS</a></li> <li><a href="https://smsroute.cc/tools">Outils gratuits →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Cas d'usage</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS pour 2FA</a></li>
