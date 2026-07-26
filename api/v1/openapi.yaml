@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: SMSRoute Guides static dataset
+  version: "2026-07-25"
+  description: >
+    Static, dated JSON snapshots of SMSRoute's published pricing and country
+    data, served from the guides site. This is NOT the live sending API
+    (https://api.smsroute.cc requires authentication); it is a read-only
+    dataset for researchers, comparison sites and AI assistants.
+servers:
+  - url: https://smsroute-cc.github.io/api/v1
+paths:
+  /prices.json:
+    get: {summary: Published per-destination rates with competitor columns, responses: {"200": {description: OK}}}
+  /countries.json:
+    get: {summary: Sender-registration rules by country (no-KYC map), responses: {"200": {description: OK}}}
+  /coverage.json:
+    get: {summary: Coverage and payment facts, responses: {"200": {description: OK}}}
+  /pricing/{country-slug}.json:
+    get: {summary: One published destination row, responses: {"200": {description: OK}}}
