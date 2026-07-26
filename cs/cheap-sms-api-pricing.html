@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Cheap SMS API Provider: Real Per-Message Costs (2026)", "item": "https://smsroute-cc.github.io/cheap-sms-api-pricing.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 zemí · crypto-native · registrace jen e-mailem</span>
+      <span class="eyebrow-pill">149 zemí · kryptonativní · registrace jen e-mailem</span>
       <h1 class="hero-title">Co ve skutečnosti dělá SMS API levným a co je skryté</h1>
       <div class="hero-sub"><p>SMSRoute je levný poskytovatel SMS s API, který účtuje sazby pod cent a automaticky refunduje nedoručené zprávy.</p>
 <p>Vývojáři a malé firmy srovnávající ceny SMS API za zprávu nebo hromadně potřebují tuto srozumitelnost. Chtějí nízkou jednotkovou cenu spojenou s měřitelným doručením. Levná cenovka na mrtvých trasách nebo s nečekanými minimy se stane nejdražší SMS, kterou koupíte. Tento text rozebírá skutečnou mechaniku nákladů, abyste rozpoznali skutečnou hodnotu.</p></div>
@@ -382,13 +393,13 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
     <div><b>od $0.004</b><span>za zprávu</span></div>
     <div><b>149</b><span>zemí</span></div>
     <div><b>minut</b><span>do první zprávy</span></div>
-    <div><b>6</b><span>kryptoměny</span></div>
+    <div><b>6</b><span>kryptoměn</span></div>
   </div>
 </section>
 
 <main id="content" class="post">
   <article>
-    <div class="toc-box"><strong>Na této stránce</strong><ol><li><a href="#s1">Proč se sazby SMS API tak liší podle země?</a></li><li><a href="#s2">Jaká je realistická spodní hranice a rozmezí cen pro levné SMS API?</a></li><li><a href="#s3">Jaké skryté náklady přidávají ostatní &#x27;levní&#x27; poskytovatelé navíc?</a></li><li><a href="#s4">Co se stane s vašimi náklady, když se zpráva nedoručí?</a></li><li><a href="#s5">Jak odhadnout skutečné náklady hromadného odeslání před závazkem?</a></li></ol></div>
+    <div class="toc-box"><strong>Na této stránce</strong><ol><li><a href="#s1">Proč se sazby SMS API tak liší podle země?</a></li><li><a href="#s2">Jaká je realistická spodní hranice a rozmezí cen pro levné SMS API?</a></li><li><a href="#s3">Jaké skryté náklady přidávají ostatní 'levní' poskytovatelé navíc?</a></li><li><a href="#s4">Co se stane s vašimi náklady, když se zpráva nedoručí?</a></li><li><a href="#s5">Jak odhadnout skutečné náklady hromadného odeslání před závazkem?</a></li></ol></div>
     <div class="a2-tldr"><b>Shrnutí</b><ul><li>Sazby podle zemí se liší, protože <a href="https://en.wikipedia.org/wiki/Termination_rates" rel="noopener">terminační sazby operátorů</a> se liší.</li><li>Spodní hranice je 0,004 $; typické rozmezí je 0,009 $ až 0,035 $.</li><li>Zeptejte se na pronájem čísel, registrační poplatky a měsíční minima.</li><li>Neúspěšná odeslání se automaticky kreditají zpět; za nedoručené zprávy se neúčtuje.</li><li>Před odhadem hromadných nákladů zkontrolujte GET /prices pro každou destinaci.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">Proč se sazby SMS API tak liší podle země?</h2><p>Každá cílová síť účtuje jinou terminační cenu za doručení zprávy svým účastníkům, takže rozdíly sazeb podle zemí odrážejí skutečné náklady operátorů, nikoli libovolnou přirážku. Jednotná paušální sazba je z toho důvodu obvykle zavádějící. Terminační poplatky stanovuje přijímající operátor a výrazně se liší podle trhu.</p>
@@ -405,7 +416,8 @@ Refundace neúspěšných odeslání: neúspěšné zprávy jsou automaticky př
 # aktuální sazby si stáhněte sami
 curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">SMS bez KYC a dokladů: jak ji odeslat</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html">Odesílání SMS bez čísla: Jak to funguje (2026)</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">SMS bez KYC a dokladů: jak ji odeslat</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html">Odesílání SMS bez čísla: Jak to funguje (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
     <details class="faq-card"><summary>Dává měsíční minimum někdy smysl?</summary><div class="faq-answer"><p>Může, při velmi vysokém pevném objemu s dedicovanou podporou a SMPP binds, ale odesílatel s nízkým nebo proměnlivým objemem často platí za kapacitu, kterou nevyužije. Ceník za zprávu se tomuto nesouladu zcela vyhne.</p></div></details><details class="faq-card"><summary>Liší se hromadné ceny od cen za jednotlivé zprávy?</summary><div class="faq-answer"><p>Hromadné odesílání přes POST /sms/send/bulk se účtuje přesně stejnými sazbami podle zemí jako jednotlivé zprávy. Neexistuje samostatná slevová úroveň pro bulk. Načtěte aktuální ceník z GET /prices pro každou destinaci v dávce. Každá zpráva ve smíšené hromadné úloze se účtuje vlastní sazbou koridoru nezávisle, celkové náklady jsou součtem jednotlivých.</p></div></details><details class="faq-card"><summary>Snižuje platba kryptem cenu za zprávu?</summary><div class="faq-answer"><p>Ne automaticky. BTC, ETH, USDT na TRC-20 nebo ERC-20, XMR, LTC, SOL přijímané přes deposits call je preference platby, ne zaručená sleva. Sazba za zprávu vychází z prices lookup bez ohledu na způsob nabití zůstatku, takže vklad SOL koupí stejnou jednotkovou cenu jako BTC na dané trase.</p></div></details><details class="faq-card"><summary>Lze exportovat sestavy nákladů hromadné kampaně?</summary><div class="faq-answer"><p>Ano: GET /sms/bulk/reports a GET /sms-bulk/:batchid/export dávají záznam skutečných nákladů kampaně, užitečný pro odsouhlasení se zveřejněnými sazbami podle zemí. Exporty platí stejně pro provoz přes REST API i SMPP binds a rozdělují účtovaný součet podle dávky.</p></div></details><details class="faq-card"><summary>Znamená širší pokrytí zemí jednotné ceny napříč zeměmi?</summary><div class="faq-answer"><p>Ne. Je pokryto 149 zemí, ale sazba se liší podle destinace; vždy zkontrolujte sazbu konkrétní země na GET /prices, ne předpokládejte smíšený průměr. Adaptivní multi-route doručení s automatickým failoverem drží zprávy na živé cestě pro danou destinaci bez změny nabídnuté sazby podle země.</p></div></details>
     <div class="cta"><p>Prohlédněte si živé sazby podle zemí, než se zavážete k poskytovateli.</p><a class="btn" href="https://smsroute.cc/prices">Zobrazit živé ceny</a><span class="alt">nebo si přečtěte <a href="https://smsroute.cc/developers">API docs</a></span></div>
@@ -413,19 +425,19 @@ curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/cheap-sms-api-pricing.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="https://smsroute-cc.github.io/de/cheap-sms-api-pricing.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/cheap-sms-api-pricing.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/cheap-sms-api-pricing.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/cheap-sms-api-pricing.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/cheap-sms-api-pricing.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/cheap-sms-api-pricing.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/cheap-sms-api-pricing.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/cheap-sms-api-pricing.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/cheap-sms-api-pricing.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/cheap-sms-api-pricing.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/cheap-sms-api-pricing.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Dodávejte spokojenost: SMS spojení se zákazníky nad rámec dosavadní zkušenosti.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Šablona SMS pro GDPR double opt-in</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs bezplatná čísla vs shortcody</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerické vs shortcode ID odesílatele</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Šablona SMS pro GDPR dvojité opt-in</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Které pro můj text?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Jak funguje doručení OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Mezinárodní průvodce SMS 2026</a></li>
