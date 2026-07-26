@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
 <meta name="description" content="Poslat SMS bez KYC a dokladů totožnosti: účet jen s e-mailem, platba v kryptu a první zpráva během několika minut.">
 <link rel="canonical" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS bez KYC a dokladů: jak ji odeslat", "description": "Poslat SMS bez KYC a dokladů totožnosti: účet jen s e-mailem, platba v kryptu a první zpráva během několika minut.", "url": "https://smsroute-cc.github.io/cs/send-sms-no-kyc.html", "inLanguage": "cs", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/cs/send-sms-no-kyc.html", "image": "https://smsroute-cc.github.io/og/send-sms-no-kyc-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "CS", "item": "https://smsroute-cc.github.io/cs/"}, {"@type": "ListItem", "position": 3, "name": "SMS bez KYC a dokladů: jak ji odeslat", "item": "https://smsroute-cc.github.io/cs/send-sms-no-kyc.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Přihlásit se</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Začít</a></div>
 </div></header>
 
-<nav class="drobečková navigace" aria-label="drobečková navigace">
+<nav class="breadcrumb" aria-label="drobečková navigace">
   <ol>
     <li><a href="https://smsroute.cc/">Domů</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -389,14 +392,16 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Hromadné odesílání mění cenu za zprávu, nikoli požadavky na identitu. Zpracování klíčového slova STOP a odhlašovací seznamy jsou vestavěné, aby příjemci mohli odhlásit odběr. To je důležité, protože škálujete bez zmrazení, které většina služeb nasadí, jakmile vzroste provoz. Háček je v tom, že pravidla ohledně obsahu a souhlasu stále platí na místní úrovni. Zvolte cestu pouze s e‑mailem, pokud je cílem hromadné odesílání a překážkou jsou papíry.</p><ol class="a2-steps"><li><b>Zaregistrujte se e‑mailem</b><span>bez dokladů při jakémkoli objemu</span></li><li><b>Dobijte kryptoměnou</b><span>kredit, ne předplatné</span></li><li><b>Pošlete jednu nebo tisíce</b><span>stejný účet, hromadné odesílání vestavěné</span></li><li><b>Sledujte doručování živě</b><span>stav za zprávu v dashboardu</span></li></ol></section><section><h2 id="s5">Co bez KYC neskrývá</h2><p>Bez KYC neskrývá směrovací data viditelná pro operátory, která každá SMS služba generuje při odeslání.</p>
 <p>V tom je zásadní rozdíl. Vaše doklady nejsou v evidenci poskytovatele, ale síť stále loguje původ a cestu ze stejných regulatorních důvodů jako u Twilio nebo kohokoli jiného. Háček je tu pro všechny služby: metadata nejsou volitelná. Zvolte bez KYC, když hrozba, která vás trápí, je sběr dokumentů a pozdější zmrazení, nikoli tehdy, když potřebujete absolutní neviditelnost, kterou žádná SMS služba neposkytuje.</p><div class="a2-callout a2-note"><p><b>Férově řečeno:</b> Bez KYC znamená, že poskytovatel nikdy nedrží vaše doklady totožnosti. Neznamená to, že zprávy jsou neviditelné: sítě operátorů vidí směrovací metadata u každé SMS služby, jaká kdy existovala. Chráněno je to, kdo jste, nikoli to, že zpráva putovala.</p></div></section>
     </div>
-    <details class="tech-details"><summary>Technické podrobnosti</summary><figure class="artifact"><figcaption>Co služba o účtu bez KYC skutečně ukládá</figcaption><pre><code>account record (complete):
+    <details class="tech-details"><summary>Technické podrobnosti</summary><figure class="artifact"><figcaption>Co služba o účtu bez KYC skutečně ukládá</figcaption><pre><code>záznam účtu (kompletní):
   email:      you@example.com
-  balance:    prepaid credit
-  messages:   destination, text, delivery status
+  zůstatek:    předplacený kredit
+  zprávy:   příjemce, text, stav doručení
 
-not stored, never collected:
-  legal name, ID documents, selfie,
-  your phone number, card number, billing address</code></pre></figure></details>
+neukládá se, nikdy se neshromažďuje:
+  právní jméno, doklady totožnosti, selfie,
+  vaše telefonní číslo, číslo karty, fakturační adresa</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-verification.html">Poslat SMS bez ověření: začněte za pár minut</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
     <details class="faq-card"><summary>Co znamená bez KYC?</summary><div class="faq-answer"><p>Kontroly Know your customer neboli KYC zahrnují předložení dokladu totožnosti, potvrzení adresy a někdy i selfie, které online služby vyžadují. Služba bez KYC zcela přeskakuje. Zde k registraci stačí pouze e-mailová adresa a vlastní <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumerické ID</a> zůstává k dispozici na vyžádání, pokud to podporují cílové trasy, stále bez požadavku na jakékoli dokumenty.</p></div></details><details class="faq-card"><summary>Mohu posílat hromadné SMS bez KYC?</summary><div class="faq-answer"><p>Ano, hromadné odesílání funguje na stejném pouze e‑mailovém účtu a nikdy nevyvolá požadavek na ID bez ohledu na objem. Operátoři filtrují spam nezávisle a seznamy odhlášení přes klíčové slovo STOP jsou integrovány. Adaptivní doručování po více trasách s automatickým přepnutím na záložní trasu při selhání zvládá zátěž bez kontrol identity.</p></div></details><details class="faq-card"><summary>Proč většina poskytovatelů SMS vůbec vyžaduje KYC?</summary><div class="faq-answer"><p>Většina poskytovatelů SMS vyžaduje KYC, protože pravidla proti podvodům u plateb kartou a compliance povinnosti operátorů je nutí shromažďovat obchodní dokumenty. Služba účtovaná v kryptoměnách s registrací e‑mailem zvolila jiný způsob onboardingu a sama ručí za kvalitu směrování prostřednictvím adaptivního doručování po více trasách s automatickým přepnutím při selhání na cíl.</p></div></details><details class="faq-card"><summary>Je legální posílat SMS bez KYC?</summary><div class="faq-answer"><p>Používání služby s lehkou registrací není nelegální; rozhoduje to, co posíláte. Stejné zákony o obtěžování a spamu platí na všech službách, s KYC i bez. I když požádáte o vlastní alfanumerické ID odesílatele pro cíle, které jej podporují, poskytovatel stále nikdy neshromažďuje doklady totožnosti.</p></div></details><details class="faq-card"><summary>Potřebuji k odesílání vlastní telefonní číslo?</summary><div class="faq-answer"><p>Ne. K odesílání nepotřebujete vlastní telefonní číslo. Zprávy standardně odcházejí ze sdíleného poolu odesílacích čísel služby, takže nikdy neregistrujete ani neprozrazujete osobní číslo. Vlastní alfanumerické ID odesílatele jsou k dispozici na vyžádání tam, kde to cílové trasy podporují.</p></div></details>
     <div class="cta"><p>K registraci stačí e-mail a bezplatné testovací kredity vám umožní odeslat skutečnou zprávu, aniž byste cokoli platili.</p><a class="btn" href="https://smsroute.cc/signup">Odeslat první zprávu</a><span class="alt">nebo zkontrolujte <a href="https://smsroute.cc/prices">ceny za zprávu</a> nejprve</span></div>
@@ -445,7 +450,7 @@ not stored, never collected:
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Platit Bitcoinem</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Platit Monerem</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Platba pomocí USDT</a></li>
-        </ul> <p class="footer-heading">Nástroje zdarma</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Počítadlo znaků SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Kalkulačka ceny SMS</a></li> <li><a href="https://smsroute.cc/tools">Nástroje zdarma →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Případy použití</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS pro 2FA</a></li>
