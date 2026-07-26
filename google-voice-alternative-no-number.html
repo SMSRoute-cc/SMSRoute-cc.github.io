@@ -290,6 +290,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Google Voice Alternative With No Number", "description": "Want a Google Voice alternative that never issues a number? See where Voice wins on inbound, and where send-only browser SMS from $0.004 fits instead.", "url": "https://smsroute-cc.github.io/google-voice-alternative-no-number.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/google-voice-alternative-no-number.html", "datePublished": "2026-07-25", "dateModified": "2026-07-25", "image": "https://smsroute-cc.github.io/og/google-voice-alternative-no-number-og.png", "publishingPrinciples": "https://smsroute-cc.github.io/editorial-standards.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Google Voice Alternative With No Number", "item": "https://smsroute-cc.github.io/google-voice-alternative-no-number.html"}]}</script>
@@ -326,10 +337,10 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 countries &middot; crypto-native &middot; email-only signup</span>
+      <span class="eyebrow-pill">149 countries · crypto-native · email-only signup</span>
       <h1 class="hero-title">Google Voice Alternative Without a Number</h1>
       <div class="hero-sub"><p>Google Voice is a number: calls, texts, voicemail, all tied to a Google account and reachable from a browser. For most people looking for a second line, that is still the strongest free-ish option in the US.</p>
-<p>The alternative on this page is not a Voice clone. It sends SMS from a browser after an email-only signup and issues you nothing.</p></div>
+<p>The alternative on this page is not a Voice clone. It sends SMS from a browser after an email-only signup and requires nothing else.</p></div>
       <div class="hero-ctas">
         <a class="btn-primary" href="https://smsroute.cc/signup">Send your first text <span aria-hidden="true">&rarr;</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/prices">See per-text prices</a>
@@ -369,7 +380,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>The promise SMSRoute makes is narrower and still useful: the person reading the text does not get your personal mobile number. Treat that as the feature, and you will not be surprised later.</p>
 <div class="a2-callout"><p><b>Note:</b> verification codes need a number that can receive SMS. A send-only route cannot complete those flows, so use Voice or another receive-capable product where the sending service allows it.</p></div></section>
     </div>
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Related guides</h2><ul><li><a href="https://smsroute-cc.github.io/burner-app-alternative-no-number.html">Burner App Alternative: Send Texts, No Number</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html">Send SMS Without a Number: How It Works (2026)</a></li><li><a href="https://smsroute-cc.github.io/anonymous-texting-app.html">Anonymous Texting Apps: What Works in 2026</a></li></ul></section>
     <h2 id="faq">Frequently asked questions</h2>
     <details class="faq-card"><summary>Can this replace Google Voice if I only send texts?</summary><div class="faq-answer"><p>Only for outbound SMS. Voice gives you a number people can save and message back, plus voicemail and calls. A send-only route has no number and no inbox, so anything involving a reply falls outside what it does.</p></div></details><details class="faq-card"><summary>I want a second line without giving my real phone number. What works?</summary><div class="faq-answer"><p>Look at number apps and read their current verification rules rather than assuming any tool skips every check. Email-only signup exists on send-only services, but those solve outbound delivery, not receiving.</p></div></details><details class="faq-card"><summary>When is Google Voice clearly better?</summary><div class="faq-answer"><p>When you want voicemail transcription, call forwarding, spam screening, a stable number inside the Google ecosystem, or two-way texting and calling. Those are core Voice features that a send-only tool does not have.</p></div></details><details class="faq-card"><summary>When should I use the send-only route instead?</summary><div class="faq-answer"><p>When you already have the recipient numbers, only need to send SMS from a browser, and want per-message pricing from $0.004 across the 149 countries SMSRoute reaches, paid in crypto rather than a monthly line rental.</p></div></details><details class="faq-card"><summary>Does it work for receiving bank or app verification codes?</summary><div class="faq-answer"><p>No. Verification codes require a number that can receive SMS. Use Google Voice where the sending service permits it, or another receive-capable number product, and follow each provider&#x27;s rules.</p></div></details>
     <h2 id="related">Related guides</h2><ul class="blist"><li><a href="https://smsroute-cc.github.io/send-sms-without-phone-number-online.html">sending SMS online without a phone number</a></li><li><a href="https://smsroute-cc.github.io/hide-my-number-when-texting.html">hiding your number when texting</a></li><li><a href="https://smsroute-cc.github.io/send-sms-no-kyc.html">sending SMS without KYC</a></li></ul>
@@ -380,7 +390,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="site-footer__inner">
     <div class="footer-grid"><div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
