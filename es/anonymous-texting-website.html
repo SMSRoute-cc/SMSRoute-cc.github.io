@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "SMS anónimo online: cómo elegir la web", "item": "https://smsroute-cc.github.io/es/anonymous-texting-website.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 países · nativo cripto · registro solo con email</span>
+      <span class="eyebrow-pill">149 países · cripto nativo · registro solo con email</span>
       <h1 class="hero-title">Webs de SMS anónimo que sí entregan</h1>
       <div class="hero-sub"><p>Los sitios web de mensajería anónima te permiten enviar textos directo desde tu navegador sin instalar apps ni verificar identidad, pero solo aquellos con estado de entrega visible logran que el mensaje llegue.</p>
 <p>Obtienes confirmación de entrega visible que prueba que el texto se envió. El registro solo pide un email y nunca requiere documentos de identidad.</p></div>
@@ -379,7 +390,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <main id="content" class="post">
   <article>
     <div class="toc-box"><strong>En esta página</strong><ol><li><a href="#s1">¿Los sitios web de mensajería anónima realmente funcionan?</a></li><li><a href="#s2">Por qué tantos sitios de mensajería gratuitos fallan en silencio</a></li><li><a href="#s3">Las cuatro señales de un sitio que entrega</a></li><li><a href="#s4">Prueba un sitio de mensajería en dos minutos</a></li><li><a href="#s5">Qué significa anónimo en un sitio web, honestamente</a></li></ol></div>
-    <div class="a2-tldr"><b>Resumen</b><ul><li>Los sitios de mensajería anónima gratuitos a menudo aceptan mensajes y los descartan en silencio.</li><li>Los avisos de &#x27;Enviado&#x27; no prueban nada; el estado de entrega por mensaje lo prueba todo.</li><li>Los sitios que funcionan publican cobertura por país, no un vago &#x27;mundial&#x27;.</li><li>El registro solo con email evita que el sitio sepa quién eres.</li><li>Los créditos de prueba gratuitos te permiten verificar la entrega antes de confiar en el sitio.</li></ul></div>
+    <div class="a2-tldr"><b>Resumen</b><ul><li>Los sitios de mensajería anónima gratuitos a menudo aceptan mensajes y los descartan en silencio.</li><li>Los avisos de 'Enviado' no prueban nada; el estado de entrega por mensaje lo prueba todo.</li><li>Los sitios que funcionan publican cobertura por país, no un vago 'mundial'.</li><li>El registro solo con email evita que el sitio sepa quién eres.</li><li>Los créditos de prueba gratuitos te permiten verificar la entrega antes de confiar en el sitio.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">¿Los sitios web de mensajería anónima realmente funcionan?</h2><p>Algunos sitios de mensajería anónima funcionan, mientras que muchos fallan silenciosamente. Un sitio funcional muestra el estado de entrega por mensaje y publica los países que cubre. Uno muerto solo muestra un banner de éxito y espera que nunca revises el teléfono del destinatario.</p>
 <p>Los gratuitos que ya probaste aceptaron el mensaje y luego lo desaparecieron. Nunca viste un estado porque no existía. Lo que diferencia a un sitio web de mensajería anónima funcional es la prueba de que el texto salió del sitio y llegó a una ruta real de operador. Implementamos entrega adaptativa multi-ruta con conmutación automática por error detrás de cada envío y acreditamos los mensajes fallidos de inmediato. Así, el estado de entrega que ves no es un teatro.</p></section><section><h2 id="s2">Por qué tantos sitios de mensajería gratuitos fallan silenciosamente</h2><p>Los sitios web de mensajería anónima gratuitos fallan silenciosamente porque entregar cada SMS cuesta dinero real, por lo que un sitio financiado con anuncios tiene todo el incentivo para aceptar tu texto y enrutar solo una fracción.</p>
@@ -393,6 +404,7 @@ sitio funcional:  estado de entrega por mensaje, países + tarifas publicados,
                registro solo con email, créditos de prueba gratis
 el árbitro:   un mensaje de prueba a tu propio teléfono</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html">Servicio SMS sin KYC: cómo elegir</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-send-sms.html">SMS anónimo online – sin cuenta</a></li><li><a href="https://smsroute-cc.github.io/es/hide-my-number-when-texting.html">Ocultar mi número al enviar SMS: qué funciona</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Cuál es el mejor sitio web de mensajería anónima gratuito?</summary><div class="faq-answer"><p>Para una sola prueba, cualquier sitio web de mensajería anónima gratuito que cubra tu país funciona bien. Para un mensaje que debe llegar, juzga solo por el estado de entrega y la cobertura publicada, y espera precios por mensaje en cualquier opción confiable. Se aplican tarifas por debajo del centavo una vez que superas el nivel gratuito que descarta textos silenciosamente.</p></div></details><details class="faq-card"><summary>¿Por qué mi texto anónimo nunca llegó?</summary><div class="faq-answer"><p>La mayoría de las veces el sitio gratuito nunca lo enrutó, el país de destino no estaba cubierto, o un número de remitente reciclado ya estaba filtrado por el operador. Un estado de entrega te lo habría dicho. Un caso límite en sitios funcionales es un destinatario que previamente respondió STOP; las listas de supresión integradas bloquean el texto y el estado informa el bloqueo para que no te quedes adivinando.</p></div></details><details class="faq-card"><summary>¿Puede un sitio web de mensajes anónimos ver mi identidad?</summary><div class="faq-answer"><p>Solo lo que tú le des. Un sitio que exige tu número de teléfono o un inicio de sesión con otra cuenta sabe mucho de ti. Un sitio que solo pide un correo electrónico conoce una bandeja de entrada. Si pagas con cripto, nunca recibe números de tarjeta ni datos bancarios.</p></div></details><details class="faq-card"><summary>¿Es legal usar un sitio web de mensajes anónimos?</summary><div class="faq-answer"><p>Sí. Enviar mensajes sin mostrar tu propio número es como ya funcionan los mensajes de servicio ordinarios. La ley de contenido aplica igual: el acoso y el fraude son ilegales sin importar quién sea el remitente. La excepción práctica es el cumplimiento de exclusión voluntaria; los destinos esperan manejo de palabras clave STOP y listas de supresión, y un servicio real las tiene integradas para que te mantengas del lado correcto de las reglas.</p></div></details>
@@ -401,10 +413,10 @@ el árbitro:   un mensaje de prueba a tu propio teléfono</code></pre></figure><
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-website.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/anonymous-texting-website.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Inicio SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Entrega Satisfactoria: Conexiones SMS a tus clientes, más allá de lo que hayas experimentado.</p>
+        <p>SMS fiables. Pago con cripto. Sin identificación.</p>
         <div class="socials">
           </div>
       </div>
