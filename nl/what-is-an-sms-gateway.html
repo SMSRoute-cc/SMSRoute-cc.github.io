@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
 <meta name="description" content="Wat is een SMS-gateway? Gebruik, API en anoniem versturen zonder registratie – kort uitgelegd.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Wat is een SMS-gateway? Uitleg", "description": "Wat is een SMS-gateway? Gebruik, API en anoniem versturen zonder registratie – kort uitgelegd.", "url": "https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html", "image": "https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "Wat is een SMS-gateway? Uitleg", "item": "https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -400,6 +405,8 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 
 # controleer of de gateway bereikbaar is
 curl https://api.smsroute.cc/health</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-kyc.html">SMS zonder registratie – geen KYC</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Is een SMS-gateway hetzelfde als een SMS API?</summary><div class="faq-answer"><p>Nee. De gateway is de routeringsinfrastructuur die het bericht daadwerkelijk naar een provider verplaatst. De API is de interface die ontwikkelaars gebruiken om met die infrastructuur te praten, in het geval van SMSRoute een REST API en SMPP-binds. Sommige gateways bieden alleen SMPP zonder HTTP-interface, dus de termen beschrijven aparte lagen, zelfs als een enkele dienst beide biedt.</p></div></details><details class="faq-card"><summary>Verwerken SMS-gateways antwoorden en opt-outs?</summary><div class="faq-answer"><p>Het hangt af van de gateway en route. SMSRoute heeft standaard STOP-sleutelwoordafhandeling en onderdrukkingslijsten ingebouwd. Opt-out-verzoeken via STOP voegen het nummer automatisch toe aan een onderdrukkingslijst, zodat latere verzendingen ernaar worden geblokkeerd. Antwoord (inbound) ondersteuning varieert per bestemmingsroute en is niet universeel bij alle providers.</p></div></details><details class="faq-card"><summary>Kan een SMS-gateway elk land ter wereld bereiken?</summary><div class="faq-answer"><p>Dekking varieert per provider en per carrier-verbindingen die zij onderhouden. SMSRoute dekt 149 landen met gepubliceerde tarieven per land. Maatwerk <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumeriek ID</a> zijn op aanvraag beschikbaar waar bestemmingsroutes dit ondersteunen, terwijl de standaard een slimme gedeelde pool is.</p></div></details><details class="faq-card"><summary>Wat is HLR-lookup en waarom biedt een gateway dit?</summary><div class="faq-answer"><p>HLR-lookup controleert of een telefoonnummer actief en bereikbaar is voordat u verzendt, wat verspilde verzendingen naar dode of ongeldige nummers vermindert. Een gateway biedt dit zodat apps eerst lijsten filteren en verkeer overslaan dat carriers direct afwijzen. Geporteerde nummers zijn het randgeval: statische databases missen het nieuwe thuisnetwerk, terwijl een live HLR-query de huidige carrier correct oplost.</p></div></details><details class="faq-card"><summary>Hoe snel beweegt een bericht door een gateway?</summary><div class="faq-answer"><p>Snelheid hangt af van de bestemmingscarrier en routekwaliteit. Zodra u saldo heeft gestort en een API-sleutel heeft aangemaakt, kunt u vrijwel meteen het eerste bericht versturen. Real-time leveringsrapporten via DLR-webhooks en het dashboardlogboek tonen acceptatie direct nadat de gateway het verkeer heeft overgedragen.</p></div></details>
     <div class="cta"><p>Bekijk de echte request- en responseflow van de gateway.</p><a class="btn" href="https://smsroute.cc/developers">Lees de API-documentatie</a><span class="alt">of bekijk <a href="https://smsroute.cc/prices">live prijzen</a></span></div>
@@ -448,7 +455,7 @@ curl https://api.smsroute.cc/health</code></pre></figure>
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betaal met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betaal met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betaal met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
