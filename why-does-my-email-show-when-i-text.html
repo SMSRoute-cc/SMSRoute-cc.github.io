@@ -290,6 +290,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Why Does My Email Show When I Text? (iPhone Fix)", "description": "Why does my email show when I text from iPhone? Fix iMessage Send and Receive so your number shows instead of an email or an old number. Updated 2026-07-26.", "url": "https://smsroute-cc.github.io/why-does-my-email-show-when-i-text.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/why-does-my-email-show-when-i-text.html", "datePublished": "2026-07-26", "dateModified": "2026-07-26", "image": "https://smsroute-cc.github.io/og/why-does-my-email-show-when-i-text-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Why Does My Email Show When I Text? (iPhone Fix)", "item": "https://smsroute-cc.github.io/why-does-my-email-show-when-i-text.html"}]}</script>
@@ -381,7 +392,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="site-footer__inner">
     <div class="footer-grid"><div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
