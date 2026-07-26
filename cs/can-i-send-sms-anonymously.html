@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "CS", "item": "https://smsroute-cc.github.io/cs/"}, {"@type": "ListItem", "position": 3, "name": "Dá se poslat SMS anonymně? Pravidla a možnosti", "item": "https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html"}]}</script>
 </head>
@@ -363,7 +374,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
       </div>
       <div class="trust-chips"><span>Registrace e-mailem</span><span>Bez ID</span><span>Platba kryptem</span></div>
       <div class="byline">
-        <a href="https://smsroute.cc/about" class="byline-author">SMSRoute engineering (tým)</a>
+        <a href="https://smsroute.cc/about" class="byline-author">Tým SMSRoute</a>
         <span class="byline-sep">·</span>
         <span class="byline-date">Poslední revize 2026-07-24</span>
       </div>
@@ -376,7 +387,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div><b>od 0,004 $</b><span>za zprávu</span></div>
     <div><b>149</b><span>země</span></div>
     <div><b>minut</b><span>k první zprávě</span></div>
-    <div><b>6</b><span>kryptoměny</span></div>
+    <div><b>6</b><span>kryptoměn</span></div>
   </div>
 </section>
 
@@ -398,7 +409,8 @@ od sítě:             nikdy - směrování se loguje u každé služby
 legální?             odesílání: ano, téměř všude
                      obsah: stejné zákony jako u každé zprávy</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-app.html">Anonymní textovací aplikace: Co funguje v roce 2026</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html">Anonymní textovací web: Na co se zaměřit</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-app.html">Anonymní textovací aplikace: Co funguje v roce 2026</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html">Anonymní textovací web: Na co se zaměřit</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-no-verification.html">Poslat SMS bez registrace a ověření</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
     <details class="faq-card"><summary>Lze anonymní SMS vystopovat zpět ke mně?</summary><div class="faq-answer"><p>Ne, ne příjemcem ani běžnými prostředky. Služba může vydat pouze e-mailovou adresu a krypto zůstatek spojený s účtem. Síťové sledování existuje výhradně pro závažné trestné činy a zůstává záležitostí orgánů činných v trestním řízení se soudními příkazy, nikoli zvědavců. Platba přes XMR drží platební stránku stejně minimalistickou.</p></div></details><details class="faq-card"><summary>Mohu poslat anonymní SMS ze svého vlastního telefonu?</summary><div class="faq-answer"><p>Ne, ze svého telefonu anonymní SMS odeslat nelze. Vaše <a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a> karta podepisuje každý text, který opouští váš přístroj, takže příjemce vždy vidí vaše skutečné číslo. Skutečně anonymní odeslání znamená, že zpráva odchází odjinud – z webové služby, která standardně používá vlastní sdílený fond odesílatelů. Tam, kde to trasy umožňují, si můžete dokonce vyžádat vlastní alfanumerické jméno.</p></div></details><details class="faq-card"><summary>Bude anonymní text vypadat pro příjemce podezřele?</summary><div class="faq-answer"><p>Ne, vypadá jako jakákoli služební zpráva – stejný formát, jaký používají banky nebo doručovací firmy. Název odesílatele (kde je podporován) působí čistěji než neznámé číslo. Zpracování klíčového slova STOP je zabudováno, stejně jako u legitimních upozornění, takže samotná zpráva nevyvolává otázky.</p></div></details><details class="faq-card"><summary>Jaký je nejanonymnější způsob, který stále spolehlivě doručí?</summary><div class="faq-answer"><p>Služba, u které stačí e-mail, platí se kryptem a odesílá z vlastního fondu, je nejvíce anonymní možností, která stále doručuje. Bezplatná testovací zpráva vám umožní ověřit, že se k příjemci dostane, než se na ni začnete spoléhat.</p></div></details>
     <div class="cta"><p>Pokud jste hledali odpověď 'ano, aniž byste komukoli sdělili své jméno' - tato cesta existuje a bezplatná testovací zpráva to potvrzuje.</p><a class="btn" href="https://smsroute.cc/signup">Vyzkoušejte pouze s e-mailem</a><span class="alt">jak to funguje: <a href="https://smsroute-cc.github.io/send-sms-anonymously.html">odesílejte SMS anonymně, krok za krokem</a></span></div>
@@ -406,10 +418,10 @@ legální?             odesílání: ano, téměř všude
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/can-i-send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/can-i-send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/can-i-send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/can-i-send-sms-anonymously.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/can-i-send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/can-i-send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/can-i-send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/can-i-send-sms-anonymously.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html" hreflang="da-DK" lang="da">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/can-i-send-sms-anonymously.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Spokojení zákazníci díky SMS – snáz než dřív.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
@@ -459,7 +471,7 @@ legální?             odesílání: ano, téměř všude
         <ul>
           <li><a href="https://smsroute.cc/integrate/node-js">Integrace Node.js</a></li>
           <li><a href="https://smsroute.cc/integrate/python">Integrace Pythonu</a></li>
-          <li><a href="https://smsroute.cc/integrate/twilio-migration">Migrace z Twilia</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Migrace z Twilio</a></li>
         </ul>
         <p class="footer-heading">Srovnání</p>
         <ul>
