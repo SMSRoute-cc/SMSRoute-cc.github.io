@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "IT", "item": "https://smsroute-cc.github.io/it/"}, {"@type": "ListItem", "position": 3, "name": "Servizio SMS senza KYC: come sceglierlo", "item": "https://smsroute-cc.github.io/it/sms-sender-no-kyc.html"}]}</script>
 </head>
@@ -359,7 +370,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
       </div>
       <div class="trust-chips"><span>Registrazione via email</span><span>Nessun documento</span><span>Pagamento in crypto</span></div>
       <div class="byline">
-        <a href="https://smsroute.cc/about" class="byline-author">Team engineering SMSRoute</a>
+        <a href="https://smsroute.cc/about" class="byline-author">Team di ingegneria SMSRoute</a>
         <span class="byline-sep">·</span>
         <span class="byline-date">Ultima revisione: 24-07-2026</span>
       </div>
@@ -378,7 +389,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 
 <main id="content" class="post">
   <article>
-    <div class="toc-box"><strong>In questa pagina</strong><ol><li><a href="#s1">Cos'è un SMS sender senza KYC?</a></li><li><a href="#s2">Come valutare un sender senza KYC quando nessuno verifica i documenti</a></li><li><a href="#s3">La checklist della fiducia verificabile</a></li><li><a href="#s4">Bandiere rosse nei siti di sender senza KYC</a></li><li><a href="#s5">Eseguire il test su questo sender</a></li></ol></div>
+    <div class="toc-box"><strong>In questa pagina</strong><ol><li><a href="#s1">Cos'è un mittente SMS senza KYC?</a></li><li><a href="#s2">Come valutare un sender senza KYC quando nessuno verifica i documenti</a></li><li><a href="#s3">La checklist della fiducia verificabile</a></li><li><a href="#s4">Bandiere rosse nei siti di mittenti senza KYC</a></li><li><a href="#s5">Eseguire il test su questo mittente</a></li></ol></div>
     <div class="a2-tldr"><b>In breve</b><ul><li>Diversi SMS sender accettano crypto e saltano il KYC; le affermazioni variano enormemente.</li><li>Fidati di ciò che puoi verificare: tariffe pubblicate, test gratuito, stato in tempo reale.</li><li>&#x27;100% non tracciabile&#x27; su una landing page è una bandiera rossa, non una funzionalità.</li><li>Dichiarazioni specifiche sulla privacy battono sempre quelle assolute.</li><li>Un messaggio di prova sul tuo telefono smonta ogni affermazione di marketing.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">Cos'è un mittente SMS senza KYC?</h2><p>Un mittente SMS senza KYC è un servizio che invia messaggi senza mai raccogliere documenti d'identità, usando solo registrazione via email, pagamento in criptovalute e nessuna richiesta di documento, indipendentemente dal volume.</p>
@@ -393,6 +404,7 @@ affermazione: &#x27;affidabile&#x27;         verifica: test gratuito sul tuo tel
 affermazione: &#x27;economico&#x27;            verifica: tabella tariffe per paese pubblica?
 affermazione: &#x27;non tracciabile&#x27;      verifica: non esiste - le reti registrano il routing. allontanati</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guide correlate</h2><ul><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html">SMS anonimo senza registrazione</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-send-sms.html">SMS anonimo online – senza account</a></li><li><a href="https://smsroute-cc.github.io/it/can-i-send-sms-anonymously.html">Si può inviare un SMS anonimo?</a></li><li><a href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">Nascondere il numero quando invii un SMS</a></li></ul></section>
     <h2 id="faq">Domande frequenti</h2>
     <details class="faq-card"><summary>Quale mittente SMS non ha KYC?</summary><div class="faq-answer"><p>Esistono diversi mittenti SMS senza KYC, e la maggior parte sono pagati in criptovalute. Non fidarti di una lista nominativa. Esegui tu stesso la checklist: tariffe pubblicate per paese, un test gratuito reale sul tuo telefono e stato di consegna in tempo reale. Un mittente che supera tutti e tre merita un finanziamento; uno che ne fallisce uno qualsiasi no. Il failover automatico tra route mantiene la consegna attiva anche quando un percorso cade, cosa che le pagine con promesse vuote non costruiscono mai.</p></div></details><details class="faq-card"><summary>È legale usare un mittente SMS senza KYC?</summary><div class="faq-answer"><p>Sì, usare un mittente SMS senza KYC è legale. L'onboarding leggero è una scelta commerciale, non un reato. Ciò che invii è regolamentato esattamente come su qualsiasi servizio: molestie e frodi sono illegali ovunque. La gestione della parola STOP e le liste di soppressione sono integrate per garantire il rispetto delle rinunce.</p></div></details><details class="faq-card"><summary>Perché i mittenti senza KYC usano pagamenti in criptovalute?</summary><div class="faq-answer"><p>L'elaborazione con carta comporta requisiti di identità perché le reti obbligano i commercianti a verificare i pagatori. Le criptovalute permettono a un mittente senza KYC di fatturarti senza mai detenere l'identità del titolare della carta, che è il punto centrale della categoria. Il servizio accetta BTC, ETH, USDT, XMR, LTC e SOL, così il pagamento stesso rimane al di fuori dei circuiti bancari tradizionali.</p></div></details><details class="faq-card"><summary>Posso inviare messaggi in blocco con un mittente senza KYC?</summary><div class="faq-answer"><p>Sì. I migliori scalano da un singolo messaggio a invii massivi con lo stesso account basato solo su email, con gestione della parola STOP e liste di soppressione integrate. Il volume cambia il prezzo, non le regole sull'identità.</p></div></details>
@@ -401,19 +413,19 @@ affermazione: &#x27;non tracciabile&#x27;      verifica: non esiste - le reti re
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/sms-sender-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-sender-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-sender-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-sender-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-sender-no-kyc.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Lingue</p><ul><li><a href="https://smsroute-cc.github.io/sms-sender-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-sender-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-sender-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-sender-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-sender-no-kyc.html" hreflang="it-IT" lang="it" aria-current="true">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/sms-sender-no-kyc.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/sms-sender-no-kyc.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/sms-sender-no-kyc.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Home SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Consegna la soddisfazione: connessioni SMS ai tuoi clienti, più di quanto tu abbia mai sperimentato.</p>
+        <p>SMS affidabili. Paga in crypto. Nessun documento.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Modello SMS GDPR Double Opt-in</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Numero verde vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">ID mittente alfanumerico vs codice breve</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Modello SMS Doppio opt-in GDPR</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Quale per il mio testo?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Come funziona la consegna OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Guida SMS Internazionale 2026</a></li>
