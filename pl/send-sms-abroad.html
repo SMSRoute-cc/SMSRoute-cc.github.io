@@ -37,6 +37,10 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
 <meta property="og:title" content="Jak wysłać SMS za granicę: koszty i tańsza droga">
 <meta property="og:description" content="Jak wysłać SMS za granicę: dlaczego roaming UE tu nie działa, ile liczy operator i jak działa wysyłka przez internet ze statusem doręczenia.">
 <meta property="og:url" content="https://smsroute-cc.github.io/pl/send-sms-abroad.html">
@@ -311,6 +315,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "PL", "item": "https://smsroute-cc.github.io/pl/"}, {"@type": "ListItem", "position": 3, "name": "Jak wysłać SMS za granicę: koszty i tańsza droga", "item": "https://smsroute-cc.github.io/pl/send-sms-abroad.html"}]}</script>
 </head>
@@ -346,7 +361,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 krajów · pod krypto / z płatnościami krypto · rejestracja tylko e-mail</span>
+      <span class="eyebrow-pill">149 krajów · z płatnościami krypto · rejestracja tylko e-mail</span>
       <h1 class="hero-title">Jak wysłać SMS za granicę bez niespodzianek na rachunku</h1>
       <div class="hero-sub"><p>Wyślij SMS za granicę przez swojego operatora (opłaty międzynarodowe), darmowy portal online (dostawa często zawodzi) lub płatną usługę internetową, która podaje cenę za wiadomość i potwierdza doręczenie na ekranie.</p>
 <p>Wysyłasz wiadomość ze strony i widzisz status doręczenia na ekranie. Rejestracja wymaga tylko adresu e-mail i nigdy nie wymaga dokumentów tożsamości.</p></div>
@@ -354,7 +369,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
         <a class="btn-primary" href="https://smsroute.cc/signup">Wyślij swoją pierwszą wiadomość<span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/prices">Zobacz ceny za wiadomość</a>
       </div>
-      <div class="trust-chips"><span>Rejestracja e-mail</span><span>Bez ID</span><span>Płatność kryptowalutami</span></div>
+      <div class="trust-chips"><span>Rejestracja e-mail</span><span>Bez identyfikacji</span><span>Płatność kryptowalutami</span></div>
       <div class="byline">
         <a href="https://smsroute.cc/about" class="byline-author">Zespół SMSRoute</a>
         <span class="byline-sep">·</span>
@@ -369,7 +384,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div><b>od 0,004 $</b><span>za wiadomość</span></div>
     <div><b>149</b><span>krajów</span></div>
     <div><b>minut</b><span>do pierwszej wiadomości</span></div>
-    <div><b>6</b><span>kryptowaluty</span></div>
+    <div><b>6</b><span>kryptowalut</span></div>
   </div>
 </section>
 
@@ -380,7 +395,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div class="secs">
     <section><h2 id="s1">Czy wysłanie SMS za granicę kosztuje dodatkowo?</h2><p>Tak, wysłanie SMS za granicę zwykle kosztuje dodatkowo. Wysłanie wiadomości na zagraniczny numer z kraju ojczystego jest w większości planów traktowane jako SMS międzynarodowy, rozliczane poza pakietem. Zasady roamingu, dzięki którym podróże po UE są tanie, nie mają zastosowania. Roaming dotyczy tego, gdzie jesteś, a nie gdzie jest odbiorca.</p>
 <p>Dopiero późniejszy rachunek pokazuje dopłatę za każdą taką wiadomość. Taryfy operatorów dla kierunków poza krajem są całkowicie oddzielone od pakietów krajowych i od unijnych<a href="https://en.wikipedia.org/wiki/Roaming" rel="noopener">roam like at home</a> limitów. To właśnie myli każdego, kto swobodnie korzystał z telefonu podczas podróży, a teraz oczekuje takiego samego traktowania dla numeru za granicą. Darmowe strony internetowe, które twierdzą, że znoszą koszty, zwykle nie dostarczają wiadomości, a zamiast tego wymieniają twoją wiadomość na wyświetlenia reklam.</p></section><section><h2 id="s2">Nieporozumienie wokół roamingu, które kosztuje ludzi pieniądze</h2><p>Zamieszanie roamingu polega na przekonaniu, że darmowy roaming w UE pozwala na wysyłanie wiadomości na zagraniczne numery z domu bez dodatkowych kosztów, podczas gdy dotyczy to tylko korzystania z telefonu podczas podróży. Roam like at home oznacza, że twój plan krajowy obowiązuje cię w UE. Wiadomości wysyłane za granicą na numery krajowe pochodzą z twojego zwykłego pakietu.</p>
-<p>Wysłanie wiadomości z kanapy na zagraniczny numer to inny produkt, zwany SMS-em międzynarodowym. Operatorzy rozliczają to za wiadomość na dodatek do wszystkiego innego. Dlatego strony pomocy operatorów pojawiają się, gdy ludzie szukają, jak wysłać SMS za granicę. Większość zauważa dopłatę dopiero, gdy przychodzi rachunek.</p></section><section><h2 id="s3">Trzy uczciwe sposoby wysyłania wiadomości na zagraniczny numer</h2><p>Plany operatorów, darmowe strony internetowe i płatne bramki SMS / płatne serwisy SMS online – wszystkie dostarczają zwykły SMS na zagraniczny numer. Zmienia się to, ile płacisz i jak bardzo jesteś pewien, że wiadomość dotarła.</p>
+<p>Wysłanie wiadomości z kanapy na zagraniczny numer to inny produkt, zwany SMS-em międzynarodowym. Operatorzy rozliczają to za wiadomość na dodatek do wszystkiego innego. Dlatego strony pomocy operatorów pojawiają się, gdy ludzie szukają, jak wysłać SMS za granicę. Większość zauważa dopłatę dopiero, gdy przychodzi rachunek.</p></section><section><h2 id="s3">Trzy uczciwe sposoby wysyłania wiadomości na zagraniczny numer</h2><p>Plany operatorów, darmowe strony internetowe i płatne bramki SMS – wszystkie dostarczają zwykły SMS na zagraniczny numer. Zmienia się to, ile płacisz i jak bardzo jesteś pewien, że wiadomość dotarła.</p>
 <p>Darmowe portale pokrywają koszty reklamami, odsprzedażą danych o zasięgu i przetwarzaniem treści wiadomości. Wybierz opcję, która pokazuje dokładną cenę przed wysłaniem i wyświetla status dostarczenia zaraz po, żeby jedyną informacją nie był późniejszy rachunek albo brak jakiegokolwiek sygnału.</p><div class="a2-tablewrap"><table class="a2-compare"><thead><tr><th>Trasa</th><th>Ile kosztuje</th><th>Co wiesz potem</th></tr></thead><tbody><tr><td class="dim">Twój operator</td><td class="ours">Stawka międzynarodowa za wiadomość, zależna od planu</td><td>Zwykle dociera; cena zaskakuje na rachunku</td></tr><tr><td class="dim">Darmowe portale SMS</td><td class="ours">Darmowe, plus reklamy i dane twojej wiadomości</td><td>Nic - brak statusu dostarczenia, często po cichu odrzucane</td></tr><tr><td class="dim">Płatny nadawca internetowy</td><td class="ours">Podana cena za wiadomość, od 0,004 $</td><td>Status dostarczenia na ekranie za wiadomość</td></tr></tbody></table></div></section><section><h2 id="s4">Wysyłanie za granicę z przeglądarki, krok po kroku</h2><p>Wysyłasz za granicę z przeglądarki, rejestrując się tylko e-mailem, sprawdzając cenę dla numeru przed zapłatą i kliknięciem wyślij.</p>
 <p>Nigdy nie są wymagane dokumenty tożsamości. Nadawca internetowy wycenia każdy kierunek z góry, więc zagraniczny numer kosztuje tyle, ile mówi cennik, a nie to, co ujawni rachunek. Wybierz to, gdy chcesz mieć stałą cenę zamiast niespodzianki.</p><ol class="a2-steps"><li><b>Sprawdź kierunek na publicznej liście cen</b><span>cena za wiadomość przed zobowiązaniem się</span></li><li><b>Zarejestruj się za pomocą adresu e-mail</b><span>bez umowy, bez zmiany planu</span></li><li><b>Wyślij najpierw za darmo, korzystając z testowych kredytów</b><span>prawdziwa wiadomość potwierdza, że trasa działa</span></li><li><b>Dostarczenie potwierdzone na ekranie</b><span>żadnej niespodzianki na rachunku miesiąc później</span></li></ol></section><section><h2 id="s5">Co sprawdzić, zanim zaufa się jakiejś trasie</h2><p>Niezależnie od wybranej trasy, dwie kontrole cię chronią: widoczna cena za wiadomość dla kraju docelowego i status dostarczenia za wiadomość. Darmowe portale zawodzą w obu. Operatorzy spełniają pierwszy warunek tylko jeśli przekopiesz się przez strony taryf, a po wysłaniu wiadomości nie dają potwierdzenia dostarczenia na ekranie.</p>
 <p>Rzetelna płatna bramka SMS podaje dokładny koszt dla twojego zagranicznego numeru przed zapłatą i pokazuje status dostarczenia zaraz potem. Ta kombinacja eliminuje późniejszy szok przy rachunku i niepewność, czy wiadomość dotarła. Dostajesz ustaloną cenę i dowód na ekranie, co jest minimum, jakie powinna oferować każda uczciwa trasa.</p></section>
@@ -390,7 +405,8 @@ darmowy portal SMS: reklamy + treść wiadomości + ciche niedostarczenie
 nadawca WWW: publiczny cennik, za wiadomość, przed wysłaniem
 każda trasa: odbiorca dostaje zwykły SMS, bez opłat</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html">SMS bez numeru nadawcy</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html">Jak wysłać SMS z komputera bez telefonu (2026)</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html">SMS bez numeru nadawcy</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html">Jak wysłać SMS z komputera bez telefonu (2026)</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/pl/what-is-an-sms-gateway.html">Bramka SMS bez rejestracji – co to</a></li></ul></section>
     <h2 id="faq">Najczęściej zadawane pytania</h2>
     <details class="faq-card"><summary>Jak wysłać SMS za granicę za darmo?</summary><div class="faq-answer"><p>Darmowe portale pozwalają wysłać SMS za granicę bez opłat, ale finansują się z reklam i z wykorzystywania danych Twoich wiadomości, a większość nie podaje statusu dostarczenia. Gdy wiadomość musi dotrzeć, darmowe kredyty testowe u płatnego nadawcy są najbliższym darmowym rozwiązaniem, które wciąż potwierdza dostarczenie na ekranie.</p></div></details><details class="faq-card"><summary>Czy roaming UE sprawia, że wysyłanie SMS za granicę jest darmowe?</summary><div class="faq-answer"><p>Nie, roaming UE obejmuje Cię podczas podróży. Wysyłanie SMS na zagraniczny numer z kraju ojczystego to międzynarodowy SMS i jest rozliczany osobno w większości taryf. Jedynym częściowym wyjątkiem jest sytuacja, gdy operator sprzedaje osobny pakiet międzynarodowych SMS-ów, który wciąż kosztuje dodatkowo i nie podlega zasadom roamingu 'jak u siebie'.</p></div></details><details class="faq-card"><summary>Dlaczego mój operator naliczył opłatę za SMS do innego kraju?</summary><div class="faq-answer"><p>Międzynarodowe SMS-y są poza większością pakietów. Stawka za wiadomość zależy od Twojego planu i kierunku; operatorzy podają te stawki głęboko w cennikach, więc opłata zwykle pojawia się na rachunku, zanim znajdziesz wyjaśnienie. Wyjątkiem są rzadkie pakiety międzynarodowe za stałą opłatą oferowane przez niektórych operatorów, ale nawet wtedy uwzględnione kierunki są ograniczone, a reszta wciąż kosztuje dodatkowo.</p></div></details><details class="faq-card"><summary>Czy odbiorca zapłaci coś za otrzymanie mojego SMS-a?</summary><div class="faq-answer"><p>Odbieranie SMS-a nic nie kosztuje odbiorcy w prawie każdym kraju. Ty płacisz cały koszt po stronie nadawcy, a oni po prostu dostają normalną wiadomość przychodzącą na telefon. Rzadkimi wyjątkami są krótkie kody o podwyższonej opłacie lub alerty subskrypcyjne, które celowo obciążają odbiorcę - czego zwykłe SMS-y między osobami nigdy nie robią.</p></div></details>
     <div class="cta"><p>Cena najpierw, potem wyślij: lista cen dla krajów jest publiczna, a darmowe kredyty testowe potwierdzają trasę, zanim zapłacisz.</p><a class="btn" href="https://smsroute.cc/prices">Sprawdź cenę dla swojego kraju</a><span class="alt">następnie <a href="https://smsroute.cc/signup">zarejestruj się tylko przez e-mail</a> - lub przeczytaj <a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html">jak wysłać z komputera</a></span></div>
@@ -398,10 +414,10 @@ każda trasa: odbiorca dostaje zwykły SMS, bez opłat</code></pre></figure></de
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-abroad.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-abroad.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-abroad.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Strona główna SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Zadowoleni klienci: SMS-y, które naprawdę do nich docierają.</p>
+        <p>Niezawodne SMS-y. Płatność krypto. Bez identyfikacji.</p>
         <div class="socials">
           </div>
       </div>
@@ -410,7 +426,7 @@ każda trasa: odbiorca dostaje zwykły SMS, bez opłat</code></pre></figure></de
         <ul>
           <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs numer bezpłatny vs krótki kod</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumeryczny vs krótki kod jako identyfikator nadawcy</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Szablon SMS z podwójnym potwierdzeniem zgodny z RODO</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Szablon SMS z podwójnym potwierdzeniem, zgodny z RODO</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Który dla mojej treści?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Jak działa dostarczanie OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Międzynarodowy przewodnik SMS 2026</a></li>
