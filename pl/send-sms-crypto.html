@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/send-sms-crypto.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/send-sms-crypto.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/send-sms-crypto.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/send-sms-crypto.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/send-sms-crypto.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/send-sms-crypto.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-crypto.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-crypto.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-crypto.html">
 <meta name="description" content="SMS API z płatnością krypto. Start bez klasycznego KYC, saldo testowe, wysyłka globalna.">
 <link rel="canonical" href="https://smsroute-cc.github.io/pl/send-sms-crypto.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS API za kryptowaluty", "description": "SMS API z płatnością krypto. Start bez klasycznego KYC, saldo testowe, wysyłka globalna.", "url": "https://smsroute-cc.github.io/pl/send-sms-crypto.html", "inLanguage": "pl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/pl/send-sms-crypto.html", "image": "https://smsroute-cc.github.io/og/send-sms-crypto-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "PL", "item": "https://smsroute-cc.github.io/pl/"}, {"@type": "ListItem", "position": 3, "name": "SMS API za kryptowaluty", "item": "https://smsroute-cc.github.io/pl/send-sms-crypto.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Zaloguj się</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Rozpocznij</a></div>
 </div></header>
 
-<nav class="okruszki nawigacyjne" aria-label="okruszki nawigacyjne">
+<nav class="breadcrumb" aria-label="okruszki nawigacyjne">
   <ol>
     <li><a href="https://smsroute.cc/">Strona główna</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -407,6 +412,8 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-no-kyc.html">SMS bez rejestracji – bez KYC</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html">SMS bez numeru nadawcy</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Najczęściej zadawane pytania</h2>
     <details class="faq-card"><summary>Jak sprawdzić, czy wpłata została zaksięgowana?</summary><div class="faq-answer"><p>Sprawdź status kredytu wpłaty przez GET /payment/status-2/:orderId. Te same informacje znajdują się w historii zamówień przez GET /orders. Potwierdzone wpłaty stają się dostępnym saldem bez dodatkowych kroków z Twojej strony.</p></div></details><details class="faq-card"><summary>Czy niewykorzystane saldo krypto podlega zwrotowi na mój portfel?</summary><div class="faq-answer"><p>Tak, niewykorzystane saldo podlega zwrotowi na portfel źródłowy na żądanie, a nieudane wiadomości są automatycznie zwracane. Zwrot zawsze trafia na ten sam portfel i tę samą sieć, z których pochodziła wpłata – np. doładowanie USDT TRC-20 zostanie zwrócone na TRC-20 po złożeniu wniosku.</p></div></details><details class="faq-card"><summary>Czy obsługujecie stablecoiny?</summary><div class="faq-answer"><p>Tak. Tether jest akceptowany zarówno w sieci TRC-20, jak i ERC-20, a TRC-20 jest zwykle tańszą siecią do wpłat. Wybierz sieć w wywołaniu wpłaty przez crypto_currency, a następnie potwierdź kredyt przez GET /payment/status-2/:orderId przed wysłaniem wolumenu.</p></div></details><details class="faq-card"><summary>Czy mogę zobaczyć historię doładowań i wydatków?</summary><div class="faq-answer"><p>Tak. GET /user/transactions wyświetla każdą opłatę za wiadomość wraz z automatycznymi zwrotami przy nieudanym wysyłaniu. Doładowania pojawiają się w GET /orders, każde dopasowane do portfela źródłowego i stanu potwierdzenia. Użycie darmowego kredytu testowego również widnieje w historii wydatków, dzięki czemu historia konta jest spójna od rejestracji.</p></div></details><details class="faq-card"><summary>Do których krajów dociera SMS opłacony krypto?</summary><div class="faq-answer"><p>SMS opłacony krypto dociera do 149 krajów, a dokładna stawka za kraj jest podana w GET /prices. Niestandardowy <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">identyfikator alfanumeryczny</a> są dostępne na żądanie, jeśli trasa docelowa je obsługuje.</p></div></details>
     <div class="cta"><p>Kryptowaluty trafiają bezpośrednio na saldo – bez karty, bez gonitwy za fakturami, z możliwością zwrotu na portfel.</p><a class="btn" href="https://smsroute.cc/prices">Sprawdź aktualne ceny dla poszczególnych krajów</a><span class="alt">lub <a href="https://smsroute.cc/signup">załóż konto, podając tylko adres e-mail</a></span></div>
@@ -455,7 +462,7 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Zapłać Bitcoinem</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Zapłać Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Zapłać USDT</a></li>
-        </ul> <p class="footer-heading">Darmowe narzędzia</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Licznik znaków SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Kalkulator kosztów SMS</a></li> <li><a href="https://smsroute.cc/tools">Darmowe narzędzia →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Zastosowania</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS do 2FA</a></li>
