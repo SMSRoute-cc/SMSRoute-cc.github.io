@@ -37,6 +37,10 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/send-sms-abroad-og.png">
 <meta property="og:title" content="Enviar SMS al extranjero: tarifas y la vía barata">
 <meta property="og:description" content="Enviar SMS al extranjero: por qué el roaming de la UE no aplica, qué cobra tu operador y cómo funciona el envío por internet con estado de entrega.">
 <meta property="og:url" content="https://smsroute-cc.github.io/es/send-sms-abroad.html">
@@ -311,6 +315,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "Enviar SMS al extranjero: tarifas y la vía barata", "item": "https://smsroute-cc.github.io/es/send-sms-abroad.html"}]}</script>
 </head>
@@ -354,7 +369,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
         <a class="btn-primary" href="https://smsroute.cc/signup">Envía tu primer texto <span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/prices">Ver precios por texto</a>
       </div>
-      <div class="trust-chips"><span>Registro por correo electrónico</span><span>Sin identificación</span><span>Pago cripto</span></div>
+      <div class="trust-chips"><span>Registro por correo electrónico</span><span>Sin identificación</span><span>Pago con cripto</span></div>
       <div class="byline">
         <a href="https://smsroute.cc/about" class="byline-author">Ingeniería de SMSRoute</a>
         <span class="byline-sep">·</span>
@@ -390,7 +405,8 @@ portal SMS gratuito: anuncios + el contenido de tu mensaje + fallos de entrega s
 remitente web:     lista de precios pública, por mensaje, antes de enviar
 cualquier ruta:    el destinatario recibe un SMS normal, gratis</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html">Enviar SMS sin número visible</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html">Enviar SMS desde el PC sin teléfono (2026)</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html">Enviar SMS sin número visible</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html">Enviar SMS desde el PC sin teléfono (2026)</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/es/what-is-an-sms-gateway.html">¿Qué es una pasarela SMS?</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Cómo puedo enviar un SMS al extranjero gratis?</summary><div class="faq-answer"><p>Los portales gratuitos te permiten enviar un SMS al extranjero sin costo, pero se financian mediante anuncios y usando los datos de tus mensajes, y la mayoría no ofrece estado de entrega. Cuando el mensaje debe llegar, los créditos de prueba gratuitos en un servicio de pago son lo más parecido a gratis que aún demuestra la entrega en pantalla.</p></div></details><details class="faq-card"><summary>¿El roaming de la UE hace que enviar SMS al extranjero sea gratis?</summary><div class="faq-answer"><p>No, el roaming de la UE te cubre mientras viajas. Enviar un SMS a un número extranjero desde tu país de origen es un SMS internacional y se factura por separado en la mayoría de los planes. La única excepción parcial es si tu operador vende un paquete separado de SMS internacional, que igualmente cuesta extra y queda fuera de las reglas de 'roaming como en casa'.</p></div></details><details class="faq-card"><summary>¿Por qué mi operador me cobró por un SMS a otro país?</summary><div class="faq-answer"><p>El SMS internacional está fuera de la mayoría de los paquetes. La tarifa por mensaje depende de tu plan y destino; los operadores listan esas tarifas escondidas en sus páginas de tarifas, por lo que el cargo suele aparecer en tu factura antes de que encuentres la explicación. Una excepción son los raros complementos internacionales de tarifa plana que algunos operadores venden, pero incluso entonces los destinos incluidos son limitados y el resto sigue costando extra.</p></div></details><details class="faq-card"><summary>¿Pagará el destinatario algo por recibir mi SMS?</summary><div class="faq-answer"><p>Recibir un SMS no le cuesta nada al destinatario en casi todos los países. Tú pagas el costo total del lado del envío, y ellos simplemente reciben un mensaje entrante normal en su teléfono. Las raras excepciones son los códigos cortos de tarifa premium o alertas de suscripción que cobran deliberadamente al receptor, lo que los mensajes de persona a persona normales nunca hacen.</p></div></details>
     <div class="cta"><p>Precio primero, luego envía: la lista por país es pública y los créditos de prueba gratuitos demuestran la ruta antes de pagar.</p><a class="btn" href="https://smsroute.cc/prices">Consulta el precio para tu país</a><span class="alt">luego <a href="https://smsroute.cc/signup">regístrate solo con correo electrónico</a> - o lee <a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html">cómo enviar desde un ordenador</a></span></div>
@@ -398,17 +414,17 @@ cualquier ruta:    el destinatario recibe un SMS normal, gratis</code></pre></fi
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-abroad.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-abroad.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-abroad.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-abroad.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-abroad.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-abroad.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Inicio SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>SMS fiables para tus clientes, con una experiencia superior a la que conoces.</p>
+        <p>SMS fiables. Pago con cripto. Sin identificación.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs números gratuitos vs códigos cortos</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">ID de remitente alfanumérico vs. código corto</a></li>
           <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Plantilla SMS de doble opt-in para GDPR</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: ¿Cuál para mi texto?</a></li>
