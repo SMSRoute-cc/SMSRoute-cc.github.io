@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/send-sms-crypto.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/send-sms-crypto.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/send-sms-crypto.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/send-sms-crypto.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/send-sms-crypto.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/send-sms-crypto.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-crypto.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-crypto.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-crypto.html">
 <meta name="description" content="SMS API betalen met crypto. Start zonder klassieke KYC, testtegoed, wereldwijd versturen.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/send-sms-crypto.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS API betalen met crypto", "description": "SMS API betalen met crypto. Start zonder klassieke KYC, testtegoed, wereldwijd versturen.", "url": "https://smsroute-cc.github.io/nl/send-sms-crypto.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/send-sms-crypto.html", "image": "https://smsroute-cc.github.io/og/send-sms-crypto-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "SMS API betalen met crypto", "item": "https://smsroute-cc.github.io/nl/send-sms-crypto.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -407,6 +412,8 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;crypto_currency&quot;: &quot;BTC&quot;, &quot;amount&quot;: 25}&#x27;</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-kyc.html">SMS zonder registratie – geen KYC</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Hoe controleer ik of mijn storting is bijgeschreven?</summary><div class="faq-answer"><p>Poll GET /payment/status-2/:orderId voor de creditstatus van uw storting. Dezelfde informatie staat in uw ordergeschiedenis via GET /orders. Bevestigde stortingen worden besteedbaar saldo zonder extra stappen van uw kant.</p></div></details><details class="faq-card"><summary>Is ongebruikt cryptosaldo terugbetaalbaar naar mijn wallet?</summary><div class="faq-answer"><p>Ja, ongebruikt saldo is op verzoek terugbetaalbaar naar de oorspronkelijke wallet, en mislukte berichten worden automatisch teruggestort. De terugbetaling gaat altijd naar dezelfde wallet en hetzelfde netwerk als de storting; een USDT TRC-20-opwaardering wordt dus terugbetaald op TRC-20 zodra u het verzoek indient.</p></div></details><details class="faq-card"><summary>Ondersteunen jullie stablecoins?</summary><div class="faq-answer"><p>Ja. Tether wordt geaccepteerd op zowel TRC-20 als ERC-20, en TRC-20 is doorgaans het goedkoopste netwerk om te storten. Kies het netwerk in de stortingsaanroep met crypto_currency, bevestig vervolgens de credit via GET /payment/status-2/:orderId voordat u volume verstuurt.</p></div></details><details class="faq-card"><summary>Kan ik een geschiedenis van mijn opwaarderingen en uitgaven zien?</summary><div class="faq-answer"><p>Ja. GET /user/transactions toont elke berichtkost samen met automatische terugboekingen bij een mislukte verzending. Opwaarderingsstortingen verschijnen onder GET /orders, elk gekoppeld aan de oorspronkelijke wallet en bevestigingsstatus. Gratis testkredietgebruik wordt ook in de uitgavengeschiedenis getoond, zodat het grootboek vanaf registratie continu blijft.</p></div></details><details class="faq-card"><summary>Welke landen bereikt u met sms die met crypto is betaald?</summary><div class="faq-answer"><p>Met crypto betaalde SMS bereikt 149 landen, met het exacte tarief per land vermeld bij GET /prices. Aangepaste <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumeriek ID</a> zijn op verzoek beschikbaar waar de bestemmingsroute dit ondersteunt.</p></div></details>
     <div class="cta"><p>Munten gaan rechtstreeks naar een saldo, geen kaart, geen gedoe met facturen, terugbetaalbaar naar uw wallet.</p><a class="btn" href="https://smsroute.cc/prices">Bekijk live prijzen per land</a><span class="alt">of <a href="https://smsroute.cc/signup">maak een account met alleen een e-mailadres</a></span></div>
@@ -455,7 +462,7 @@ curl -X POST https://api.smsroute.cc/deposits-2 \
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betalen met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betalen met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betalen met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
