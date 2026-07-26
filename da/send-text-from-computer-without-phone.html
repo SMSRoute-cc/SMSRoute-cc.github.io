@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Send a Text From Your Computer Without a Phone (2026)", "item": "https://smsroute-cc.github.io/send-text-from-computer-without-phone.html"}]}</script>
 </head>
@@ -353,7 +364,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 lande · crypto-først · kun e-mail-tilmelding</span>
+      <span class="eyebrow-pill">149 lande · primært crypto · kun e-mail-tilmelding</span>
       <h1 class="hero-title">Send en SMS fra din computer uden telefon</h1>
       <div class="hero-sub"><p>Du sender en SMS fra din computer uden telefon via en browser-SMS-tjeneste, der slet ikke kræver en parret enhed.</p>
 <p>Du får gratis testkreditter ved tilmelding med kun en e-mailadresse. Identitetsdokumenter kræves aldrig, og ingen telefon indgår på noget tidspunkt.</p></div>
@@ -397,7 +408,8 @@ e-mail-til-SMS-gateway: modtagerens operatørnavn + held, ingen leveringsstatus
 webafsender: en e-mailadresse + modtagerens nummer
 alle ruter: modtageren får bare en almindelig SMS</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Relaterede guider</h2><ul><li><a href="https://smsroute-cc.github.io/hide-my-number-when-texting.html">Hide My Number When Texting: What Works and What Doesn't</a></li><li><a href="https://smsroute-cc.github.io/send-sms-abroad.html">Send SMS Abroad: What Your Carrier Charges vs the Internet Route</a></li><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html">Send SMS Without a Number: How It Works (2026)</a></li><li><a href="https://smsroute-cc.github.io/da/send-sms-anonymously.html">Send sms anonymt uden at vise dit nummer</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Relaterede guider</h2><ul><li><a href="https://smsroute-cc.github.io/da/send-sms-anonymously.html">Send sms anonymt uden at vise dit nummer</a></li><li><a href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">Send sms uden ID-dokumenter eller KYC</a></li><li><a href="https://smsroute-cc.github.io/da/send-sms-no-verification.html">Send sms uden verifikation eller ID</a></li><li><a href="https://smsroute-cc.github.io/da/can-i-send-sms-anonymously.html">Kan man sende sms anonymt? Regler og metoder</a></li></ul></section>
     <h2 id="faq">Ofte stillede spørgsmål</h2>
     <details class="faq-card"><summary>Hvordan sender jeg en SMS fra min computer gratis?</summary><div class="faq-answer"><p>Hvis din telefon stadig virker, lader Google Messages til web dig sende SMS gratis via dit eget abonnement. Uden telefon er teleselskabernes e-mail-gateways den eneste gratis rute tilbage, dog upålidelig. En websender giver dig gratis testkreditter, der dækker de første rigtige afsendelser med leveringsbekræftelse på skærmen, og mislykkede beskeder krediteres automatisk tilbage.</p></div></details><details class="faq-card"><summary>Kan jeg sende SMS fra min computer, hvis min telefon er i stykker?</summary><div class="faq-answer"><p>Spejlværktøjer dør i det øjeblik din telefon går i stykker, fordi de kun styrer et aktivt håndsæt. En websender fungerer uden nogen telefon: åbn en browser, opret dig med e-mail, og send til modtagerens nummer. Tjenesten leverer via adaptive ruter med automatisk failover pr. destination, så beskeden stadig går ud, selv hvis én sti er nede.</p></div></details><details class="faq-card"><summary>Skal jeg installere noget for at sende en SMS fra min PC?</summary><div class="faq-answer"><p>Nej. Browser-ruten kræver ingen installation på din computer og intet hos modtageren heller. Teksten ankommer som en almindelig SMS. Levering bruger tjenestens multi-rute-opsætning med automatisk failover, så det virker fra en almindelig browserfane uden software i nogen ende.</p></div></details><details class="faq-card"><summary>Kan folk svare på en SMS sendt fra en computer?</summary><div class="faq-answer"><p>På telefon-spejlværktøjer ja, fordi teksten bruger dit rigtige nummer, og svar lander der. På en websender kommer beskeden fra en tjeneste-afsender, så behandl det som envejslevering, og angiv en kontaktmetode i beskedteksten, hvis du har brug for et svar. <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">STOP-nøgleordshåndtering</a> er indbygget, så et STOP-svar automatisk undertrykker yderligere beskeder til det nummer.</p></div></details>
     <div class="cta"><p>Ingen telefon nødvendig: en browserfane, en e-mailadresse og gratis testkreditter leverer den første SMS.</p><a class="btn" href="https://smsroute.cc/signup">Send din første SMS</a><span class="alt">intet eget nummer heller? <a href="https://smsroute-cc.github.io/send-sms-without-phone-number-online.html">send SMS online uden telefonnummer</a></span></div>
@@ -405,10 +417,10 @@ alle ruter: modtageren får bare en almindelig SMS</code></pre></figure></detail
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Sprog</p><ul><li><a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html" hreflang="en" lang="en" aria-current="true">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-text-from-computer-without-phone.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-text-from-computer-without-phone.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-text-from-computer-without-phone.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-text-from-computer-without-phone.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Sprog</p><ul><li><a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-text-from-computer-without-phone.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-text-from-computer-without-phone.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-text-from-computer-without-phone.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-text-from-computer-without-phone.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html" hreflang="cs-CZ" lang="cs">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/send-text-from-computer-without-phone.html" hreflang="da-DK" lang="da" aria-current="true">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/send-text-from-computer-without-phone.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute hjem"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Tilfredshed leveret: SMS-forbindelser til dine kunder – bedre end du nogensinde har oplevet.</p>
+        <p>Pålidelig SMS. Betal med krypto. Intet ID.</p>
         <div class="socials">
           </div>
       </div>
