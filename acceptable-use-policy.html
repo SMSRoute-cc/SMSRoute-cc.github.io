@@ -290,6 +290,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Acceptable Use Policy for Sending SMS", "description": "What you may and may not send: lawful messaging only, no spam, fraud or harassment. Email signup and crypto payment do not change the rules.", "url": "https://smsroute-cc.github.io/acceptable-use-policy.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/acceptable-use-policy.html", "datePublished": "2026-07-25", "dateModified": "2026-07-25", "image": "https://smsroute-cc.github.io/og/acceptable-use-policy-og.png", "publishingPrinciples": "https://smsroute-cc.github.io/editorial-standards.html"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Acceptable Use Policy for Sending SMS", "item": "https://smsroute-cc.github.io/acceptable-use-policy.html"}]}</script>
@@ -326,7 +337,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">lawful messaging only &middot; no spam &middot; no fraud</span>
+      <span class="eyebrow-pill">lawful messaging only · no spam · no fraud</span>
       <h1 class="hero-title">Acceptable Use Policy</h1>
       <div class="hero-sub"><p>This is a web tool for sending SMS. You sign up with an email address, pay with crypto, and reach numbers in 149 countries.</p>
 <p>This page states plainly what you may and may not do with it, in the order the questions usually come up.</p></div>
@@ -362,7 +373,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>If you run a business, keep proof of consent or of a prior relationship where the law requires it. A published phone number is not consent to marketing. A notice about an order someone placed is a different thing from cold outreach.</p>
 </section><section><h2 id="s2">What you may not send</h2><p>Spam, which means bulk or repeated texts people did not ask for, bought or scraped lists, affiliate blasts, phishing, malware links, or anything designed to deceive. Pump-and-dump schemes, fake invoice scams, account-takeover prompts and wallet-verification fraud all fall here.</p>
 <p>You may not threaten, stalk, harass or impersonate anyone. You may not try to bypass blocks, create serial accounts after a ban, or probe the platform for weaknesses. You may not use the service to flood phone numbers, carriers or third-party systems, or resell access in a way that hides the real sender when abuse has to be investigated.</p>
-</section><section><h2 id="s3">Illegal content and restricted categories</h2><p>Nothing may be sent that is illegal in your jurisdiction, the recipient&#x27;s jurisdiction, or the jurisdictions the message routes through. That includes child sexual abuse material, content that facilitates violent crime, and unlawful drug sales.</p>
+</section><section><h2 id="s3">Illegal content and restricted categories</h2><p>Nothing may be sent that is illegal in your jurisdiction, the recipient's jurisdiction, or the jurisdictions the message routes through. That includes child sexual abuse material, content that facilitates violent crime, and unlawful drug sales.</p>
 <p>Adult content is restricted wherever local law or carrier rules forbid it over SMS. Route rules differ by country, so a message that is fine on one destination can be blocked on another, and SMSRoute follows the destination&#x27;s rules rather than yours.</p>
 </section><section><h2 id="s4">Anonymity, records and lawful process</h2><p>Anonymous to the recipient is not the same as untraceable by law enforcement. Routes keep records for lawful process, and valid legal process is answered. Nobody should treat SMSRoute as a way to commit crimes without consequences.</p>
 <p>Email-only signup and crypto payment mean the data collected up front is kept small. They do not mean there are no rules and they do not buy immunity from the ones there are. You remain responsible for everything you send.</p>
@@ -370,7 +381,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Serious fraud or criminal misuse can be referred to carriers or authorities where the law requires it. The aim is simple: keep SMSRoute useful for people with real reasons to send SMS across 149 countries, and useless as a spam cannon.</p>
 <div class="a2-callout a2-warn"><p><b>When in doubt:</b> do not send. There are separate pages on how abuse is handled, on legitimate privacy-preserving uses, and on how recipients opt out.</p></div></section>
     </div>
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Related guides</h2><ul><li><a href="https://smsroute-cc.github.io/anti-abuse.html">How We Fight SMS Spam and Fraud</a></li><li><a href="https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html">Legal Uses of Anonymous SMS</a></li><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">SMS Opt-Out: Stop Unwanted Messages</a></li><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html">Send SMS Anonymously: No Name, No ID (2026)</a></li></ul></section>
     <h2 id="faq">Frequently asked questions</h2>
     <details class="faq-card"><summary>Can I send marketing SMS?</summary><div class="faq-answer"><p>Only where you have lawful consent or another clear legal basis, and only if the messages are not deceptive. Cold lists, scraped numbers and bought databases are not allowed. If a campaign looks like bulk unsolicited traffic, expect it to be blocked.</p></div></details><details class="faq-card"><summary>Does paying in crypto mean my account cannot be banned?</summary><div class="faq-answer"><p>No. The payment method does not override the rules. Abuse can still end in suspension or termination. Crypto reduces billing friction and nothing else.</p></div></details><details class="faq-card"><summary>What happens if I break this policy?</summary><div class="faq-answer"><p>The account can be throttled, suspended or closed. Serious fraud or criminal misuse can be shared with carriers or law enforcement when valid legal process arrives or the law requires it.</p></div></details><details class="faq-card"><summary>Is bulk sending allowed at all?</summary><div class="faq-answer"><p>Bulk sending to people who asked to hear from you is fine. Bulk sending to a list you bought, scraped or assembled without consent is not. The difference is consent, not volume.</p></div></details><details class="faq-card"><summary>Who is responsible for the content of a message?</summary><div class="faq-answer"><p>You are. The service routes what you write. Content laws in your country, the recipient&#x27;s country, and any country in between apply to you as the sender.</p></div></details>
     <h2 id="related">Related guides</h2><ul class="blist"><li><a href="https://smsroute-cc.github.io/anti-abuse.html">how spam and fraud are handled</a></li><li><a href="https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html">legitimate uses of anonymous SMS</a></li><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">how recipients opt out</a></li></ul>
@@ -381,7 +391,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <div class="site-footer__inner">
     <div class="footer-grid"><div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Deliver Satisfaction: SMS connections to your customers, more than you have ever experienced.</p>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
         <div class="socials">
           </div>
       </div>
