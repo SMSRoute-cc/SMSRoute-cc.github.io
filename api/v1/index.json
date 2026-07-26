@@ -1,0 +1,10 @@
+{
+ "endpoints": [
+  "prices.json",
+  "countries.json",
+  "coverage.json",
+  "pricing/<country-slug>.json",
+  "openapi.yaml"
+ ],
+ "as_of": "2026-07-25"
+}
