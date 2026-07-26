@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Anonymous Texting Website: What to Look For", "item": "https://smsroute-cc.github.io/anonymous-texting-website.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 länder · krypto-native · endast e-postregistrering</span>
+      <span class="eyebrow-pill">149 länder · kryptonativ · endast e-postregistrering</span>
       <h1 class="hero-title">Anonyma sms-webbplatser som faktiskt levererar</h1>
       <div class="hero-sub"><p>Anonyma sms-webbplatser låter dig skicka sms direkt från webbläsaren utan appinstallation och utan ID-kontroll, men bara de med synlig leveransstatus får faktiskt meddelandet fram.</p>
 <p>Du får synlig leveransbekräftelse som bevisar att sms:et gick fram. Registrering kräver bara e-post och aldrig identitetshandlingar.</p></div>
@@ -359,7 +370,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
       </div>
       <div class="trust-chips"><span>E-postregistrering</span><span>Inget ID</span><span>Kryptobetalning</span></div>
       <div class="byline">
-        <a href="https://smsroute.cc/about" class="byline-author">SMSRoute engineering</a>
+        <a href="https://smsroute.cc/about" class="byline-author">SMSRoute-teknik</a>
         <span class="byline-sep">·</span>
         <span class="byline-date">Senast granskad 2026-07-24</span>
       </div>
@@ -382,7 +393,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div class="a2-tldr"><b>Kort sagt</b><ul><li>Gratis anonyma sms-sajter accepterar ofta meddelanden och låter dem tyst försvinna.</li><li>'Skickat'-banners bevisar ingenting; leveransstatus per meddelande bevisar allt.</li><li>Fungerande sajter som SMSRoute publicerar täckning per land, inte ett vagt 'världsomfattande'.</li><li>Endast e-postregistrering gör att sajten inte vet vem du är.</li><li>Gratis testkrediter låter dig verifiera leverans innan du litar på sajten.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">Fungerar anonyma sms-webbplatser verkligen?</h2><p>Vissa anonyma sms-webbplatser fungerar medan många misslyckas i tysthet. En fungerande sajt visar leveransstatus per meddelande och publicerar länderna den täcker. En död visar bara en framgångsbanner och hoppas att du aldrig kollar mottagarens telefon.</p>
-<p>De gratissajter du redan provat tog emot meddelandet och lät det försvinna. Du såg aldrig status eftersom ingen fanns. Det som skiljer en fungerande anonym sms-webbplats är beviset att texten lämnade sajten och nådde en riktig operatörsrutt. Vi lägger adaptiv multi-rutt-leverans med automatisk failover bakom varje sändning och krediterar misslyckade meddelanden direkt. Därför är leveransstatusen du ser inte teater.</p></section><section><h2 id="s2">Varför så många gratis sms-sajter tyst misslyckas</h2><p>Gratis anonyma sms-webbplatser misslyckas i tysthet eftersom varje SMS kostar riktiga pengar, så en annonsfinansierad sajt har starka skäl att ta emot din text och bara routa en bråkdel.</p>
+<p>De gratissajter du redan provat tog emot meddelandet och lät det försvinna. Du såg aldrig status eftersom ingen fanns. Det som skiljer en fungerande anonym sms-webbplats är beviset att texten lämnade sajten och nådde en riktig operatörsrutt. Vi lägger adaptiv multi-route-leverans med automatisk failover bakom varje sändning och krediterar misslyckade meddelanden direkt. Därför är leveransstatusen du ser inte teater.</p></section><section><h2 id="s2">Varför så många gratis sms-sajter tyst misslyckas</h2><p>Gratis anonyma sms-webbplatser misslyckas i tysthet eftersom varje SMS kostar riktiga pengar, så en annonsfinansierad sajt har starka skäl att ta emot din text och bara routa en bråkdel.</p>
 <p>Begränsade destinationer, timtak och återanvända avsändarnummer som operatörer redan filtrerar gör bilden komplett. Du ser problemet i själva strukturen. Aldrig leveransstatus efter skickning, aldrig publicerad lista över fungerande länder, aldrig angivna gränser. Bara en framgångsbanner, och meddelandet dyker aldrig upp på den andra telefonen.</p></section><section><h2 id="s3">De fyra tecknen på en webbplats som levererar</h2><p>Du bekräftar alla fyra tecken själv på SMSRoute på under en minut innan du skickar ett enda sms eller spenderar en cent.</p>
 <p>Det är beslutsregeln som skiljer en fungerande sajt från en död. Vilken webbplats som helst kan visa ett framgångsmeddelande efter skicka. Bara tecknen här bevisar att en riktig rutt sitter bakom formuläret och att din text faktiskt når telefonen. Skippa varje sajt som döljer ens ett. Du slösar varken tid eller pengar.</p><dl class="a2-keyfacts"><div><dt>Leveransstatus</dt><dd>Bekräftelse per meddelande på skärmen, inte en banner</dd></div><div><dt>Täckning</dt><dd>Länder listade med namn och priser, inte 'världsomfattande'</dd></div><div><dt>Registreringskrav</dt><dd>Högst e-post; aldrig ditt telefonnummer</dd></div><div><dt>Bevis före betalning</dt><dd>Gratis testkrediter för riktig leveranskontroll</dd></div></dl></section><section><h2 id="s4">Testa en sms-webbplats på två minuter</h2><p>Skicka ett testsms till din egen telefon från webbplatsen och kontrollera både leveransstatusen på sajten och om meddelandet faktiskt kommer fram. Inget marknadsföringspåstående överlever det tvåminuterstestet.</p>
 <p>Din telefon är den enda domaren som inte kan manipuleras. Sajter som tyst kastar meddelanden lämnar dig med framgångsbanner och tom inkorg. Om status stannar på väntande eller misslyckas, eller telefonen aldrig visar texten, gå vidare. Den regeln filtrerar varje död anonym sms-webbplats på sekunder och lämnar bara de med riktig rutt bakom formuläret.</p><ol class="a2-steps"><li><b>Kolla täckningssidan först</b><span>din destination listad med namn?</span></li><li><b>Registrera dig med en extra e-post</b><span>krav på nummer/ID betyder lämna</span></li><li><b>Skicka test till din egen telefon</b><span>gratis krediter gör det kostnadsfritt</span></li><li><b>Bevaka leveransstatusen</b><span>kom fram till din telefon = riktig sajt</span></li></ol></section><section><h2 id="s5">Vad anonym betyder på en webbplats, ärligt</h2><p>Anonymt på en webbplats som SMSRoute betyder att sajten aldrig får veta ditt namn eller din identitet. Det betyder aldrig att telefonnätet inte ser meddelandet eller numret det når.</p>
@@ -393,6 +404,7 @@ fungerande sajt:  leveransstatus per meddelande, länder + priser publicerade,
                endast e-postregistrering, gratis testkrediter
 domaren:   ett testmeddelande till din egen telefon</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Relaterade guider</h2><ul><li><a href="https://smsroute-cc.github.io/sv/sms-sender-no-kyc.html">SMS-avsändare utan KYC: Så väljer du en (2026)</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-anonymously.html">Skicka SMS anonymt: så gör du (2026)</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-send-sms.html">Skicka SMS anonymt: Välj en avsändare som fungerar</a></li><li><a href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">Dölj mitt nummer vid sms: Vad som fungerar och inte</a></li></ul></section>
     <h2 id="faq">Vanliga frågor</h2>
     <details class="faq-card"><summary>Vilken är den bästa gratiswebbplatsen för anonyma sms?</summary><div class="faq-answer"><p>För ett enstaka test fungerar vilken gratis webbplats för anonyma sms som täcker ditt land. För ett meddelande som måste fram, bedöm enbart efter leveransstatus och publicerad täckning, och räkna med prissättning per meddelande för allt som ska vara tillförlitligt. Priser under en cent gäller när du lämnar gratisnivån som tyst droppar meddelanden.</p></div></details><details class="faq-card"><summary>Varför kom mitt anonyma sms aldrig fram?</summary><div class="faq-answer"><p>Oftast routade den gratis webbplatsen det aldrig, destinationslandet saknade täckning, eller ett återanvänt avsändarnummer var redan filtrerat av operatören. En leveransstatus hade visat det. Ett gränsfall på fungerande webbplatser är en mottagare som tidigare svarat STOP; inbyggda suppressionslistor blockerar meddelandet och statusen rapporterar blockeringen så du slipper gissa.</p></div></details><details class="faq-card"><summary>Kan en webbplats för anonyma sms se min identitet?</summary><div class="faq-answer"><p>Bara det du ger den. En webbplats som kräver ditt telefonnummer eller inloggning via ett annat konto vet en hel del om dig. En webbplats med enbart e-post känner till en inkorg. Betala med krypto så tar den aldrig emot kortnummer eller bankuppgifter heller.</p></div></details><details class="faq-card"><summary>Är det lagligt att använda en webbplats för anonyma sms?</summary><div class="faq-answer"><p>Ja. Att skicka sms utan att visa ditt eget nummer fungerar som vanliga tjänstemeddelanden redan gör. Lagarna om innehållet gäller fortfarande fullt ut: trakasserier och bedrägeri är olagliga oavsett avsändare. Det praktiska undantaget är opt-out-efterlevnad; destinationer förväntar sig <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">STOP-nyckelordshantering</a> och suppressionslistor, och en riktig tjänst har dem inbyggda så att du håller dig på rätt sida av reglerna.</p></div></details>
@@ -401,10 +413,10 @@ domaren:   ett testmeddelande till din egen telefon</code></pre></figure></detai
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Språk</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en" aria-current="true">Engelska</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Språk</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-website.html" hreflang="sv-SE" lang="sv" aria-current="true">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/anonymous-texting-website.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute startsida"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>SMS till kunderna – smidigare än du någonsin har upplevt.</p>
+        <p>Pålitlig SMS-leverans. Betala med krypto. Inget ID.</p>
         <div class="socials">
           </div>
       </div>
@@ -412,8 +424,8 @@ domaren:   ett testmeddelande till din egen telefon</code></pre></figure></detai
         <p class="footer-heading">Blogg</p>
         <ul>
           <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerisk vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR double opt-in SMS-mall</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerisk vs shortcode-avsändar-ID</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR dubbel opt-in SMS-mall</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Vilken för min text?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Hur OTP-leverans fungerar</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Internationell SMS-guide 2026</a></li>
