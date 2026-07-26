@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "DE", "item": "https://smsroute-cc.github.io/de/"}, {"@type": "ListItem", "position": 3, "name": "SMS ohne Nummer senden – anonym", "item": "https://smsroute-cc.github.io/de/send-sms-without-number.html"}]}</script>
 </head>
@@ -393,7 +404,8 @@ Empfänger braucht: eine Telefonnummer – die seine
 nicht nötig:        deine SIM, deine Nummer, dein Telefon
 Antwortpfad:        keiner, so ausgelegt – nur Senden</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwandte Ratgeber</h2><ul><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html">SMS vom PC senden ohne Handy (2026)</a></li><li><a href="https://smsroute-cc.github.io/de/hide-my-number-when-texting.html">Nummer unterdrücken beim SMS-Senden: was wirklich geht</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-anonymously.html">SMS anonym senden ohne Anmeldung</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwandte Ratgeber</h2><ul><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html">SMS vom PC senden ohne Handy (2026)</a></li><li><a href="https://smsroute-cc.github.io/de/hide-my-number-when-texting.html">Nummer unterdrücken beim SMS-Senden: was wirklich geht</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-anonymously.html">SMS anonym senden ohne Anmeldung</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-abroad.html">SMS ins Ausland verschicken: Kosten und der günstige Weg</a></li></ul></section>
     <h2 id="faq">Häufig gestellte Fragen</h2>
     <details class="faq-card"><summary>Kann ich von meinem Computer aus eine SMS ohne Telefon versenden?</summary><div class="faq-answer"><p>Ja, der gesamte Ablauf läuft im Browser. Die E-Mail-Anmeldung ermöglicht es dir, Ziel und Nachricht direkt einzugeben, und die Zustellung wird auf dem Bildschirm bestätigt – ohne dass auf deiner Seite ein Telefon nötig ist. Der Dienst wendet automatisches Failover pro Ziel an, sodass eine blockierte Route die SMS nicht stoppt.</p></div></details><details class="faq-card"><summary>Was sieht der Empfänger, wenn ich keine Nummer habe?</summary><div class="faq-answer"><p>Der Empfänger sieht eine Nummer aus dem gemeinsamen Sender-Pool des Dienstes oder einen namensbasierten Absender, wenn das Zielland <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alphanumerische ID</a> unterstützt. Es ist nie eine persönliche Nummer von dir, da du keine hast. Routen, die Namen ablehnen, zeigen einfach eine der Pool-Nummern an, die Carrier für die Zustellung bereits akzeptieren.</p></div></details><details class="faq-card"><summary>Ist das Senden ohne Nummer kostenlos?</summary><div class="faq-answer"><p>Die ersten Nachrichten sind kostenlos, da die Anmeldung Testguthaben enthält, damit du den Zustellstatus sofort prüfen kannst. Danach zahlst du nur pro Nachricht, ohne Abonnement oder monatliche Gebühr. Fehlgeschlagene Nachrichten werden automatisch gutgeschrieben, sodass du nie Geld für nicht zugestellte SMS verlierst.</p></div></details><details class="faq-card"><summary>Kann ich ohne Nummer in jedes Land senden?</summary><div class="faq-answer"><p>Ja, die Abdeckung umfasst 149 Länder, und jedes Ziel hat einen veröffentlichten Preis, den du vor dem Senden prüfen kannst. Adaptive Multi-Route-Zustellung mit automatischem Failover bedient jedes Ziel aus dem Sender-Pool des Dienstes, sodass die SMS ohne eine eigene Nummer von dir versendet wird.</p></div></details><details class="faq-card"><summary>Kann ich auch SMS ohne Nummer empfangen?</summary><div class="faq-answer"><p>Nein. Empfangen erfordert definitionsgemäß eine Nummer, da Carrier sie zur Zustellung an ein Endgerät nutzen. Dieser Dienst ist ausschließlich zum Senden ausgelegt. Produkte mit virtuellen Nummern bilden eine andere Kategorie mit anderen Kompromissen wie temporären Leitungen und laufenden Kosten. Integrierte STOP-Keyword-Behandlung und Unterdrückungslisten halten ausgehende Nachrichten auch auf Einweg-Pfaden rechtskonform.</p></div></details>
     <div class="cta"><p>Keine SIM, keine Nummer, keine Karte – eine E-Mail-Adresse eröffnet das Konto, und mit kostenlosen Testguthaben versendest du die erste SMS.</p><a class="btn" href="https://smsroute.cc/signup">Senden Sie Ihre erste SMS – oder gesamte Seite auf du</a><span class="alt">oder sieh dir die <a href="https://smsroute.cc/prices">Preise pro Nachricht</a> nach Land an</span></div>
@@ -401,10 +413,10 @@ Antwortpfad:        keiner, so ausgelegt – nur Senden</code></pre></figure></d
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Sprachen</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-without-number.html" hreflang="de-DE" lang="de" aria-current="true">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Sprachen</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-without-number.html" hreflang="de-DE" lang="de" aria-current="true">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-without-number.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-without-number.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-without-number.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute Startseite"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Begeistern Sie Ihre Kunden per SMS – zuverlässiger als je zuvor.</p>
+        <p>Zuverlässige SMS. Zahlung per Krypto. Keine ID.</p>
         <div class="socials">
           </div>
       </div>
@@ -416,7 +428,7 @@ Antwortpfad:        keiner, so ausgelegt – nur Senden</code></pre></figure></d
           <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">DSGVO Double-Opt-in-SMS-Vorlage</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs. UCS-2: Welches für meinen Text?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Wie OTP-Zustellung funktioniert</a></li>
-          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Internationaler SMS-Guide 2026</a></li>
+          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Internationaler SMS-Leitfaden 2026</a></li>
           <li><a href="https://smsroute.cc/blog/">Alle Beiträge anzeigen</a></li>
         </ul>
       </div>
