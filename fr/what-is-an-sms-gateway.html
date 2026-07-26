@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
 <meta name="description" content="Passerelle SMS : rôle, API et envoi anonyme sans inscription – explication simple pour tous.">
 <link rel="canonical" href="https://smsroute-cc.github.io/fr/what-is-an-sms-gateway.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Qu'est-ce qu'une passerelle SMS ?", "description": "Passerelle SMS : rôle, API et envoi anonyme sans inscription – explication simple pour tous.", "url": "https://smsroute-cc.github.io/fr/what-is-an-sms-gateway.html", "inLanguage": "fr", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/fr/what-is-an-sms-gateway.html", "image": "https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "FR", "item": "https://smsroute-cc.github.io/fr/"}, {"@type": "ListItem", "position": 3, "name": "Qu'est-ce qu'une passerelle SMS ?", "item": "https://smsroute-cc.github.io/fr/what-is-an-sms-gateway.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Connexion</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Commencer</a></div>
 </div></header>
 
-<nav class="fil d'Ariane" aria-label="fil d'Ariane">
+<nav class="breadcrumb" aria-label="fil d'Ariane">
   <ol>
     <li><a href="https://smsroute.cc/">Accueil</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -393,13 +398,15 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 <p>Sans <a href="https://en.wikipedia.org/wiki/SMS" rel="noopener">webhooks DLR</a> et journaux, vous ne saurez jamais si l'opérateur a accepté le message. Une tarification opaque transforme chaque destination en pari sur la marge après la facture. L'absence de crédit automatique sur les échecs signifie que vous financez du trafic non livré. Un support qui prend des jours laisse les problèmes de routage non résolus pendant que vos utilisateurs attendent. Le piège est que de nombreuses passerelles annoncent tout cela et ne le fournissent pas en pratique. Exigez la documentation, les accusés, les tarifs, les crédits et les réponses en direct, puis confirmez par un envoi test avant d'alimenter votre solde.</p><dl class="a2-keyfacts"><div><dt>Documentation API</dt><dd>REST + SMPP, exemples de code sur GitHub</dd></div><div><dt>Rapports de livraison</dt><dd>DLR en temps réel via webhook ou endpoint de statut</dd></div><div><dt>Tarification</dt><dd>Tarifs par pays publiés sur GET /prices</dd></div><div><dt>Politique de remboursement</dt><dd>Envois échoués automatiquement crédités</dd></div><div><dt>Support</dt><dd>Telegram et email 24/7</dd></div></dl></section><section><h2 id="s5">Où se situent les passerelles sans inscription facturées en crypto ?</h2><p>Les passerelles sans inscription facturées en crypto sont une catégorie parmi les passerelles agrégatrices, des services qui alimentent le solde du compte avec une cryptomonnaie au lieu d'une carte et ne nécessitent qu'un email sans jamais de documents d'identité.</p>
 <p>Elles prennent en charge BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC et SOL. Ces passerelles sont conçues pour les développeurs et les projets qui ne veulent pas fournir de documents d'identité juste pour envoyer un message test. Des crédits test gratuits à l'inscription permettent de vérifier les routes avant d'alimenter le compte. Cela maintient un parcours d'entrée court pour quiconque dont le code parle déjà HTTP et n'a besoin de la passerelle que comme traducteur vers les réseaux opérateurs.</p></section>
     </div>
-    <figure class="artifact"><figcaption>Le flux de la requête à la livraison via la passerelle, en endpoints réels</figcaption><pre><code>1. POST /sms/send  {&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;, &quot;callback_url&quot;: &quot;https://your-app.example/dlr&quot;}
+    <figure class="artifact"><figcaption>Le flux de la requête à la livraison via la passerelle, en endpoints réels</figcaption><pre><code>1. POST /sms/send  {&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Votre code est 482913&quot;, &quot;callback_url&quot;: &quot;https://your-app.example/dlr&quot;}
 2. La passerelle achemine vers l'opérateur de destination pour ce numéro
 3. GET /sms/single/:messageId/status  renvoie le statut de livraison actuel
 4. callback_url reçoit les mises à jour de livraison en temps réel lorsque l'opérateur les signale
 
 # vérifier que la passerelle est joignable
 curl https://api.smsroute.cc/health</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guides associés</h2><ul><li><a href="https://smsroute-cc.github.io/fr/send-sms-anonymously.html">Envoyer SMS anonyme sans inscription</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-no-kyc.html">SMS sans inscription – sans KYC</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-without-number.html">Envoyer SMS sans numéro affiché</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Questions fréquentes</h2>
     <details class="faq-card"><summary>Une passerelle SMS est-elle la même chose qu'une API SMS ?</summary><div class="faq-answer"><p>Non. La passerelle est l'infrastructure de routage qui déplace réellement le message vers un opérateur. L'API est l'interface que les développeurs utilisent pour communiquer avec cette infrastructure, dans le cas de SMSRoute une API REST et des liaisons SMPP. Certaines passerelles ne fournissent que du SMPP sans interface HTTP, donc les termes décrivent des couches séparées même lorsqu'un seul service propose les deux.</p></div></details><details class="faq-card"><summary>Les passerelles SMS gèrent-elles les réponses et les désabonnements ?</summary><div class="faq-answer"><p>Cela dépend de la passerelle et de la route. SMSRoute intègre par défaut la gestion des mots-clés STOP et les listes de désinscription. Les demandes de désabonnement via STOP ajoutent automatiquement le numéro à une liste de suppression afin que les envois ultérieurs soient bloqués. La prise en charge des réponses (entrantes) varie selon la route de destination et n'est pas universelle chez tous les opérateurs.</p></div></details><details class="faq-card"><summary>Une passerelle SMS peut-elle atteindre n'importe quel pays dans le monde ?</summary><div class="faq-answer"><p>La couverture varie selon le fournisseur et les connexions opérateur qu'il maintient. SMSRoute couvre 149 pays avec des tarifs publiés par pays. Un <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">identifiant alphanumérique personnalisé</a> est disponible sur demande si les routes de destination le supportent, tandis que, par défaut, c'est un pool partagé intelligent.</p></div></details><details class="faq-card"><summary>Qu'est-ce qu'une requête HLR et pourquoi une passerelle la propose-t-elle ?</summary><div class="faq-answer"><p>Une requête HLR vérifie si un numéro de téléphone est actif et joignable avant l'envoi, ce qui réduit les envois inutiles vers des numéros morts ou invalides. Une passerelle la propose pour que les applications filtrent d'abord les listes et évitent le trafic que les opérateurs rejetteraient d'emblée. (compléter la phrase coupée)tent le nouveau réseau d'accueil tandis qu'une requête HLR en direct résout correctement l'opérateur actuel.</p></div></details><details class="faq-card"><summary>À quelle vitesse un message traverse-t-il une passerelle ?</summary><div class="faq-answer"><p>La vitesse dépend de l'opérateur de destination et de la qualité de la route. Une fois le compte approvisionné et une clé API générée, le délai pratique entre l'approvisionnement et l'envoi du premier message est de quelques minutes. Les rapports de livraison en temps réel via les webhooks DLR et le journal du tableau de bord montrent l'acceptation juste après que la passerelle a transmis le trafic.</p></div></details>
     <div class="cta"><p>Voir le flux réel de requête et réponse de la passerelle.</p><a class="btn" href="https://smsroute.cc/developers">Lire la documentation API</a><span class="alt">ou consulter les <a href="https://smsroute.cc/prices">tarifs en direct</a></span></div>
@@ -448,7 +455,7 @@ curl https://api.smsroute.cc/health</code></pre></figure>
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Payer avec Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Payer avec Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Payer avec USDT</a></li>
-        </ul> <p class="footer-heading">Outils gratuits</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Compteur de caractères SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculateur de coût SMS</a></li> <li><a href="https://smsroute.cc/tools">Outils gratuits →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Cas d'usage</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS pour 2FA</a></li>
