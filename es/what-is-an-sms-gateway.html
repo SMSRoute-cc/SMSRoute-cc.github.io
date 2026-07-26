@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0A0D14">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<title>¿Qué es una puerta de enlace SMS?</title>
+<title>¿Qué es una pasarela SMS?</title>
 <link rel="alternate" type="application/rss+xml" title="Guías SMSRoute" href="https://smsroute-cc.github.io/feed-es.xml">
 <link rel="alternate" hreflang="x-default" href="https://smsroute-cc.github.io/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="en" href="https://smsroute-cc.github.io/what-is-an-sms-gateway.html">
@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
 <meta name="description" content="Pasarela SMS: para qué sirve, API y envío anónimo sin registro – explicación clara.">
 <link rel="canonical" href="https://smsroute-cc.github.io/es/what-is-an-sms-gateway.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "¿Qué es una puerta de enlace SMS?", "description": "Pasarela SMS: para qué sirve, API y envío anónimo sin registro – explicación clara.", "url": "https://smsroute-cc.github.io/es/what-is-an-sms-gateway.html", "inLanguage": "es", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/es/what-is-an-sms-gateway.html", "image": "https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "¿Qué es una puerta de enlace SMS?", "item": "https://smsroute-cc.github.io/es/what-is-an-sms-gateway.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Iniciar sesión</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Comenzar</a></div>
 </div></header>
 
-<nav class="migas de pan" aria-label="migas de pan">
+<nav class="breadcrumb" aria-label="migas de pan">
   <ol>
     <li><a href="https://smsroute.cc/">Inicio</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -400,6 +405,8 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 
 # comprobar que la puerta de enlace responde
 curl https://api.smsroute.cc/health</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-no-kyc.html">SMS sin registro – sin KYC</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html">Enviar SMS sin número visible</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Es lo mismo una puerta de enlace SMS que una API SMS?</summary><div class="faq-answer"><p>No. La puerta de enlace es la infraestructura de enrutamiento que realmente mueve el mensaje a una operadora. La API es la interfaz que los desarrolladores usan para comunicarse con esa infraestructura; en el caso de SMSRoute, una API REST y enlaces SMPP. Algunas puertas de enlace solo ofrecen SMPP sin interfaz HTTP, por lo que los términos describen capas separadas incluso cuando un solo servicio ofrece ambas.</p></div></details><details class="faq-card"><summary>¿Las puertas de enlace SMS gestionan respuestas y bajas?</summary><div class="faq-answer"><p>Depende de la puerta de enlace y la ruta. SMSRoute tiene gestión de la palabra clave STOP y listas de supresión integradas por defecto. Las solicitudes de baja mediante STOP añaden automáticamente el número a una lista de supresión para bloquear envíos posteriores. El soporte de respuestas (entrantes) varía según la ruta de destino y no es universal en todas las operadoras.</p></div></details><details class="faq-card"><summary>¿Puede una puerta de enlace SMS llegar a cualquier país del mundo?</summary><div class="faq-answer"><p>La cobertura varía según el proveedor y las conexiones de operador que mantengan. SMSRoute cubre 149 países con tarifas publicadas por país. Se pueden solicitar <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">ID alfanumérico</a> personalizados en rutas de destino que lo soporten; el valor por defecto es un grupo compartido inteligente.</p></div></details><details class="faq-card"><summary>¿Qué es la consulta HLR y por qué la ofrece una puerta de enlace?</summary><div class="faq-answer"><p>La consulta HLR verifica si un número de teléfono está activo y accesible antes de enviar, lo que reduce envíos inútiles a números muertos o inválidos. Una puerta de enlace la ofrece para que las apps filtren listas primero y se salten el tráfico que los operadores rechazarían de plano. Los números portados son el caso límite: las bases de datos estáticas no reflejan la nueva red de origen, mientras que una consulta HLR en vivo resuelve el operador actual correctamente.</p></div></details><details class="faq-card"><summary>¿Qué tan rápido viaja un mensaje a través de una puerta de enlace?</summary><div class="faq-answer"><p>La velocidad depende del operador de destino y la calidad de la ruta. Una vez financiada la cuenta y generada una clave API, desde la financiación hasta la creación de la clave y el envío, el tiempo práctico para un primer mensaje es de minutos. Los informes de entrega en tiempo real mediante webhooks DLR y el registro del panel muestran la aceptación justo después de que la puerta de enlace entrega el tráfico.</p></div></details>
     <div class="cta"><p>Vea el flujo real de solicitud y respuesta de la puerta de enlace.</p><a class="btn" href="https://smsroute.cc/developers">Lea la documentación de la API</a><span class="alt">o consulte <a href="https://smsroute.cc/prices">precios en vivo</a></span></div>
@@ -448,7 +455,7 @@ curl https://api.smsroute.cc/health</code></pre></figure>
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Pagar con Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Pagar con Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Pagar con USDT</a></li>
-        </ul> <p class="footer-heading">Herramientas gratis</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Contador de caracteres SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculadora de costes SMS</a></li> <li><a href="https://smsroute.cc/tools">Herramientas gratis →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Casos de uso</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS para 2FA</a></li>
