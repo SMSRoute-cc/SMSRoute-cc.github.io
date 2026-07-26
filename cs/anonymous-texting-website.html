@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Anonymous Texting Website: What to Look For", "item": "https://smsroute-cc.github.io/anonymous-texting-website.html"}]}</script>
 </head>
@@ -388,10 +399,11 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Váš telefon je jediný rozhodčí, kterého nelze ošidit. Weby, které tiše zahazují zprávy, vás nechají s bannerem úspěchu a prázdnou schránkou. Zůstane-li stav čekající nebo selže, nebo se text na telefonu neobjeví, jděte dál. Toto pravidlo odfiltruje každý mrtvý anonymní web na posílání SMS během sekund a nechá jen ty se skutečnou trasou za formulářem.</p><ol class="a2-steps"><li><b>Nejprve zkontrolujte stránku pokrytí</b><span>vaše destinace uvedená jménem?</span></li><li><b>Registrace e-mailem</b><span>požadavek na číslo/ID = odejít</span></li><li><b>Odešlete test na vlastní telefon</b><span>bezplatné kredity = bez nákladů</span></li><li><b>Sledujte stav doručení</b><span>dorazilo na telefon = skutečný web</span></li></ol></section><section><h2 id="s5">Co upřímně znamená anonymita na webu</h2><p>Anonymní na webu jako SMSRoute znamená, že web se nikdy nedozví vaše jméno ani identitu. Neznamená to, že telefonní síť neuvidí zprávu nebo číslo, na které dorazí.</p>
 <p>V tom je právě ten háček. Na straně webu máte reálné soukromí díky registraci jen e-mailem. Neviditelnost na straně sítě nedostanete nikdy a web, který naznačuje opak, prodává fantazii. Rozhodujte jen podle tohoto pravidla: vezměte první vrstvu, odmítněte každé tvrzení o druhé.</p><div class="a2-callout a2-note"><p><b>Realistický strop:</b> Dobrý web na posílání SMS drží jen e-mail a příjemce vidí sdíleného odesílatele, nikdy vás. Co žádný web nenabídne, je neviditelnost v síti: <a href="https://en.wikipedia.org/wiki/Cellular_network" rel="noopener">operátoři směrovují</a> a logují každou zprávu, na bezplatných i placených webech stejně.</p></div></section>
     </div>
-    <details class="tech-details"><summary>Technické detaily</summary><figure class="artifact"><figcaption>Mrtvý web vs fungující web, vedle sebe</figcaption><pre><code>mrtvý web:     banner &#x27;Zpráva odeslána!&#x27;, žádný stav, žádný seznam pokrytí
+    <details class="tech-details"><summary>Technické detaily</summary><figure class="artifact"><figcaption>Mrtvý web vs fungující web, vedle sebe</figcaption><pre><code>mrtvý web:     banner 'Zpráva odeslána!', žádný stav, žádný seznam pokrytí
 fungující web:  stav doručení u každé zprávy, zveřejněné země + sazby,
                registrace jen e-mailem, testovací kredit zdarma
 rozhodčí:   testovací zpráva na váš vlastní telefon</code></pre></figure></details>
+    
     
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/sms-sender-no-kyc.html">SMS odesílatel bez KYC: Jak vybrat (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-send-sms.html">Anonymní odesílání SMS: Výběr odesílatele, který funguje</a></li><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
@@ -401,10 +413,10 @@ rozhodčí:   testovací zpráva na váš vlastní telefon</code></pre></figure>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en" aria-current="true">Angličtina</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Němčina</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Francouzština</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polština</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Španělština</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nizozemština</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-website.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-website.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-website.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-website.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-website.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-website.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-website.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/anonymous-texting-website.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-website.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Spokojení zákazníci: propojte se s nimi přes SMS líp než kdy dřív.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
