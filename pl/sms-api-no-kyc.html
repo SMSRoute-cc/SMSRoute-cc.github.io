@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "PL", "item": "https://smsroute-cc.github.io/pl/"}, {"@type": "ListItem", "position": 3, "name": "SMS API bez KYC i rejestracji", "item": "https://smsroute-cc.github.io/pl/sms-api-no-kyc.html"}]}</script>
 </head>
@@ -357,7 +368,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
         <a class="btn-primary" href="https://smsroute.cc/signup">Zacznij wysyłać SMS<span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/developers">Zobacz dokumentację API</a>
       </div>
-      <div class="trust-chips"><span>Rejestracja e-mail</span><span>Bez dowodu tożsamości tożsamości tożsamości</span><span>Płatność krypto</span></div>
+      <div class="trust-chips"><span>Rejestracja e-mail</span><span>Bez dowodu tożsamości</span><span>Płatność krypto</span></div>
       <div class="byline">
         <a href="https://smsroute.cc/about" class="byline-author">Zespół SMSRoute</a>
         <span class="byline-sep">·</span>
@@ -399,7 +410,7 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 <p>SMSRoute egzekwuje obsługę słowa STOP i listy blokad dla całego ruchu. Zgodne z prawem przypadki użycia obejmują dostarczanie OTP dla aplikacji stawiających na prywatność, alerty transakcyjne dla usług wymagających niezawodnej dostawy bez użycia kart płatniczych, zespoły działające w jurysdykcjach słabo obsługiwanych przez tradycyjne rozliczenia oraz pracę dziennikarzy i organizacji pozarządowych. Podchodzimy do tego pytania otwarcie, ponieważ ukrywanie tego świadczyłoby o złych intencjach zarówno wobec użytkowników, jak i systemów klasyfikujących.</p></section>
     </div>
     <figure class="artifact"><figcaption>Rzeczywiste wywołanie wysyłki i odpowiedź z dokumentacji API na żywo (api.smsroute.cc)</figcaption><pre><code>curl -X POST https://api.smsroute.cc/sms/send \
-  -H &quot;Authorization: Bearer YOUR_API_KEY&quot; \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;, &quot;callback_url&quot;: &quot;https://your.app/dlr&quot;}&#x27;
 
@@ -408,9 +419,10 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 
 # sprawdź dostarczenie
 curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
-  -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre></figure>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-no-kyc.html">SMS bez rejestracji – bez KYC</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html">SMS bez numeru nadawcy</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html">Wyślij anonimowy SMS online</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-no-kyc.html">SMS bez rejestracji – bez KYC</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-without-number.html">SMS bez numeru nadawcy</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-sender-no-kyc.html">Wysyłka SMS bez KYC: jak wybrać usługę</a></li></ul></section>
     <h2 id="faq">Najczęściej zadawane pytania</h2>
     <details class="faq-card"><summary>Jakimi kryptowalutami mogę płacić?</summary><div class="faq-answer"><p>Sześcioma: Bitcoin, Ether, Tether w dwóch sieciach, Monero, Litecoin i Solana. Aktualna lista zawsze pochodzi z GET /supported/coins, a wpłaty w dowolnej z nich zasilają to samo saldo, więc możesz zmieniać waluty między doładowaniami bez dotykania ustawień konta.</p></div></details><details class="faq-card"><summary>Czy mogę otrzymywać raporty dostarczenia bez opiekuna konta?</summary><div class="faq-answer"><p>Tak, otrzymujesz raporty dostarczenia w czasie rzeczywistym przez webhooki DLR i dziennik panelu bez żadnego opiekuna konta. Ustaw parametr callback_url w POST /sms/send dla webhooków za wiadomość. Aktualizacje statusu działają nadal także przy automatycznym przełączaniu na trasy zapasowe.</p></div></details><details class="faq-card"><summary>Co się dzieje z wiadomościami, które nie docierają?</summary><div class="faq-answer"><p>Wiadomości, które nie docierają, są automatycznie zwracane na saldo konta, a niewykorzystane saldo podlega zwrotowi do portfela źródłowego na żądanie. Różni się to od dostawców z KYC, gdzie zwroty wymagają zgłoszeń do pomocy technicznej. Raporty dostarczenia w czasie rzeczywistym przez webhooki DLR i dziennik panelu pozwalają natychmiast potwierdzić status niepowodzenia.</p></div></details><details class="faq-card"><summary>Czy mogę użyć własnego identyfikatora nadawcy?</summary><div class="faq-answer"><p>Tak. Domyślnie używana jest inteligentna współdzielona pula nadawców. Niestandardowe <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">identyfikatory alfanumeryczne</a> są dostępne na żądanie, jeśli obsługują je docelowe trasy (zależy to od przepisów danego kraju). Na trasach blokujących niestandardowe identyfikatory automatycznie używana jest pula współdzielona, więc ruch nadal wychodzi bez dodatkowej konfiguracji.</p></div></details><details class="faq-card"><summary>Czy brak KYC oznacza brak wsparcia?</summary><div class="faq-answer"><p>Nie. Wsparcie działa 24/7 na Telegramie i e-mailu, pierwsza odpowiedź zazwyczaj w ciągu godziny. Raporty dostarczenia w czasie rzeczywistym docierają przez webhooki DLR i dziennik panelu, niezależnie od tego, czy napiszesz do nas, czy nie.</p></div></details>
     <div class="cta"><p>Trasy są aktywne w 149 krajach. Przetestuj je z darmowymi kredytami, zanim cokolwiek wpłacisz.</p><a class="btn" href="https://smsroute.cc/signup">Utwórz konto tylko za pomocą e-maila</a><span class="alt">lub przeczytaj najpierw <a href="https://smsroute.cc/developers">dokumentację API</a></span></div>
@@ -418,10 +430,10 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/sms-api-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-api-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-api-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-api-no-kyc.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-api-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-api-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/sms-api-no-kyc.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/sms-api-no-kyc.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/sms-api-no-kyc.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/sms-api-no-kyc.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/sms-api-no-kyc.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/sms-api-no-kyc.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/sms-api-no-kyc.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/sms-api-no-kyc.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/sms-api-no-kyc.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Strona główna SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Wysyłaj klientom SMS-y, jakich jeszcze nie dostawali.</p>
+        <p>Niezawodne SMS-y. Płatność krypto. Bez ID.</p>
         <div class="socials">
           </div>
       </div>
@@ -430,7 +442,7 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
         <ul>
           <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs numer bezpłatny vs krótki kod</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumeryczny vs krótki kod identyfikatora nadawcy</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Szablon SMS z podwójną zgodą GDPR</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Szablon SMS z podwójną zgodą RODO</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Który dla mojej treści?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Jak działa dostarczanie OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Międzynarodowy przewodnik SMS 2026</a></li>
