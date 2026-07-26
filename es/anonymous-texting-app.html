@@ -314,6 +314,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "App para SMS anónimos: qué funciona", "item": "https://smsroute-cc.github.io/es/anonymous-texting-app.html"}]}</script>
 </head>
@@ -349,7 +360,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 países · nativo cripto · registro solo con correo</span>
+      <span class="eyebrow-pill">149 países · cripto nativo · registro solo con correo</span>
       <h1 class="hero-title">Apps de SMS anónimos: qué funciona</h1>
       <div class="hero-sub"><p>Las aplicaciones de textos anónimos nacen comprometidas porque la tienda de apps registra tu identidad antes de abrirlas; lo que realmente funciona es un servicio web que envía tu mensaje a cualquier número sin descarga ni cuenta vinculada a ti.</p>
 <p>Puedes enviar mensajes a cualquier número directamente desde el navegador sin instalación. El registro solo requiere un correo y nunca se solicitan documentos de identidad.</p></div>
@@ -379,7 +390,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <main id="content" class="post">
   <article>
     <div class="toc-box"><strong>En esta página</strong><ol><li><a href="#s1">¿Qué se considera una aplicación de textos anónimos?</a></li><li><a href="#s2">Las tres categorías, desenredadas</a></li><li><a href="#s3">Por qué una app es la herramienta más débil para el envío anónimo</a></li><li><a href="#s4">La alternativa sin instalación, paso a paso</a></li><li><a href="#s5">Lo que siempre queda visible sin importar cuál elijas</a></li></ol></div>
-    <div class="a2-tldr"><b>Resumen</b><ul><li>La mayoría de las &#x27;aplicaciones de textos anónimos&#x27; son para chatear con extraños, no para entregar mensajes.</li><li>Las apps tipo 'burner' dan un segundo número, pero primero registran el tuyo real.</li><li>Las tiendas de apps vinculan cada instalación a una cuenta: un rastro de papel por diseño.</li><li>La ruta sin instalación: un emisor web con registro solo por correo.</li><li>Para entrega unidireccional a un número real, el navegador supera a cualquier app.</li></ul></div>
+    <div class="a2-tldr"><b>Resumen</b><ul><li>La mayoría de las 'aplicaciones de textos anónimos' son para chatear con extraños, no para entregar mensajes.</li><li>Las apps tipo 'burner' dan un segundo número, pero primero registran el tuyo real.</li><li>Las tiendas de apps vinculan cada instalación a una cuenta: un rastro de papel por diseño.</li><li>La ruta sin instalación: un emisor web con registro solo por correo.</li><li>Para entrega unidireccional a un número real, el navegador supera a cualquier app.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">¿Qué se considera una aplicación de mensajería anónima?</h2><p>Una aplicación de mensajería anónima es una etiqueta amplia que abarca tres cosas distintas: apps de chat con extraños, apps de números desechables y emisores web que no requieren instalación. Cuál necesitas depende de si chateas con desconocidos o envías un mensaje a un número específico.</p>
 <p>Las apps de chat con extraños te ponen en conversación con quien el sistema asigne, por lo que nunca eliges el número. Las apps de números desechables te dan una segunda línea que aún se vincula a tu teléfono real mediante la cuenta del proveedor. Los emisores web evitan la descarga por completo y te permiten dirigirte a cualquier número desde una pestaña normal del navegador. Si tu objetivo es un mensaje unidireccional a alguien específico que no se vincule contigo, las dos primeras no cumplen y dejan rastros que la tercera no.</p></section><section><h2 id="s2">Las tres categorías, desglosadas</h2><p>La etiqueta agrupa tres productos no relacionados en una sola búsqueda: emparejadores aleatorios de extraños, apps de segunda línea ligadas a tu dispositivo y herramientas de navegador que envían mensajes salientes sin instalar nada.</p>
@@ -393,6 +404,7 @@ burner-number app:  app-store record, your real number, second number
 web sender:         an email address, delivery log
 all three:          carrier routing records (always)</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-website.html">SMS anónimo online: cómo elegir la web</a></li><li><a href="https://smsroute-cc.github.io/es/sms-sender-no-kyc.html">Servicio SMS sin KYC: cómo elegir</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/es/hide-my-number-when-texting.html">Ocultar mi número al enviar SMS: qué funciona</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Cuál es la mejor aplicación de mensajería anónima?</summary><div class="faq-answer"><p>Para chatear con desconocidos, cualquier app de chat sirve. Para enviar un texto a un número específico sin revelar tu identidad, la respuesta honesta no es una app, sino herramientas de navegador que solo requieren un correo electrónico y rastrean menos que las instalaciones de tiendas de apps. Aplican conmutación por error automática para que la entrega continúe aunque una ruta falle.</p></div></details><details class="faq-card"><summary>¿Son seguras las aplicaciones de mensajería anónima?</summary><div class="faq-answer"><p>La categoría de chat está moderada con niveles muy variables. El problema mayor son los datos: las apps guardan rastros locales y registros de cuenta; verifica qué almacena cada una antes de confiar. Incluso tras eliminar la app, los residuos de almacenamiento local siguen siendo recuperables en el dispositivo.</p></div></details><details class="faq-card"><summary>¿Se puede rastrear una aplicación de mensajería anónima?</summary><div class="faq-answer"><p>Sí, se puede rastrear. Su creador puede ser obligado a entregar registros de cuenta, y cada instalación se vincula a una cuenta de tienda de apps. Los servicios que solo retienen un correo tienen menos que entregar. Pagarles en XMR tampoco deja rastro bancario ni de tarjeta.</p></div></details><details class="faq-card"><summary>¿Funcionan las aplicaciones de mensajería anónima sin número telefónico?</summary><div class="faq-answer"><p>Las apps desechables no funcionan sin número telefónico: verifican tu número real durante la configuración. Los emisores web sí funcionan: no interviene tu número en ningún paso, y tus mensajes usan el grupo compartido de remitentes del servicio con conmutación por error automática por destino.</p></div></details>
@@ -401,10 +413,10 @@ all three:          carrier routing records (always)</code></pre></figure></deta
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-app.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-app.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-app.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-app.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-app.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-app.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-app.html" hreflang="it-IT" lang="it">Italiano</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Idiomas</p><ul><li><a href="https://smsroute-cc.github.io/anonymous-texting-app.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/anonymous-texting-app.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/anonymous-texting-app.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-app.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/anonymous-texting-app.html" hreflang="es-ES" lang="es" aria-current="true">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/anonymous-texting-app.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/anonymous-texting-app.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/anonymous-texting-app.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/anonymous-texting-app.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/anonymous-texting-app.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Inicio SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Entrega Satisfacción: conexiones SMS a tus clientes, más allá de lo que hayas experimentado.</p>
+        <p>SMS fiables. Pago con cripto. Sin identificación.</p>
         <div class="socials">
           </div>
       </div>
