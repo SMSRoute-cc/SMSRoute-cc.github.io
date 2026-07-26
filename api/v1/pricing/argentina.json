@@ -1,0 +1,12 @@
+{
+ "as_of": "2026-07-25",
+ "source": "Published rates parsed from https://www.smsroute.cc/prices on 2026-07-25. Competitor columns are as published there.",
+ "country": "Argentina",
+ "iso2": "AR",
+ "smsroute_usd_per_message": 0.008,
+ "compared": {
+  "twilio": 0.0475,
+  "vonage": 0.044,
+  "messagebird": 0.041
+ }
+}
