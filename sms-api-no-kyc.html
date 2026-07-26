@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/sms-api-no-kyc.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/sms-api-no-kyc.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/sms-api-no-kyc.html">
 <meta name="description" content="Use sms api no kyc with email only signup and crypto payment. No passport or ID docs. Real API pricing and docs for builders who refuse KYC freezes.">
 <link rel="canonical" href="https://smsroute-cc.github.io/sms-api-no-kyc.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS API No KYC: Email Signup Only (2026)", "description": "Use sms api no kyc with email only signup and crypto payment. No passport or ID docs. Real API pricing and docs for builders who refuse KYC freezes.", "url": "https://smsroute-cc.github.io/sms-api-no-kyc.html", "inLanguage": "en", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/sms-api-no-kyc.html", "dateModified": "2026-07-23", "image": "https://smsroute-cc.github.io/og/sms-api-no-kyc-og.png", "datePublished": "2026-07-23"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "SMS API No KYC: Email Signup Only (2026)", "item": "https://smsroute-cc.github.io/sms-api-no-kyc.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -404,6 +409,7 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 # check delivery
 curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
   -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Related guides</h2><ul><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html">Send SMS Anonymously: No Name, No ID (2026)</a></li><li><a href="https://smsroute-cc.github.io/send-sms-no-kyc.html">Send SMS No KYC: No ID, Email Signup Only</a></li><li><a href="https://smsroute-cc.github.io/send-sms-without-number.html">Send SMS Without a Number: How It Works (2026)</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Frequently asked questions</h2>
     <details class="faq-card"><summary>Which cryptocurrencies can I pay with?</summary><div class="faq-answer"><p>Six on SMSRoute: Bitcoin, Ether, Tether on two networks, Monero, Litecoin, and Solana. The live list always comes from GET /supported/coins, and deposits in any of them credit the same balance, so you can switch coins between top-ups without touching account settings.</p></div></details><details class="faq-card"><summary>Can I get delivery reports without an account manager?</summary><div class="faq-answer"><p>Yes, you get real-time delivery reports via DLR webhooks and the dashboard log without any account manager. Set the callback_url parameter on POST /sms/send for per-message webhooks. Status updates continue through automatic failover to backup routes.</p></div></details><details class="faq-card"><summary>What happens to messages that fail to deliver?</summary><div class="faq-answer"><p>Messages that fail to deliver are automatically credited back to your account balance, and any unused balance is refundable to the originating wallet on request. This differs from KYC providers where refunds require filing support tickets. Real-time delivery reports via DLR webhooks and the dashboard log let you confirm the failure status immediately.</p></div></details><details class="faq-card"><summary>Can I use a custom sender ID?</summary><div class="faq-answer"><p>Yes. Smart shared sender pool is the default. Custom <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alphanumeric ID</a> are available on request where destination routes support them (this varies by country regulation). On routes that block custom IDs the shared pool is used automatically so traffic still leaves without extra setup.</p></div></details><details class="faq-card"><summary>Does no KYC mean no support?</summary><div class="faq-answer"><p>No. Support runs 24/7 on Telegram and email, first response typically under an hour. Real-time delivery reports arrive via DLR webhooks and the dashboard log whether you write in or not.</p></div></details>
     <div class="cta"><p>Routes are live in 149 countries. Test them with free credits before you fund anything.</p><a class="btn" href="https://smsroute.cc/signup">Create an account with just an email</a><span class="alt">or read the <a href="https://smsroute.cc/developers">API reference</a> first</span></div>
@@ -452,7 +458,7 @@ curl https://api.smsroute.cc/sms/single/a91f4c2e/status \
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
-        </ul> <p class="footer-heading">Free Tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS Character Counter</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS Cost Calculator</a></li> <li><a href="https://smsroute.cc/tools">Free Tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Use Cases</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
