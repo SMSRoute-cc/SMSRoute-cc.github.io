@@ -41,6 +41,7 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 .cards p{font-size:.88rem;color:var(--mut);margin:.4em 0 0}</style>
 <style>/* v6 responsive tables (mobile overflow fix, layout_audit 2026-07-24) */@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "How to send bulk SMS without registration", "totalTime": "PT5M", "step": [{"@type": "HowToStep", "position": 1, "name": "Open the sender in any browser", "text": "No install or app-store account is needed."}, {"@type": "HowToStep", "position": 2, "name": "Sign up with an email address", "text": "No phone number or ID document is asked at any point."}, {"@type": "HowToStep", "position": 3, "name": "Send with free test credits", "text": "A real message to a real number proves delivery."}, {"@type": "HowToStep", "position": 4, "name": "Watch delivery confirm on screen", "text": "Per-message status shows the text reached the handset."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Bulk SMS Without Registration – No Signup Verification", "item": "https://smsroute-cc.github.io/bulk-sms-no-registration.html"}]}</script>
 </head>
 <body>
 <header><div class="wrap">
@@ -59,13 +60,13 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 <h2>Bulk SMS API code example (no registration required)</h2>
 <p>Here’s a minimal Python example using the SMSRoute REST API. Replace <code>YOUR_API_KEY</code> with your key, no other setup needed.</p><pre><code>import requests
 
-url = "https://api.smsroute.cc/v1/send"
+url = "https://api.smsroute.cc/sms/send"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
 }
 data = {
-    "to": ["+1234567890", "+0987654321"],
+    "to": ["+1234567890", "+14155550124"],
     "from": "SMSRoute",
     "text": "Your bulk message here."
 }
