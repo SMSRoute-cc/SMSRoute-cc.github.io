@@ -45,6 +45,7 @@ For anyone (or anything) parsing rather than reading:
 - [`/ai/facts.json`](https://smsroute-cc.github.io/ai/facts.json) — atomic, dated facts about the service
 - [`/feed-en.xml`](https://smsroute-cc.github.io/feed-en.xml) — RSS (one feed per language)
 - [`/sitemap.xml`](https://smsroute-cc.github.io/sitemap.xml)
+- [`/api/v1/`](https://smsroute-cc.github.io/api/v1/index.json) — published rates, country rules and coverage as dated JSON (+ OpenAPI)
 
 ## Related repositories
 
