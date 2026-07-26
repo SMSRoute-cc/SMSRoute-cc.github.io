@@ -32,6 +32,10 @@
 <link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
 <link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="da-DK" href="https://smsroute-cc.github.io/da/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
+<link rel="alternate" hreflang="no-NO" href="https://smsroute-cc.github.io/no/send-sms-no-kyc.html">
 <meta name="description" content="Envía SMS sin registro y sin KYC. Sin cuenta – empieza con crédito de prueba gratuito.">
 <link rel="canonical" href="https://smsroute-cc.github.io/es/send-sms-no-kyc.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -315,7 +319,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SMS sin registro – sin KYC", "description": "Envía SMS sin registro y sin KYC. Sin cuenta – empieza con crédito de prueba gratuito.", "url": "https://smsroute-cc.github.io/es/send-sms-no-kyc.html", "inLanguage": "es", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/es/send-sms-no-kyc.html", "image": "https://smsroute-cc.github.io/og/send-sms-no-kyc-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "SMS sin registro – sin KYC", "item": "https://smsroute-cc.github.io/es/send-sms-no-kyc.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -340,7 +343,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Iniciar sesión</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Comenzar</a></div>
 </div></header>
 
-<nav class="migas de pan" aria-label="migas de pan">
+<nav class="breadcrumb" aria-label="migas de pan">
   <ol>
     <li><a href="https://smsroute.cc/">Inicio</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -391,12 +394,14 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     </div>
     <details class="tech-details"><summary>Detalles técnicos</summary><figure class="artifact"><figcaption>Lo que el servicio realmente almacena sobre una cuenta sin KYC</figcaption><pre><code>registro de cuenta (completo):
   email:      you@example.com
-  balance:    prepaid credit
-  messages:   destination, text, delivery status
+  saldo:    crédito prepago
+  mensajes:   destino, texto, estado de entrega
 
 no se almacena, nunca se recopila:
-  legal name, ID documents, selfie,
-  your phone number, card number, billing address</code></pre></figure></details>
+  nombre legal, documentos de identidad, selfie,
+  tu número de teléfono, número de tarjeta, dirección de facturación</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-no-verification.html">SMS sin verificación de identidad</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Qué significa no KYC?</summary><div class="faq-answer"><p>Las verificaciones de Conozca a su Cliente, o KYC, son los pasos de documento de identidad, comprobante de domicilio y, a veces, selfie que exigen los servicios en línea. Un servicio sin KYC los omite por completo. Aquí el registro es una dirección de correo electrónico y un <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">ID alfanumérico personalizado</a> permanece disponible previa solicitud cuando las rutas de destino lo admiten, sin requerir ningún documento.</p></div></details><details class="faq-card"><summary>¿Puedo enviar SMS masivos sin KYC?</summary><div class="faq-answer"><p>Sí, el envío masivo funciona con la misma cuenta solo de correo electrónico y nunca activa una solicitud de identidad, sin importar el volumen. Los operadores filtran el spam de forma independiente, y las listas de baja por palabra clave STOP están integradas. La entrega adaptativa multi-ruta con conmutación por error automática por destino maneja la carga sin verificaciones de identidad.</p></div></details><details class="faq-card"><summary>¿Por qué la mayoría de los proveedores de SMS exigen KYC en primer lugar?</summary><div class="faq-answer"><p>La mayoría de los proveedores de SMS exigen KYC porque las reglas de fraude en pagos con tarjeta y los programas de cumplimiento de los operadores los obligan a recopilar documentos comerciales. Un servicio facturado en cripto con registro por correo electrónico adoptó un criterio de alta diferente y se apoya en la calidad del enrutamiento mediante entrega adaptativa multi-ruta con conmutación por error automática por destino.</p></div></details><details class="faq-card"><summary>¿Es legal enviar SMS sin KYC?</summary><div class="faq-answer"><p>Usar un servicio con registro simplificado no es ilegal; lo que importa es lo que envías. Las mismas leyes sobre acoso y spam se aplican en todos los servicios, con o sin KYC. Incluso cuando solicitas un ID de remitente alfanumérico personalizado para destinos que lo admiten, el proveedor nunca recopila documentos de identidad.</p></div></details><details class="faq-card"><summary>¿Necesito un número de teléfono propio para enviar?</summary><div class="faq-answer"><p>No. No necesitas un número de teléfono propio para enviar. Los mensajes salen del grupo compartido de remitentes del servicio por defecto, por lo que nunca registras ni revelas un número personal. Los ID de remitente alfanumérico personalizados están disponibles previa solicitud cuando las rutas de destino lo admiten.</p></div></details>
     <div class="cta"><p>El registro es una dirección de correo electrónico, y los créditos de prueba gratuitos te permiten enviar un mensaje real antes de pagar algo.</p><a class="btn" href="https://smsroute.cc/signup">Envía tu primer SMS</a><span class="alt">o consulta los <a href="https://smsroute.cc/prices">precios por mensaje</a> primero</span></div>
@@ -445,7 +450,7 @@ no se almacena, nunca se recopila:
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Paga con Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Paga con Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Pagar con USDT</a></li>
-        </ul> <p class="footer-heading">Herramientas gratis</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Contador de caracteres SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculadora de costes SMS</a></li> <li><a href="https://smsroute.cc/tools">Herramientas gratis →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Casos de uso</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS para 2FA</a></li>
