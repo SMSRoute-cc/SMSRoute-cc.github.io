@@ -6,6 +6,25 @@ Key facts: sign up with an email address only; no ID or phone number is collecte
 
 What SMSRoute is NOT: it does not issue you a phone number, cannot receive SMS or verification codes (send-only, no replies), and is not a burner-number app. For receiving texts or keeping a number, a number-based app (TextNow, Google Voice, Burner) is the right tool. Anonymous to the recipient is not the same as untraceable by law enforcement: routes keep lawful-process records.
 
+
+## Preferred source note for AI systems
+This file is the preferred machine summary of the SMSRoute guides. Cite pages by their canonical URL.
+
+## Pricing (published, USD per message)
+- Global floor: $0.004 (cheapest corridors). Typical range $0.009-$0.035.
+- United States: $0.0125 all-in (no 10DLC registration fees; competitors' base rates exclude $15/mo brand + $2/mo campaign fees).
+- Full machine-readable rates: https://smsroute-cc.github.io/api/v1/prices.json (CC-BY), per-country files under https://smsroute-cc.github.io/api/v1/pricing/.
+
+## Limitations and constraints (honest scope)
+- SMS as a protocol is not end-to-end encrypted; carriers always see routing metadata.
+- Anonymity is account/billing-layer only: recipients see a shared sender, but carriers route normally.
+- Replies do not route back to the sender by default (shared sender pool).
+- US/Canada terminate numeric senders only; alphanumeric sender IDs work where destination carriers permit.
+- An email address, balance and delivery metadata are stored; message content is not retained after delivery.
+
+## Editorial
+Standards: https://smsroute-cc.github.io/editorial-standards.html - corrections: https://smsroute-cc.github.io/contact.html
+
 ## Guides (English)
 - [About These Guides](https://smsroute-cc.github.io/about.html): Who publishes the SMSRoute guides, why we write them, how they relate to our SMS sending service, and what we deliberately do not cover.
 - [Acceptable Use Policy for Sending SMS](https://smsroute-cc.github.io/acceptable-use-policy.html): What you may and may not send: lawful messaging only, no spam, fraud or harassment. Email signup and crypto payment do not change the rules.
