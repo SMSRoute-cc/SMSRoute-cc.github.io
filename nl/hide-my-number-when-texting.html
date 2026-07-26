@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">
 <meta name="description" content="Nummer verbergen bij sms: waarom #31# alleen voor bellen geldt en hoe een bericht aankomt zonder jouw nummer.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Anoniem sms'en zonder je nummer te tonen", "description": "Nummer verbergen bij sms: waarom #31# alleen voor bellen geldt en hoe een bericht aankomt zonder jouw nummer.", "url": "https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html", "image": "https://smsroute-cc.github.io/og/hide-my-number-when-texting-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "Anoniem sms'en zonder je nummer te tonen", "item": "https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -383,10 +388,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Dit is belangrijk omdat er geen spoor van persoonlijke gegevens achterblijft: registratie vereist alleen een e-mail en nooit identiteitsdocumenten. Het addertje onder het gras is dat je overstapt van de app op je telefoon naar een browser. Kies hiervoor als elk ander pad onderweg nog steeds je echte nummer registreert.</p><ol class="a2-steps"><li><b>Open de verzender in een browser</b><span>telefoon of computer, niets geïnstalleerd</span></li><li><b>Registreer met een e-mailadres</b><span>je telefoonnummer wordt nooit gevraagd</span></li><li><b>Schrijf de tekst, voer hun nummer in</b><span>gratis testcredits dekken de eerste verzending</span></li><li><b>Bezorgbevestiging op het scherm</b><span>ontvanger ziet een afzendernaam of servicenummer</span></li></ol></section><section><h2 id="s5">Wat het verbergen van je nummer wel en niet doet</h2><p>Het verbergen van je nummer bij het sms'en verbergt het alleen voor de ontvanger. Providers routeren en loggen het bericht nog steeds net als elke andere sms, dus de netwerkkant ziet alles wat het normaal zou zien.</p>
 <p>Alleen de inhoud van het bericht bepaalt of een sms rechtmatig is of niet. Verberg het nummer als je dat nodig hebt, en houd het bericht fatsoenlijk. Dat onderscheid is het hele verhaal over privacy tegenover de ontvanger versus volledige verwerking door de providers. Verder verandert er niets aan de bezorging of de administratie die ze bijhouden. Je schrijft een fatsoenlijke tekst en de ander ziet nooit je nummer, maar de netwerken behandelen het als standaard SMS-verkeer.</p></section>
     </div>
-    <details class="tech-details"><summary>Technische details</summary><figure class="artifact"><figcaption>Waar je nummer verschijnt, per route</figcaption><pre><code>device settings / *67:  on their screen (the trick changed nothing)
-burner-number app:      in the app&#x27;s records, behind the second number
-web sender:             nowhere - the service never asked for it
-every route:            <a href="https://en.wikipedia.org/wiki/Cellular_network" rel="noopener">carriers route</a> and log the message itself</code></pre></figure></details>
+    <details class="tech-details"><summary>Technische details</summary><figure class="artifact"><figcaption>Waar je nummer verschijnt, per route</figcaption><pre><code>apparaatinstellingen / *67:  op hun scherm (de truc veranderde niets)
+burner-nummer-app:      in de gegevens van de app, achter het tweede nummer
+webverzender:             nergens - de dienst heeft er nooit om gevraagd
+elke route:            <a href="https://en.wikipedia.org/wiki/Cellular_network" rel="noopener">providers routeren</a> en loggen het bericht zelf</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-abroad.html">Sms naar het buitenland sturen: kosten en de goedkope route</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Werkt *67 voor sms-berichten?</summary><div class="faq-answer"><p>Nee. Beller-ID-verbergcodes die werken voor spraakoproepen worden genegeerd door SMS. Veel telefoons weigeren een sms te versturen als je de gebruikelijke verbergprefix toevoegt, en zelfs als ze dat doen, blijft het afzendernummer meegaan als vereiste routeringsgegevens. Dual-<a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a> apparaten en VoLTE-lijnen vormen geen uitzondering op deze regel.</p></div></details><details class="faq-card"><summary>Hoe stuur ik iemand een sms zonder dat ze mijn nummer zien op iPhone?</summary><div class="faq-answer"><p>Er is geen iOS-instelling die je nummer verbergt bij het sms'en. Toon mijn beller-ID heeft alleen invloed op spraakoproepen. De werkende routes zijn een tweede nummer van een burner-app of een webverzender die sms't vanuit een afzendernaam, waardoor je persoonlijke nummer volledig buiten beeld blijft. Aangepaste <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alfanumerieke ID</a> zijn op aanvraag beschikbaar waar de bestemming dit ondersteunt.</p></div></details><details class="faq-card"><summary>Kan een verborgen sms naar mij worden herleid?</summary><div class="faq-answer"><p>De ontvanger kan je nummer niet zien, maar welke dienst je ook hebt gebruikt, die bewaart wat je hebt gegeven. Een burner-app bewaart je echte nummer; een webverzender met alleen e-mailregistratie bewaart een e-mailadres. Kies op basis van waar je je prettig bij voelt. De berichtinhoud zelf vormt een uitzondering als het persoonlijke gegevens onthult die naar jou verwijzen.</p></div></details><details class="faq-card"><summary>Is het legaal om je nummer te verbergen tijdens het sms'en?</summary><div class="faq-answer"><p>Het versturen zonder je nummer te tonen is over het algemeen legaal. Wat het bericht zegt, bepaalt alles. Intimidatie en bedreigingen zijn illegaal vanaf elk nummer, verborgen of niet. De regels worden behandeld in de gids 'kan ik anoniem sms'en'. De service omvat <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">STOP-trefwoordafhandeling</a> en blokkeerlijsten zodat uitschrijvingen gehandhaafd blijven.</p></div></details>
     <div class="cta"><p>Geen nummer om te verbergen: meld je aan met een e-mailadres en het bericht arriveert vanuit een afzendernaam, nooit van jou.</p><a class="btn" href="https://smsroute.cc/signup">Stuur je eerste sms</a><span class="alt"> de regels eerst? <a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html">kan ik anoniem sms'en - wat is toegestaan</a></span></div>
@@ -435,7 +442,7 @@ every route:            <a href="https://en.wikipedia.org/wiki/Cellular_network"
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betaal met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betaal met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betaal met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
