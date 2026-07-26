@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "PL", "item": "https://smsroute-cc.github.io/pl/"}, {"@type": "ListItem", "position": 3, "name": "Wyślij anonimowy SMS online", "item": "https://smsroute-cc.github.io/pl/send-sms-anonymously.html"}]}</script>
 </head>
@@ -361,7 +372,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
         <a class="btn-primary" href="https://smsroute.cc/signup">Wyślij pierwszą wiadomość<span aria-hidden="true">→</span></a>
         <a class="btn-ghost" href="https://smsroute.cc/prices">Zobacz ceny za wiadomość</a>
       </div>
-      <div class="trust-chips"><span>Rejestracja przez e-mail</span><span>Bez ID</span><span>Płatność krypto</span></div>
+      <div class="trust-chips"><span>Rejestracja przez e-mail</span><span>Bez identyfikatora</span><span>Płatność krypto</span></div>
       <div class="byline">
         <a href="https://smsroute.cc/about" class="byline-author">Inżynieria SMSRoute</a>
         <span class="byline-sep">·</span>
@@ -397,7 +408,8 @@ usługa przechowuje: adres e-mail, saldo, log dostarczeń
 sieć widzi: metadane routingu (każda usługa, zawsze)
 nikt nie ma: Twojego nazwiska, numeru ani dowodu tożsamości</code></pre></figure></details>
     
-    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/anonymous-send-sms.html">Anonimowy SMS – bramka online</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html">Czy można wysłać anonimowy SMS?</a></li><li><a href="https://smsroute-cc.github.io/send-anonymous-text-free.html">Send Anonymous Text Free: Online, No Registration</a></li><li><a href="https://smsroute-cc.github.io/pl/hide-my-number-when-texting.html">Jak ukryć numer przy wysyłaniu SMS-a</a></li></ul></section>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Powiązane poradniki</h2><ul><li><a href="https://smsroute-cc.github.io/pl/anonymous-send-sms.html">Anonimowy SMS – bramka online</a></li><li><a href="https://smsroute-cc.github.io/pl/can-i-send-sms-anonymously.html">Czy można wysłać anonimowy SMS?</a></li><li><a href="https://smsroute-cc.github.io/pl/hide-my-number-when-texting.html">Jak ukryć numer przy wysyłaniu SMS-a</a></li><li><a href="https://smsroute-cc.github.io/pl/anonymous-texting-app.html">Aplikacja do anonimowych SMS: co działa</a></li></ul></section>
     <h2 id="faq">Często zadawane pytania</h2>
     <details class="faq-card"><summary>Czy mogę wysłać SMS anonimowo za darmo?</summary><div class="faq-answer"><p>Tak, darmowe narzędzia webowe obsługują pojedynczy anonimowy test bez podawania nazwiska, albo możesz użyć darmowych kredytów testowych w usłudze tylko e-mailowej, aby faktycznie dostarczyć wiadomość bez kosztów. Twój numer pozostaje ukryty w obu przypadkach. Darmowe narzędzia webowe zwykle odcinają dostęp do rzadziej obsługiwanych krajów zaraz po wiadomości testowej, podczas gdy te kredyty nadal do nich docierają.</p></div></details><details class="faq-card"><summary>Czy odbiorca będzie mógł mi odpowiedzieć?</summary><div class="faq-answer"><p>Wiadomości pochodzą ze współdzielonej puli nadawców, więc domyślnie odpowiedzi do Ciebie nie trafiają. To część mechanizmu chroniącego Twój numer. Usługa obsługuje <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">słowa kluczowe STOP</a> i utrzymuje wbudowane listy rezygnacji, co oznacza, że każda wiadomość rezygnacyjna wysłana przez odbiorcę jest przetwarzana po ich stronie, bez przekazywania jej do Ciebie.</p></div></details><details class="faq-card"><summary>Czy to działa międzynarodowo?</summary><div class="faq-answer"><p>Zasięg obejmuje 149 krajów. Twoja wiadomość wychodzi po stronie usługi, operator odbiorcy decyduje, czy dotrze, a status dostarczenia wyświetla się na ekranie, więc od razu widzisz wynik. Jeśli jedna ścieżka dla danego kierunku zawiedzie, usługa automatycznie przełącza trasy.</p></div></details><details class="faq-card"><summary>Czy wysyłanie anonimowych SMS-ów jest legalne?</summary><div class="faq-answer"><p>Wysyłanie wiadomości bez ujawniania numeru jest legalne w większości miejsc. Przepisy dotyczące treści nadal obowiązują, więc nękanie, groźby i oszustwa są nielegalne niezależnie od nadawcy, anonimowego lub nie. Usługa zawiera wbudowaną obsługę słów kluczowych STOP i listy rezygnacji, aby zapewnić obsługę rezygnacji.</p></div></details><details class="faq-card"><summary>Jaka jest różnica między tym a anonimową aplikacją do SMS-ów?</summary><div class="faq-answer"><p>Aplikacje obiecujące anonimowe SMS-y instalują się na telefonie i wiążą konto z Twoim prawdziwym numerem. Czysto przeglądarkowa usługa z rejestracją tylko przez e-mail, nigdy nie dotyka Twojego urządzenia ani numeru. Wpisujesz numer odbiorcy i treść na stronie, a wiadomość wychodzi z ich puli. Tam, gdzie trasy na to pozwalają, możesz nawet poprosić o niestandardową nazwę zamiast numeru.</p></div></details>
     <div class="cta"><p>Wprowadzasz tylko adres e-mail. Darmowe kredyty testowe wysyłają prawdziwą wiadomość, zanim zapłacisz.</p><a class="btn" href="https://smsroute.cc/signup">Wyślij pierwszą wiadomość</a><span class="alt">lub zobacz <a href="https://smsroute.cc/prices">ceny za wiadomość</a></span></div>
@@ -405,17 +417,17 @@ nikt nie ma: Twojego nazwiska, numeru ani dowodu tożsamości</code></pre></figu
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html" hreflang="cs-CZ" lang="cs">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Języki</p><ul><li><a href="https://smsroute-cc.github.io/send-sms-anonymously.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-sms-anonymously.html" hreflang="pl-PL" lang="pl" aria-current="true">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html" hreflang="cs-CZ" lang="cs">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/send-sms-anonymously.html" hreflang="da-DK" lang="da">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/send-sms-anonymously.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Strona główna SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>SMS-y do klientów, które naprawdę docierają.</p>
+        <p>Niezawodne SMS-y. Płatność krypto. Bez identyfikatora.</p>
         <div class="socials">
           </div>
       </div>
       <div class="footer-col">
         <p class="footer-heading">Blog</p>
         <ul>
-          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs numery bezpłatne vs shortcode</a></li>
           <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumeryczny vs Shortcode Sender ID</a></li>
           <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Szablon SMS z podwójną zgodą RODO</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: które wybrać do mojej treści?</a></li>
