@@ -14,113 +14,415 @@
 <link rel="canonical" href="https://smsroute-cc.github.io/">
 <meta name="robots" content="index, follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "SMSRoute Guides", "url": "https://smsroute-cc.github.io/", "about": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc/"}}</script>
-<style>:root{--ink:#16202b;--mut:#5b6b7b;--acc:#0b57d0;--bg:#fff;--line:#e3e8ee;--soft:#f4f7fa}
-*{box-sizing:border-box}body{margin:0;font:16px/1.65 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-header{border-bottom:1px solid var(--line);background:var(--soft)}
-.wrap{max-width:820px;margin:0 auto;padding:0 20px}
-header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
-.brand{font-weight:700;text-decoration:none;color:var(--ink)}.brand span{color:var(--acc)}
-nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}nav a:hover{color:var(--acc)}
-main{padding:32px 0 48px}h1{font-size:1.9rem;line-height:1.25;margin:.2em 0 .4em}
-h2{font-size:1.25rem;margin:1.6em 0 .5em}p{margin:.7em 0}
-.answer{background:var(--soft);border-left:4px solid var(--acc);padding:14px 18px;border-radius:0 8px 8px 0;font-size:1.05rem}
-table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.95rem}caption{text-align:left;color:var(--mut);font-size:.85rem;padding-bottom:6px}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--soft)}
-tbody tr:first-child{background:#eef4ff}
-.tablewrap{overflow-x:auto}a{color:var(--acc)}code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:.9em}
-pre{background:#0f172a;color:#dbe7ff;padding:14px;border-radius:8px;overflow-x:auto;font-size:.88rem}pre code{background:none;color:inherit;padding:0}
-.faq h3{font-size:1.05rem;margin:1.1em 0 .3em}.meta{color:var(--mut);font-size:.85rem}
-.cta{display:inline-block;background:var(--acc);color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-weight:600;margin:14px 0}
-footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;padding:20px 0;margin-top:30px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding:0;list-style:none}
-.cards li{border:1px solid var(--line);border-radius:10px;padding:14px}.cards a{text-decoration:none;font-weight:600}
-.cards p{font-size:.88rem;color:var(--mut);margin:.4em 0 0}</style>
-<style>/* v6 responsive tables (mobile overflow fix, layout_audit 2026-07-24) */@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}</style>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/inter-var.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/intertight-var.woff2') format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/jbmono-var.woff2') format('woff2')}
+
+:root{
+  --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+  --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
+  --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--warn:#FBBF24;--pill-bg:rgba(182,89,255,.12);
+  --max-w:1200px;--content-w:820px;--hero-w:1040px;
+  --sp-5:24px;--sp-6:32px;--sp-8:64px;
+  --r-sm:6px;--r-md:10px;--line:1px solid var(--border);--frame-head:#10141C;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-primary);color:var(--fg-secondary);font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:rgba(182,89,255,.35);color:#fff}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:#B4E5FD}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent-purple);outline-offset:2px;border-radius:4px}
+img,svg{max-width:100%}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--accent-purple);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* ---------- CTA buttons ---------- */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border:0;cursor:pointer;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,box-shadow .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 22px 46px -10px rgba(147,51,234,.7);color:#fff}
+.btn-primary--sm{padding:8px 18px;font-size:.9rem}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:600;text-decoration:none;border-radius:999px;padding:13px 28px;font-size:.95rem;background:transparent;color:var(--fg-primary);border:1px solid rgba(255,255,255,.2);transition:background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.32);color:#fff}
+
+/* ---------- Nav ---------- */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(10,13,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.site-nav-inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.12rem;color:var(--fg-primary);font-family:'Inter Tight',Inter,sans-serif}
+.brand-logo{display:block;height:22px;width:auto}
+.site-links{display:flex;gap:22px;margin-left:8px}
+.site-links a{color:var(--fg-secondary);font-size:.94rem;font-weight:500}
+.site-links a:hover{color:var(--fg-primary)}
+.site-links a.current{color:var(--fg-primary);font-weight:600}
+.site-cta{margin-left:auto;display:flex;align-items:center;gap:16px}
+.site-cta .signin{color:var(--fg-secondary);font-size:.94rem}
+.site-cta .signin:hover{color:var(--fg-primary)}
+@media(max-width:720px){.site-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:56px 24px 34px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(182,89,255,.09),transparent 60%),radial-gradient(ellipse at 20% 85%,rgba(125,211,252,.05),transparent 55%);pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--pill-bg);border:1px solid rgba(182,89,255,.25);border-radius:999px;font-size:.85rem;color:#E8ECF3;margin-bottom:18px}
+h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;font-size:2.6rem;line-height:1.07;letter-spacing:-.02em;color:var(--fg-primary);margin:0 0 14px}
+.hero-sub{font-size:1.05rem;color:var(--fg-secondary);max-width:620px;margin:0 0 22px;line-height:1.6}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-ctas .alt{font-size:.86rem;color:var(--fg-muted)}
+
+/* ---------- Jump nav ---------- */
+.jump{position:sticky;top:69px;z-index:40;background:rgba(10,13,20,.9);backdrop-filter:blur(10px);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.jump-inner{max-width:var(--content-w);margin:0 auto;padding:10px 20px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.jump-inner::-webkit-scrollbar{display:none}
+.jump-inner a{flex:none;font:500 .82rem 'Inter',sans-serif;color:var(--fg-secondary);background:var(--bg-elevated);border:var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap}
+.jump-inner a:hover{color:#fff;border-color:var(--border-glow)}
+
+/* ---------- Sections ---------- */
+.hub{max-width:var(--content-w);margin:0 auto;padding:8px 20px 72px}
+.sec{scroll-margin-top:126px;margin:38px 0 0}
+.sec > h2{font-family:'Inter Tight',Inter,sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;color:var(--fg-primary);border-top:var(--line);padding-top:20px;margin:0 0 4px}
+.sec > p.lede{margin:0 0 16px;font-size:.92rem;color:var(--fg-muted)}
+
+/* link cards */
+.cards{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cards li{background:var(--bg-elevated);border:var(--line);border-radius:var(--r-md);padding:13px 15px;transition:border-color .15s,background .15s}
+.cards li:hover{border-color:var(--border-glow);background:#171C25}
+.cards li > a{display:block;font-weight:600;font-size:.95rem;line-height:1.35;color:var(--fg-primary)}
+.cards li > a:hover{color:var(--accent-cyan)}
+.cards p{margin:5px 0 0;font-size:.83rem;line-height:1.5;color:var(--fg-muted)}
+
+/* chip grids (countries, languages) */
+.chips{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.chips li a{display:block;background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);padding:9px 13px;font-size:.9rem;color:var(--fg-secondary)}
+.chips li a:hover{color:#fff;border-color:var(--border-glow)}
+.chips li a .cc{font:600 .7rem var(--mono);color:var(--accent-purple);margin-right:8px}
+
+/* legacy dev guides */
+.dev-details{margin:14px 0 0;border:var(--line);border-radius:var(--r-md);background:var(--bg-sunken);overflow:hidden}
+.dev-details > summary{cursor:pointer;list-style:none;padding:14px 18px;font:600 .95rem 'Inter',sans-serif;color:var(--fg-primary);background:var(--frame-head)}
+.dev-details > summary::-webkit-details-marker{display:none}
+.dev-details > summary::before{content:"\25B8  ";color:var(--accent-cyan)}
+.dev-details[open] > summary::before{content:"\25BE  "}
+.dev-details > summary span{font-weight:400;color:var(--fg-muted);font-size:.88rem}
+.dev-details .cards{padding:14px}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--bg-sunken);border-top:1px solid var(--border);color:var(--fg-secondary);padding:48px 24px 26px}
+.site-footer__inner{max-width:var(--max-w);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+.footer-brand p{font-size:.9rem;margin:0 0 14px;max-width:220px}
+.footer-brand .socials{display:flex;gap:8px}
+.footer-heading{font-weight:600;margin:0 0 .6em;font-size:.95rem;color:var(--fg-primary);letter-spacing:.02em}
+.footer-col ul{list-style:none;padding:0;margin:0 0 18px}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--fg-secondary);font-size:.92rem}
+.footer-col a:hover{color:#fff}
+.footer-legal{padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--fg-muted);font-size:.86rem}
+.footer-legal .legal-links{display:inline-flex;gap:16px;flex-wrap:wrap}
+.footer-legal .legal-links a{color:var(--fg-muted)}
+.footer-legal .legal-links a:hover{color:var(--fg-secondary)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr 1fr;gap:24px}.footer-brand{grid-column:1/-1}}
+@media(max-width:640px){
+  body{font-size:16px}
+  .hero{padding:26px 20px 18px}
+  .eyebrow-pill{margin-bottom:12px;font-size:.78rem;padding:5px 12px}
+  h1.hero-title{font-size:1.82rem;margin-bottom:10px}
+  .hero-sub{font-size:.94rem;margin-bottom:16px}
+  .btn-primary{padding:11px 22px}
+  .jump{top:75px}
+  .jump-inner{padding:8px 16px}
+  .hub{padding:4px 16px 30px}
+  .sec{margin-top:20px;scroll-margin-top:130px}
+  .sec > h2{font-size:1.14rem;padding-top:13px;margin-bottom:8px}
+  #languages .chips{grid-template-columns:1fr 1fr 1fr}
+  /* the hub already lists every language and country as a full section */
+  .site-footer .srx-langswitch,.site-footer .footer-col--countries{display:none}
+  .sec > p.lede{display:none}
+  .cards{grid-template-columns:1fr;gap:6px}
+  .cards li{padding:8px 12px}
+  .cards li > a{font-size:.9rem;line-height:1.3}
+  .cards p{margin-top:3px;font-size:.78rem;line-height:1.4;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .chips{grid-template-columns:1fr 1fr;gap:5px}
+  .chips li a{padding:7px 10px;font-size:.82rem}
+  .dev-details > summary{padding:11px 14px;font-size:.9rem}
+  .dev-details .cards{padding:10px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+  .site-footer{padding:28px 16px 18px}
+  .footer-col ul{margin-bottom:14px}
+  .footer-col li{margin-bottom:6px}
+  .footer-heading{font-size:.88rem}
+  .footer-col a,.footer-brand p{font-size:.83rem;line-height:1.45}
+  .footer-legal{font-size:.8rem;padding-top:16px}
+}
+@media(max-width:380px){.chips{grid-template-columns:1fr}}
+</style>
+
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://smsroute-cc.github.io/#website", "name": "SMSRoute Guides", "url": "https://smsroute-cc.github.io/", "publisher": {"@id": "https://smsroute.cc/#organization"}, "inLanguage": "en"}</script>
 </head>
 <body>
-<header><div class="wrap">
-<a class="brand" href="./">SMS<span>Route</span> Guides</a>
-<nav><a href="https://smsroute.cc/">smsroute.cc</a><a href="https://smsroute.cc/prices/">Pricing</a><a href="https://smsroute.cc/api/">API docs</a></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="srlogo" viewBox="0 0 125 22"><path d="M29.8571 14.5947C29.9619 15.1939 30.2241 15.6509 30.6434 15.9655C31.0778 16.2801 31.6544 16.4374 32.3734 16.4374C33.1073 16.4374 33.7064 16.2951 34.1707 16.0105C34.6351 15.7108 34.8672 15.3363 34.8672 14.8868C34.8672 14.5123 34.7399 14.2201 34.4853 14.0104C34.2456 13.8006 33.9386 13.6433 33.5641 13.5384C33.2047 13.4336 32.7029 13.3287 32.0588 13.2238C31.1602 13.059 30.4337 12.8867 29.8796 12.7069C29.3254 12.5271 28.8461 12.22 28.4417 11.7855C28.0373 11.3361 27.8351 10.7068 27.8351 9.89779C27.8351 9.23858 28.0298 8.64679 28.4192 8.12242C28.8086 7.58307 29.3478 7.16357 30.0368 6.86393C30.7408 6.56429 31.5196 6.41447 32.3734 6.41447C33.6765 6.41447 34.7399 6.70662 35.5637 7.29092C36.4025 7.87522 36.9042 8.66926 37.069 9.67306L34.7099 10.1675C34.6201 9.56819 34.3729 9.11123 33.9685 8.79661C33.5641 8.48199 33.0324 8.32468 32.3734 8.32468C31.7443 8.32468 31.2276 8.45952 30.8232 8.72919C30.4188 8.99887 30.2166 9.35095 30.2166 9.78543C30.2166 10.145 30.3364 10.4297 30.576 10.6394C30.8157 10.8342 31.1078 10.984 31.4522 11.0889C31.8117 11.1788 32.3135 11.2836 32.9575 11.4035C33.8562 11.5533 34.5901 11.7256 35.1593 11.9204C35.7284 12.1151 36.2152 12.4447 36.6196 12.9092C37.039 13.3586 37.2487 14.0029 37.2487 14.8419C37.2487 15.5011 37.0315 16.1004 36.5972 16.6397C36.1628 17.1641 35.5712 17.5836 34.8223 17.8982C34.0884 18.1978 33.2721 18.3477 32.3734 18.3477C31.4597 18.3477 30.6584 18.2203 29.9694 17.9656C29.2954 17.6959 28.7412 17.3139 28.3069 16.8195C27.8875 16.3251 27.6179 15.7483 27.4981 15.0891L29.8571 14.5947Z" fill="white"/>
+<path d="M39.2081 6.6392H41.5671V9.2236L41.1852 8.79661C41.5596 8.07747 42.0688 7.50067 42.7129 7.06619C43.3569 6.63171 44.0834 6.41447 44.8922 6.41447C45.8208 6.41447 46.6371 6.67665 47.3411 7.20103C48.045 7.71041 48.5543 8.39959 48.8688 9.26855L48.1948 9.24607C48.5543 8.37712 49.0935 7.68794 49.8124 7.17855C50.5314 6.66916 51.3552 6.41447 52.2838 6.41447C53.1675 6.41447 53.9538 6.62422 54.6428 7.04371C55.3468 7.46321 55.8935 8.04002 56.2829 8.77414C56.6723 9.50826 56.867 10.3398 56.867 11.2686V18.1229H54.4856V11.6282C54.4856 11.0439 54.3732 10.5195 54.1486 10.0551C53.9239 9.59066 53.6093 9.23109 53.2049 8.9764C52.8155 8.70672 52.3662 8.57188 51.8569 8.57188C51.3627 8.57188 50.9133 8.70672 50.5089 8.9764C50.1045 9.23109 49.7825 9.59066 49.5428 10.0551C49.3182 10.5195 49.2058 11.0439 49.2058 11.6282V18.1229H46.8468V11.6282C46.8468 11.0439 46.7345 10.5195 46.5098 10.0551C46.2851 9.59066 45.9706 9.23109 45.5662 8.9764C45.1618 8.70672 44.7125 8.57188 44.2182 8.57188C43.7239 8.57188 43.2746 8.70672 42.8702 8.9764C42.4658 9.23109 42.1437 9.59066 41.9041 10.0551C41.6794 10.5195 41.5671 11.0439 41.5671 11.6282V18.1229H39.2081V6.6392Z" fill="white"/>
+<path d="M61.0782 14.5947C61.183 15.1939 61.4451 15.6509 61.8645 15.9655C62.2989 16.2801 62.8755 16.4374 63.5945 16.4374C64.3284 16.4374 64.9275 16.2951 65.3918 16.0105C65.8561 15.7108 66.0883 15.3363 66.0883 14.8868C66.0883 14.5123 65.961 14.2201 65.7064 14.0104C65.4667 13.8006 65.1597 13.6433 64.7852 13.5384C64.4258 13.4336 63.924 13.3287 63.2799 13.2238C62.3813 13.059 61.6548 12.8867 61.1007 12.7069C60.5465 12.5271 60.0672 12.22 59.6628 11.7855C59.2584 11.3361 59.0562 10.7068 59.0562 9.89779C59.0562 9.23858 59.2509 8.64679 59.6403 8.12242C60.0297 7.58307 60.5689 7.16357 61.2579 6.86393C61.9619 6.56429 62.7407 6.41447 63.5945 6.41447C64.8976 6.41447 65.961 6.70662 66.7848 7.29092C67.6235 7.87522 68.1253 8.66926 68.2901 9.67306L65.931 10.1675C65.8412 9.56819 65.594 9.11123 65.1896 8.79661C64.7852 8.48199 64.2535 8.32468 63.5945 8.32468C62.9654 8.32468 62.4487 8.45952 62.0443 8.72919C61.6399 8.99887 61.4377 9.35095 61.4377 9.78543C61.4377 10.145 61.5575 10.4297 61.7971 10.6394C62.0368 10.8342 62.3288 10.984 62.6733 11.0889C63.0328 11.1788 63.5346 11.2836 64.1786 11.4035C65.0773 11.5533 65.8112 11.7256 66.3804 11.9204C66.9495 12.1151 67.4363 12.4447 67.8407 12.9092C68.2601 13.3586 68.4698 14.0029 68.4698 14.8419C68.4698 15.5011 68.2526 16.1004 67.8183 16.6397C67.3839 17.1641 66.7923 17.5836 66.0434 17.8982C65.3094 18.1978 64.4931 18.3477 63.5945 18.3477C62.6808 18.3477 61.8795 18.2203 61.1905 17.9656C60.5165 17.6959 59.9623 17.3139 59.528 16.8195C59.1086 16.3251 58.839 15.7483 58.7192 15.0891L61.0782 14.5947Z" fill="white"/>
+<path d="M70.4292 6.6392H72.7882V9.38091L72.4062 8.93145C72.7058 8.34715 73.1027 7.84525 73.597 7.42576C74.0913 6.99128 74.6529 6.69913 75.282 6.54931C75.926 6.3845 76.5926 6.3845 77.2816 6.54931V8.79661C76.4578 8.57188 75.7014 8.54941 75.0124 8.72919C74.3234 8.90898 73.7767 9.26105 73.3723 9.78543C72.9829 10.2948 72.7882 10.9091 72.7882 11.6282V18.1229H70.4292V6.6392Z" fill="white"/>
+<path d="M77.6151 12.3923C77.6151 11.2686 77.8772 10.2574 78.4014 9.35844C78.9406 8.44453 79.6745 7.7254 80.6031 7.20103C81.5318 6.67665 82.5653 6.41447 83.7036 6.41447C84.8419 6.41447 85.8754 6.67665 86.804 7.20103C87.7326 7.7254 88.4591 8.44453 88.9833 9.35844C89.5225 10.2574 89.7921 11.2686 89.7921 12.3923C89.7921 13.501 89.5225 14.5123 88.9833 15.4262C88.4591 16.3251 87.7326 17.0367 86.804 17.5611C85.8754 18.0855 84.8419 18.3477 83.7036 18.3477C82.5653 18.3477 81.5318 18.0855 80.6031 17.5611C79.6745 17.0367 78.9406 16.3251 78.4014 15.4262C77.8772 14.5123 77.6151 13.501 77.6151 12.3923ZM80.0415 12.3923C80.0415 13.0965 80.1987 13.7407 80.5133 14.325C80.8428 14.8943 81.2846 15.3438 81.8388 15.6734C82.393 16.003 83.0146 16.1678 83.7036 16.1678C84.3926 16.1678 85.0141 16.003 85.5683 15.6734C86.1225 15.3438 86.5569 14.8943 86.8714 14.325C87.2009 13.7407 87.3657 13.0965 87.3657 12.3923C87.3657 11.6732 87.2009 11.0289 86.8714 10.4596C86.5569 9.87532 86.1225 9.41837 85.5683 9.08876C85.0141 8.75916 84.3926 8.59435 83.7036 8.59435C83.0146 8.59435 82.393 8.75916 81.8388 9.08876C81.2846 9.41837 80.8428 9.87532 80.5133 10.4596C80.1987 11.0289 80.0415 11.6732 80.0415 12.3923Z" fill="white"/>
+<path d="M94.1335 6.6392V13.3586C94.1335 13.913 94.2533 14.4074 94.493 14.8419C94.7476 15.2614 95.0921 15.591 95.5264 15.8307C95.9608 16.0554 96.4551 16.1678 97.0092 16.1678C97.5485 16.1678 98.0352 16.0554 98.4696 15.8307C98.904 15.591 99.241 15.2614 99.4806 14.8419C99.7352 14.4074 99.8625 13.913 99.8625 13.3586V6.6392H102.222V13.3586C102.222 14.3175 101.997 15.179 101.548 15.943C101.098 16.6921 100.477 17.2839 99.6828 17.7184C98.889 18.1379 97.9978 18.3477 97.0092 18.3477C96.0057 18.3477 95.107 18.1379 94.3132 17.7184C93.5194 17.2989 92.8978 16.7071 92.4485 15.943C91.9991 15.179 91.7745 14.3175 91.7745 13.3586V6.6392H94.1335Z" fill="white"/>
+<path d="M103.779 6.6392H106.228V2.90867L108.587 2.16706V6.6392H111.822V8.72919H108.587V14.0328C108.587 14.737 108.737 15.2464 109.037 15.561C109.351 15.8756 109.86 16.0329 110.564 16.0329H111.822V18.1229H110.564C109.096 18.1229 108.003 17.7783 107.284 17.0892C106.58 16.4 106.228 15.3438 106.228 13.9205V8.72919H103.779V6.6392Z" fill="white"/>
+<path d="M115.16 11.3361H123.248L122.686 12.0777C122.656 11.4035 122.477 10.7892 122.147 10.2349C121.833 9.68055 121.406 9.24607 120.867 8.93145C120.327 8.61683 119.721 8.45952 119.047 8.45952C118.373 8.45952 117.751 8.63181 117.182 8.9764C116.628 9.32098 116.186 9.79292 115.857 10.3922C115.542 10.9915 115.385 11.6582 115.385 12.3923C115.385 13.1264 115.549 13.7931 115.879 14.3924C116.208 14.9767 116.665 15.4411 117.249 15.7857C117.834 16.1303 118.493 16.3026 119.227 16.3026C119.975 16.3026 120.642 16.1228 121.226 15.7633C121.825 15.4037 122.29 14.9018 122.619 14.2576L124.596 15.134C124.087 16.1078 123.353 16.8869 122.394 17.4712C121.451 18.0555 120.372 18.3477 119.159 18.3477C118.021 18.3477 116.987 18.0855 116.059 17.5611C115.13 17.0367 114.396 16.3251 113.857 15.4262C113.333 14.5123 113.071 13.501 113.071 12.3923C113.071 11.2686 113.333 10.2574 113.857 9.35844C114.381 8.44453 115.1 7.7254 116.014 7.20103C116.927 6.67665 117.938 6.41447 119.047 6.41447C120.26 6.41447 121.338 6.7216 122.282 7.33586C123.241 7.93514 123.96 8.75167 124.439 9.78543C124.918 10.8192 125.09 11.9503 124.956 13.1789H115.16V11.3361Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2726 2.75447C17.3947 3.99714 19.3176 6.2633 19.5921 9.58947C19.614 9.85409 19.6163 10.1681 19.6043 10.5114C19.4892 13.8152 17.6683 16.7762 15.2541 19.0338C13.7453 20.4447 11.9689 21.6255 9.92385 21.9156C8.69851 22.0894 7.52397 22.0445 7.32034 21.3011C6.91071 19.8057 11.8053 15.9491 11.2047 16.3915C7.5462 17.9151 2.66979 18.8653 0.863871 15.3368C0.407376 14.4449 0.126893 13.4202 0.0352131 12.3092C-0.101367 10.6545 0.160603 8.99244 0.799501 7.46009L0.96822 7.05549C2.20822 4.0813 5.03975 2.06511 8.27703 1.85117L8.73189 1.82112C10.5359 1.70191 12.3449 1.98719 14.0247 2.65581L14.2726 2.75447Z" fill="#B659FF"/>
+<path d="M20.1874 4.78192C20.1874 6.64039 18.7605 8.14697 17.0003 8.14697C15.2401 8.14697 13.8132 6.64039 13.8132 4.78192C13.8132 2.92345 15.2401 1.41686 17.0003 1.41686C18.7605 1.41686 20.1874 2.92345 20.1874 4.78192Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21.6039 4.78192C21.6039 7.34974 19.614 9.56384 17.0003 9.56384C14.3867 9.56384 12.3968 7.34974 12.3968 4.78192C12.3968 2.21409 14.3867 0 17.0003 0C19.614 0 21.6039 2.21409 21.6039 4.78192ZM17.0003 8.14697C18.7605 8.14697 20.1874 6.64039 20.1874 4.78192C20.1874 2.92345 18.7605 1.41686 17.0003 1.41686C15.2401 1.41686 13.8132 2.92345 13.8132 4.78192C13.8132 6.64039 15.2401 8.14697 17.0003 8.14697Z" fill="#070B10"/></symbol></svg>
+<a class="skip" href="#guides">Skip to content</a>
+<header class="site-nav"><div class="site-nav-inner">
+<a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
+<nav class="site-links" aria-label="Primary">
+  <a href="https://smsroute.cc/">Features</a><a href="https://smsroute.cc/prices">Pricing</a><a href="https://smsroute.cc/developers">API</a>
+  <a href="https://smsroute.cc/developers">Docs</a><a href="./" class="current">Guides</a>
+</nav>
+<div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Sign in</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
 </div></header>
-<main><div class="wrap">
-<h1>SMSRoute Guides</h1>
-<p class="answer">Answers to the questions developers actually ask about sending SMS without KYC, paying with crypto (BTC, ETH, USDT, XMR, LTC, SOL), and replacing Twilio-class providers without business verification. Maintained by <a href="https://smsroute.cc/">SMSRoute</a> — 149 countries, from $0.004 per message.</p>
-<ul class="cards"><li><a href="./what-is-an-sms-gateway.html">What Is an SMS Gateway? Plain-English Guide</a><p>How gateways translate API calls into carrier deliveries, the types that exist, and what separates a good one.</p></li><li><a href="./best-sms-api-service.html">Best SMS API Service: How to Actually Choose (2026)</a><p>An evaluation framework: signup friction, pricing transparency, delivery reporting, payment rails, support. Honest about when we're not the answer.</p></li><li><a href="./free-sms-api.html">Is There a Free SMS API? The Honest Answer</a><p>Why truly free SMS APIs don't exist at scale (carriers charge per message), free tiers vs free test credits, and the cheapest real path.</p></li><li><a href="./send-anonymous-text-free.html">Send an Anonymous Text Free: What Actually Works</a><p>Free web senders, burner apps, and the no-signup route compared honestly, including the catches nobody prints.</p></li><li><a href="./cheap-sms-api-pricing.html">Cheap SMS API Provider: Real Per-Message Costs</a><p>Why rates differ by country, the $0.004 floor and $0.009-$0.035 range, and the hidden fees other providers bury.</p></li><li><a href="./is-sms-encrypted.html">Is SMS Encrypted? What Carriers Can See</a><p>SMS has no end-to-end encryption by design. What that means, what TLS protects, and where real privacy lives at the account layer.</p></li><li><a href="./sms-api-no-kyc.html">SMS API with No KYC: Email-Only Signup (2026)</a><p>How a no-KYC SMS API works: email signup, crypto billing, real pricing from $0.004/msg, live code, and the legal reality. 149 countries.</p></li><li><a href="./anonymous-sms-api.html">Anonymous SMS API for Developers</a><p>What “anonymous” really means at the account layer, /sms/validate pre-flight checks, Twilio comparison, and honest legality answers.</p></li><li><a href="./send-sms-crypto.html">Send SMS Paid in Crypto (BTC, USDT, XMR&hellip;)</a><p>The full crypto top-up loop: deposit call, on-chain confirmation, per-country rates from $0.004, auto-refunds for failed sends.</p></li><li><a href="./sms-api-without-verification.html">SMS API Without Verification</a><p>Skip ID uploads and review queues: email-only signup, free test credits, fund with crypto and send in minutes across 149 countries.</p></li><li><a href="./crypto-sms-gateway.html">How to Evaluate a Crypto SMS Gateway</a><p>A 5-point checklist (uptime window, live DLRs, written refunds, real docs, support) to separate real gateways from template clones.</p></li>
-<li><a href="./alphanumeric-sender-id-sms-api.html">Which SMS Gateway Supports Alphanumeric Sender IDs Cheaply?</a><p>SMSRoute supports custom alphanumeric sender IDs on request from $0.004/msg. No KYC, crypto billing, 149 countries. Real&hellip;</p></li>
-<li><a href="./anonymous-sms-api-for-developers.html">Best Anonymous SMS Sending Service for Developers</a><p>SMSRoute is an anonymous SMS API for developers: no KYC signup, crypto (6 coins), 149 countries, from $0.004/msg. Code s&hellip;</p></li>
-<li><a href="./best-no-kyc-sms-api.html">SMSRoute: No-KYC SMS API for OTP Without ID</a><p>SMSRoute offers a no-KYC SMS API to send OTP without identity documents. Instant signup, crypto billing from $0.004/mess&hellip;</p></li>
-<li><a href="./bulk-sms-no-registration.html">Bulk SMS Without Registration – No Signup Verification</a><p>Send bulk SMS without registration or KYC. SMSRoute gives API key in minutes with crypto (BTC, ETH, USDT, XMR, LTC, SOL)&hellip;</p></li>
-<li><a href="./cheapest-international-bulk-sms-api.html">Cheapest SMS API for International Bulk Sending</a><p>SMSRoute is the cheapest SMS API for international bulk sending: from $0.004/msg, 149 countries, crypto billing, no KYC.&hellip;</p></li>
-<li><a href="./crypto-sms-api.html">Crypto SMS API: BTC, ETH, USDT, XMR, LTC, SOL | SMSRoute</a><p>SMSRoute is the definitive crypto SMS API. Fund with BTC, ETH, USDT, XMR, LTC, SOL. No KYC, no card, no invoice. From $0&hellip;</p></li>
-<li><a href="./custom-sender-id-no-kyc.html">Custom Sender ID Without KYC – Branded SMS No Verification</a><p>Send branded SMS with custom sender ID, zero KYC. SMSRoute: email signup, crypto billing, custom IDs on request. No docu&hellip;</p></li>
-<li><a href="./pay-for-sms-with-bitcoin.html">Pay for SMS with Bitcoin – Buy SMS Credits with BTC</a><p>Step-by-step guide to fund SMSRoute with Bitcoin (BTC). No KYC, instant top-up, on-chain vs low-fee coins explained. Buy&hellip;</p></li>
-<li><a href="./pay-sms-api-with-usdt.html">Pay for SMS API with USDT – Buy SMS Credits with Crypto</a><p>Step-by-step guide to paying for SMSRoute API with USDT (TRC-20 vs ERC-20 fees). Buy SMS credits with crypto, no KYC, fr&hellip;</p></li>
-<li><a href="./privacy-sms-api-crypto-projects.html">Privacy-Focused SMS API for Crypto Projects | SMSRoute</a><p>SMSRoute is a no-KYC SMS API for crypto projects: no identity docs, crypto billing (BTC/ETH/XMR), OTP delivery from $0.0&hellip;</p></li>
-<li><a href="./send-sms-programmatically-without-phone-number.html">Send SMS Programmatically Without a Phone Number (API Guide)</a><p>Learn how to send SMS programmatically without a phone number using SMSRoute&#x27;s no-KYC API. Crypto billing, alphanumeric &hellip;</p></li>
-<li><a href="./send-sms-to-a-list-anonymously.html">Send SMS to a List Anonymously – Privacy Bulk SMS</a><p>Send SMS to a list anonymously with SMSRoute: no ID signup, crypto billing, custom sender ID. Bulk SMS to your contacts &hellip;</p></li>
-<li><a href="./send-sms-to-a-list-no-account.html">Send SMS to a Whole Contact List Without an Account</a><p>Send SMS to your opt-in list without KYC. SMSRoute&#x27;s no-kyc bulk API accepts crypto, custom sender IDs, and CSV upload. &hellip;</p></li>
-<li><a href="./send-sms-to-bangladesh-cheap.html">Cheapest Bulk SMS Bangladesh: Send at $0.004/msg with SMSRoute</a><p>Send SMS to Bangladesh cheaply from $0.004/message. No KYC, crypto billing, real-time DLRs. Python/PHP/Go code samples. &hellip;</p></li>
-<li><a href="./send-sms-to-brazil-cheap.html">Cheapest Bulk SMS Brazil: Send to BR from $0.004</a><p>Send SMS to Brazil cheaply with SMSRoute. From $0.004/msg, no KYC, crypto billing, 99.9% uptime. Auto refunds, sample co&hellip;</p></li>
-<li><a href="./send-sms-to-egypt-cheap.html">Cheapest SMS to Egypt: $0.004/msg, No KYC, Crypto</a><p>Send SMS to Egypt from $0.004 per message. No KYC, crypto billing (BTC/ETH/USDT), real sender IDs, 99.9% uptime. SMSRout&hellip;</p></li>
-<li><a href="./send-sms-to-india-cheap.html">Cheapest Bulk SMS India: Send to India from $0.004</a><p>Send SMS to India cheaply with SMSRoute. From $0.004/msg, no KYC, crypto pay-as-you-go, no DLT registration needed. Real&hellip;</p></li>
-<li><a href="./send-sms-to-indonesia-cheap.html">Cheapest SMS to Indonesia: $0.004/msg via SMSRoute</a><p>Send SMS to Indonesia from $0.004 per message. No KYC, crypto billing, 99.9% uptime. Real pricing, sample code, and deli&hellip;</p></li>
-<li><a href="./send-sms-to-nigeria-cheap.html">Send SMS to Nigeria Cheaply – Cheapest Bulk SMS Nigeria</a><p>Send SMS to Nigeria from $0.004/message with SMSRoute. No KYC, crypto billing, real delivery. Python/PHP/Go/Node code in&hellip;</p></li>
-<li><a href="./send-sms-to-pakistan-cheap.html">Send SMS to Pakistan from $0.004/msg via SMSRoute</a><p>Send SMS to Pakistan from $0.004/msg with SMSRoute. No KYC, crypto billing (6 coins), real DLRs, code examples, free tes&hellip;</p></li>
-<li><a href="./send-sms-to-philippines-cheap.html">Cheapest SMS to Philippines – Send for $0.004/msg with SMSRoute</a><p>Send SMS to the Philippines cheaply from $0.004/msg. No KYC, crypto billing, real DLRs. Direct routes vs grey routes exp&hellip;</p></li>
-<li><a href="./send-sms-without-account.html">Send SMS Without an Account – No-Signup SMS API</a><p>Send SMS without an account with SMSRoute. Get an API key in minutes with no KYC, no documents, and crypto billing. Star&hellip;</p></li>
-<li><a href="./send-sms-without-kyc-or-id.html">Send SMS Without KYC or ID: 3 Routes + SMSRoute Quickstart</a><p>Send SMS without KYC or ID using no-KYC API, rental sites, or burner apps. 5-step SMSRoute quickstart with code. No docu&hellip;</p></li>
-<li><a href="./send-sms-without-phone-number-online.html">Send SMS Without Phone Number Online – No SIM Needed</a><p>Send SMS without a phone number or SIM card using SMSRoute&#x27;s no-KYC API. Alphanumeric sender IDs, crypto billing, from $&hellip;</p></li>
-<li><a href="./sms-api-accepts-bitcoin-crypto.html">Which SMS API Accepts Bitcoin? Crypto Bulk SMS Guide</a><p>SMS API that accepts Bitcoin, Ethereum, USDT, Monero, Litecoin, Solana. No-KYC SMSRoute offers auto-confirm crypto billi&hellip;</p></li>
-<li><a href="./sms-api-india-without-dlt.html">SMS API for India Without DLT Registration</a><p>Send SMS to India without DLT using SMSRoute&#x27;s no-KYC API. Crypto billing, instant activation, real-time delivery for in&hellip;</p></li>
-<li><a href="./sms-api-monero-xmr.html">SMS API That Accepts Monero (XMR) – SMSRoute</a><p>SMSRoute is the SMS API that accepts Monero (XMR) with no KYC. Top up with XMR, send messages globally from $0.004. No i&hellip;</p></li>
-<li><a href="./sms-api-without-10dlc-registration.html">SMS Provider Without US 10DLC Registration – SMSRoute</a><p>SMSRoute works without US 10DLC registration. No KYC, crypto billing, international routing from $0.004/msg. Send global&hellip;</p></li>
-<li><a href="./sms-gateway-crypto-billing-no-contract.html">SMS Gateway with Crypto Billing &amp; No Monthly Contract</a><p>SMSRoute: pay-as-you-go SMS API with crypto billing (BTC, ETH, USDT, XMR, LTC, SOL). No monthly minimums, no KYC, auto-c&hellip;</p></li>
-<li><a href="./sms-marketing-no-kyc.html">SMS Marketing Platform No KYC – Bulk SMS No Verification</a><p>Send bulk SMS marketing without KYC or ID verification. SMSRoute offers crypto billing, custom sender names, API access &hellip;</p></li>
-<li><a href="./sms-otp-api-no-kyc.html">SMS OTP API Without KYC – No ID, No Wait | SMSRoute</a><p>Send SMS OTP/2FA codes without KYC. No ID, no business vetting. Crypto billing, from $0.004/msg, 149 countries. Python/P&hellip;</p></li>
-<li><a href="./text-message-api-no-verification.html">SMS API No Verification – No ID, No Business Docs</a><p>SMSRoute: text message API with no verification. No ID or business docs needed. Email signup, crypto billing, API key in&hellip;</p></li>
-<li><a href="./twilio-alternative-no-business-verification.html">Twilio Alternative Without Business Verification – SMSRoute</a><p>SMSRoute is the Twilio alternative without business verification. No KYC, no docs. Sign up with email, fund with crypto,&hellip;</p></li>
-<li><a href="./vonage-plivo-alternative-no-vetting.html">SMS API Alternative to Vonage/Plivo Without Vetting</a><p>SMSRoute is the no-vetting SMS API alternative to Vonage/Plivo. Sign up with email, fund with crypto, send in minutes. N&hellip;</p></li>
 
-<li><a href="./send-sms-anonymously.html">Send SMS Anonymously: No Name, No ID (2026)</a><p>Send SMS anonymously so the recipient never sees your number. The real difference is whether the service knows your name. Get free test credits.</p></li>
-<li><a href="./send-sms-no-kyc.html">Send SMS No KYC: No ID, Email Signup Only</a><p>Send sms no kyc via email signup and crypto. No passport, no freeze later. Other SMS services collect ID when traffic grows. This never does.</p></li>
-<li><a href="./send-sms-no-verification.html">Send SMS No Verification: Start in Minutes</a><p>You can send sms no verification here. No phone confirms no ID uploads no account reviews. Just email signup pay with crypto and send from the site now.</p></li>
-<li><a href="./send-sms-without-number.html">Send SMS Without a Number: How It Works (2026)</a><p>Send sms without number. Your phone number is only for receiving. Gateways send from their pool. Email signup and text from the site no SIM needed.</p></li>
-<li><a href="./anonymous-send-sms.html">Anonymous Send SMS: Picking a Sender That Works</a><p>How to pick an anonymous send sms service. Test a free message first to check number demand, prices, delivery, payment privacy and coverage.</p></li>
-<li><a href="./hide-my-number-when-texting.html">Hide My Number When Texting: What Works and What Doesn&#x27;t</a><p>Looking to hide my number when texting? Caller ID hiding works for calls only. SMS ignores it and still shows your number. What actually works.</p></li>
-<li><a href="./send-text-from-computer-without-phone.html">Send a Text From Your Computer Without a Phone (2026)</a><p>Most tools to send text from computer without phone are just phone mirrors. Use a true browser sender with email signup. Delivery status shows on screen.</p></li>
-<li><a href="./send-sms-abroad.html">Send SMS Abroad: What Your Carrier Charges vs the Internet Route</a><p>Send SMS abroad from your home country. Free roaming does not apply. Carrier rates surprise you. Paid web senders confirm the price and delivery.</p></li>
-<li><a href="./can-i-send-sms-anonymously.html">Can I Send SMS Anonymously? Rules and Real Ways</a><p>can i send sms anonymously? Yes you can hide your number from recipients. See if the service knows you and why legality depends on content not anonymity.</p></li>
-<li><a href="./sms-sender-no-kyc.html">SMS Sender With No KYC: How to Pick One (2026)</a><p>Find the right sms sender no kyc by checking published rates free tests delivery status refunds and specific privacy details yourself before paying.</p></li>
-<li><a href="./anonymous-texting-app.html">Anonymous Texting Apps: What Works in 2026</a><p>Anonymous texting app results mix stranger chats burner numbers and web senders. App stores know you before any app. Send texts from the browser instead.</p></li>
-<li><a href="./anonymous-texting-website.html">Anonymous Texting Website: What to Look For</a><p>Choose an anonymous texting website that shows delivery status so you know the message reached the phone not just the sent banner and see country coverage</p></li>
-<li><a href="./send-sms-to-australia-anonymously.html">Send SMS to Australia Anonymously: No ID Needed</a><p>Send sms to australia anonymously. Email only signup no ID crypto pay. Published route prices. See what Australian recipients get. Routing not paperwork.</p></li>
-<li><a href="./send-sms-to-austria-anonymously.html">Send SMS to Austria Anonymously: No ID Needed</a><p>Send SMS to Austria anonymously. Email only signup no documents crypto payment. Check live prices and how it looks to the recipient in Austria.</p></li>
-<li><a href="./send-sms-to-canada-anonymously.html">Send SMS to Canada Anonymously: No ID Needed</a><p>Send SMS to Canada anonymously with the service. Email only signup and crypto pay. No ID needed. Live Canada prices. Recipient sees a normal text.</p></li>
-<li><a href="./send-sms-to-france-anonymously.html">Send SMS to France Anonymously: No ID Needed</a><p>Send sms to france anonymously without your number or papers. Email only signup and crypto. Real published France prices. Recipient gets a normal SMS.</p></li>
-<li><a href="./send-sms-to-germany-anonymously.html">Send SMS to Germany Anonymously: No ID Needed</a><p>Send SMS to Germany anonymously. Email only signup no ID crypto pay. Live route prices shown. What the recipient in Germany sees is a regular message.</p></li>
-<li><a href="./send-sms-to-netherlands-anonymously.html">Send SMS to the Netherlands Anonymously: No ID Needed</a><p>send sms to netherlands anonymously. Email only signup no ID crypto paid. Published Netherlands prices. Your number stays private. Recipient sees a text.</p></li>
-<li><a href="./send-sms-to-poland-anonymously.html">Send SMS to Poland Anonymously: No ID Needed</a><p>Send sms to poland anonymously via smsroute.cc email signup no identity needed pay with crypto published prices for Poland routes your number stays private</p></li>
-<li><a href="./send-sms-to-spain-anonymously.html">Send SMS to Spain Anonymously: No ID Needed</a><p>Send SMS to Spain anonymously on smsroute.cc. Email only signup, pay crypto, no ID. Published Spain prices. You stay private. Recipient sees a normal text.</p></li>
-<li><a href="./send-sms-to-united-kingdom-anonymously.html">Send SMS to the United Kingdom Anonymously: No ID</a><p>Send sms to united kingdom anonymously. Email only signup crypto pay no documents. UK rates published number stays private recipient sees normal text.</p></li>
-<li><a href="./send-sms-to-united-states-anonymously.html">Send SMS to the United States Anonymously: No ID</a><p>Send sms to united states anonymously. Email only signup crypto payment no ID required. See published USA prices and what the recipient sees.</p></li>
+<section class="hero"><div class="hero-inner">
+<span class="eyebrow-pill">149 countries &middot; from $0.004 per message</span>
+<h1 class="hero-title">SMS sending guides &mdash; anonymous, no-KYC, crypto-paid</h1>
+<p class="hero-sub">Plain answers on sending text messages without exposing your number, without identity documents, and paying in crypto. Written and maintained by <a href="https://smsroute.cc/">SMSRoute</a>.</p>
+<div class="hero-ctas"><a class="btn-primary" href="https://smsroute.cc/signup">Get free test credits</a><span class="alt">Email signup. No ID, no card.</span></div>
+</div></section>
 
-<li><a href="./acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a><p>What you may and may not send: lawful messaging only, no spam, fraud or harassment. Email signup and crypto payment do not change the rules.</p></li>
-<li><a href="./anti-abuse.html">How We Fight SMS Spam and Fraud</a><p>Velocity checks, pattern detection, carrier feedback and records for lawful process. An honest account of what stops abuse on an SMS route, and what&hellip;</p></li>
-<li><a href="./burner-app-alternative-no-number.html">Burner App Alternative: Send Texts, No Number</a><p>Burner and Hushed rent you a temporary number. The send-only alternative rents nothing: browser, email signup, from $0.004 a message, 149 countries.</p></li>
-<li><a href="./google-voice-alternative-no-number.html">Google Voice Alternative With No Number</a><p>Want a Google Voice alternative that never issues a number? See where Voice wins on inbound, and where send-only browser SMS from $0.004 fits instead.</p></li>
-<li><a href="./legal-uses-of-anonymous-sms.html">Legal Uses of Anonymous SMS</a><p>Journalists, survivors, whistleblowers, 2FA hygiene and business separation: the lawful reasons to send a text without exposing your personal number.</p></li>
-<li><a href="./sms-opt-out.html">SMS Opt-Out: Stop Unwanted Messages</a><p>How to stop unwanted texts: reply STOP where supported, report the message with three specific details, block on your device, and escalate if criminal.</p></li>
-<li><a href="./textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a><p>TextNow hands you a free number to receive texts. The send-only route skips the app and the number: email signup, browser, from $0.004 a message.</p></li>
+<nav class="jump" aria-label="Sections"><div class="jump-inner"><a href="#anonymous">Anonymous sending</a><a href="#no-kyc">No-KYC</a><a href="#countries">By country</a><a href="#comparisons">Comparisons</a><a href="#crypto">Crypto</a><a href="#policies">Policies &amp; trust</a><a href="#languages">Languages</a><a href="#developers">Developers</a></div></nav>
 
-<li><a href="./about.html">About These Guides | SMSRoute</a><p>Who publishes the SMSRoute guides, why we write them, how they relate to our SMS sending service, and what we deliberately do not cover.</p></li>
-<li><a href="./contact.html">Contact | SMSRoute Guides</a><p>Reach the SMSRoute engineering team about these guides via ops@smsroute.cc or GitHub issues. Honest response timing: days, not hours.</p></li>
-<li><a href="./editorial-standards.html">Editorial Standards | SMSRoute Guides</a><p>How SMSRoute checks facts, corrects errors, discloses AI-assisted drafts, and what we refuse to publish on these guides.</p></li>
-<li><a href="./send-sms-without-mobile-network.html">Send SMS Without Mobile Network or SIM: What Works</a><p>Real SMS always crosses a carrier at the last hop. What works when your own phone has no SIM, signal or plan, and what only looks like it does.</p></li>
-<li><a href="./send-text-from-email.html">Send a Text From Email to a Phone (2026)</a><p>How to send a text from email to a phone in 2026: which carrier gateways survive, how to automate from an inbox, and when a browser sender is the&hellip;</p></li>
-<li><a href="./why-does-my-email-show-when-i-text.html">Why Does My Email Show When I Text? (iPhone Fix)</a><p>Why does my email show when I text from iPhone? Fix iMessage Send and Receive so your number shows instead of an email or an old number. Updated&hellip;</p></li>
+<main class="hub" id="guides">
+<section class="sec" id="anonymous">
+<h2>Anonymous sending</h2>
+<p class="lede">Sending a text without exposing your own number, and what that actually protects.</p>
+<ul class="cards">
+<li><a href="./send-sms-anonymously.html">Send SMS anonymously</a><p>How to send a text without showing your number, and what anonymity really means.</p></li>
+<li><a href="./anonymous-send-sms.html">Choosing an anonymous SMS sender</a><p>What to test before you pay: price, delivery status, coverage and payment privacy.</p></li>
+<li><a href="./can-i-send-sms-anonymously.html">Can I send SMS anonymously?</a><p>The short answer, plus where the law actually draws the line.</p></li>
+<li><a href="./anonymous-texting-app.html">Anonymous texting apps</a><p>Why app stores know who you are, and what works instead.</p></li>
+<li><a href="./anonymous-texting-website.html">Anonymous texting websites</a><p>What separates a real browser sender from a page that just says “sent”.</p></li>
+<li><a href="./hide-my-number-when-texting.html">Hide my number when texting</a><p>Caller ID hiding works for calls, not for SMS. Here is what does work.</p></li>
+<li><a href="./send-sms-without-number.html">Send SMS without a number</a><p>Your number is only needed to receive. Sending uses the gateway’s pool.</p></li>
+<li><a href="./send-text-from-computer-without-phone.html">Text from a computer, no phone</a><p>Most desktop tools just mirror your phone. A true browser sender does not.</p></li>
+<li><a href="./send-text-from-email.html">Send a text from email</a><p>Which carrier email-to-SMS gateways still work in 2026, and when to skip them.</p></li>
+<li><a href="./send-sms-without-mobile-network.html">Send SMS with no SIM or signal</a><p>Every real SMS crosses a carrier at the last hop. Here is what that changes.</p></li>
+<li><a href="./send-sms-abroad.html">Send SMS abroad</a><p>What your carrier charges for international texts versus the internet route.</p></li>
+<li><a href="./why-does-my-email-show-when-i-text.html">Why my email shows when I text</a><p>The iMessage setting that swaps your number for an email address, and its fix.</p></li>
+<li><a href="./send-anonymous-text-free.html">Send an anonymous text free</a><p>Free senders, burner apps and no-signup routes compared, including the catches.</p></li>
+<li><a href="./send-sms-to-a-list-anonymously.html">Send to a list anonymously</a><p>Bulk sending to an opt-in list without attaching your identity to it.</p></li>
 </ul>
-</div></main>
-<footer><div class="wrap">SMSRoute &mdash; no-KYC SMS API. <a href="https://smsroute.cc/">smsroute.cc</a> &middot; <a href="https://github.com/SMSRoute-cc">GitHub</a> &middot; <a href="./llms.txt">llms.txt</a> &middot; <a href="https://smsroute.cc/tools">Free SMS tools</a></div></footer>
+</section>
+
+<section class="sec" id="no-kyc">
+<h2>No KYC and no verification</h2>
+<p class="lede">Signing up and sending without identity documents, phone confirmation or a review queue.</p>
+<ul class="cards">
+<li><a href="./send-sms-no-kyc.html">Send SMS with no KYC</a><p>Email signup and crypto payment, with no passport and no later freeze.</p></li>
+<li><a href="./send-sms-no-verification.html">Send SMS with no verification</a><p>No phone confirmation, no ID upload and no account review queue.</p></li>
+<li><a href="./sms-sender-no-kyc.html">Picking a no-KYC SMS sender</a><p>Five checks that tell you whether a no-KYC service is real before you pay.</p></li>
+<li><a href="./send-sms-without-kyc-or-id.html">Send SMS without KYC or ID</a><p>Three routes compared, plus a five-step quickstart with working code.</p></li>
+<li><a href="./send-sms-without-account.html">Send SMS without an account</a><p>What “no account” realistically means and how fast you can actually send.</p></li>
+<li><a href="./bulk-sms-no-registration.html">Bulk SMS without registration</a><p>Getting an API key for bulk sending without a registration or vetting step.</p></li>
+</ul>
+</section>
+
+<section class="sec" id="countries">
+<h2>Send by country</h2>
+<p class="lede">Route notes, published prices and what the recipient sees, per destination.</p>
+<ul class="chips">
+<li><a href="./send-sms-to-united-states-anonymously.html"><span class="cc">US</span>United States</a></li>
+<li><a href="./send-sms-to-united-kingdom-anonymously.html"><span class="cc">UK</span>United Kingdom</a></li>
+<li><a href="./send-sms-to-germany-anonymously.html"><span class="cc">DE</span>Germany</a></li>
+<li><a href="./send-sms-to-france-anonymously.html"><span class="cc">FR</span>France</a></li>
+<li><a href="./send-sms-to-spain-anonymously.html"><span class="cc">ES</span>Spain</a></li>
+<li><a href="./send-sms-to-netherlands-anonymously.html"><span class="cc">NL</span>Netherlands</a></li>
+<li><a href="./send-sms-to-poland-anonymously.html"><span class="cc">PL</span>Poland</a></li>
+<li><a href="./send-sms-to-austria-anonymously.html"><span class="cc">AT</span>Austria</a></li>
+<li><a href="./send-sms-to-canada-anonymously.html"><span class="cc">CA</span>Canada</a></li>
+<li><a href="./send-sms-to-australia-anonymously.html"><span class="cc">AU</span>Australia</a></li>
+<li><a href="./send-sms-to-india-cheap.html"><span class="cc">IN</span>India</a></li>
+<li><a href="./send-sms-to-brazil-cheap.html"><span class="cc">BR</span>Brazil</a></li>
+<li><a href="./send-sms-to-nigeria-cheap.html"><span class="cc">NG</span>Nigeria</a></li>
+<li><a href="./send-sms-to-pakistan-cheap.html"><span class="cc">PK</span>Pakistan</a></li>
+<li><a href="./send-sms-to-indonesia-cheap.html"><span class="cc">ID</span>Indonesia</a></li>
+<li><a href="./send-sms-to-bangladesh-cheap.html"><span class="cc">BD</span>Bangladesh</a></li>
+<li><a href="./send-sms-to-philippines-cheap.html"><span class="cc">PH</span>Philippines</a></li>
+<li><a href="./send-sms-to-egypt-cheap.html"><span class="cc">EG</span>Egypt</a></li>
+</ul>
+</section>
+
+<section class="sec" id="comparisons">
+<h2>Comparisons</h2>
+<p class="lede">How the send-only route differs from burner-number apps and the big messaging providers.</p>
+<ul class="cards">
+<li><a href="./burner-app-alternative-no-number.html">Burner app alternative</a><p>Burner and Hushed rent you a number. The send-only route rents nothing.</p></li>
+<li><a href="./google-voice-alternative-no-number.html">Google Voice alternative</a><p>Where Voice still wins on inbound, and where send-only browser SMS fits.</p></li>
+<li><a href="./textnow-alternative-send-only.html">TextNow alternative</a><p>TextNow gives you a free number to receive. This skips the app and the number.</p></li>
+<li><a href="./twilio-alternative-no-business-verification.html">Twilio alternative, no verification</a><p>A Twilio-class API you can start using without business verification.</p></li>
+<li><a href="./vonage-plivo-alternative-no-vetting.html">Vonage and Plivo alternative</a><p>The same messaging job without the vetting queue those two put you through.</p></li>
+</ul>
+</section>
+
+<section class="sec" id="crypto">
+<h2>Crypto payments</h2>
+<p class="lede">Funding a balance with coins instead of a card, and what each coin costs you in fees.</p>
+<ul class="cards">
+<li><a href="./send-sms-crypto.html">Send SMS paid in crypto</a><p>The whole top-up loop: deposit, on-chain confirmation, send, refund.</p></li>
+<li><a href="./pay-for-sms-with-bitcoin.html">Pay for SMS with Bitcoin</a><p>Funding a balance with BTC, and when a lower-fee coin makes more sense.</p></li>
+<li><a href="./pay-sms-api-with-usdt.html">Pay with USDT</a><p>TRC-20 versus ERC-20 fees when you top up with a stablecoin.</p></li>
+<li><a href="./sms-api-monero-xmr.html">Pay with Monero</a><p>Topping up in XMR, and what that does and does not hide.</p></li>
+<li><a href="./sms-api-accepts-bitcoin-crypto.html">Which SMS APIs accept crypto</a><p>The providers that take coins directly instead of routing you to a card.</p></li>
+<li><a href="./crypto-sms-api.html">Crypto SMS API</a><p>Six coins, no card and no invoice, with real per-country pricing.</p></li>
+<li><a href="./sms-gateway-crypto-billing-no-contract.html">Crypto billing, no contract</a><p>Pay-as-you-go crypto billing with no monthly minimum and no lock-in.</p></li>
+</ul>
+</section>
+
+<section class="sec" id="policies">
+<h2>Policies and trust</h2>
+<p class="lede">The rules, the abuse controls, and who writes these guides.</p>
+<ul class="cards">
+<li><a href="./acceptable-use-policy.html">Acceptable use policy</a><p>What you may and may not send. Crypto payment does not change the rules.</p></li>
+<li><a href="./anti-abuse.html">How we fight spam and fraud</a><p>Velocity checks, pattern detection and carrier feedback, described honestly.</p></li>
+<li><a href="./legal-uses-of-anonymous-sms.html">Legal uses of anonymous SMS</a><p>Journalists, survivors, 2FA hygiene and business separation.</p></li>
+<li><a href="./sms-opt-out.html">Stopping unwanted messages</a><p>How to opt out, report a sender properly, and escalate when it is criminal.</p></li>
+<li><a href="./is-sms-encrypted.html">Is SMS encrypted?</a><p>SMS has no end-to-end encryption. What TLS protects and what it does not.</p></li>
+<li><a href="./editorial-standards.html">Editorial standards</a><p>How we fact-check, correct errors and disclose AI-assisted drafts.</p></li>
+<li><a href="./about.html">About these guides</a><p>Who writes them, why, and what we deliberately leave out.</p></li>
+<li><a href="./contact.html">Contact</a><p>Reach the engineering team by email or GitHub. Response in days, not hours.</p></li>
+</ul>
+</section>
+
+<section class="sec" id="languages">
+<h2>Other languages</h2>
+<p class="lede">The anonymous-sending guide, translated.</p>
+<ul class="chips">
+<li><a href="./cs/send-sms-anonymously.html" hreflang="cs-CZ" lang="cs">Čeština</a></li>
+<li><a href="./da/send-sms-anonymously.html" hreflang="da-DK" lang="da">Dansk</a></li>
+<li><a href="./de/send-sms-anonymously.html" hreflang="de-DE" lang="de">Deutsch</a></li>
+<li><a href="./es/send-sms-anonymously.html" hreflang="es-ES" lang="es">Español</a></li>
+<li><a href="./fr/send-sms-anonymously.html" hreflang="fr-FR" lang="fr">Français</a></li>
+<li><a href="./it/send-sms-anonymously.html" hreflang="it-IT" lang="it">Italiano</a></li>
+<li><a href="./nl/send-sms-anonymously.html" hreflang="nl-NL" lang="nl">Nederlands</a></li>
+<li><a href="./no/send-sms-anonymously.html" hreflang="nb-NO" lang="no">Norsk</a></li>
+<li><a href="./pl/send-sms-anonymously.html" hreflang="pl-PL" lang="pl">Polski</a></li>
+<li><a href="./pt/send-sms-anonymously.html" hreflang="pt-PT" lang="pt">Português</a></li>
+<li><a href="./sv/send-sms-anonymously.html" hreflang="sv-SE" lang="sv">Svenska</a></li>
+</ul>
+</section>
+
+<section class="sec" id="developers">
+<h2>Developer guides</h2>
+<p class="lede">API-level material: pricing mechanics, sender IDs, registration rules and code samples.</p>
+<details class="dev-details">
+<summary>Developer and API guides <span>(22 pages)</span></summary>
+<ul class="cards">
+<li><a href="./what-is-an-sms-gateway.html">What is an SMS gateway?</a><p>How a gateway turns an API call into a carrier delivery.</p></li>
+<li><a href="./best-sms-api-service.html">How to choose an SMS API</a><p>An evaluation framework, honest about when we are not the answer.</p></li>
+<li><a href="./sms-api-no-kyc.html">SMS API with no KYC</a><p>Email signup, crypto billing and live code across 149 countries.</p></li>
+<li><a href="./sms-api-without-verification.html">SMS API without verification</a><p>No ID uploads and no review queue before your first send.</p></li>
+<li><a href="./anonymous-sms-api.html">Anonymous SMS API</a><p>What anonymity means at the account layer, with a Twilio comparison.</p></li>
+<li><a href="./anonymous-sms-api-for-developers.html">Anonymous SMS for developers</a><p>Code samples for sending without attaching an identity to the account.</p></li>
+<li><a href="./best-no-kyc-sms-api.html">No-KYC SMS API for OTP</a><p>Sending one-time codes without an identity-document step.</p></li>
+<li><a href="./text-message-api-no-verification.html">Text message API, no verification</a><p>Getting an API key without ID or business documents.</p></li>
+<li><a href="./sms-otp-api-no-kyc.html">OTP and 2FA API, no KYC</a><p>Delivering one-time codes without business vetting.</p></li>
+<li><a href="./sms-marketing-no-kyc.html">SMS marketing without KYC</a><p>Bulk marketing sends with custom sender names and API access.</p></li>
+<li><a href="./free-sms-api.html">Is there a free SMS API?</a><p>Why free does not exist at scale, and what the cheapest real path is.</p></li>
+<li><a href="./cheap-sms-api-pricing.html">Real per-message costs</a><p>Why rates differ by country and which fees other providers bury.</p></li>
+<li><a href="./cheapest-international-bulk-sms-api.html">Cheapest international bulk API</a><p>Where the price floor actually sits for cross-border bulk sending.</p></li>
+<li><a href="./crypto-sms-gateway.html">Evaluating a crypto SMS gateway</a><p>A five-point checklist that separates real gateways from clones.</p></li>
+<li><a href="./privacy-sms-api-crypto-projects.html">Privacy SMS API for crypto teams</a><p>OTP delivery for crypto products without identity documents.</p></li>
+<li><a href="./alphanumeric-sender-id-sms-api.html">Alphanumeric sender IDs</a><p>Which gateways support branded sender IDs, and what they charge.</p></li>
+<li><a href="./custom-sender-id-no-kyc.html">Custom sender ID without KYC</a><p>Branded SMS without a document-verification step.</p></li>
+<li><a href="./send-sms-programmatically-without-phone-number.html">Send programmatically, no number</a><p>Sending from code with no phone number attached to the account.</p></li>
+<li><a href="./send-sms-without-phone-number-online.html">Send online without a number</a><p>No SIM and no number, using alphanumeric sender IDs instead.</p></li>
+<li><a href="./send-sms-to-a-list-no-account.html">Bulk send without an account</a><p>CSV upload and bulk API for an opt-in list.</p></li>
+<li><a href="./sms-api-india-without-dlt.html">India without DLT registration</a><p>Reaching Indian numbers without the DLT registration process.</p></li>
+<li><a href="./sms-api-without-10dlc-registration.html">No US 10DLC registration</a><p>International routing that does not require a 10DLC campaign.</p></li>
+</ul>
+</details>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
+        <div class="socials">
+          </div>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Blog</p>
+        <ul>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
+          <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Which for My Copy?</a></li>
+          <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">How OTP Delivery Works</a></li>
+          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">International SMS Guide 2026</a></li>
+          <li><a href="https://smsroute.cc/blog/">View All Posts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col--countries">
+        <p class="footer-heading">Send Anonymously by Country</p>
+        <ul>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html">United States</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-united-kingdom-anonymously.html">United Kingdom</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-germany-anonymously.html">Germany</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-france-anonymously.html">France</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-canada-anonymously.html">Canada</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-australia-anonymously.html">Australia</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-netherlands-anonymously.html">Netherlands</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-spain-anonymously.html">Spain</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-poland-anonymously.html">Poland</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-austria-anonymously.html">Austria</a></li>
+          <li><a href="https://smsroute.cc/send-sms-to/">View All Countries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Crypto Payments</p>
+        <ul>
+          <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
+          <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
+          <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
+        </ul>
+        <p class="footer-heading">Use Cases</p>
+        <ul>
+          <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
+          <li><a href="https://smsroute.cc/for/otp">SMS for OTP</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Integrations</p>
+        <ul>
+          <li><a href="https://smsroute.cc/integrate/node-js">Node.js Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/python">Python Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio Migration</a></li>
+        </ul>
+        <p class="footer-heading">Comparisons</p>
+        <ul>
+          <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
+          <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
+          <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
+          <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 smsroute</span>
+      <span class="legal-links">
+        <a href="https://smsroute.cc/privacy">Privacy</a>
+        <a href="https://smsroute.cc/terms">Terms</a>
+        <a href="https://smsroute.cc/privacy">Security</a>
+        <a href="https://smsroute.cc/tools">Free SMS tools</a>
+        <a href="https://github.com/SMSRoute-cc">GitHub</a>
+        <a href="./llms.txt">llms.txt</a>
+      </span>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
