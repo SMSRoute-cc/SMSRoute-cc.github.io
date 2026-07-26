@@ -318,6 +318,17 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "CS", "item": "https://smsroute-cc.github.io/cs/"}, {"@type": "ListItem", "position": 3, "name": "Jak poslat SMS z počítače bez telefonu", "item": "https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html"}]}</script>
 </head>
@@ -353,7 +364,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <span class="eyebrow-pill">149 zemí · crypto-native · registrace pouze emailem</span>
+      <span class="eyebrow-pill">149 zemí · krypto-nativní · registrace pouze emailem</span>
       <h1 class="hero-title">Jak poslat SMS z počítače – úplně bez telefonu</h1>
       <div class="hero-sub"><p>Text z počítače bez telefonu odešlete pomocí SMS služby v prohlížeči, která nevyžaduje žádné spárované zařízení.</p>
 <p>Při registraci pouze pomocí e-mailu získáte bezplatné testovací kredity. Nikdy nejsou vyžadovány doklady totožnosti a do celého procesu nikdy nevstupuje telefon.</p></div>
@@ -376,14 +387,14 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div><b>od $0.004</b><span>za zprávu</span></div>
     <div><b>149</b><span>země</span></div>
     <div><b>minuty</b><span>do první zprávy</span></div>
-    <div><b>6</b><span>kryptoměny</span></div>
+    <div><b>6</b><span>kryptoměn</span></div>
   </div>
 </section>
 
 <main id="content" class="post">
   <article>
-    <div class="toc-box"><strong>Na této stránce</strong><ol><li><a href="#s1">Lze poslat text z počítače zcela bez telefonu?</a></li><li><a href="#s2">Dvě kategorie: zrcadlení telefonu vs. bez telefonu</a></li><li><a href="#s3">Proč je email-to-SMS brána v roce 2026 slepou uličkou</a></li><li><a href="#s4">Cesta přes prohlížeč, od začátku do konce</a></li><li><a href="#s5">Co příjemce uvidí</a></li></ol></div>
-    <div class="a2-tldr"><b>Shrnutí</b><ul><li>Většina nástrojů pro &#x27;text z počítače&#x27; zrcadlí funkční telefon: bez telefonu není text.</li><li>Operátorské email-to-SMS brány se ruší a nikdy nepotvrzují doručení.</li><li>Webový odesílatel doručuje přímo z prohlížeče: v žádném kroku není zapojen telefon.</li><li>K registraci stačí jen e-mailová adresa; bezplatné testovací kredity prokáží doručení, než zaplatíte.</li><li>Příjemce obdrží normální SMS na jakémkoli telefonu, bez nutnosti aplikace na jeho straně.</li></ul></div>
+    <div class="toc-box"><strong>Na této stránce</strong><ol><li><a href="#s1">Lze poslat text z počítače zcela bez telefonu?</a></li><li><a href="#s2">Dvě kategorie: zrcadlení telefonu vs. bez telefonu</a></li><li><a href="#s3">Proč je e-mail na SMS brána v roce 2026 slepou uličkou</a></li><li><a href="#s4">Cesta přes prohlížeč, od začátku do konce</a></li><li><a href="#s5">Co příjemce uvidí</a></li></ol></div>
+    <div class="a2-tldr"><b>Shrnutí</b><ul><li>Většina nástrojů pro 'text z počítače' zrcadlí funkční telefon: bez telefonu není text.</li><li>Operátorské e-mail na SMS brány se ruší a nikdy nepotvrzují doručení.</li><li>Webový odesílatel doručuje přímo z prohlížeče: v žádném kroku není zapojen telefon.</li><li>K registraci stačí jen e-mailová adresa; bezplatné testovací kredity prokáží doručení, než zaplatíte.</li><li>Příjemce obdrží normální SMS na jakémkoli telefonu, bez nutnosti aplikace na jeho straně.</li></ul></div>
     <div class="secs">
     <section><h2 id="s1">Lze odeslat SMS z počítače bez telefonu?</h2><p>Ano, můžete odeslat SMS z počítače bez telefonu, ale pouze dvě cesty jsou skutečně bez telefonu: e-mailové brány operátorů a webové odesílače. Vše ostatní, co se ve výsledcích vyhledávání nabízí na předních místech, jsou doprovodné aplikace, které přenášejí zprávu přes funkční telefon – a ten právě nemáte.</p>
 <p>Tyto doprovodné nástroje (Phone Link, Google Messages pro web, MightyText, AirDroid) pouze zrcadlí telefon, který musí zůstat zapnutý a připojený. Bez něj neodešlou nic. Brány operátorů a čistě prohlížečové služby zařízení zcela vynechávají, takže odpovídají situaci, ve které se skutečně nacházíte.</p></section><section><h2 id="s2">Dvě skupiny: zrcadlící nástroje vs. cesty bez telefonu</h2><p>Zrcadlící nástroje fungují jako dálkové ovladače, které stále potřebují váš funkční telefon zapnutý a v blízkosti, zatímco cesty bez telefonu odesílají zprávu samy z prohlížeče nebo e-mailové brány bez jakéhokoli zařízení.</p>
@@ -397,18 +408,19 @@ e-mailová SMS brána: název operátora příjemce + štěstí, bez stavu doru�
 webový odesílač: e-mailová adresa + číslo příjemce
 každá cesta: příjemce prostě dostane běžnou SMS</code></pre></figure></details>
     
+    
     <section class="srx-related" style="margin:2.2rem 0 0"><h2>Související průvodce</h2><ul><li><a href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">Skrýt mé číslo při textování: Co funguje a co ne</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-abroad.html">Posílání SMS do zahraničí: Co účtuje operátor vs. internetová cesta</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-without-number.html">Odesílání SMS bez čísla: Jak to funguje (2026)</a></li><li><a href="https://smsroute-cc.github.io/cs/send-sms-anonymously.html">Jak poslat SMS anonymně (2026)</a></li></ul></section>
     <h2 id="faq">Často kladené otázky</h2>
-    <details class="faq-card"><summary>Jak mohu zdarma poslat SMS z počítače?</summary><div class="faq-answer"><p>Pokud váš telefon stále funguje, Google Messages pro web umožňuje zdarma posílat zprávy přes váš vlastní tarif. Pokud nemáte po ruce telefon, jedinou zbývající bezplatnou cestou jsou e-mailové brány operátorů, i když nespolehlivé. Webový odesílač poskytuje bezplatné testovací kredity na první ostré odeslání s potvrzením o doručení na obrazovce a kredity za nedoručené zprávy se automaticky vracejí.</p></div></details><details class="faq-card"><summary>Mohu posílat text z počítače, když je můj telefon rozbitý?</summary><div class="faq-answer"><p>Zrcadlící nástroje přestanou fungovat, jakmile se telefon rozbije, protože ovládají pouze živý přístroj. Webový odesílač funguje bez jakéhokoli telefonu: otevřete prohlížeč, zaregistrujte se e-mailem a pošlete zprávu na číslo příjemce. Služba doručuje prostřednictvím adaptivních tras, které automaticky přepínají na záložní cestu podle cíle, takže zpráva odejde, i když je jedna trasa nedostupná.</p></div></details><details class="faq-card"><summary>Musím něco instalovat, abych mohl poslat text z PC?</summary><div class="faq-answer"><p>Ne. Cesta přes prohlížeč nevyžaduje instalaci na vašem počítači ani na straně příjemce. Text dorazí jako běžná SMS. Doručení využívá nastavení služby s více trasami s automatickým přepnutím na záložní trasu, takže funguje z obyčejné karty prohlížeče bez jakéhokoli softwaru na obou stranách.</p></div></details><details class="faq-card"><summary>Mohou lidé odpovědět na text odeslaný z počítače?</summary><div class="faq-answer"><p>U zrcadlových nástrojů ano, protože text používá vaše skutečné číslo a odpovědi přicházejí tam. U webového odesílače zpráva přichází z odesílatele služby, takže ji považujte za jednosměrné doručení a pokud potřebujete odpověď, uveďte do textu zprávy kontaktní údaje.<a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">Zpracování STOP-keyword</a> je vestavěno, takže odpověď STOP automaticky potlačí další zprávy na toto číslo.</p></div></details>
+    <details class="faq-card"><summary>Jak mohu zdarma poslat SMS z počítače?</summary><div class="faq-answer"><p>Pokud váš telefon stále funguje, Google Messages pro web umožňuje zdarma posílat zprávy přes váš vlastní tarif. Pokud nemáte po ruce telefon, jedinou zbývající bezplatnou cestou jsou e-mailové brány operátorů, i když nespolehlivé. Webový odesílač poskytuje bezplatné testovací kredity na první ostré odeslání s potvrzením o doručení na obrazovce a kredity za nedoručené zprávy se automaticky vracejí.</p></div></details><details class="faq-card"><summary>Mohu posílat text z počítače, když je můj telefon rozbitý?</summary><div class="faq-answer"><p>Zrcadlící nástroje přestanou fungovat, jakmile se telefon rozbije, protože ovládají pouze živý přístroj. Webový odesílač funguje bez jakéhokoli telefonu: otevřete prohlížeč, zaregistrujte se e-mailem a pošlete zprávu na číslo příjemce. Služba doručuje prostřednictvím adaptivních tras, které automaticky přepínají na záložní cestu podle cíle, takže zpráva odejde, i když je jedna trasa nedostupná.</p></div></details><details class="faq-card"><summary>Musím něco instalovat, abych mohl poslat text z PC?</summary><div class="faq-answer"><p>Ne. Cesta přes prohlížeč nevyžaduje instalaci na vašem počítači ani na straně příjemce. Text dorazí jako běžná SMS. Doručení využívá nastavení služby s více trasami s automatickým přepnutím na záložní trasu, takže funguje z obyčejné karty prohlížeče bez jakéhokoli softwaru na obou stranách.</p></div></details><details class="faq-card"><summary>Mohou lidé odpovědět na text odeslaný z počítače?</summary><div class="faq-answer"><p>U zrcadlových nástrojů ano, protože text používá vaše skutečné číslo a odpovědi přicházejí tam. U webového odesílače zpráva přichází z odesílatele služby, takže ji považujte za jednosměrné doručení a pokud potřebujete odpověď, uveďte do textu zprávy kontaktní údaje.<a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener"> Zpracování STOP-keyword</a> je vestavěno, takže odpověď STOP automaticky potlačí další zprávy na toto číslo.</p></div></details>
     <div class="cta"><p>Není potřeba telefon: karta prohlížeče, e-mailová adresa a bezplatné testovací kredity doručí první text.</p><a class="btn" href="https://smsroute.cc/signup">Pošlete svůj první text</a><span class="alt">ani vlastní číslo? <a href="https://smsroute-cc.github.io/send-sms-without-phone-number-online.html">posílat SMS online bez telefonního čísla</a></span></div>
   </article>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-text-from-computer-without-phone.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-text-from-computer-without-phone.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-text-from-computer-without-phone.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-text-from-computer-without-phone.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li></ul></div>
+    <div class="footer-grid"><div class="footer-col srx-langswitch"><p class="footer-heading">Jazyky</p><ul><li><a href="https://smsroute-cc.github.io/send-text-from-computer-without-phone.html" hreflang="en" lang="en">English</a></li><li><a href="https://smsroute-cc.github.io/de/send-text-from-computer-without-phone.html" hreflang="de-DE" lang="de">Deutsch</a></li><li><a href="https://smsroute-cc.github.io/fr/send-text-from-computer-without-phone.html" hreflang="fr-FR" lang="fr">Français</a></li><li><a href="https://smsroute-cc.github.io/pl/send-text-from-computer-without-phone.html" hreflang="pl-PL" lang="pl">Polski</a></li><li><a href="https://smsroute-cc.github.io/es/send-text-from-computer-without-phone.html" hreflang="es-ES" lang="es">Español</a></li><li><a href="https://smsroute-cc.github.io/nl/send-text-from-computer-without-phone.html" hreflang="nl-NL" lang="nl">Nederlands</a></li><li><a href="https://smsroute-cc.github.io/it/send-text-from-computer-without-phone.html" hreflang="it-IT" lang="it">Italiano</a></li><li><a href="https://smsroute-cc.github.io/sv/send-text-from-computer-without-phone.html" hreflang="sv-SE" lang="sv">Svenska</a></li><li><a href="https://smsroute-cc.github.io/pt/send-text-from-computer-without-phone.html" hreflang="pt-PT" lang="pt">Português</a></li><li><a href="https://smsroute-cc.github.io/cs/send-text-from-computer-without-phone.html" hreflang="cs-CZ" lang="cs" aria-current="true">Čeština</a></li><li><a href="https://smsroute-cc.github.io/da/send-text-from-computer-without-phone.html" hreflang="da-DK" lang="da">Dansk</a></li><li><a href="https://smsroute-cc.github.io/no/send-text-from-computer-without-phone.html" hreflang="nb-NO" lang="no">Norsk</a></li></ul></div>
       <div class="footer-brand">
         <a href="https://smsroute.cc/" class="brand" aria-label="Domů SMSRoute"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
-        <p>Spokojení zákazníci: SMS komunikace, jakou jste ještě nezažili.</p>
+        <p>Spolehlivé SMS. Platba kryptem. Bez ověření.</p>
         <div class="socials">
           </div>
       </div>
@@ -416,8 +428,8 @@ každá cesta: příjemce prostě dostane běžnou SMS</code></pre></figure></de
         <p class="footer-heading">Blog</p>
         <ul>
           <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
-          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
-          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alfanumerické vs. shortcode ID odesílatele</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">Šablona SMS pro dvojité potvrzení dle GDPR</a></li>
           <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Který pro můj obsah?</a></li>
           <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">Jak funguje doručení OTP</a></li>
           <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">Mezinárodní průvodce SMS 2026</a></li>
@@ -458,7 +470,7 @@ každá cesta: příjemce prostě dostane běžnou SMS</code></pre></figure></de
         <ul>
           <li><a href="https://smsroute.cc/integrate/node-js">Integrace Node.js</a></li>
           <li><a href="https://smsroute.cc/integrate/python">Integrace Pythonu</a></li>
-          <li><a href="https://smsroute.cc/integrate/twilio-migration">Migrace z Twilia</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Migrace z Twilio</a></li>
         </ul>
         <p class="footer-heading">Srovnání</p>
         <ul>
