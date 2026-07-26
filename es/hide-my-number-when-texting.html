@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html">
 <meta name="description" content="Ocultar el número en un SMS: por qué #31# solo vale para llamadas y cómo enviar un mensaje sin mostrar tu número.">
 <link rel="canonical" href="https://smsroute-cc.github.io/es/hide-my-number-when-texting.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ocultar mi número al enviar SMS: qué funciona", "description": "Ocultar el número en un SMS: por qué #31# solo vale para llamadas y cómo enviar un mensaje sin mostrar tu número.", "url": "https://smsroute-cc.github.io/es/hide-my-number-when-texting.html", "inLanguage": "es", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/es/hide-my-number-when-texting.html", "image": "https://smsroute-cc.github.io/og/hide-my-number-when-texting-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ES", "item": "https://smsroute-cc.github.io/es/"}, {"@type": "ListItem", "position": 3, "name": "Ocultar mi número al enviar SMS: qué funciona", "item": "https://smsroute-cc.github.io/es/hide-my-number-when-texting.html"}]}</script>
 </head>
 <body class="tier-consumer">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Iniciar sesión</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Empezar</a></div>
 </div></header>
 
-<nav class="migas de pan" aria-label="migas de pan">
+<nav class="breadcrumb" aria-label="migas de pan">
   <ol>
     <li><a href="https://smsroute.cc/">Inicio</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -383,10 +388,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <p>Esto importa porque el rastro se mantiene sin detalles personales: el registro solo necesita un correo electrónico y nunca se requieren documentos de identidad. El inconveniente es cambiar de la app del teléfono a un navegador. Decide esto cuando cualquier otro camino aún registre una línea real en algún punto del proceso.</p><ol class="a2-steps"><li><b>Abre el remitente en un navegador</b><span>teléfono o computadora, sin instalar nada</span></li><li><b>Regístrate con una dirección de correo electrónico</b><span>nunca se solicita tu número de teléfono</span></li><li><b>Escribe el mensaje, introduce el número del destinatario</b><span>los créditos de prueba gratuitos cubren el primer envío</span></li><li><b>La entrega se confirma en pantalla</b><span>el destinatario ve un nombre de remitente o número de servicio</span></li></ol></section><section><h2 id="s5">Qué hace y qué no hace ocultar tu número</h2><p>Ocultar tu número al enviar mensajes de texto solo lo oculta del destinatario. Los operadores aún enrutan y registran el mensaje como cualquier SMS, por lo que la red ve todo lo que normalmente vería.</p>
 <p>Solo el contenido del mensaje decide si un texto es lícito o no. Oculta el número si es necesario y mantén el mensaje adecuado. Esa división es todo lo que hay respecto a la privacidad hacia una persona frente al procesamiento completo por parte de los operadores. Nada más cambia en la entrega ni en los registros que conservan. Escribes un mensaje adecuado y la otra persona nunca ve tu línea, pero las redes lo manejan como tráfico SMS estándar en todo momento.</p></section>
     </div>
-    <details class="tech-details"><summary>Detalles técnicos</summary><figure class="artifact"><figcaption>Dónde aparece tu número, por ruta</figcaption><pre><code>device settings / *67:  on their screen (the trick changed nothing)
-burner-number app:      in the app&#x27;s records, behind the second number
-web sender:             nowhere - the service never asked for it
-every route:            <a href="https://en.wikipedia.org/wiki/Cellular_network" rel="noopener">carriers route</a> and log the message itself</code></pre></figure></details>
+    <details class="tech-details"><summary>Detalles técnicos</summary><figure class="artifact"><figcaption>Dónde aparece tu número, por ruta</figcaption><pre><code>ajustes del dispositivo / *67:  en su pantalla (el truco no cambió nada)
+app de número temporal:      en los registros de la app, detrás del segundo número
+remitente web:             en ningún sitio - el servicio nunca lo pidió
+cada ruta:            <a href="https://en.wikipedia.org/wiki/Cellular_network" rel="noopener">los operadores enrutan</a> y registran el mensaje en sí</code></pre></figure></details>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Guías relacionadas</h2><ul><li><a href="https://smsroute-cc.github.io/es/send-sms-abroad.html">Enviar SMS al extranjero: tarifas y la vía barata</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-without-number.html">Enviar SMS sin número visible</a></li><li><a href="https://smsroute-cc.github.io/es/send-sms-anonymously.html">Enviar SMS anónimo sin registro</a></li><li><a href="https://smsroute-cc.github.io/textnow-alternative-send-only.html">TextNow Alternative: Send SMS in Browser, No App</a></li></ul></section>
     <h2 id="faq">Preguntas frecuentes</h2>
     <details class="faq-card"><summary>¿Funciona *67 para mensajes de texto?</summary><div class="faq-answer"><p>No. Los códigos de ocultación de ID de llamada que funcionan para llamadas de voz son ignorados por los SMS. Muchos teléfonos se niegan a enviar un texto si antepones el prefijo habitual de ocultación, e incluso cuando lo hacen, el número del remitente aún viaja como dato de enrutamiento requerido. Dual-<a href="https://en.wikipedia.org/wiki/SIM_card" rel="noopener">SIM</a> dispositivos y líneas VoLTE no muestran excepción a esta regla.</p></div></details><details class="faq-card"><summary>¿Cómo envío un SMS a alguien sin que vea mi número en iPhone?</summary><div class="faq-answer"><p>No hay ninguna configuración de iOS que oculte tu número al enviar SMS. Mostrar mi ID de llamada solo afecta las llamadas de voz. Las opciones que funcionan son un segundo número desde una aplicación desechable o un remitente web que envía mensajes desde un nombre de remitente, dejando tu número personal completamente fuera. Personalizado <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">ID alfanumérico</a> están disponibles bajo pedido cuando el destino lo admite.</p></div></details><details class="faq-card"><summary>¿Puede rastrearse un mensaje oculto hasta mí?</summary><div class="faq-answer"><p>El destinatario no puede ver tu número, pero el servicio que hayas utilizado guarda lo que le diste. Una aplicación desechable guarda tu número real; un remitente web con registro solo por correo guarda una dirección de correo. Elige según lo que te sea cómodo que exista. El contenido del mensaje en sí mismo constituye una excepción si revela datos personales que apunten hacia ti.</p></div></details><details class="faq-card"><summary>¿Es legal ocultar tu número al enviar SMS?</summary><div class="faq-answer"><p>Enviar sin mostrar tu número es generalmente legal. Lo que dice el mensaje lo decide todo. El acoso y las amenazas son ilegales desde cualquier número, oculto o no. Las reglas se cubren en la guía 'can-I-send-SMS-anonymously'. El servicio incluye <a href="https://en.wikipedia.org/wiki/Telephone_Consumer_Protection_Act_of_1991" rel="noopener">manejo de la palabra clave STOP</a> y listas de exclusión para que las bajas se respeten.</p></div></details>
     <div class="cta"><p>Sin número que ocultar: regístrate con un correo electrónico y el SMS llega desde un nombre de remitente, nunca desde ti.</p><a class="btn" href="https://smsroute.cc/signup">Envía tu primer SMS</a><span class="alt">¿las reglas primero? <a href="https://smsroute-cc.github.io/can-i-send-sms-anonymously.html">puedo enviar SMS anónimamente - qué está permitido</a></span></div>
@@ -435,7 +442,7 @@ every route:            <a href="https://en.wikipedia.org/wiki/Cellular_network"
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Paga con Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Paga con Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Paga con USDT</a></li>
-        </ul> <p class="footer-heading">Herramientas gratis</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">Contador de caracteres SMS</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">Calculadora de costes SMS</a></li> <li><a href="https://smsroute.cc/tools">Herramientas gratis →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Casos de uso</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS para 2FA</a></li>
