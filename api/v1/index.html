@@ -5,8 +5,53 @@
 <link rel="canonical" href="https://smsroute-cc.github.io/api/v1/index.html">
 <meta name="robots" content="index, follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "name": "SMSRoute published SMS pricing and country registration rules", "description": "Dated JSON snapshots of SMSRoute's published per-destination SMS rates (with competitor comparison columns as published), sender-registration rules by country, and coverage facts. Send-only web SMS service: email signup, no ID, crypto payment, 149 countries.", "url": "https://smsroute-cc.github.io/api/v1/index.html", "keywords": ["sms pricing", "sms without kyc", "anonymous sms", "sender registration", "sms coverage"], "license": "https://creativecommons.org/licenses/by/4.0/", "creator": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc/", "sameAs": ["https://github.com/SMSRoute-cc"]}, "dateModified": "2026-07-25", "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://smsroute-cc.github.io/api/v1/prices.json", "name": "Published per-destination rates"}, {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://smsroute-cc.github.io/api/v1/countries.json", "name": "Sender-registration rules by country"}, {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://smsroute-cc.github.io/api/v1/coverage.json", "name": "Coverage and payment facts"}]}</script>
-<style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 20px;background:#0b1220;color:#e2e8f0}a{color:#22d3ee}code{background:#1e293b;padding:2px 6px;border-radius:4px}h1{font-size:1.5rem}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://smsroute-cc.github.io/#website", "name": "SMSRoute Guides", "url": "https://smsroute-cc.github.io/", "publisher": {"@id": "https://smsroute.cc/#organization"}, "inLanguage": "en"}</script>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/inter-var.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/intertight-var.woff2') format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/jbmono-var.woff2') format('woff2')}
+:root{--bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;--accent-purple:#B659FF;--accent-cyan:#7DD3FC;
+--r-sm:6px;--r-md:10px;--line:1px solid var(--border);--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-primary);color:var(--fg-secondary);
+font:17px/1.65 'Inter',system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bar{border-bottom:var(--line);background:rgba(10,13,20,.9)}
+.bar-in{max-width:760px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar-in .home{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:800;font-size:1.05rem;
+color:var(--fg-primary);letter-spacing:-.01em;border-bottom:0}
+.bar-in .home:hover{color:var(--accent-cyan)}
+.bar-in .tag{font:600 .7rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent-purple);
+background:rgba(182,89,255,.12);border:1px solid rgba(182,89,255,.25);border-radius:999px;padding:4px 11px}
+.bar-in .lic{margin-left:auto;font-size:.85rem;color:var(--fg-muted)}
+main{max-width:760px;margin:0 auto;padding:34px 22px 72px}
+h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:800;font-size:2rem;line-height:1.1;
+letter-spacing:-.02em;color:var(--fg-primary);margin:0 0 18px}
+p{margin:0 0 16px;color:var(--fg-secondary)}
+a{color:var(--accent-cyan);text-decoration:none;border-bottom:1px solid rgba(125,211,252,.3)}
+a:hover{color:#B4E5FD;border-bottom-color:var(--accent-cyan)}
+a:focus-visible{outline:2px solid var(--accent-purple);outline-offset:2px;border-radius:4px}
+code{font-family:var(--mono);font-size:.88em;background:var(--bg-elevated);border:var(--line);
+border-radius:var(--r-sm);padding:1px 6px;color:var(--accent-cyan)}
+pre{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);padding:16px 18px;
+overflow-x:auto;font-family:var(--mono);font-size:.86rem;line-height:1.6;color:#E4E7EE}
+pre code{background:none;border:0;padding:0;color:inherit}
+ul{list-style:none;padding:0;margin:0 0 24px;border:var(--line);border-radius:var(--r-md);
+background:var(--bg-sunken);overflow:hidden}
+li{padding:12px 18px;border-bottom:var(--line);font-size:.96rem;color:var(--fg-muted)}
+li:last-child{border-bottom:0}
+li a{border-bottom:0;font-weight:600}
+li a code{color:var(--fg-primary)}
+li a:hover code{color:var(--accent-cyan);border-color:rgba(182,89,255,.35)}
+@media(max-width:640px){body{font-size:16.5px}h1{font-size:1.6rem}main{padding:26px 18px 56px}
+.bar-in{padding:12px 18px;gap:10px}.bar-in .lic{margin-left:0;width:100%;font-size:.8rem}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://smsroute-cc.github.io/#website", "name": "SMSRoute Guides", "url": "https://smsroute-cc.github.io/", "publisher": {"@id": "https://smsroute.cc/#organization"}, "inLanguage": "en"}</script>
 </head><body>
+<header class="bar"><div class="bar-in">
+<a class="home" href="https://smsroute-cc.github.io/">SMSRoute Guides</a>
+<span class="tag">open data</span>
+<span class="lic">CC-BY 4.0 &middot; no API key</span>
+</div></header>
+<main>
 <h1>SMSRoute open data</h1>
 <p>Dated JSON snapshots of what <a href="https://smsroute.cc">SMSRoute</a> publishes: per-destination SMS rates (including the competitor columns as published on the <a href="https://www.smsroute.cc/prices">live price page</a>), sender-registration rules by country, and coverage facts. Free to reuse with attribution (CC-BY 4.0). No API key.</p>
 <ul>
@@ -17,4 +62,5 @@
 </ul>
 <p>What this is not: the live sending API (that is <code>api.smsroute.cc</code> and needs an account). Rates for destinations beyond the published sample are shown live after login; they are deliberately not republished here to avoid stale data.</p>
 <p><a href="https://smsroute-cc.github.io/">Back to the guides</a></p>
+</main>
 </body></html>
