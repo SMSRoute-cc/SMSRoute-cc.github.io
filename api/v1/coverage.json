@@ -18,5 +18,5 @@
   "SOL"
  ],
  "published_destination_samples": 11,
- "note": "Per-destination published samples cover 11 destinations (see prices.json). Rates for the remaining destinations are shown live at https://www.smsroute.cc/prices after login; they are not republished here to avoid stale data."
+ "note": "Per-destination published samples cover 11 destinations (see prices.json). Rates for the remaining destinations are shown live at https://smsroute.cc/prices after login; they are not republished here to avoid stale data."
 }
