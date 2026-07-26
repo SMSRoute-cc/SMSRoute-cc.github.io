@@ -40,6 +40,7 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 .cards li{border:1px solid var(--line);border-radius:10px;padding:14px}.cards a{text-decoration:none;font-weight:600}
 .cards p{font-size:.88rem;color:var(--mut);margin:.4em 0 0}</style>
 <style>/* v6 responsive tables (mobile overflow fix, layout_audit 2026-07-24) */@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Cheapest Bulk SMS Brazil: Send to BR from $0.004", "item": "https://smsroute-cc.github.io/send-sms-to-brazil-cheap.html"}]}</script>
 </head>
 <body>
 <header><div class="wrap">
@@ -62,7 +63,7 @@ footer{border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;paddin
 <h2>Sample code: Send SMS to Brazil with Python</h2>
 <p>Here is a minimal Python example using the SMSRoute REST API. Replace <code>YOUR_API_KEY</code> with your key from the dashboard.</p><pre><code>import requests
 
-url = "https://api.smsroute.cc/v1/messages"
+url = "https://api.smsroute.cc/sms/send"
 headers = {
     "Authorization": "Bearer YOUR_API_KEY",
     "Content-Type": "application/json"
