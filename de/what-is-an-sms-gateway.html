@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/what-is-an-sms-gateway.html">
 <meta name="description" content="Was ist ein SMS Gateway? Einsatz, API-Anbindung und anonymes Senden ohne Registrierung verständlich erklärt.">
 <link rel="canonical" href="https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Was ist ein SMS Gateway? Erklärung", "description": "Was ist ein SMS Gateway? Einsatz, API-Anbindung und anonymes Senden ohne Registrierung verständlich erklärt.", "url": "https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html", "inLanguage": "de", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html", "image": "https://smsroute-cc.github.io/og/what-is-an-sms-gateway-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "DE", "item": "https://smsroute-cc.github.io/de/"}, {"@type": "ListItem", "position": 3, "name": "Was ist ein SMS Gateway? Erklärung", "item": "https://smsroute-cc.github.io/de/what-is-an-sms-gateway.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Anmelden</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Loslegen</a></div>
 </div></header>
 
-<nav class="Brotkrümelnavigation" aria-label="Brotkrümelnavigation">
+<nav class="breadcrumb" aria-label="Brotkrümelnavigation">
   <ol>
     <li><a href="https://smsroute.cc/">Startseite</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -393,13 +398,15 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 <p>Ohne <a href="https://en.wikipedia.org/wiki/SMS" rel="noopener">DLR-Webhooks</a> und Logs erfahren Sie nie, ob der Carrier die Nachricht akzeptiert hat. Undurchsichtige Preise machen jedes Ziel nach der Rechnung zu einem Glücksspiel mit der eigenen Marge. Keine automatische Gutschrift bei Fehlern bedeutet, dass Sie für nicht zugestellten Traffic zahlen. Support, der Tage braucht, lässt Routing-Probleme ungelöst, während Ihre Benutzer warten. Der Haken ist, dass viele Gateways dies bewerben, aber in der Praxis nichts davon liefern. Fordern Sie die Dokumentation, Belege, Tarife, Gutschriften und Live-Antworten an und bestätigen Sie alles mit einer Testsendung, bevor Sie Guthaben aufladen.</p><dl class="a2-keyfacts"><div><dt>API-Dokumentation</dt><dd>REST + SMPP, Codebeispiele auf GitHub</dd></div><div><dt>Zustellberichte</dt><dd>Echtzeit-DLR per Webhook oder Status-Endpunkt</dd></div><div><dt>Preise</dt><dd>Veröffentlichte Preise pro Land unter GET /prices</dd></div><div><dt>Rückerstattungspolitik</dt><dd>Fehlgeschlagene Sendungen werden automatisch gutgeschrieben</dd></div><div><dt>Support</dt><dd>24/7 Telegram und E-Mail</dd></div></dl></section><section><h2 id="s5">Wo passen krypto-abgerechnete Gateways ohne KYC in dieses Bild?</h2><p>krypto-abgerechnete Gateways ohne KYC sind eine Kategorie innerhalb der Aggregator-Gateways – Dienste, die das Kontoguthaben mit Kryptowährung statt mit einer Karte aufladen und nur eine E-Mail-Adresse ohne Ausweisdokumente benötigen.</p>
 <p>Sie unterstützen BTC, ETH, USDT (TRC-20/ERC-20), XMR, LTC und SOL. Diese Gateways sind für Entwickler und Projekte gebaut, die keine Ausweisdokumente vorlegen möchten, nur um eine Testnachricht zu senden. Kostenlose Testguthaben bei der Anmeldung ermöglichen es, Routen vor der Finanzierung zu prüfen. Das hält die Einstiegshürde niedrig für jeden, dessen Code bereits HTTP spricht und das Gateway nur als Übersetzer zu den Carrier-Netzwerken benötigt.</p></section>
     </div>
-    <figure class="artifact"><figcaption>Der Gateway-Ablauf von Anfrage bis Zustellung, in echten Endpunkten</figcaption><pre><code>1. POST /sms/send  {&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Your code is 482913&quot;, &quot;callback_url&quot;: &quot;https://your-app.example/dlr&quot;}
+    <figure class="artifact"><figcaption>Der Gateway-Ablauf von Anfrage bis Zustellung, in echten Endpunkten</figcaption><pre><code>1. POST /sms/send  {&quot;to&quot;: &quot;+14155550123&quot;, &quot;from&quot;: &quot;INFO&quot;, &quot;message&quot;: &quot;Ihr Code ist 482913&quot;, &quot;callback_url&quot;: &quot;https://your-app.example/dlr&quot;}
 2. Das Gateway routet zum Ziel-Carrier für diese Nummer
 3. GET /sms/single/:messageId/status liefert den aktuellen Zustellstatus
 4. callback_url empfängt Echtzeit-Zustellupdates, sobald der Carrier sie meldet
 
 # prüfen, ob das Gateway erreichbar ist
 curl https://api.smsroute.cc/health</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwandte Ratgeber</h2><ul><li><a href="https://smsroute-cc.github.io/de/send-sms-anonymously.html">SMS anonym senden ohne Anmeldung</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-no-kyc.html">SMS ohne Anmeldung senden – kein KYC</a></li><li><a href="https://smsroute-cc.github.io/de/send-sms-without-number.html">SMS ohne Nummer senden – anonym</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Häufig gestellte Fragen</h2>
     <details class="faq-card"><summary>Ist ein SMS-Gateway dasselbe wie eine SMS API?</summary><div class="faq-answer"><p>Nein. Das Gateway ist die Routing-Infrastruktur, die Nachricht tatsächlich zu einem Carrier bewegt. Die API ist die Schnittstelle, die Entwickler nutzen, um mit dieser Infrastruktur zu sprechen – im Fall von SMSRoute eine REST-API und SMPP-Bindungen. Manche Gateways bieten nur SMPP ohne HTTP-Schnittstelle, daher beschreiben die Begriffe separate Ebenen, selbst wenn ein einzelner Dienst beides anbietet.</p></div></details><details class="faq-card"><summary>Behandeln SMS-Gateways Antworten und Opt-Outs?</summary><div class="faq-answer"><p>Das hängt vom Gateway und der Route ab. SMSRoute hat standardmäßig STOP-Keyword-Behandlung und Unterdrückungslisten eingebaut. Opt-Out-Anfragen per STOP fügen die Nummer automatisch zu einer Unterdrückungsliste hinzu, sodass spätere Sendungen an sie blockiert werden. Reply (Inbound)-Support variiert je nach Zielroute und ist nicht bei allen Carriern universell verfügbar.</p></div></details><details class="faq-card"><summary>Kann ein SMS-Gateway jedes Land der Welt erreichen?</summary><div class="faq-answer"><p>Die Abdeckung variiert je nach Anbieter und den Carrier-Verbindungen, die sie unterhalten. SMSRoute deckt 149 Länder mit veröffentlichten Preisen pro Land ab. Benutzerdefinierte <a href="https://en.wikipedia.org/wiki/SMS#Message_size" rel="noopener">alphanumerische ID</a> sind auf Anfrage verfügbar, sofern die Ziel-Routen dies unterstützen; standardmäßig wird ein intelligenter gemeinsamer Pool genutzt.</p></div></details><details class="faq-card"><summary>Was ist eine HLR-Abfrage und warum bietet ein Gateway sie an?</summary><div class="faq-answer"><p>Eine HLR-Abfrage prüft, ob eine Telefonnummer aktiv und erreichbar ist, bevor Sie eine Nachricht senden. Das reduziert verschwendete Sendungen an tote oder ungültige Nummern. Ein Gateway bietet dies an, damit Apps Listen zuerst filtern und Traffic vermeiden, den Carrier ohnehin ablehnen. Portierte Nummern sind der Grenzfall: Statische Datenbanken verpassen das neue Heimnetz, während eine Live-HLR-Abfrage den aktuellen Carrier korrekt ermittelt.</p></div></details><details class="faq-card"><summary>Wie schnell bewegt sich eine Nachricht durch ein Gateway?</summary><div class="faq-answer"><p>Die Geschwindigkeit hängt vom Ziel-Carrier und der Routenqualität ab. Sobald das Konto aufgeladen und ein API-Schlüssel erstellt ist, dauert es nur Minuten bis zur ersten Nachricht. Echtzeit-Zustellberichte über DLR-Webhooks und das Dashboard-Log zeigen die Annahme direkt nach der Übergabe des Traffics durch das Gateway an.</p></div></details>
     <div class="cta"><p>(Satz vervollständigen oder entfernen) und Antwortfluss des Gateways.</p><a class="btn" href="https://smsroute.cc/developers">Lesen Sie die API-Dokumentation</a><span class="alt">oder prüfen Sie <a href="https://smsroute.cc/prices">Live-Preise</a></span></div>
@@ -448,7 +455,7 @@ curl https://api.smsroute.cc/health</code></pre></figure>
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Mit Bitcoin bezahlen</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Mit Monero bezahlen</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Mit USDT bezahlen</a></li>
-        </ul> <p class="footer-heading">Kostenlose Tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-Zeichenzähler</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-Kostenrechner</a></li> <li><a href="https://smsroute.cc/tools">Kostenlose Tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Anwendungsfälle</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS für 2FA</a></li>
