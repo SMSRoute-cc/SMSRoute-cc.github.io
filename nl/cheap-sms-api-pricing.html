@@ -26,6 +26,12 @@
 <link rel="alternate" hreflang="nl-NL" href="https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html">
 <link rel="alternate" hreflang="it" href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html">
 <link rel="alternate" hreflang="it-IT" href="https://smsroute-cc.github.io/it/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="sv" href="https://smsroute-cc.github.io/sv/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="sv-SE" href="https://smsroute-cc.github.io/sv/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="pt" href="https://smsroute-cc.github.io/pt/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="pt-PT" href="https://smsroute-cc.github.io/pt/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="cs" href="https://smsroute-cc.github.io/cs/cheap-sms-api-pricing.html">
+<link rel="alternate" hreflang="cs-CZ" href="https://smsroute-cc.github.io/cs/cheap-sms-api-pricing.html">
 <meta name="description" content="Goedkope SMS API met heldere tarieven. Pay-as-you-go, testtegoed, geen abonnement.">
 <link rel="canonical" href="https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -309,7 +315,6 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 .tech-details[open]>summary::before{content:"\25BE  "}
 .tech-details>.artifact{margin-top:12px}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Goedkope SMS API – tarieven", "description": "Goedkope SMS API met heldere tarieven. Pay-as-you-go, testtegoed, geen abonnement.", "url": "https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html", "inLanguage": "nl", "author": {"@type": "Organization", "name": "SMSRoute engineering", "url": "https://smsroute.cc/about"}, "publisher": {"@type": "Organization", "name": "SMSRoute", "url": "https://smsroute.cc", "logo": {"@type": "ImageObject", "url": "https://www.smsroute.cc/logo.svg"}}, "mainEntityOfPage": "https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html", "image": "https://smsroute-cc.github.io/og/cheap-sms-api-pricing-og.png"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SMSRoute Guides", "item": "https://smsroute-cc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "NL", "item": "https://smsroute-cc.github.io/nl/"}, {"@type": "ListItem", "position": 3, "name": "Goedkope SMS API – tarieven", "item": "https://smsroute-cc.github.io/nl/cheap-sms-api-pricing.html"}]}</script>
 </head>
 <body class="tier-dev">
@@ -334,7 +339,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Inloggen</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Aan de slag</a></div>
 </div></header>
 
-<nav class="kruimelpad" aria-label="kruimelpad">
+<nav class="breadcrumb" aria-label="kruimelpad">
   <ol>
     <li><a href="https://smsroute.cc/">Home</a></li>
     <li><a href="https://smsroute.cc/blog/">Blog</a></li>
@@ -397,8 +402,10 @@ $ curl -X POST https://api.smsroute.cc<span class="k">/sms/send</span> \
 $0,035 is het plafond voor dure routes (AU/JP); nooit als kopprijs presenteren
 Terugbetaling bij mislukte verzending: mislukte berichten worden automatisch teruggescreven, en ongebruikt saldo is op verzoek terugbetaalbaar naar de oorspronkelijke wallet
 
-# pull current rates yourself
+# haal actuele tarieven zelf op
 curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre></figure>
+    
+    <section class="srx-related" style="margin:2.2rem 0 0"><h2>Verwante gidsen</h2><ul><li><a href="https://smsroute-cc.github.io/nl/send-sms-anonymously.html">Anonieme sms versturen online</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-no-kyc.html">SMS zonder registratie – geen KYC</a></li><li><a href="https://smsroute-cc.github.io/nl/send-sms-without-number.html">SMS versturen zonder nummerweergave</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable Use Policy for Sending SMS</a></li></ul></section>
     <h2 id="faq">Veelgestelde vragen</h2>
     <details class="faq-card"><summary>Is een maandelijks minimum ooit zinvol?</summary><div class="faq-answer"><p>Dat kan, bij zeer hoge vaste volumes met vaste/dedicated support en SMPP-binds, maar een verzender met een laag of variabel volume betaalt vaak voor capaciteit die nooit wordt gebruikt. Pay-per-bericht-prijzen vermijden die discrepantie volledig.</p></div></details><details class="faq-card"><summary>Zijn bulkprijzen anders dan prijzen voor losse berichten?</summary><div class="faq-answer"><p>Bulkverzending via POST /sms/send/bulk wordt gefactureerd tegen exact dezelfde tarieven per land als voor losse berichten. Er is geen aparte bulk-kortingsstaffel. Haal de actuele kaart op via GET /prices voor elke bestemming in de batch. Elk bericht in een bulkopdracht met gemengde landen wordt onafhankelijk tegen zijn eigen corridortarief belast, dus de totale kosten zijn simpelweg de som van de individuele kosten.</p></div></details><details class="faq-card"><summary>Verlaagt betalen met crypto de kosten per bericht?</summary><div class="faq-answer"><p>Niet automatisch. BTC, ETH, USDT op TRC-20 of ERC-20, XMR, LTC, SOL geaccepteerd via het stortingsendpoint is een betalingsvoorkeur, geen gegarandeerde korting. Het tarief per bericht komt uit de prijsopzoeker, ongeacht hoe het saldo is gefinancierd; een SOL-storting koopt dus dezelfde eenheidskosten als een BTC-storting op een bepaalde route.</p></div></details><details class="faq-card"><summary>Kunt u kostenrapporten exporteren voor een bulkcampagne?</summary><div class="faq-answer"><p>Ja: GET /sms/bulk/reports en GET /sms-bulk/:batchid/export geven een overzicht van wat een campagne werkelijk heeft gekost, nuttig voor afstemming met de gepubliceerde tarieven per land. Export is eveneens van toepassing op verkeer dat via de REST API of SMPP-binds is ingediend en geeft het gefactureerde totaal per batch weer.</p></div></details><details class="faq-card"><summary>Betekent bredere landdekking uniforme prijzen voor alle landen?</summary><div class="faq-answer"><p>Nee. 149 landen worden gedekt, maar het tarief varieert nog steeds per bestemming; controleer altijd het specifieke landentarief via GET /prices in plaats van uit te gaan van een gemengd gemiddelde. Adaptieve multi-route-bezorging met automatische failover houdt berichten op het actieve pad voor die bestemming, zonder het per land opgegeven tarief te wijzigen.</p></div></details>
     <div class="cta"><p>Bekijk live tarieven per land voordat u zich vastlegt op een provider.</p><a class="btn" href="https://smsroute.cc/prices">Bekijk live prijzen</a><span class="alt">of lees de <a href="https://smsroute.cc/developers">API-documentatie</a></span></div>
@@ -447,7 +454,7 @@ curl https://api.smsroute.cc/prices -H &quot;Authorization: Bearer YOUR_API_KEY&
           <li><a href="https://smsroute.cc/pay-with/bitcoin">Betalen met Bitcoin</a></li>
           <li><a href="https://smsroute.cc/pay-with/monero">Betalen met Monero</a></li>
           <li><a href="https://smsroute.cc/pay-with/usdt">Betalen met USDT</a></li>
-        </ul> <p class="footer-heading">Gratis tools</p> <ul> <li><a href="https://smsroute.cc/tools/sms-character-counter">SMS-tekenteller</a></li> <li><a href="https://smsroute.cc/tools/sms-cost-calculator">SMS-kostencalculator</a></li> <li><a href="https://smsroute.cc/tools">Gratis tools →</a></li> </ul>
+        </ul>
         <p class="footer-heading">Gebruiksscenario's</p>
         <ul>
           <li><a href="https://smsroute.cc/for/2fa">SMS voor 2FA</a></li>
