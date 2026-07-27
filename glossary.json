@@ -112,6 +112,56 @@
    "term": "crypto top-up",
    "definition": "Crypto top-up is the process of adding prepaid balance with cryptocurrency so SMS traffic can be sent. SMSRoute accepts crypto payments to fund usage at its published all-in rates (example $0.0125 per message, floor $0.004) across supported destinations.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#crypto-top-up"
+  },
+  {
+   "term": "MCC / MNC",
+   "definition": "MCC (Mobile Country Code) and MNC (Mobile Network Code) are the paired numeric identifiers that uniquely name a mobile operator’s network. A sender meets them in practice when routing or looking up a handset: the destination IMSI (and thus the serving network) is selected by MCC+MNC, which drives interconnect path, signalling, and delivery handling for the SMS.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#mcc-mnc"
+  },
+  {
+   "term": "SMSC",
+   "definition": "The SMSC (Short Message Service Center) is the network element that accepts, stores, and forwards SMS messages between senders and recipients in a mobile network. A sender encounters it in practice because every SMS is first submitted to an SMSC, which then attempts delivery to the destination handset and may hold the message until the device is reachable.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#smsc"
+  },
+  {
+   "term": "Fake DLR",
+   "definition": "A Fake DLR is a delivery receipt that reports an SMS as delivered to the handset when no such delivery occurred. Senders encounter it in practice when an intermediate network or platform accepts the message, drops or blocks it, and still returns a success status report instead of a real handset confirmation.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#fake-dlr"
+  },
+  {
+   "term": "DLR latency",
+   "definition": "DLR latency is the time that elapses between submission of an SMS to the network and the return of its delivery report indicating final handset status. A sender encounters it in practice whenever delivery receipts are requested, as the interval reflects downstream routing, handset reachability, and network processing before the report is generated and sent back.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#dlr-latency"
+  },
+  {
+   "term": "MO test (two-way test)",
+   "definition": "An MO test (two-way test) checks that a sender’s number or short code can accept mobile-originated SMS from handsets as well as deliver outbound messages. A sender meets it in practice by successfully receiving an inbound message from a mobile device and handling or replying to it, confirming bidirectional traffic works.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#mo-test-two-way-test"
+  },
+  {
+   "term": "Sender-ID preservation",
+   "definition": "Sender-ID preservation is the end-to-end retention of an SMS message’s original originating address so the recipient handset displays exactly the Sender ID supplied by the originator. A sender meets it in practice when every SMSC, gateway and interconnect on the route forwards that address unchanged rather than substituting another numeric or alphanumeric value.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#sender-id-preservation"
+  },
+  {
+   "term": "Validity period",
+   "definition": "The validity period is the time window set on an SMS during which the network may keep trying to deliver it if the handset is unreachable. A sender meets it in practice by including or accepting a TP-VP value so the message expires after that interval instead of being held indefinitely, after which delivery attempts stop and a failure can be reported.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#validity-period"
+  },
+  {
+   "term": "MSISDN",
+   "definition": "MSISDN is the Mobile Station International Subscriber Directory Number: the full E.164 phone number (up to 15 digits) that identifies a mobile subscriber. In SMS it is the destination (or source) address a sender must supply so the message can be routed to the correct handset. Operators and platforms use it in signaling and delivery receipts to match the message to that subscriber.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#msisdn"
+  },
+  {
+   "term": "Route quality",
+   "definition": "Route quality is the measured reliability and consistency of the network path an SMS takes from the originating sender through intermediary gateways and carriers to the recipient handset. It reflects successful delivery signaling, correct routing of GSM-compliant messages (including proper 160/153-character segment handling for GSM-7 or 70/67 for UCS-2), and valid E.164 addressing up to 15 digits. A sender meets it in practice by submitting well-formed traffic over stable, standards-aligned connections that maintain intact delivery receipts and minimize transit failures.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#route-quality"
+  },
+  {
+   "term": "Grey route",
+   "definition": "A grey route is an SMS delivery path that reaches handsets by blending into a mobile network’s local or wholesale access instead of using the operator’s official international interconnect. Senders meet grey routes in practice when they buy lower-priced international termination that the supplying network has obtained through SIM-based or other indirect access rather than a bilateral carrier agreement. Because the traffic is not authorised under the receiving operator’s interconnect rules, filtering or blocking can occur without notice.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#grey-route"
   }
  ]
 }
