@@ -1,0 +1,8 @@
+{
+ "question": "Why was my SMS filtered?",
+ "answer": "Most commonly a public link shortener, SHAFT-C content on US routes, unregistered domestic traffic, or a silent GSM-7 to UCS-2 encoding upgrade - the pre-flight linter checks all of them.",
+ "source_url": "https://smsroute-cc.github.io/tools/sms-deliverability-linter.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
