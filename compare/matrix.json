@@ -1,0 +1,91 @@
+{
+ "what": "Published-rate and published-capability matrix. Third-party cells quote each provider's own published pages on the retrieval date; they are that provider's claims, not our measurements.",
+ "as_of": "2026-07-26",
+ "maintainer": "SMSRoute (ops@smsroute.cc)",
+ "canonical": "https://smsroute-cc.github.io/compare/matrix.json",
+ "vendors": {
+  "smsroute": {
+   "us_price_usd_per_message": {
+    "value": 0.0125,
+    "note": "all-in, no 10DLC brand/campaign fees on this route class",
+    "source": "https://smsroute.cc/prices",
+    "retrieved": "2026-07-26"
+   },
+   "price_floor_usd": {
+    "value": 0.004,
+    "note": "lowest published per-country rate",
+    "source": "https://smsroute.cc/prices",
+    "retrieved": "2026-07-26"
+   },
+   "countries_published": {
+    "value": 149,
+    "source": "https://smsroute.cc/",
+    "retrieved": "2026-07-26"
+   },
+   "signup": {
+    "value": "email only",
+    "source": "https://smsroute.cc/",
+    "retrieved": "2026-07-26"
+   },
+   "payment": {
+    "value": "BTC, ETH, USDT, XMR, LTC, SOL",
+    "source": "https://smsroute.cc/",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "twilio": {
+   "us_price_usd_per_message": {
+    "value": 0.0079,
+    "note": "published US base rate; excludes 10DLC brand and campaign fees",
+    "source": "https://www.twilio.com/en-us/sms/pricing/us",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "vonage": {
+   "us_price_usd_per_message": {
+    "value": 0.0085,
+    "note": "published US base rate, approx; same fee caveats",
+    "source": "https://www.vonage.com/communications-apis/sms/pricing/",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "messagebird": {
+   "us_price_usd_per_message": {
+    "value": 0.0089,
+    "note": "published US base rate, approx (Bird)",
+    "source": "https://bird.com/pricing",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "aws_end_user_messaging": {
+   "us_10dlc_usd_per_message_all_in": {
+    "value": 0.02,
+    "note": "$0.01 base + $0.01 carrier fee; plus $4.50 company registration, $41.50 vetting, $10/mo campaign, $1/mo per number",
+    "source": "https://aws.amazon.com/end-user-messaging/pricing/",
+    "retrieved": "2026-07-26"
+   },
+   "us_toll_free_usd_per_message": {
+    "value": 0.01286,
+    "source": "https://aws.amazon.com/end-user-messaging/pricing/",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "telegram_gateway": {
+   "price_usd_per_delivered_code": {
+    "value": 0.01,
+    "note": "verification codes to opted-in Telegram users only",
+    "source": "https://core.telegram.org/gateway",
+    "retrieved": "2026-07-26"
+   }
+  },
+  "textbelt": {
+   "free_tier": {
+    "value": "1 free text/day on shared demo key",
+    "note": "paid card-based key refills; inbound replies US-only",
+    "source": "https://textbelt.com",
+    "retrieved": "2026-07-26"
+   }
+  }
+ },
+ "position_statement": "SMSRoute competes on payment rail, account privacy and price transparency - not on being the lowest US sticker rate. Where a competitor's published sticker is lower, this matrix says so and states what that sticker excludes."
+}
