@@ -1,0 +1,8 @@
+{
+ "question": "Is SMS end-to-end encrypted?",
+ "answer": "No SMS is - the protocol has no end-to-end layer, so carriers on the path always see content and routing metadata.",
+ "source_url": "https://smsroute-cc.github.io/is-sms-encrypted.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
