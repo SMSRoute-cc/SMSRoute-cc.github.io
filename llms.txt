@@ -402,6 +402,7 @@ Standards: https://smsroute-cc.github.io/editorial-standards.html - corrections:
 - [OpenAPI description of this dataset](https://smsroute-cc.github.io/api/v1/openapi.yaml)
 
 ## Data
+- Direct answers page, answers/ (rendered Q&A with FAQPage schema): https://smsroute-cc.github.io/answers/
 - Answer capsules (per-question JSON): https://smsroute-cc.github.io/answers/index.json
 - Published-claims comparison matrix (dated, sourced cells): https://smsroute-cc.github.io/compare/matrix.json
 - Price snapshot archive (time-series): https://smsroute-cc.github.io/api/v1/archive/index.json
