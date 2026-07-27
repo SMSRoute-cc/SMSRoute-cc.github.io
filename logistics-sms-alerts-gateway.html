@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://smsroute-cc.github.io/og/logistics-sms-alerts-gateway-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://smsroute-cc.github.io/og/editorial-standards-og.png">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/logistics-sms-alerts-gateway-og.png">
 <meta property="og:description" content="Logistics bulk alerts—dispatch confirmations, delivery-window updates, driver OTPs, and exception notices—run on a send-only SMS API priced from $0.004,...">
 <meta property="og:url" content="https://smsroute-cc.github.io/logistics-sms-alerts-gateway.html">
 <meta property="og:type" content="website">
@@ -352,6 +352,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <dt>How does one emoji change SMS cost for bulk logistics alerts?</dt><dd>GSM-7 allows 160 characters in a single segment (153 per part if concatenated). A single emoji forces UCS-2: 70 characters single-part, 67 per concatenated part. The same alert that fit in one GSM-7 segment can become two or three UCS-2 parts, multiplying segments at volume. Keep routine templates in GSM-7 and avoid emoji in high-volume classes.</dd>
 <dt>What does a send-only logistics SMS API not cover?</dt><dd>A send-only API accepts outbound messages only: no inbound replies, no hosted numbers, and no delivery guarantee. Design exception paths that assume some alerts fail, keep state in your own systems, offer a non-SMS fallback, and verify submit and encoding behaviour with the testing cluster before production.</dd>
 </dl>
+
+<div class="srx-cta"><p>Published rates, email-only signup, crypto top-up from $5. <a href="https://smsroute.cc/signup">Get free test credits</a> and run your own 100-message probe — the numbers on this page are checkable, not promises.</p></div>
 <h2>Related</h2><ul class="srx-sib">
 <li><a href="/testing/route-quality-metrics.html">Measuring delivery quality yourself</a></li>
 <li><a href="/answers/sms-latency-expectations-otp.html">Latency expectations for OTP</a></li>
