@@ -162,6 +162,91 @@
    "term": "Grey route",
    "definition": "A grey route is an SMS delivery path that reaches handsets by blending into a mobile network’s local or wholesale access instead of using the operator’s official international interconnect. Senders meet grey routes in practice when they buy lower-priced international termination that the supplying network has obtained through SIM-based or other indirect access rather than a bilateral carrier agreement. Because the traffic is not authorised under the receiving operator’s interconnect rules, filtering or blocking can occur without notice.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#grey-route"
+  },
+  {
+   "term": "A2P",
+   "definition": "Application-to-Person SMS: traffic originated by an application or service toward subscriber handsets, distinct from handset-to-handset chat.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#a2p"
+  },
+  {
+   "term": "Concatenated SMS",
+   "definition": "A payload split across multiple SMS parts because it exceeds one segment. Each part fits 140 octets (153 septets or 67 UCS-2 chars with UDH); the handset reassembles via concatenation headers.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#concatenated-sms"
+  },
+  {
+   "term": "Flash SMS",
+   "definition": "Class 0 short message shown on the handset display immediately; it may not be stored in the inbox depending on the device.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#flash-sms"
+  },
+  {
+   "term": "Intermediate DLR",
+   "definition": "Delivery receipt that reports a non-terminal message state (for example enroute). It indicates progress before a final outcome is known.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#intermediate-dlr"
+  },
+  {
+   "term": "P2P",
+   "definition": "Person-to-Person SMS: messages exchanged between subscriber handsets over the operator SMS service rather than from an application platform.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#p2p"
+  },
+  {
+   "term": "SMPP bind",
+   "definition": "An authenticated SMPP session between ESME and SMSC. Bind type is transmitter, receiver, or transceiver, which controls whether the client may submit messages, receive them, or both.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#smpp-bind"
+  },
+  {
+   "term": "Throughput (TPS)",
+   "definition": "Messages handled per second on a bind or platform. In SMS stacks it usually counts submit_sm or deliver_sm operations the session or system can process under load.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#throughput-tps"
+  },
+  {
+   "term": "deliver_sm",
+   "definition": "SMPP operation the SMSC uses to push an inbound MO message or a delivery receipt to the ESME over a receiver or transceiver bind.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#deliver-sm"
+  },
+  {
+   "term": "enquire_link",
+   "definition": "SMPP PDU sent on an idle bind to test that the peer is still reachable. Missing enquire_link_resp usually means the session is dead and should be rebound.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#enquire-link"
+  },
+  {
+   "term": "submit_sm",
+   "definition": "SMPP operation an ESME uses to hand a short message to the SMSC for routing toward a handset or other endpoint.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#submit-sm"
+  },
+  {
+   "term": "Final DLR",
+   "definition": "A final DLR is the terminal delivery receipt for an SMS, reporting an end-state outcome such as delivered, failed, or expired after any intermediate updates. It closes the message lifecycle from the network's perspective.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#final-dlr"
+  },
+  {
+   "term": "Long code",
+   "definition": "A long code is a full-length MSISDN used as an SMS sender or recipient address, expressed in E.164 (max 15 digits), as opposed to a short code.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#long-code"
+  },
+  {
+   "term": "Message state",
+   "definition": "Message state is the SMPP v3.4 enumerated status of an SMS in its lifecycle (e.g. ENROUTE, DELIVERED, EXPIRED, DELETED, UNDELIVERABLE, ACCEPTED, UNKNOWN), carried in delivery receipts and query responses.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#message-state"
+  },
+  {
+   "term": "National numbering plan",
+   "definition": "A national numbering plan is a country's official scheme for structuring telephone numbers, defining length, area or network codes, and subscriber number format inside that nation's public switched or mobile network.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#national-numbering-plan"
+  },
+  {
+   "term": "Septet",
+   "definition": "A septet is a 7-bit unit in the GSM 03.38 default alphabet. Up to 160 septets fit in the 140-octet user data of one SMS; concatenated segments typically carry 153 septets each after UDH overhead.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#septet"
+  },
+  {
+   "term": "Trunk prefix",
+   "definition": "A trunk prefix is the digit or digits dialed before the national significant number for domestic calls (often 0). It is normally omitted when the number is written in international E.164 form.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#trunk-prefix"
+  },
+  {
+   "term": "Quiet hours",
+   "definition": "Time windows - set by local regulation or carrier practice in some markets - during which promotional SMS should not be delivered. The rules differ by country and by message class, and transactional messages are commonly treated differently from marketing. Scheduling marketing sends inside the destination's local daytime is the safe default.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#quiet-hours"
   }
  ]
 }
