@@ -503,3 +503,4 @@ free test credits that prove delivery before you pay.
 - [SMS for logistics alerts](https://smsroute-cc.github.io/logistics-sms-alerts-gateway.html): Dispatch, delivery windows, driver OTP - what each message class needs from a gateway.
 - [SMS gateway for the USA](https://smsroute-cc.github.io/sms-gateway-usa.html): The published US rate, the 10DLC reality, and how to verify a route before volume.
 - [SMS Volume Cost Planner](https://smsroute-cc.github.io/tools/volume-cost-planner.html): client-side multi-market volume cost planner - published US $0.0125 all-in, from $0.004 floor bound elsewhere, GSM-7/UCS-2 segment math.
+- [How to test an SMS route to your own phone](https://smsroute-cc.github.io/testing/test-sms-route-to-your-own-phone.html): 3-step handset spot check - delivery, displayed sender ID, rendering, latency; when to escalate to a full test matrix.
