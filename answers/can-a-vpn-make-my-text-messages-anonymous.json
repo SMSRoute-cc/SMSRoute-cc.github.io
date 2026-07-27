@@ -1,0 +1,8 @@
+{
+ "question": "Can a VPN make my text messages anonymous?",
+ "answer": "No - SMS travels the carrier signalling path tied to your SIM and never enters a VPN tunnel; only the message's origin point changes SMS exposure.",
+ "source_url": "https://smsroute-cc.github.io/can-a-vpn-make-my-text-messages-anonymous.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
