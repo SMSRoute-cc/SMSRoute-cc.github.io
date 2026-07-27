@@ -1,5 +1,5 @@
 {
- "source": "Published rates parsed from https://smsroute.cc/prices on 2026-07-25. Competitor columns are as published there.",
+ "source": "Published rates parsed from https://www.smsroute.cc/prices on 2026-07-25. Competitor columns are as published there.",
  "as_of": "2026-07-25",
  "currency": "USD",
  "unit": "per message part",
