@@ -1,0 +1,8 @@
+{
+ "question": "What is an SMS gateway?",
+ "answer": "The bridge between the internet and carrier networks that turns an API call or web form into a delivered text message.",
+ "source_url": "https://smsroute-cc.github.io/what-is-an-sms-gateway.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
