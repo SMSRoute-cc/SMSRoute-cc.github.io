@@ -372,7 +372,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; 237 MCCs &middot; 40 countries detailed &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">MCC-MNC / Mobile Network Lookup</h1>
-      <div class="hero-sub"><p>Search by Mobile Country Code ("262"), a full MCC-MNC pair ("262-01" or "26201"), a country name, or a carrier brand, against a public E.212 allocation snapshot: every ITU-assigned MCC, plus Mobile Network Codes for the major operators in 40 countries. This shows which network a code was <em>assigned</em> to &mdash; not which network answers a specific phone number right now. See the portability note below before using it for routing decisions.</p></div>
+      <div class="hero-sub"><p>Search by Mobile Country Code ("262"), a full MCC-MNC pair ("262-01" or "26201"), a country name, or a carrier brand, against a public E.212 allocation snapshot: every ITU-assigned MCC, plus Mobile Network Codes for the major operators in 40 countries. This shows which network a code was <em>assigned</em> to &mdash; not which network answers a specific phone number right now. See the portability note below before using it for routing decisions.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">This lookup ships with the SMSRoute guides; allocations are sourced rows, not live carrier lookups.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>Allocation snapshot 2026-07</span></div>
     </div>
   </div>
@@ -390,7 +391,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
   <p class="tl-hint" id="mncStatus">Showing all <span class="mm-count">626</span> rows.</p>
 </div>
 
-<div class="a2-callout a2-warn"><p><b>Not a live lookup</b> This is an allocation registry snapshot &mdash; it tells you which network a code is <strong>assigned</strong> to, not which network currently serves a given phone number. Number portability (MNP) means a live number can be on a different network than the one its code was originally issued to; determining the live network needs an HLR lookup, not a static table. Use <a href="https://smsroute.cc/hlr-lookup">HLR lookup on the main site</a> for the live answer, <a href="/tools/e164-normalizer.html">the E.164 normalizer</a> to clean a number first, or browse <a href="/countries/">per-country SMS requirements</a> for delivery rules by market.</p></div>
+<div class="a2-callout a2-warn"><p><b>Not a live lookup</b> This is an allocation registry snapshot &mdash; it tells you which network a code is <strong>assigned</strong> to, not which network currently serves a given phone number. Number portability (MNP) means a live number can be on a different network than the one its code was originally issued to; determining the live network needs an HLR lookup, not a static table. Use <a href="https://smsroute.cc/hlr-lookup">HLR lookup on the main site</a> for the live answer, <a href="/tools/e164-normalizer.html">the E.164 normalizer</a> to clean a number first, or browse <a href="/countries/">per-country SMS requirements</a> for delivery rules by market.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.92rem">These references are maintained as part of the SMSRoute guides and updated with the corpus.</p></div>
 
 <div class="secs">
 <section><h2 id="s1">What MCC and MNC actually are (E.212)</h2>
@@ -1084,6 +1086,7 @@ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&am
 })();
 </script>
 
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">Corrections welcome via the SMSRoute guides changelog — every tool here is versioned with the corpus.</p>
 </article>
 </main>
 <footer class="site-footer">
