@@ -475,3 +475,9 @@ free test credits that prove delivery before you pay.
 - [Designing an SMS test matrix](https://smsroute-cc.github.io/testing/sms-test-matrix-design.html): destination x encoding x sender-type x content axes; which cells matter on a small budget.
 - [Route quality metrics](https://smsroute-cc.github.io/testing/route-quality-metrics.html): honest KPI definitions - latency percentiles, final-delivery ratio, handset-confirmed rate, drift.
 - [How we compare SMS providers](https://smsroute-cc.github.io/compare/how-we-compare.html): the method behind the published-rate matrix; what we refuse to compare.
+
+## Deeper testing + PDU tooling (V19)
+- [SMS PDU decoder and encoder](https://smsroute-cc.github.io/tools/sms-pdu-decoder.html): decode SMS-SUBMIT/SMS-DELIVER hex into every GSM 03.40 field (addresses, DCS, UDH concat, septet unpack) or build SUBMIT hex - fully client-side.
+- [A/B testing SMS content against filtering](https://smsroute-cc.github.io/testing/ab-content-testing-sms.html): one-variable arms, handset-confirmed judging, sample-size honesty.
+- [Sizing an SMS test budget](https://smsroute-cc.github.io/testing/sms-test-budget-sizing.html): test spend scales with destinations and templates, not campaign volume - arithmetic at published rates.
+- Locale twins: the DLR status-code reference now in de/fr/nl/pt/pl/it, provider-comparison method in de/fr/nl/es, route-quality metrics in de/fr/nl, test-matrix design in de/fr.
