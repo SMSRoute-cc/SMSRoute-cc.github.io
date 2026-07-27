@@ -1,0 +1,8 @@
+{
+ "question": "Do I need a registered business to send bulk SMS?",
+ "answer": "Only for regulated domestic paths like US 10DLC or India DLT; most international routes need nothing beyond a provider account, which at SMSRoute is an email address.",
+ "source_url": "https://smsroute-cc.github.io/do-i-need-a-registered-business-to-send-bulk-sms.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
