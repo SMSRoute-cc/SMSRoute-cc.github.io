@@ -360,6 +360,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <dt>Does HTTP 200 mean I was billed and the SMS was delivered?</dt><dd>HTTP 200 means the gateway accepted the send request. Billing follows that provider’s accept/segment rules; delivery is signaled later by DLR and can fail or stay unknown after accept. Reconcile submitted, billed, and delivered as separate counters.</dd>
 <dt>What should a send-only SMS route API not charge for?</dt><dd>A pure outbound meter should not add number rental, inbound/receive fees, or monthly minimums beyond the stated top-up floor. SMSRoute’s model is send-only with a $5 minimum top-up, email-only signup, and crypto top-up (BTC/ETH/USDT/XMR/LTC/SOL). Two-way or rented-number products use a different invoice shape.</dd>
 </dl>
+
+<div class="srx-cta"><p>Published rates, email-only signup, crypto top-up from $5. <a href="https://smsroute.cc/signup">Get free test credits</a> and run your own 100-message probe — the numbers on this page are checkable, not promises.</p></div>
 <h2>Related</h2><ul class="srx-sib">
 <li><a href="/sms-gateway-cost-per-message.html">The all-in cost arithmetic</a></li>
 <li><a href="/testing/sms-test-matrix-design.html">Design a billing-honest test matrix</a></li>
