@@ -1,0 +1,13 @@
+# SMSRoute guides - answer snippets (question | one-sentence answer | canonical URL)
+# as of 2026-07-26
+
+Can an anonymous text be traced? | Yes - anonymous to the recipient (they see a shared sender), but the sending service holds logs and lawful process reaches provider and carrier records. | https://smsroute-cc.github.io/can-an-anonymous-text-be-traced.html
+Can a VPN make my text messages anonymous? | No - SMS travels the carrier signalling path tied to your SIM and never enters a VPN tunnel; only the message's origin point changes SMS exposure. | https://smsroute-cc.github.io/can-a-vpn-make-my-text-messages-anonymous.html
+Can I send SMS anonymously? | Yes, toward the recipient: a web SMS service sends from a shared or alphanumeric sender so your number never appears; the account layer at SMSRoute is an email address and crypto payment. | https://smsroute-cc.github.io/can-i-send-sms-anonymously.html
+Do I need a registered business to send bulk SMS? | Only for regulated domestic paths like US 10DLC or India DLT; most international routes need nothing beyond a provider account, which at SMSRoute is an email address. | https://smsroute-cc.github.io/do-i-need-a-registered-business-to-send-bulk-sms.html
+Should I use Telegram Gateway instead of an SMS API? | Use Telegram Gateway ($0.01/code) for users who opted in on Telegram and SMS for everyone else - the Gateway cannot reach anyone outside Telegram. | https://smsroute-cc.github.io/telegram-gateway-vs-sms-api.html
+Why was my SMS filtered? | Most commonly a public link shortener, SHAFT-C content on US routes, unregistered domestic traffic, or a silent GSM-7 to UCS-2 encoding upgrade - the pre-flight linter checks all of them. | https://smsroute-cc.github.io/tools/sms-deliverability-linter.html
+Is a no-KYC SMS service legal? | Yes - minimal account identity is lawful in most jurisdictions; the rules that matter attach to message conduct, and SMSRoute enforces a published acceptable-use policy. | https://smsroute-cc.github.io/no-kyc-sms-acceptable-use-what-we-refuse.html
+Is SMS end-to-end encrypted? | No SMS is - the protocol has no end-to-end layer, so carriers on the path always see content and routing metadata. | https://smsroute-cc.github.io/is-sms-encrypted.html
+How much does SMS to the US cost? | $0.0125 per message all-in through SMSRoute, with the global floor at $0.004 and per-country samples published before top-up. | https://smsroute-cc.github.io/cheap-sms-api-pricing.html
+What is an SMS gateway? | The bridge between the internet and carrier networks that turns an API call or web form into a delivered text message. | https://smsroute-cc.github.io/what-is-an-sms-gateway.html
