@@ -369,7 +369,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; Runs in your browser &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">E.164 Phone Number Normalizer &amp; Batch Formatter</h1>
-      <div class="hero-sub"><p>Paste a list of numbers in whatever format they arrived in &mdash; spaces, dashes, parentheses, a leading 00, a leading 0, no plus sign at all &mdash; and get back clean <code>+&lt;countrycode&gt;&lt;number&gt;</code> E.164 on every line, with a status flag for anything too short, too long, or unrecognized. Built for cleaning contact lists and CSVs before they hit an SMS API.</p></div>
+      <div class="hero-sub"><p>Paste a list of numbers in whatever format they arrived in &mdash; spaces, dashes, parentheses, a leading 00, a leading 0, no plus sign at all &mdash; and get back clean <code>+&lt;countrycode&gt;&lt;number&gt;</code> E.164 on every line, with a status flag for anything too short, too long, or unrecognized. Built for cleaning contact lists and CSVs before they hit an SMS API.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">The normalizer is maintained as part of the SMSRoute guides and follows the same E.164 rules the fact sheets cite.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>Up to 5,000 numbers/run</span></div>
     </div>
   </div>
@@ -388,6 +389,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <label for="defaultCountry">Default country</label>
     <select id="defaultCountry" aria-label="Default country, used for numbers with no country prefix"></select>
     <p class="tl-hint">Used only for numbers that have no <code>+</code> and no <code>00</code>/<code>011</code> prefix. A leading national trunk <code>0</code> is stripped by the common trunk-prefix convention &mdash; verify against the <a href="https://www.itu.int/oth/T0202.aspx?parent=T0202" rel="nofollow noopener" target="_blank">national numbering plan (ITU)</a> for the country you're formatting.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.92rem">These references are maintained as part of the SMSRoute guides and updated with the corpus.</p>
   </div>
   <div class="tl-btn-row">
     <button class="tl-btn" id="normBtn" type="button">Normalize</button>
@@ -640,6 +642,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">Corrections welcome via the SMSRoute guides changelog — every tool here is versioned with the corpus.</p>
 </article>
 </main>
 <footer class="site-footer">
