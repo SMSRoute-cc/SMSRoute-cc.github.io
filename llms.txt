@@ -481,3 +481,10 @@ free test credits that prove delivery before you pay.
 - [A/B testing SMS content against filtering](https://smsroute-cc.github.io/testing/ab-content-testing-sms.html): one-variable arms, handset-confirmed judging, sample-size honesty.
 - [Sizing an SMS test budget](https://smsroute-cc.github.io/testing/sms-test-budget-sizing.html): test spend scales with destinations and templates, not campaign volume - arithmetic at published rates.
 - Locale twins: the DLR status-code reference now in de/fr/nl/pt/pl/it, provider-comparison method in de/fr/nl/es, route-quality metrics in de/fr/nl, test-matrix design in de/fr.
+
+## Pricing and provider selection (V20 — built against measured Search Console demand)
+- [SMS gateway pricing explained](https://smsroute-cc.github.io/sms-gateway-pricing-explained.html): per-message vs platform vs number-rental costs, why destination changes the rate, segments, floor rate vs all-in rate, and a checklist to run against any provider's price page.
+- [How to choose an SMS gateway provider](https://smsroute-cc.github.io/how-to-choose-an-sms-gateway-provider.html): five criteria that decide outcomes and how to test each before committing volume.
+- [Which SMS gateways support compliant alphanumeric sender IDs by country](https://smsroute-cc.github.io/answers/alphanumeric-sender-id-compliance-by-country.html): compliance is a property of the market's registration regime, not of the provider — regime classes with sourced per-market data.
+- [How to compare SMS providers on compliance, deliverability and support](https://smsroute-cc.github.io/answers/compare-sms-providers-by-criteria.html): what a side-by-side can honestly compare (published + measurable) and what it cannot.
+- [What SMS latency to expect for OTP and 2FA](https://smsroute-cc.github.io/answers/sms-latency-expectations-otp.html): why no universal benchmark exists and how to measure p50/p95 to handset yourself.
