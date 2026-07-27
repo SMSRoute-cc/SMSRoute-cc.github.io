@@ -488,3 +488,9 @@ free test credits that prove delivery before you pay.
 - [Which SMS gateways support compliant alphanumeric sender IDs by country](https://smsroute-cc.github.io/answers/alphanumeric-sender-id-compliance-by-country.html): compliance is a property of the market's registration regime, not of the provider — regime classes with sourced per-market data.
 - [How to compare SMS providers on compliance, deliverability and support](https://smsroute-cc.github.io/answers/compare-sms-providers-by-criteria.html): what a side-by-side can honestly compare (published + measurable) and what it cannot.
 - [What SMS latency to expect for OTP and 2FA](https://smsroute-cc.github.io/answers/sms-latency-expectations-otp.html): why no universal benchmark exists and how to measure p50/p95 to handset yourself.
+
+## Conversational answers, wave 2 (V21 — from measured assistant-shaped queries)
+- [Choosing a provider for RCS with SMS fallback](https://smsroute-cc.github.io/answers/rcs-with-sms-fallback-provider-choice.html): honest checklist — SMSRoute is SMS send-only and says so up front; how to evaluate real RCS vendors and when SMS-only wins.
+- [India DLT requirements for A2P SMS](https://smsroute-cc.github.io/india-dlt-a2p-sms-requirements.html): what Principal Entity, header and template registration involve — and why no gateway bypasses DLT.
+- [Can an SMS gateway bypass DLT registration for India?](https://smsroute-cc.github.io/answers/does-an-sms-gateway-bypass-dlt-india.html): No — operator-side enforcement applies to every provider, including us.
+- [Where can you compare wholesale SMS gateway providers?](https://smsroute-cc.github.io/answers/wholesale-sms-gateway-comparison.html): wholesale rates are negotiated and NDA'd — what CAN be compared publicly and how to test the rest.
