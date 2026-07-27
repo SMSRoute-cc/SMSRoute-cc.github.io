@@ -1,0 +1,1478 @@
+{
+ "name": "SMSRoute country SMS delivery facts",
+ "description": "Per-country SMS delivery-intelligence facts: published per-message rate (dated, first-party source), sender-ID regime (named public basis), ITU calling code, dominant-language charset class under GSM 03.38. Every field carries {value, source, retrieved} provenance.",
+ "license": "https://creativecommons.org/licenses/by/4.0/",
+ "version": "2.0.0",
+ "generated": "2026-07-27",
+ "floor_note": {
+  "value": "Rates start from $0.004 per message (lowest-cost routes); US all-in $0.0125.",
+  "source": "https://www.smsroute.cc/pricing",
+  "retrieved": "2026-07-27"
+ },
+ "count": 40,
+ "countries": [
+  {
+   "iso2": "AU",
+   "slug": "australia",
+   "country": "Australia",
+   "calling_code": {
+    "value": "+61",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.045,
+    "source": "https://www.smsroute.cc/australia",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per ACMA / Australian mobile carrier SMS Sender ID Registration Program",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "AU-rollout",
+    "source": "per ACMA / Australian mobile carrier SMS Sender ID Registration Program",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Australia is rolling out an industry-run SMS Sender ID Registration program (ACMA-backed) so brands register alphanumeric IDs to curb spoofing; unregistered alphanumeric senders face growing restrictions.",
+   "primary_language": {
+    "value": "English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "AT",
+   "slug": "austria",
+   "country": "Austria",
+   "calling_code": {
+    "value": "+43",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.019,
+    "source": "https://www.smsroute.cc/austria",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Austrian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Austrian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "German",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "BE",
+   "slug": "belgium",
+   "country": "Belgium",
+   "calling_code": {
+    "value": "+32",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.018,
+    "source": "https://www.smsroute.cc/belgium",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Belgian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Belgian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Dutch/French",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "BR",
+   "slug": "brazil",
+   "country": "Brazil",
+   "calling_code": {
+    "value": "+55",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.006,
+    "source": "https://www.smsroute.cc/brazil",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Brazilian mobile operator A2P practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Brazilian mobile operator A2P practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are generally allowed; higher-volume A2P traffic typically goes through local aggregator approval.",
+   "primary_language": {
+    "value": "Portuguese",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ã õ ç â are outside GSM-7 basic — accented Portuguese usually sends as UCS-2"
+  },
+  {
+   "iso2": "CA",
+   "slug": "canada",
+   "country": "Canada",
+   "calling_code": {
+    "value": "+1",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.016,
+    "source": "https://www.smsroute.cc/canada",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "not-supported",
+    "source": "per Canadian carrier A2P messaging practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Canadian carrier A2P messaging practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are not reliably delivered; A2P traffic typically runs over long codes or short codes instead.",
+   "primary_language": {
+    "value": "English/French",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "French accents like é fit GSM-7; œ does not"
+  },
+  {
+   "iso2": "CZ",
+   "slug": "czechia",
+   "country": "Czechia",
+   "calling_code": {
+    "value": "+420",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.013,
+    "source": "https://www.smsroute.cc/czechia",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Czech mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Czech mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Czech",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ě š č ř ž ů are outside GSM-7 — native Czech usually sends as UCS-2"
+  },
+  {
+   "iso2": "DK",
+   "slug": "denmark",
+   "country": "Denmark",
+   "calling_code": {
+    "value": "+45",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.021,
+    "source": "https://www.smsroute.cc/denmark",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Danish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Danish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Danish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "æ ø å are in the GSM-7 basic set"
+  },
+  {
+   "iso2": "EG",
+   "slug": "egypt",
+   "country": "Egypt",
+   "calling_code": {
+    "value": "+20",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.025,
+    "source": "https://www.smsroute.cc/egypt",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per NTRA Egypt sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per NTRA Egypt sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Sender IDs generally require regulator/operator approval before commercial use.",
+   "primary_language": {
+    "value": "Arabic",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "FI",
+   "slug": "finland",
+   "country": "Finland",
+   "calling_code": {
+    "value": "+358",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.023,
+    "source": "https://www.smsroute.cc/finland",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Finnish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Finnish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Finnish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ä ö fit GSM-7; š ž (rare) do not"
+  },
+  {
+   "iso2": "FR",
+   "slug": "france",
+   "country": "France",
+   "calling_code": {
+    "value": "+33",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.022,
+    "source": "https://www.smsroute.cc/france",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per French mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per French mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are widely used; no centralized government registry for the sender ID itself.",
+   "primary_language": {
+    "value": "French",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "é è ù à fit GSM-7; ê ç î œ do not — one such char switches the message to UCS-2 (70 chars/segment)"
+  },
+  {
+   "iso2": "DE",
+   "slug": "germany",
+   "country": "Germany",
+   "calling_code": {
+    "value": "+49",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.021,
+    "source": "https://www.smsroute.cc/germany",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per German mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per German mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used by businesses with no centralized registry.",
+   "primary_language": {
+    "value": "German",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ä ö ü ß are in the GSM-7 basic set"
+  },
+  {
+   "iso2": "HK",
+   "slug": "hong-kong",
+   "country": "Hong Kong",
+   "calling_code": {
+    "value": "+852",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.02,
+    "source": "https://www.smsroute.cc/hong-kong",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Hong Kong mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Hong Kong mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used without a centralized government sender-ID registry.",
+   "primary_language": {
+    "value": "Cantonese/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Chinese characters force UCS-2; English traffic fits GSM-7"
+  },
+  {
+   "iso2": "IN",
+   "slug": "india",
+   "country": "India",
+   "calling_code": {
+    "value": "+91",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.0135,
+    "source": "https://www.smsroute.cc/india",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per TRAI DLT regulation for commercial SMS",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "DLT",
+    "source": "per TRAI DLT regulation for commercial SMS",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Sender headers and content templates must be registered on the DLT (Distributed Ledger Technology) platform via a TRAI-registered telecom operator before sending.",
+   "primary_language": {
+    "value": "Hindi/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Devanagari and other Indic scripts force UCS-2; English-language traffic fits GSM-7"
+  },
+  {
+   "iso2": "IE",
+   "slug": "ireland",
+   "country": "Ireland",
+   "calling_code": {
+    "value": "+353",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.02,
+    "source": "https://www.smsroute.cc/ireland",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Irish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Irish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "English/Irish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Irish long accents (á é í ó ú) are not all in GSM-7 basic set"
+  },
+  {
+   "iso2": "IT",
+   "slug": "italy",
+   "country": "Italy",
+   "calling_code": {
+    "value": "+39",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.017,
+    "source": "https://www.smsroute.cc/italy",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Italian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Italian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Italian",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "è é ù ò ì fit GSM-7; accented capitals do not"
+  },
+  {
+   "iso2": "JP",
+   "slug": "japan",
+   "country": "Japan",
+   "calling_code": {
+    "value": "+81",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.058,
+    "source": "https://www.smsroute.cc/japan",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "not-supported",
+    "source": "per Japanese mobile carrier SMS delivery practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Japanese mobile carrier SMS delivery practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Japanese carriers commonly override or restrict custom alphanumeric sender display; numeric and short-code routes are the standard path.",
+   "primary_language": {
+    "value": "Japanese",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Kanji/kana force UCS-2 — 70 chars per single SMS, 67 per segment"
+  },
+  {
+   "iso2": "MY",
+   "slug": "malaysia",
+   "country": "Malaysia",
+   "calling_code": {
+    "value": "+60",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.013,
+    "source": "https://www.smsroute.cc/malaysia",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per Malaysian telecom operator sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Malaysian telecom operator sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs generally require registration with local operators/regulator before delivery.",
+   "primary_language": {
+    "value": "Malay/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "MX",
+   "slug": "mexico",
+   "country": "Mexico",
+   "calling_code": {
+    "value": "+52",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.015,
+    "source": "https://www.smsroute.cc/mexico",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Mexican mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Mexican mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used without a centralized government sender-ID registry.",
+   "primary_language": {
+    "value": "Spanish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "NL",
+   "slug": "netherlands",
+   "country": "Netherlands",
+   "calling_code": {
+    "value": "+31",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.019,
+    "source": "https://www.smsroute.cc/netherlands",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Dutch mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Dutch mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Dutch",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "NZ",
+   "slug": "new-zealand",
+   "country": "New Zealand",
+   "calling_code": {
+    "value": "+64",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.048,
+    "source": "https://www.smsroute.cc/new-zealand",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per New Zealand mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per New Zealand mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used without a centralized government sender-ID registry.",
+   "primary_language": {
+    "value": "English/Māori",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Māori macrons (ā ē ī ō ū) are outside GSM-7"
+  },
+  {
+   "iso2": "NG",
+   "slug": "nigeria",
+   "country": "Nigeria",
+   "calling_code": {
+    "value": "+234",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.011,
+    "source": "https://www.smsroute.cc/nigeria",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per NCC Nigeria sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per NCC Nigeria sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Sender IDs must be registered with the Nigerian Communications Commission (NCC) via a local aggregator before use.",
+   "primary_language": {
+    "value": "English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "NO",
+   "slug": "norway",
+   "country": "Norway",
+   "calling_code": {
+    "value": "+47",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.025,
+    "source": "https://www.smsroute.cc/norway",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Norwegian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Norwegian mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Norwegian",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "PK",
+   "slug": "pakistan",
+   "country": "Pakistan",
+   "calling_code": {
+    "value": "+92",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.01,
+    "source": "https://www.smsroute.cc/pakistan",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per PTA Pakistan SMS headline (sender ID) registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per PTA Pakistan SMS headline (sender ID) registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Commercial sender IDs (headlines) must be registered with operators under PTA anti-spam rules before sending.",
+   "primary_language": {
+    "value": "Urdu/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Urdu (Arabic script) forces UCS-2; English traffic fits GSM-7"
+  },
+  {
+   "iso2": "PH",
+   "slug": "philippines",
+   "country": "Philippines",
+   "calling_code": {
+    "value": "+63",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.009,
+    "source": "https://www.smsroute.cc/philippines",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Philippine mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Philippine mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used; some operators require additional registration for masking/bank-grade sender names.",
+   "primary_language": {
+    "value": "Filipino/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "PL",
+   "slug": "poland",
+   "country": "Poland",
+   "calling_code": {
+    "value": "+48",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.012,
+    "source": "https://www.smsroute.cc/poland",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Polish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Polish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Polish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ą ę ś ł ż ź ć ń are outside GSM-7 — native Polish text sends as UCS-2 (70 chars/segment); ASCII-folded Polish fits 160"
+  },
+  {
+   "iso2": "PT",
+   "slug": "portugal",
+   "country": "Portugal",
+   "calling_code": {
+    "value": "+351",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.017,
+    "source": "https://www.smsroute.cc/portugal",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Portuguese mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Portuguese mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Portuguese",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ã õ ç â ê are outside GSM-7 basic — accented Portuguese usually sends as UCS-2"
+  },
+  {
+   "iso2": "QA",
+   "slug": "qatar",
+   "country": "Qatar",
+   "calling_code": {
+    "value": "+974",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.06,
+    "source": "https://www.smsroute.cc/qatar",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per Qatar telecom operator sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "GCC-prereg",
+    "source": "per Qatar telecom operator sender ID registration practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs generally require registration with local operators, following the wider GCC pre-registration pattern.",
+   "primary_language": {
+    "value": "Arabic/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "RU",
+   "slug": "russia",
+   "country": "Russia",
+   "calling_code": {
+    "value": "+7",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.018,
+    "source": "https://www.smsroute.cc/russia",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per Russian mobile operator alphanumeric name registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Russian mobile operator alphanumeric name registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender names require registration tied to a legal entity, arranged through a licensed local aggregator.",
+   "primary_language": {
+    "value": "Russian",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Cyrillic always sends as UCS-2 — 70 chars per single SMS, 67 per concatenated segment"
+  },
+  {
+   "iso2": "SA",
+   "slug": "saudi-arabia",
+   "country": "Saudi Arabia",
+   "calling_code": {
+    "value": "+966",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.055,
+    "source": "https://www.smsroute.cc/saudi-arabia",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per CITC Saudi Arabia sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "GCC-prereg",
+    "source": "per CITC Saudi Arabia sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs require pre-registration with local operators; unregistered senders are commonly blocked or overridden.",
+   "primary_language": {
+    "value": "Arabic",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "SG",
+   "slug": "singapore",
+   "country": "Singapore",
+   "calling_code": {
+    "value": "+65",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.025,
+    "source": "https://www.smsroute.cc/singapore",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per Singapore SMS Sender ID Registry (SSIR) requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Singapore SMS Sender ID Registry (SSIR) requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs must be registered in the SMS Sender ID Registry (SSIR); unregistered alphanumeric senders are labeled 'Likely-SCAM' by default.",
+   "primary_language": {
+    "value": "English/Chinese/Malay/Tamil",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "English/Malay fit GSM-7; Chinese and Tamil force UCS-2"
+  },
+  {
+   "iso2": "ZA",
+   "slug": "south-africa",
+   "country": "South Africa",
+   "calling_code": {
+    "value": "+27",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.028,
+    "source": "https://www.smsroute.cc/south-africa",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per South African mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per South African mobile operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used without a centralized government sender-ID registry.",
+   "primary_language": {
+    "value": "English/Zulu/Afrikaans +8",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "KR",
+   "slug": "south-korea",
+   "country": "South Korea",
+   "calling_code": {
+    "value": "+82",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.045,
+    "source": "https://www.smsroute.cc/south-korea",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per KISA sender number pre-registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "KISA",
+    "source": "per KISA sender number pre-registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Sender numbers/IDs used for bulk messaging must be pre-registered; KISA operates the sender number verification system used by carriers.",
+   "primary_language": {
+    "value": "Korean",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Hangul forces UCS-2"
+  },
+  {
+   "iso2": "ES",
+   "slug": "spain",
+   "country": "Spain",
+   "calling_code": {
+    "value": "+34",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.018,
+    "source": "https://www.smsroute.cc/spain",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Spanish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Spanish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Spanish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ñ ¿ ¡ é fit GSM-7; á í ó ú do not"
+  },
+  {
+   "iso2": "SE",
+   "slug": "sweden",
+   "country": "Sweden",
+   "calling_code": {
+    "value": "+46",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.022,
+    "source": "https://www.smsroute.cc/sweden",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Swedish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Swedish mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "Swedish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "CH",
+   "slug": "switzerland",
+   "country": "Switzerland",
+   "calling_code": {
+    "value": "+41",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.024,
+    "source": "https://www.smsroute.cc/switzerland",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per Swiss mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per Swiss mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are commonly used with no centralized registry.",
+   "primary_language": {
+    "value": "German/French/Italian",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7-ext",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "TR",
+   "slug": "turkey",
+   "country": "Turkey",
+   "calling_code": {
+    "value": "+90",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.022,
+    "source": "https://www.smsroute.cc/turkey",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per BTK / İYS Turkey electronic messaging regulation",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "IYS",
+    "source": "per BTK / İYS Turkey electronic messaging regulation",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Marketing messages require İYS (electronic message management system) consent records plus an operator-level sender title (başlık) registration.",
+   "primary_language": {
+    "value": "Turkish",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "ğ ş İ ı need the Turkish national shift table (rarely enabled end-to-end) — in practice native Turkish sends as UCS-2"
+  },
+  {
+   "iso2": "AE",
+   "slug": "united-arab-emirates",
+   "country": "United Arab Emirates",
+   "calling_code": {
+    "value": "+971",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.052,
+    "source": "https://www.smsroute.cc/united-arab-emirates",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per UAE TRA / telecom operator sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "GCC-prereg",
+    "source": "per UAE TRA / telecom operator sender ID registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs must be registered with local operators before use; unregistered senders are commonly blocked.",
+   "primary_language": {
+    "value": "Arabic/English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Arabic script forces UCS-2 — 70 chars per single SMS"
+  },
+  {
+   "iso2": "GB",
+   "slug": "united-kingdom",
+   "country": "United Kingdom",
+   "calling_code": {
+    "value": "+44",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.019,
+    "source": "https://www.smsroute.cc/united-kingdom",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "allowed",
+    "source": "per UK mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "none",
+    "source": "per UK mobile network operator practice",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric sender IDs are widely used; no centralized government pre-registration beyond normal carrier/aggregator onboarding.",
+   "primary_language": {
+    "value": "English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "US",
+   "slug": "united-states",
+   "country": "United States",
+   "calling_code": {
+    "value": "+1",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.0125,
+    "source": "https://www.smsroute.cc/united-states",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "not-supported",
+    "source": "per CTIA messaging principles / carrier A2P 10DLC framework",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "10DLC",
+    "source": "per CTIA messaging principles / carrier A2P 10DLC framework",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "US carriers do not deliver alphanumeric sender IDs; brands register a 10DLC campaign or use a toll-free/short code instead.",
+   "primary_language": {
+    "value": "English",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "gsm7",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "iso2": "VN",
+   "slug": "vietnam",
+   "country": "Vietnam",
+   "calling_code": {
+    "value": "+84",
+    "source": "ITU-T E.164 assigned country codes",
+    "retrieved": "2026-07-27"
+   },
+   "published_rate_usd": {
+    "value": 0.01,
+    "source": "https://www.smsroute.cc/vietnam",
+    "retrieved": "2026-07-27"
+   },
+   "sender_id_alphanumeric": {
+    "value": "pre-registration",
+    "source": "per Vietnam telecom operator brandname registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_regime": {
+    "value": "other",
+    "source": "per Vietnam telecom operator brandname registration requirement",
+    "retrieved": "2026-07-26"
+   },
+   "sender_id_notes": "Alphanumeric 'brandname' sender IDs require pre-registration with local telecom operators, typically backed by a business license.",
+   "primary_language": {
+    "value": "Vietnamese",
+    "source": "official/dominant language, public record",
+    "retrieved": "2026-07-27"
+   },
+   "charset_class": {
+    "value": "ucs2",
+    "source": "GSM 03.38 default alphabet vs script analysis",
+    "retrieved": "2026-07-27"
+   },
+   "charset_note": "Vietnamese tone marks (ạ ế ữ …) are outside GSM-7 — native text sends as UCS-2"
+  }
+ ]
+}
