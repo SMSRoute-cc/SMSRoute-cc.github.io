@@ -1,0 +1,117 @@
+{
+ "what": "SMSRoute SMS glossary",
+ "as_of": "2026-07-26",
+ "url": "https://smsroute-cc.github.io/glossary.html",
+ "terms": [
+  {
+   "term": "SMS gateway",
+   "definition": "An SMS gateway bridges applications to mobile carrier networks so programs can send and receive text messages. It manages routing, encoding, and delivery across destinations. SMSRoute operates a gateway serving 149 countries with simple access and all-in pricing (US $0.0125 per message; lowest published country rate $0.004).",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#sms-gateway"
+  },
+  {
+   "term": "SMS API",
+   "definition": "An SMS API lets developers send and manage text messages through HTTP requests or similar interfaces, handling authentication, payloads, and status callbacks. It supports automation for notifications and alerts. SMSRoute provides an SMS API after email-only signup with crypto balance top-ups.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#sms-api"
+  },
+  {
+   "term": "A2P messaging",
+   "definition": "A2P messaging means Application-to-Person traffic: texts originating from software or business systems to mobile users for alerts, OTPs, or campaigns. It differs from person-to-person chats and faces stricter carrier rules. Most bulk and transactional SMS, including SMSRoute traffic, is A2P.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#a2p-messaging"
+  },
+  {
+   "term": "sender ID",
+   "definition": "A sender ID is the telephone number or name shown as the source of an SMS on the recipient’s handset. Country and carrier rules dictate whether numeric or alphanumeric forms are allowed. It identifies the originator to the recipient only; SMS has no end-to-end encryption.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#sender-id"
+  },
+  {
+   "term": "alphanumeric sender ID",
+   "definition": "An alphanumeric sender ID displays a custom name (usually up to 11 characters) instead of a phone number as the SMS originator. Availability and pre-registration requirements differ by country. It aids brand recognition toward the recipient while SMS itself remains unencrypted end-to-end.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#alphanumeric-sender-id"
+  },
+  {
+   "term": "GSM-7",
+   "definition": "GSM-7 is the default 7-bit character set for SMS, covering basic Latin letters, digits, and common symbols. It packs up to 160 characters into one message segment. Characters outside the set require escape codes or a switch to UCS-2 encoding.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#gsm-7"
+  },
+  {
+   "term": "UCS-2",
+   "definition": "UCS-2 is a 16-bit encoding used for SMS when the text includes non-GSM characters, such as many non-Latin scripts or emojis. It limits each segment to 70 characters. Multipart messages are required for longer content, with each segment billed separately.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#ucs-2"
+  },
+  {
+   "term": "message segment",
+   "definition": "A message segment is one SMS unit limited to 160 GSM-7 characters or 70 UCS-2 characters. Longer texts are split into multiple segments that travel and are charged independently. Carriers and gateways bill per segment, not per logical message.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#message-segment"
+  },
+  {
+   "term": "concatenated SMS (UDH)",
+   "definition": "Concatenated SMS uses a User Data Header (UDH) so a long message can be divided into ordered segments and reassembled by the receiving handset. Each segment counts as a separate SMS for billing and throughput. Maximum length and support vary by network.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#concatenated-sms-udh"
+  },
+  {
+   "term": "DLR (delivery receipt)",
+   "definition": "A DLR (delivery receipt) is a status report returned by the carrier or gateway indicating whether an SMS reached the handset, expired, or failed. Gateways expose DLRs via API or webhook. It confirms network delivery only; SMS has no end-to-end encryption.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#dlr-delivery-receipt"
+  },
+  {
+   "term": "HLR lookup",
+   "definition": "An HLR lookup queries a mobile network’s Home Location Register to verify whether a number is valid, active, and which operator currently serves it. Senders use it to clean lists and reduce undeliverable messages before submitting SMS traffic.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#hlr-lookup"
+  },
+  {
+   "term": "OTP",
+   "definition": "An OTP (one-time password) is a short-lived numeric or alphanumeric code delivered by SMS for login verification or transaction confirmation. It is a common A2P use case. SMS delivery of OTPs is not end-to-end encrypted and should be paired with other safeguards.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#otp"
+  },
+  {
+   "term": "10DLC",
+   "definition": "10DLC denotes 10-digit long codes used for A2P SMS in the United States. Brands and campaigns must be registered with carriers to obtain throughput and improve deliverability. Unregistered traffic faces filtering; compliance is required for US long-code messaging.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#10dlc"
+  },
+  {
+   "term": "DLT (India)",
+   "definition": "DLT (Distributed Ledger Technology) is India’s mandatory registration system for commercial SMS. Entities must pre-register headers, templates, and consents on approved platforms before traffic is accepted. Non-compliant messages are blocked by Indian operators.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#dlt-india"
+  },
+  {
+   "term": "E.164",
+   "definition": "E.164 is the international numbering format that begins with a plus sign and country code followed by the national significant number, maximum 15 digits. SMS APIs expect destination and source numbers in E.164 so messages route correctly across borders.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#e-164"
+  },
+  {
+   "term": "SMPP",
+   "definition": "SMPP (Short Message Peer-to-Peer) is a binary TCP protocol widely used for high-volume SMS exchange between applications, gateways, and carriers. It supports efficient bind sessions, enquire links, and delivery receipts as an alternative to HTTP-based APIs.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#smpp"
+  },
+  {
+   "term": "webhook",
+   "definition": "A webhook is a user-defined HTTPS endpoint that receives real-time push notifications, such as SMS delivery receipts or inbound messages, from the gateway. It eliminates polling and enables immediate application responses to status or MO events.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#webhook"
+  },
+  {
+   "term": "quiet hours",
+   "definition": "Quiet hours are legally or carrier-defined time windows during which promotional or non-urgent SMS may not be delivered to consumers. Restrictions vary by country and often exempt pure transactional traffic. Observing them reduces complaints and filtering risk.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#quiet-hours"
+  },
+  {
+   "term": "opt-out (STOP)",
+   "definition": "Opt-out (STOP) lets recipients revoke consent by replying with a keyword such as STOP. Regulations require senders to process these requests promptly and cease further marketing texts. Proper handling is mandatory for compliant A2P programs in most markets.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#opt-out-stop"
+  },
+  {
+   "term": "KYC",
+   "definition": "KYC (Know Your Customer) is identity verification that many SMS providers perform to meet anti-fraud and regulatory obligations. It commonly involves government ID or business documents before full account access or higher tiers are granted.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#kyc"
+  },
+  {
+   "term": "no-KYC signup",
+   "definition": "No-KYC signup means creating an account without submitting identity documents; SMSRoute offers email-only registration. Users still must obey applicable messaging laws. Any reduced friction applies to account opening; anonymity exists only toward message recipients, and SMS has no end-to-end encryption.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#no-kyc-signup"
+  },
+  {
+   "term": "crypto top-up",
+   "definition": "Crypto top-up is the process of adding prepaid balance with cryptocurrency so SMS traffic can be sent. SMSRoute accepts crypto payments to fund usage at its published all-in rates (example $0.0125 per message, floor $0.004) across supported destinations.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#crypto-top-up"
+  }
+ ]
+}
