@@ -5,7 +5,7 @@
    "country": "United States",
    "local_branded_registration": "A2P 10DLC registration for branded local traffic",
    "alphanumeric_sender": "No (numeric senders only)",
-   "price_from_usd": 0.002,
+   "price_from_usd": 0.0125,
    "guide": "https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html",
    "iso2": "US"
   },
@@ -77,7 +77,7 @@
    "country": "Australia",
    "local_branded_registration": "Sender ID registration rolling out for local routes",
    "alphanumeric_sender": "Yes",
-   "price_from_usd": 0.045,
+   "price_from_usd": null,
    "guide": "https://smsroute-cc.github.io/send-sms-to-australia-anonymously.html",
    "iso2": "AU"
   },
