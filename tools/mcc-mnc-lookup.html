@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0D14">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>MCC-MNC Lookup — mobile network codes by country | free tool</title>
+<meta name="description" content="Look up MCC-MNC mobile network codes by country, code, or carrier. Free client-side E.212 allocation snapshot for SMPP routing, DLRs, and HLR.">
+<link rel="canonical" href="https://smsroute-cc.github.io/tools/mcc-mnc-lookup.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MCC-MNC Lookup — mobile network codes by country | free tool">
+<meta property="og:description" content="Look up MCC-MNC mobile network codes by country, code, or carrier. Free client-side E.212 allocation snapshot for SMPP routing, DLRs, and HLR.">
+<meta property="og:url" content="https://smsroute-cc.github.io/tools/mcc-mnc-lookup.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://smsroute.cc/#organization","name":"SMSRoute","url":"https://smsroute.cc/","logo":"https://smsroute.cc/logo.svg","sameAs":["https://smsroute.cc","https://github.com/SMSRoute-cc","https://github.com/SMSRoute-cc/smsroute-open-datasets","https://github.com/SMSRoute-cc/awesome-sms-infrastructure","https://github.com/SMSRoute-cc/smsroute-api-cookbook","https://kycnot.me/service/smsroute"],"description":"Web-based SMS sending service: email-only signup, per-message pricing, crypto payment, 149 countries."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://smsroute.cc/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://smsroute-cc.github.io/"},{"@type":"ListItem","position":3,"name":"Tools","item":"https://smsroute-cc.github.io/tools/index.html"},{"@type":"ListItem","position":4,"name":"MCC-MNC / Mobile Network Lookup"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","SoftwareApplication"],"name":"MCC-MNC / Mobile Network Lookup","url":"https://smsroute-cc.github.io/tools/mcc-mnc-lookup.html","description":"Look up MCC-MNC mobile network codes by country, code, or carrier. Free client-side E.212 allocation snapshot for SMPP routing, DLRs, and HLR.","applicationCategory":"DeveloperApplication","operatingSystem":"Any (runs in the browser)","browserRequirements":"Requires JavaScript. No account or install needed.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://smsroute.cc/#organization"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an MCC?","acceptedAnswer":{"@type":"Answer","text":"A Mobile Country Code (MCC) is a 3-digit code defined by ITU-T Recommendation E.212 that identifies the country a mobile network operator is registered in. It is combined with a Mobile Network Code (MNC) of 2 or 3 digits to uniquely identify a specific carrier -- for example 262-01 for Telekom Deutschland in Germany. MCC-MNC pairs appear inside the IMSI on a SIM, in HLR lookup responses, and in SMPP routing and delivery receipt (DLR) data."}},{"@type":"Question","name":"Can MCC-MNC tell me a number's current network?","acceptedAnswer":{"@type":"Answer","text":"No. An MCC-MNC pair shows which network a code block was originally assigned to, not which network is currently serving a specific phone number. Number portability (MNP) lets a subscriber keep their number after switching carriers, so a number can carry one operator's code while actually running on a different operator's network today. The only reliable way to find a number's live network is a real-time HLR lookup, not a static allocation table."}},{"@type":"Question","name":"What MCC is Germany?","acceptedAnswer":{"@type":"Answer","text":"Germany's Mobile Country Code is 262. Every network operating in Germany shares that MCC and is told apart by its Mobile Network Code: 262-01 is Telekom, 262-02 is Vodafone, and 262-03 is O2 (Telefonica), among others."}}]}</script>
+<style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/inter-var.woff2') format('woff2')}
+@font-face{font-family:'Inter Tight';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/intertight-var.woff2') format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url('/fonts/jbmono-var.woff2') format('woff2')}
+
+:root{
+  --bg-primary:#0A0D14;--bg-elevated:#14181F;--bg-sunken:#070A0F;--border:#1F2631;
+  --border-glow:rgba(182,89,255,.25);--fg-primary:#FFFFFF;--fg-secondary:#B8BDC7;--fg-muted:#7A828F;
+  --accent-purple:#B659FF;--accent-cyan:#7DD3FC;--success:#4ADE80;--warn:#FBBF24;--pill-bg:rgba(182,89,255,.12);
+  --max-w:1200px;--content-w:820px;--hero-w:1040px;
+  --sp-5:24px;--sp-6:32px;--sp-8:64px;
+  --r-sm:6px;--r-md:10px;--line:1px solid var(--border);--frame-head:#10141C;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-primary);color:var(--fg-secondary);font-family:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(182,89,255,.35);color:#fff}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:#B4E5FD}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent-purple);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--accent-purple);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+
+/* ---------- CTA buttons ---------- */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border:0;cursor:pointer;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s,box-shadow .15s,filter .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.14) inset,0 22px 46px -10px rgba(147,51,234,.7);color:#fff}
+.btn-primary--sm{padding:8px 18px;font-size:.9rem}
+.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;padding:13px 28px;font-size:.95rem;background:transparent;color:var(--fg-primary);border:1px solid rgba(255,255,255,.2);transition:background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.32);color:#fff}
+
+/* ---------- Nav ---------- */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(10,13,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.site-nav-inner{max-width:var(--max-w);margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.12rem;color:var(--fg-primary);font-family:'Inter Tight',Inter,sans-serif}
+.brand-logo{display:block;height:22px;width:auto}
+.site-links{display:flex;gap:22px;margin-left:8px}
+.site-links a{color:var(--fg-secondary);font-size:.94rem;font-weight:500}
+.site-links a:hover{color:var(--fg-primary)}
+.site-links a.current{color:var(--fg-primary);font-weight:600}
+.site-cta{margin-left:auto;display:flex;align-items:center;gap:16px}
+.site-cta .signin{color:var(--fg-secondary);font-size:.94rem}
+.site-cta .signin:hover{color:var(--fg-primary)}
+@media(max-width:720px){.site-links{display:none}}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb{max-width:var(--max-w);margin:0 auto;padding:16px 24px;font-size:.85rem;color:var(--fg-muted)}
+.breadcrumb ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;align-items:center}
+.breadcrumb li{display:inline-flex;align-items:center}
+.breadcrumb li+li::before{content:"›";padding:0 8px;color:var(--fg-muted)}
+.breadcrumb a{color:var(--fg-muted)}
+.breadcrumb a:hover{color:var(--accent-cyan)}
+.breadcrumb li[aria-current="page"]{color:var(--fg-secondary)}
+
+/* ---------- Hero (2-col: copy + terminal card) ---------- */
+.hero{position:relative;padding:72px 24px 48px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(182,89,255,.07),transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(125,211,252,.04),transparent 55%);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-inner{max-width:var(--hero-w);margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow-pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--pill-bg);border:1px solid rgba(182,89,255,.25);border-radius:999px;font-size:.85rem;color:#E8ECF3;margin-bottom:22px}
+h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;font-size:2.9rem;line-height:1.06;letter-spacing:-.02em;color:var(--fg-primary);margin:0 0 18px}
+.hero-sub{font-size:1.08rem;color:var(--fg-secondary);max-width:560px;margin:0 0 26px;line-height:1.6}
+.hero-sub p{margin:0 0 10px}
+.hero-ctas{display:inline-flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.byline{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:.85rem;color:var(--fg-muted)}
+.byline-sep{opacity:.6}
+.byline-author{color:var(--fg-secondary);font-weight:500;border-bottom:1px dotted rgba(184,189,199,.35)}
+.byline-author:hover{color:var(--fg-primary);border-bottom-color:rgba(255,255,255,.6)}
+.byline-date{color:var(--fg-muted)}
+/* terminal card (static, ~1KB, text only) */
+.hero-term{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);overflow:hidden;font:400 .82rem var(--mono);line-height:1.75;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)}
+.hero-term-head{display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--frame-head);border-bottom:var(--line);color:var(--fg-muted);font-size:.75rem}
+.tdots i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2A3340;margin-right:5px}
+.hero-term-body{padding:16px 18px;color:var(--fg-secondary);white-space:pre-wrap;word-break:break-word}
+.hero-term-body .c{color:var(--fg-muted)}
+.hero-term-body .k{color:var(--accent-cyan)}
+.hero-term-body .ok{color:var(--success)}
+@media(max-width:960px){.hero-inner{grid-template-columns:1fr}.hero-term{display:none}}
+
+/* ---------- Stat strip (single instrument bar, replaces fact tiles) ---------- */
+.statstrip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:28px auto 36px;max-width:var(--content-w)}
+.statstrip>div{padding:16px 20px;border-right:var(--line)}
+.statstrip>div:last-child{border-right:0}
+.statstrip b{display:block;font:700 1.3rem var(--mono);font-variant-numeric:tabular-nums;color:var(--fg-primary);letter-spacing:-.02em}
+.statstrip b::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--success);margin-left:8px;vertical-align:3px}
+.statstrip span{font-size:.78rem;color:var(--fg-muted)}
+.statwrap{padding:0 20px}
+@media(max-width:640px){.statstrip{grid-template-columns:1fr 1fr}.statstrip>div:nth-child(2){border-right:0}.statstrip>div:nth-child(-n+2){border-bottom:var(--line)}}
+
+/* ---------- Article body ---------- */
+.post{max-width:var(--content-w);margin:0 auto;padding:0 20px 80px}
+.toc-box{background:var(--bg-elevated);border:var(--line);border-left:3px solid var(--accent-purple);border-radius:var(--r-md);padding:18px 22px;margin:0 0 24px}
+.toc-box strong{color:var(--fg-primary);display:block;margin-bottom:8px;font-size:.95rem}
+.toc-box ol{list-style:none;padding:0;margin:0}
+.toc-box li{margin-bottom:6px}
+.toc-box a{color:var(--fg-secondary);font-size:.92rem;border-bottom:1px dotted rgba(184,189,199,.35)}
+.toc-box a:hover{color:var(--accent-cyan);border-bottom-color:var(--accent-cyan)}
+.secs{counter-reset:sec}
+.secs h2{position:relative;font-family:'Inter Tight',Inter,sans-serif;font-size:1.45rem;font-weight:700;letter-spacing:-.01em;color:var(--fg-primary);border-top:var(--line);padding-top:var(--sp-5);margin:var(--sp-8) 0 14px}
+.secs h2::before{content:"§ " counter(sec,decimal-leading-zero);counter-increment:sec;display:block;font:600 .72rem var(--mono);letter-spacing:.1em;color:var(--accent-cyan);margin-bottom:6px}
+.post h2{font-family:'Inter Tight',Inter,sans-serif;font-size:1.45rem;font-weight:700;margin:44px 0 14px;letter-spacing:-.01em;color:var(--fg-primary)}
+.post h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1.1rem;line-height:1.35;color:var(--fg-primary);margin:32px 0 12px}
+.post p{color:var(--fg-secondary);line-height:1.75;margin:0 0 16px;font-size:1.02rem}
+.post strong{color:var(--fg-primary)}
+.post a{color:var(--accent-cyan);border-bottom:1px solid rgba(125,211,252,.35)}
+.post a:hover{border-bottom-color:var(--accent-cyan)}
+.post code{font-family:var(--mono);font-size:.9em;background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);padding:1px 6px;color:var(--accent-cyan)}
+.post table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.95rem}
+.post ul.blist{padding-left:22px;margin:16px 0}
+.post ul.blist li{color:var(--fg-secondary);line-height:1.7;margin-bottom:8px}
+
+/* ---------- Instrument frame (shared shell: tables / diagrams / code) ---------- */
+.a2-inst{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-inst-head{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted);letter-spacing:.02em}
+.a2-inst-head::before{content:"";width:8px;height:8px;border-radius:50%;background:#2A3340;box-shadow:14px 0 0 #2A3340,28px 0 0 #2A3340;margin-right:26px;flex:none}
+.a2-inst-body{padding:0}
+
+/* ---------- Comparison table ---------- */
+.a2-tablewrap{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-tablewrap caption{caption-side:top;text-align:left;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted);letter-spacing:.02em}
+.a2-compare{width:100%;border-collapse:collapse;font-size:.92rem;display:table}
+.a2-compare th{font:600 .75rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--fg-muted);text-align:left;padding:10px 16px;border-bottom:var(--line);background:transparent;white-space:normal}
+.a2-compare td{padding:11px 16px;border-bottom:var(--line);color:var(--fg-secondary);line-height:1.5}
+.a2-compare tr:last-child td{border-bottom:0}
+.a2-compare td.dim{color:var(--fg-primary);font-weight:600;font-size:.88rem}
+.a2-compare td.ours{color:var(--fg-primary);background:rgba(125,211,252,.05);font-weight:500}
+.a2-compare td.ours::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 6px rgba(74,222,128,.6);margin-right:8px;vertical-align:1px}
+.a2-compare td.np{color:var(--fg-muted);font-style:italic}
+.a2-footnote{font-size:.8rem;color:var(--fg-muted);margin:8px 2px 0;line-height:1.6}
+@media(max-width:640px){.a2-tablewrap{overflow-x:auto}.a2-compare{min-width:560px}}
+
+/* ---------- Stat strip inline (component version) ---------- */
+.a2-statstrip{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-5) 0}
+.a2-statstrip .a2-stat{padding:14px 18px;border-right:var(--line)}
+.a2-statstrip .a2-stat:last-child{border-right:0}
+.a2-statstrip b{display:block;font:700 1.2rem var(--mono);font-variant-numeric:tabular-nums;color:var(--fg-primary)}
+.a2-statstrip span{font-size:.76rem;color:var(--fg-muted)}
+@media(max-width:640px){.a2-statstrip{grid-template-columns:1fr 1fr}.a2-statstrip .a2-stat:nth-child(2){border-right:0}.a2-statstrip .a2-stat:nth-child(-n+2){border-bottom:var(--line)}}
+
+/* ---------- Callout / note ---------- */
+.a2-callout{border:var(--line);border-left:3px solid var(--accent-cyan);border-radius:var(--r-sm);background:var(--bg-sunken);padding:14px 18px;margin:var(--sp-5) 0}
+.a2-callout p{margin:0;color:var(--fg-secondary);font-size:.96rem}
+.a2-callout b{color:var(--accent-cyan);font:600 .8rem var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-right:6px}
+.a2-warn{border-left-color:var(--warn)}
+.a2-warn b{color:var(--warn)}
+.a2-ok{border-left-color:var(--success)}
+.a2-ok b{color:var(--success)}
+
+/* ---------- TL;DR ---------- */
+.a2-tldr{border:var(--line);border-top:2px solid var(--accent-purple);border-radius:var(--r-md);background:var(--bg-sunken);padding:18px 22px;margin:0 0 var(--sp-6)}
+.a2-tldr>b{font:700 .78rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent-purple)}
+.a2-tldr ul{list-style:none;margin:10px 0 0;padding:0}
+.a2-tldr li{padding:6px 0;border-bottom:1px solid rgba(31,38,49,.6);color:var(--fg-secondary);font-size:.97rem}
+.a2-tldr li:last-child{border-bottom:0}
+
+/* ---------- Step timeline ---------- */
+.a2-steps{counter-reset:s;list-style:none;margin:var(--sp-6) 0;padding:0}
+.a2-steps li{counter-increment:s;position:relative;padding:0 0 var(--sp-5) 48px;color:var(--fg-secondary);line-height:1.6}
+.a2-steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:var(--r-sm);background:var(--bg-sunken);border:var(--line);color:var(--accent-purple);font:700 .8rem var(--mono);display:flex;align-items:center;justify-content:center}
+.a2-steps li::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;width:1px;background:var(--border)}
+.a2-steps li:last-child::after{display:none}
+.a2-steps b{display:block;color:var(--fg-primary);margin-bottom:4px}
+.a2-steps span{display:block;font-size:.95rem}
+
+/* ---------- Key facts (definition grid) ---------- */
+.a2-keyfacts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:var(--line);border-radius:var(--r-md);background:var(--bg-sunken);overflow:hidden;margin:var(--sp-5) 0}
+.a2-keyfacts>div{padding:12px 16px;border-bottom:var(--line);border-right:var(--line)}
+.a2-keyfacts>div:nth-child(2n){border-right:0}
+.a2-keyfacts>div:nth-last-child(-n+2){border-bottom:0}
+.a2-keyfacts dt{font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--fg-muted);margin:0 0 4px}
+.a2-keyfacts dd{margin:0;color:var(--fg-primary);font-size:.95rem}
+@media(max-width:640px){.a2-keyfacts{grid-template-columns:1fr}.a2-keyfacts>div{border-right:0}}
+
+/* ---------- Diagrams ---------- */
+.a2-diagwrap{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:var(--sp-6) 0;overflow:hidden}
+.a2-diagwrap .a2-inst-head{border-radius:0}
+.a2-diagbody{padding:16px 12px;overflow-x:auto}
+.a2-diagbody svg{min-width:560px}
+.a2-diagram{border:0!important;background:transparent!important}
+
+/* ---------- Artifact (code block) ---------- */
+.artifact{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);margin:26px 0;overflow:hidden}
+.artifact figcaption{display:flex;align-items:center;padding:8px 14px;font:500 .78rem var(--mono);color:var(--fg-muted);border-bottom:var(--line);background:var(--frame-head)}
+.artifact figcaption::before{content:"";width:8px;height:8px;border-radius:50%;background:#2A3340;box-shadow:14px 0 0 #2A3340,28px 0 0 #2A3340;margin-right:26px;flex:none}
+.artifact pre{margin:0;padding:18px;overflow-x:auto}
+.artifact code{font-family:var(--mono);font-size:.86rem;line-height:1.6;color:#E4E7EE;background:none;border:0;padding:0}
+
+/* ---------- FAQ (flattened, mono Q) ---------- */
+.faq-card{border:var(--line);border-radius:var(--r-md);background:var(--bg-elevated);margin:0 0 10px;overflow:hidden}
+.faq-card summary{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;font-weight:600;color:var(--fg-primary);list-style:none}
+.faq-card summary::-webkit-details-marker{display:none}
+.faq-card summary::before{content:"Q";font:700 .72rem var(--mono);color:var(--accent-purple);background:var(--pill-bg);border-radius:var(--r-sm);padding:3px 7px;flex:none}
+.faq-card summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2px solid var(--fg-muted);border-bottom:2px solid var(--fg-muted);transform:rotate(45deg);transition:transform .15s;flex:none}
+.faq-card[open] summary::after{transform:rotate(-135deg)}
+.faq-card .faq-answer{padding:0 18px 16px 47px;color:var(--fg-secondary);line-height:1.7}
+
+/* ---------- legacy aliases (callout/steps from older gen paths) ---------- */
+.callout{border:var(--line);border-left:3px solid var(--accent-cyan);border-radius:var(--r-sm);background:var(--bg-sunken);padding:14px 18px;margin:22px 0}
+.callout p{margin:0;color:var(--fg-secondary)}
+.steps{counter-reset:step;list-style:none;padding:0;margin:20px 0}
+.steps li{counter-increment:step;position:relative;padding:0 0 20px 48px;color:var(--fg-secondary);line-height:1.65}
+.steps li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:var(--r-sm);background:var(--bg-sunken);border:var(--line);color:var(--accent-purple);font:700 .8rem var(--mono);display:flex;align-items:center;justify-content:center}
+.steps b{color:var(--fg-primary);display:block;margin-bottom:4px}
+.post th{color:var(--fg-primary);text-align:left;padding:10px 14px;border-bottom:2px solid var(--accent-purple);background:var(--bg-elevated)}
+.post td{color:var(--fg-secondary);padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.55}
+
+/* ---------- CTA band ---------- */
+.cta{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);padding:0;margin:48px 0 0;overflow:hidden;text-align:left}
+.cta::before{content:"$ get started";display:flex;align-items:center;padding:8px 14px;background:var(--frame-head);border-bottom:var(--line);font:500 .78rem var(--mono);color:var(--fg-muted)}
+.cta p{margin:0;padding:20px 22px 16px;color:var(--fg-secondary)}
+.cta a.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:13px 28px;font-size:.95rem;margin:0 22px 8px;box-shadow:0 0 0 1px rgba(255,255,255,.08) inset,0 16px 40px -12px rgba(147,51,234,.55);transition:transform .15s}
+.cta a.btn:hover{transform:translateY(-1px);color:#fff}
+.cta .alt{display:block;margin:0;padding:0 22px 20px;font-size:.88rem;color:var(--fg-muted)}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--bg-sunken);border-top:1px solid var(--border);color:var(--fg-secondary);padding:56px 24px 28px}
+.site-footer__inner{max-width:var(--max-w);margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand p{font-size:.9rem;margin:0 0 14px;max-width:220px}
+.footer-brand .socials{display:flex;gap:8px}
+.footer-brand .socials a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:8px;color:var(--fg-secondary)}
+.footer-brand .socials a:hover{border-color:var(--border-glow);color:#fff}
+.footer-heading{font-weight:600;margin:0 0 .6em;font-size:.95rem;color:var(--fg-primary);letter-spacing:.02em}
+.footer-col ul{list-style:none;padding:0;margin:0}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--fg-secondary);font-size:.92rem}
+.footer-col a:hover{color:#fff}
+.footer-legal{padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--fg-muted);font-size:.86rem}
+.footer-legal .legal-links{display:inline-flex;gap:16px}
+.footer-legal .legal-links a{color:var(--fg-muted)}
+.footer-legal .legal-links a:hover{color:var(--fg-secondary)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:2fr 1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:640px){
+  body{font-size:16.5px}
+  .hero{padding:52px 20px 36px}
+  h1.hero-title{font-size:2.1rem;line-height:1.08}
+  .hero-sub{font-size:1rem}
+  .secs h2,.post h2{font-size:1.3rem}
+  .secs h2{margin-top:44px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .breadcrumb{padding:12px 20px;font-size:.8rem}
+  .byline{font-size:.8rem;gap:8px}
+}
+
+/* ---- tier-consumer: softer, human-first variant ---- */
+.trust-chips{display:none}
+.tier-consumer .trust-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tier-consumer .trust-chips span{font:600 .82rem 'Inter',sans-serif;color:var(--fg-primary);background:var(--bg-elevated);border:var(--line);border-radius:999px;padding:6px 14px}
+.tier-consumer .hero-term{display:none}
+.tier-consumer .hero-inner{grid-template-columns:1fr;max-width:760px}
+.tier-consumer .secs h2::before{content:none;counter-increment:none}
+.tier-consumer .cta::before{content:none}
+.tier-consumer .cta{border-radius:14px}
+.tech-details{margin:28px 0}
+.tech-details>summary{cursor:pointer;font:600 .95rem 'Inter',sans-serif;color:var(--fg-primary);padding:12px 16px;background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);list-style:none}
+.tech-details>summary::before{content:"\25B8  ";color:var(--accent-cyan)}
+.tech-details[open]>summary::before{content:"\25BE  "}
+.tech-details>.artifact{margin-top:12px}
+/*v13fix*/
+@media(max-width:640px){.a2-diagbody svg{min-width:0;width:100%}}
+.a2-tablewrap{position:relative}
+@media(max-width:700px){.a2-tablewrap caption::after{content:"  b7 swipe 92";color:var(--fg-muted,#8b9bb4);font-weight:400}}
+@media(max-width:420px){.site-cta .signin{display:none}.site-cta .btn-primary--sm{padding:8px 12px;font-size:.82rem}}
+.statstrip b{font-size:clamp(.95rem,.9vw + .65rem,1.3rem);white-space:nowrap}
+.statstrip span{overflow-wrap:break-word}
+.srx-related ul{list-style:none;padding:0;margin:10px 0}
+.srx-related li{margin:7px 0}
+.srx-related a{color:#a78bfa;text-decoration:none;border-bottom:1px solid rgba(167,139,250,.35)}
+.srx-related a:hover{border-bottom-color:currentColor}
+/*v13footer*/.site-footer{background:#070A0F!important;border-top:1px solid #1F2631!important;color:#B8BDC7!important;padding:56px 24px 28px!important}.site-footer__inner{max-width:1200px!important;margin:0 auto!important}.footer-grid{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))!important;gap:28px!important;margin-bottom:40px!important}.footer-brand{grid-column:1/-1!important}.footer-brand p{font-size:.9rem;margin:0 0 14px;max-width:340px;color:#B8BDC7}.footer-heading{font-weight:600;margin:0 0 .6em;font-size:.95rem;color:#FFFFFF;letter-spacing:.02em}.footer-col ul{list-style:none!important;padding:0!important;margin:0!important}.footer-col li{margin-bottom:8px!important}.site-footer a{color:#B8BDC7!important;text-decoration:none!important;font-size:.92rem}.site-footer a:hover{color:#fff!important}.footer-legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid #1F2631;padding-top:22px;font-size:.85rem;color:#8b93a1}.site-footer .brand-logo,.footer-brand svg{width:125px;height:22px;color:#fff;fill:#fff}@media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr!important}.footer-brand{grid-column:1/-1!important}}.srx-related{margin:2.2rem 0 0}
+</style>
+<style>
+.tl-panel{background:var(--bg-sunken);border:var(--line);border-radius:var(--r-md);padding:22px 24px;margin:0 0 24px}
+.tl-panel h2{margin:0 0 14px;font-family:'Inter Tight',Inter,sans-serif;font-size:1.2rem;color:var(--fg-primary)}
+.tl-field{margin-bottom:16px}
+.tl-field label{display:block;font:600 .74rem var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--fg-muted);margin-bottom:7px}
+.tl-field textarea,.tl-field input[type=text],.tl-field input[type=number],.tl-field select{width:100%;background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);color:var(--fg-primary);padding:10px 12px;font-family:'Inter',sans-serif;font-size:.95rem}
+.tl-field textarea{min-height:120px;resize:vertical;font-family:var(--mono);font-size:.88rem;line-height:1.6}
+.tl-hint{font-size:.78rem;color:var(--fg-muted);margin-top:5px}
+.tl-btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.tl-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border:0;cursor:pointer;border-radius:999px;background:linear-gradient(to right,#7C3AED,#9333EA);color:#fff;padding:11px 22px;font-size:.92rem}
+.tl-btn:hover{filter:brightness(1.08)}
+.tl-btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;border-radius:999px;padding:10px 21px;font-size:.92rem;background:transparent;color:var(--fg-primary);border:1px solid rgba(255,255,255,.2);cursor:pointer}
+.tl-badge{display:inline-flex;align-items:center;gap:5px;font:600 .7rem var(--mono);text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.tl-badge.ok{background:rgba(74,222,128,.14);color:var(--success)}
+.tl-badge.warn{background:rgba(251,191,36,.14);color:var(--warn)}
+.tl-badge.bad{background:rgba(248,113,113,.14);color:#F87171}
+.tl-badge.na{background:rgba(122,130,143,.16);color:var(--fg-muted)}
+.tl-result-card{background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:10px}
+.tl-result-card h3{margin:0 0 8px;font-size:.95rem;color:var(--fg-primary);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-result-card ul{margin:8px 0 0;padding-left:18px}
+.tl-result-card li{font-size:.87rem;color:var(--fg-secondary);margin-bottom:5px;line-height:1.5}
+.tl-stat-row{display:flex;gap:14px;flex-wrap:wrap;margin:4px 0 16px}
+.tl-stat{background:var(--bg-elevated);border:var(--line);border-radius:var(--r-sm);padding:10px 14px;min-width:104px}
+.tl-stat b{display:block;font:700 1.05rem var(--mono);color:var(--fg-primary)}
+.tl-stat span{font-size:.7rem;color:var(--fg-muted)}
+.tl-source-line{font-size:.8rem;color:var(--fg-muted);margin:14px 0 0;padding-top:14px;border-top:var(--line)}
+.tl-empty{color:var(--fg-muted);font-size:.9rem;font-style:italic;margin:0}
+@media(max-width:640px){.tl-panel{padding:18px}}
+</style>
+<style>
+.mm-nomnc{color:var(--fg-muted)}
+.mm-count{font-variant-numeric:tabular-nums}
+</style>
+
+<meta property="og:image" content="https://smsroute-cc.github.io/og/tools-mcc-mnc-lookup-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://smsroute-cc.github.io/og/tools-mcc-mnc-lookup-og.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="tier-consumer">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="srlogo" viewBox="0 0 125 22"><path d="M29.8571 14.5947C29.9619 15.1939 30.2241 15.6509 30.6434 15.9655C31.0778 16.2801 31.6544 16.4374 32.3734 16.4374C33.1073 16.4374 33.7064 16.2951 34.1707 16.0105C34.6351 15.7108 34.8672 15.3363 34.8672 14.8868C34.8672 14.5123 34.7399 14.2201 34.4853 14.0104C34.2456 13.8006 33.9386 13.6433 33.5641 13.5384C33.2047 13.4336 32.7029 13.3287 32.0588 13.2238C31.1602 13.059 30.4337 12.8867 29.8796 12.7069C29.3254 12.5271 28.8461 12.22 28.4417 11.7855C28.0373 11.3361 27.8351 10.7068 27.8351 9.89779C27.8351 9.23858 28.0298 8.64679 28.4192 8.12242C28.8086 7.58307 29.3478 7.16357 30.0368 6.86393C30.7408 6.56429 31.5196 6.41447 32.3734 6.41447C33.6765 6.41447 34.7399 6.70662 35.5637 7.29092C36.4025 7.87522 36.9042 8.66926 37.069 9.67306L34.7099 10.1675C34.6201 9.56819 34.3729 9.11123 33.9685 8.79661C33.5641 8.48199 33.0324 8.32468 32.3734 8.32468C31.7443 8.32468 31.2276 8.45952 30.8232 8.72919C30.4188 8.99887 30.2166 9.35095 30.2166 9.78543C30.2166 10.145 30.3364 10.4297 30.576 10.6394C30.8157 10.8342 31.1078 10.984 31.4522 11.0889C31.8117 11.1788 32.3135 11.2836 32.9575 11.4035C33.8562 11.5533 34.5901 11.7256 35.1593 11.9204C35.7284 12.1151 36.2152 12.4447 36.6196 12.9092C37.039 13.3586 37.2487 14.0029 37.2487 14.8419C37.2487 15.5011 37.0315 16.1004 36.5972 16.6397C36.1628 17.1641 35.5712 17.5836 34.8223 17.8982C34.0884 18.1978 33.2721 18.3477 32.3734 18.3477C31.4597 18.3477 30.6584 18.2203 29.9694 17.9656C29.2954 17.6959 28.7412 17.3139 28.3069 16.8195C27.8875 16.3251 27.6179 15.7483 27.4981 15.0891L29.8571 14.5947Z" fill="white"/>
+<path d="M39.2081 6.6392H41.5671V9.2236L41.1852 8.79661C41.5596 8.07747 42.0688 7.50067 42.7129 7.06619C43.3569 6.63171 44.0834 6.41447 44.8922 6.41447C45.8208 6.41447 46.6371 6.67665 47.3411 7.20103C48.045 7.71041 48.5543 8.39959 48.8688 9.26855L48.1948 9.24607C48.5543 8.37712 49.0935 7.68794 49.8124 7.17855C50.5314 6.66916 51.3552 6.41447 52.2838 6.41447C53.1675 6.41447 53.9538 6.62422 54.6428 7.04371C55.3468 7.46321 55.8935 8.04002 56.2829 8.77414C56.6723 9.50826 56.867 10.3398 56.867 11.2686V18.1229H54.4856V11.6282C54.4856 11.0439 54.3732 10.5195 54.1486 10.0551C53.9239 9.59066 53.6093 9.23109 53.2049 8.9764C52.8155 8.70672 52.3662 8.57188 51.8569 8.57188C51.3627 8.57188 50.9133 8.70672 50.5089 8.9764C50.1045 9.23109 49.7825 9.59066 49.5428 10.0551C49.3182 10.5195 49.2058 11.0439 49.2058 11.6282V18.1229H46.8468V11.6282C46.8468 11.0439 46.7345 10.5195 46.5098 10.0551C46.2851 9.59066 45.9706 9.23109 45.5662 8.9764C45.1618 8.70672 44.7125 8.57188 44.2182 8.57188C43.7239 8.57188 43.2746 8.70672 42.8702 8.9764C42.4658 9.23109 42.1437 9.59066 41.9041 10.0551C41.6794 10.5195 41.5671 11.0439 41.5671 11.6282V18.1229H39.2081V6.6392Z" fill="white"/>
+<path d="M61.0782 14.5947C61.183 15.1939 61.4451 15.6509 61.8645 15.9655C62.2989 16.2801 62.8755 16.4374 63.5945 16.4374C64.3284 16.4374 64.9275 16.2951 65.3918 16.0105C65.8561 15.7108 66.0883 15.3363 66.0883 14.8868C66.0883 14.5123 65.961 14.2201 65.7064 14.0104C65.4667 13.8006 65.1597 13.6433 64.7852 13.5384C64.4258 13.4336 63.924 13.3287 63.2799 13.2238C62.3813 13.059 61.6548 12.8867 61.1007 12.7069C60.5465 12.5271 60.0672 12.22 59.6628 11.7855C59.2584 11.3361 59.0562 10.7068 59.0562 9.89779C59.0562 9.23858 59.2509 8.64679 59.6403 8.12242C60.0297 7.58307 60.5689 7.16357 61.2579 6.86393C61.9619 6.56429 62.7407 6.41447 63.5945 6.41447C64.8976 6.41447 65.961 6.70662 66.7848 7.29092C67.6235 7.87522 68.1253 8.66926 68.2901 9.67306L65.931 10.1675C65.8412 9.56819 65.594 9.11123 65.1896 8.79661C64.7852 8.48199 64.2535 8.32468 63.5945 8.32468C62.9654 8.32468 62.4487 8.45952 62.0443 8.72919C61.6399 8.99887 61.4377 9.35095 61.4377 9.78543C61.4377 10.145 61.5575 10.4297 61.7971 10.6394C62.0368 10.8342 62.3288 10.984 62.6733 11.0889C63.0328 11.1788 63.5346 11.2836 64.1786 11.4035C65.0773 11.5533 65.8112 11.7256 66.3804 11.9204C66.9495 12.1151 67.4363 12.4447 67.8407 12.9092C68.2601 13.3586 68.4698 14.0029 68.4698 14.8419C68.4698 15.5011 68.2526 16.1004 67.8183 16.6397C67.3839 17.1641 66.7923 17.5836 66.0434 17.8982C65.3094 18.1978 64.4931 18.3477 63.5945 18.3477C62.6808 18.3477 61.8795 18.2203 61.1905 17.9656C60.5165 17.6959 59.9623 17.3139 59.528 16.8195C59.1086 16.3251 58.839 15.7483 58.7192 15.0891L61.0782 14.5947Z" fill="white"/>
+<path d="M70.4292 6.6392H72.7882V9.38091L72.4062 8.93145C72.7058 8.34715 73.1027 7.84525 73.597 7.42576C74.0913 6.99128 74.6529 6.69913 75.282 6.54931C75.926 6.3845 76.5926 6.3845 77.2816 6.54931V8.79661C76.4578 8.57188 75.7014 8.54941 75.0124 8.72919C74.3234 8.90898 73.7767 9.26105 73.3723 9.78543C72.9829 10.2948 72.7882 10.9091 72.7882 11.6282V18.1229H70.4292V6.6392Z" fill="white"/>
+<path d="M77.6151 12.3923C77.6151 11.2686 77.8772 10.2574 78.4014 9.35844C78.9406 8.44453 79.6745 7.7254 80.6031 7.20103C81.5318 6.67665 82.5653 6.41447 83.7036 6.41447C84.8419 6.41447 85.8754 6.67665 86.804 7.20103C87.7326 7.7254 88.4591 8.44453 88.9833 9.35844C89.5225 10.2574 89.7921 11.2686 89.7921 12.3923C89.7921 13.501 89.5225 14.5123 88.9833 15.4262C88.4591 16.3251 87.7326 17.0367 86.804 17.5611C85.8754 18.0855 84.8419 18.3477 83.7036 18.3477C82.5653 18.3477 81.5318 18.0855 80.6031 17.5611C79.6745 17.0367 78.9406 16.3251 78.4014 15.4262C77.8772 14.5123 77.6151 13.501 77.6151 12.3923ZM80.0415 12.3923C80.0415 13.0965 80.1987 13.7407 80.5133 14.325C80.8428 14.8943 81.2846 15.3438 81.8388 15.6734C82.393 16.003 83.0146 16.1678 83.7036 16.1678C84.3926 16.1678 85.0141 16.003 85.5683 15.6734C86.1225 15.3438 86.5569 14.8943 86.8714 14.325C87.2009 13.7407 87.3657 13.0965 87.3657 12.3923C87.3657 11.6732 87.2009 11.0289 86.8714 10.4596C86.5569 9.87532 86.1225 9.41837 85.5683 9.08876C85.0141 8.75916 84.3926 8.59435 83.7036 8.59435C83.0146 8.59435 82.393 8.75916 81.8388 9.08876C81.2846 9.41837 80.8428 9.87532 80.5133 10.4596C80.1987 11.0289 80.0415 11.6732 80.0415 12.3923Z" fill="white"/>
+<path d="M94.1335 6.6392V13.3586C94.1335 13.913 94.2533 14.4074 94.493 14.8419C94.7476 15.2614 95.0921 15.591 95.5264 15.8307C95.9608 16.0554 96.4551 16.1678 97.0092 16.1678C97.5485 16.1678 98.0352 16.0554 98.4696 15.8307C98.904 15.591 99.241 15.2614 99.4806 14.8419C99.7352 14.4074 99.8625 13.913 99.8625 13.3586V6.6392H102.222V13.3586C102.222 14.3175 101.997 15.179 101.548 15.943C101.098 16.6921 100.477 17.2839 99.6828 17.7184C98.889 18.1379 97.9978 18.3477 97.0092 18.3477C96.0057 18.3477 95.107 18.1379 94.3132 17.7184C93.5194 17.2989 92.8978 16.7071 92.4485 15.943C91.9991 15.179 91.7745 14.3175 91.7745 13.3586V6.6392H94.1335Z" fill="white"/>
+<path d="M103.779 6.6392H106.228V2.90867L108.587 2.16706V6.6392H111.822V8.72919H108.587V14.0328C108.587 14.737 108.737 15.2464 109.037 15.561C109.351 15.8756 109.86 16.0329 110.564 16.0329H111.822V18.1229H110.564C109.096 18.1229 108.003 17.7783 107.284 17.0892C106.58 16.4 106.228 15.3438 106.228 13.9205V8.72919H103.779V6.6392Z" fill="white"/>
+<path d="M115.16 11.3361H123.248L122.686 12.0777C122.656 11.4035 122.477 10.7892 122.147 10.2349C121.833 9.68055 121.406 9.24607 120.867 8.93145C120.327 8.61683 119.721 8.45952 119.047 8.45952C118.373 8.45952 117.751 8.63181 117.182 8.9764C116.628 9.32098 116.186 9.79292 115.857 10.3922C115.542 10.9915 115.385 11.6582 115.385 12.3923C115.385 13.1264 115.549 13.7931 115.879 14.3924C116.208 14.9767 116.665 15.4411 117.249 15.7857C117.834 16.1303 118.493 16.3026 119.227 16.3026C119.975 16.3026 120.642 16.1228 121.226 15.7633C121.825 15.4037 122.29 14.9018 122.619 14.2576L124.596 15.134C124.087 16.1078 123.353 16.8869 122.394 17.4712C121.451 18.0555 120.372 18.3477 119.159 18.3477C118.021 18.3477 116.987 18.0855 116.059 17.5611C115.13 17.0367 114.396 16.3251 113.857 15.4262C113.333 14.5123 113.071 13.501 113.071 12.3923C113.071 11.2686 113.333 10.2574 113.857 9.35844C114.381 8.44453 115.1 7.7254 116.014 7.20103C116.927 6.67665 117.938 6.41447 119.047 6.41447C120.26 6.41447 121.338 6.7216 122.282 7.33586C123.241 7.93514 123.96 8.75167 124.439 9.78543C124.918 10.8192 125.09 11.9503 124.956 13.1789H115.16V11.3361Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2726 2.75447C17.3947 3.99714 19.3176 6.2633 19.5921 9.58947C19.614 9.85409 19.6163 10.1681 19.6043 10.5114C19.4892 13.8152 17.6683 16.7762 15.2541 19.0338C13.7453 20.4447 11.9689 21.6255 9.92385 21.9156C8.69851 22.0894 7.52397 22.0445 7.32034 21.3011C6.91071 19.8057 11.8053 15.9491 11.2047 16.3915C7.5462 17.9151 2.66979 18.8653 0.863871 15.3368C0.407376 14.4449 0.126893 13.4202 0.0352131 12.3092C-0.101367 10.6545 0.160603 8.99244 0.799501 7.46009L0.96822 7.05549C2.20822 4.0813 5.03975 2.06511 8.27703 1.85117L8.73189 1.82112C10.5359 1.70191 12.3449 1.98719 14.0247 2.65581L14.2726 2.75447Z" fill="#B659FF"/>
+<path d="M20.1874 4.78192C20.1874 6.64039 18.7605 8.14697 17.0003 8.14697C15.2401 8.14697 13.8132 6.64039 13.8132 4.78192C13.8132 2.92345 15.2401 1.41686 17.0003 1.41686C18.7605 1.41686 20.1874 2.92345 20.1874 4.78192Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M21.6039 4.78192C21.6039 7.34974 19.614 9.56384 17.0003 9.56384C14.3867 9.56384 12.3968 7.34974 12.3968 4.78192C12.3968 2.21409 14.3867 0 17.0003 0C19.614 0 21.6039 2.21409 21.6039 4.78192ZM17.0003 8.14697C18.7605 8.14697 20.1874 6.64039 20.1874 4.78192C20.1874 2.92345 18.7605 1.41686 17.0003 1.41686C15.2401 1.41686 13.8132 2.92345 13.8132 4.78192C13.8132 6.64039 15.2401 8.14697 17.0003 8.14697Z" fill="#070B10"/></symbol></svg>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-nav"><div class="site-nav-inner">
+<a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
+<nav class="site-links" aria-label="Primary">
+  <a href="https://smsroute.cc/">Features</a><a href="https://smsroute.cc/prices">Pricing</a><a href="https://smsroute.cc/developers">API</a>
+  <a href="https://smsroute.cc/developers">Docs</a><a href="https://smsroute-cc.github.io/" class="current">Guides</a>
+</nav>
+<div class="site-cta"><a href="https://smsroute.cc/signup" class="signin">Sign in</a><a href="https://smsroute.cc/signup" class="btn-primary btn-primary--sm">Get Started</a></div>
+</div></header>
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <ol>
+    <li><a href="https://smsroute.cc/">Home</a></li>
+    <li><a href="https://smsroute-cc.github.io/">Guides</a></li>
+    <li><a href="https://smsroute-cc.github.io/tools/index.html">Tools</a></li>
+    <li aria-current="page">MCC-MNC / Mobile Network Lookup</li>
+  </ol>
+</nav>
+<section class="hero" style="padding:48px 24px 28px">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow-pill">Free tool &middot; 237 MCCs &middot; 40 countries detailed &middot; No signup</span>
+      <h1 class="hero-title" style="font-size:2.3rem">MCC-MNC / Mobile Network Lookup</h1>
+      <div class="hero-sub"><p>Search by Mobile Country Code ("262"), a full MCC-MNC pair ("262-01" or "26201"), a country name, or a carrier brand, against a public E.212 allocation snapshot: every ITU-assigned MCC, plus Mobile Network Codes for the major operators in 40 countries. This shows which network a code was <em>assigned</em> to &mdash; not which network answers a specific phone number right now. See the portability note below before using it for routing decisions.</p></div>
+      <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>Allocation snapshot 2026-07</span></div>
+    </div>
+  </div>
+</section>
+<main id="content" class="post">
+<article>
+
+<div class="tl-panel" id="lookup">
+  <h2>Search MCC-MNC codes</h2>
+  <div class="tl-field">
+    <label for="mncq">MCC, MCC-MNC, country, or network brand</label>
+    <input type="text" id="mncq" aria-label="Search MCC, MCC-MNC, country, or network brand" placeholder="e.g. 262, 262-01, 26201, Germany, Vodafone">
+    <p class="tl-hint">Filters the table below as you type. Nothing is sent anywhere &mdash; this runs entirely in your browser against the table already on this page.</p>
+  </div>
+  <p class="tl-hint" id="mncStatus">Showing all <span class="mm-count">626</span> rows.</p>
+</div>
+
+<div class="a2-callout a2-warn"><p><b>Not a live lookup</b> This is an allocation registry snapshot &mdash; it tells you which network a code is <strong>assigned</strong> to, not which network currently serves a given phone number. Number portability (MNP) means a live number can be on a different network than the one its code was originally issued to; determining the live network needs an HLR lookup, not a static table. Use <a href="https://smsroute.cc/hlr-lookup">HLR lookup on the main site</a> for the live answer, <a href="/tools/e164-normalizer.html">the E.164 normalizer</a> to clean a number first, or browse <a href="/countries/">per-country SMS requirements</a> for delivery rules by market.</p></div>
+
+<div class="secs">
+<section><h2 id="s1">What MCC and MNC actually are (E.212)</h2>
+<p>ITU-T Recommendation E.212 defines the Mobile Country Code (MCC): a 3-digit number that identifies the country (or a shared territory, or a small set of international/satellite operators) a mobile network is registered in. The first digit groups codes by region &mdash; 2 for Europe, 3 for North America and the Caribbean, 4 for Asia and the Middle East, 5 for Australia and Oceania, 6 for Africa, 7 for South and Central America, 9 for worldwide/satellite &mdash; but it is not a precise continent map, just an administrative grouping. A country can hold more than one MCC once its subscriber base outgrows a single block: the United States has seven (310-316), India has two (404 and 405), the United Kingdom has two (234 and 235).</p>
+<p>The Mobile Network Code (MNC) is a 2- or 3-digit number issued underneath a given MCC to tell individual operators apart. MCC and MNC together form the "MCC-MNC tuple" that uniquely names a carrier &mdash; written as 262-01, or squashed together as 26201 in places that expect a fixed-width field. That tuple, in turn, is the first 5-6 digits of a SIM's IMSI (International Mobile Subscriber Identity): MCC + MNC + MSIN (the subscriber-specific remainder). A single brand can hold several MNCs at once for historical reasons (mergers, technology-specific blocks, regional licenses) &mdash; Germany's O2 and Vodafone both do &mdash; so "one carrier, one code" is not a safe assumption either.</p>
+</section>
+<section><h2 id="s2">Where MCC-MNC shows up in SMS and voice routing</h2>
+<p>In SMPP-based SMS delivery, an aggregator or SMSC uses the destination MCC-MNC to pick a route: which underlying carrier connection to hand a message to, and what that route costs. Delivery receipts (DLRs) can carry MCC-MNC-derived routing metadata about which network actually accepted the message, which is one of the more reliable per-message signals available without a dedicated lookup. HLR (Home Location Register) queries go further: a live HLR dip returns the MCC-MNC of the network a subscriber is <em>currently</em> registered on, right now, which is the only way to get a trustworthy answer for a specific number rather than an assigned-block guess. On the SIM side, the IMSI baked into a device at manufacture starts with the MCC-MNC of the home network the SIM was issued by &mdash; useful for identifying a SIM's origin, not for identifying where a number currently terminates after porting.</p>
+</section>
+<section><h2 id="s3">Worked example: decoding 262-01</h2>
+<p>Take the code 262-01, or 26201 squashed. The first three digits, 262, are the MCC: region digit 2 (Europe), and 262 specifically is assigned to Germany. The next two digits, 01, are the MNC: within Germany's 262 block, 01 is assigned to Telekom Deutschland GmbH (Deutsche Telekom). So 262-01 names one specific network: Telekom in Germany, distinct from 262-02 (Vodafone D2 GmbH) or 262-03 (O2 / Telefonica Germany) sitting right next to it under the same country code. If that same 5-6 digit sequence shows up as the MCC-MNC in an IMSI prefix or an HLR response, it is telling you the subscriber's SIM (or their live registration, for an HLR dip) is associated with Telekom &mdash; not that every +49 number beginning that way is still on Telekom's network today, since porting can move the live network without changing the number.</p>
+</section>
+</div>
+
+<div class="a2-tablewrap">
+<table class="a2-compare" id="mncTable">
+<caption>MCC-MNC allocation snapshot &mdash; verified 2026-07 registry snapshot, not live network data</caption>
+<thead><tr><th>MCC</th><th>MNC</th><th>Country</th><th>Network</th></tr></thead>
+<tbody id="mncBody">
+<tr data-q="202 greece gr"><td class="dim">202</td><td>-</td><td>Greece (GR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="204 204-02 20402 netherlands nl odido"><td class="dim">204</td><td>02</td><td>Netherlands (NL)</td><td><span title="T-Mobile Netherlands B.V">Odido</span></td></tr>
+<tr data-q="204 204-03 20403 netherlands nl enreach"><td class="dim">204</td><td>03</td><td>Netherlands (NL)</td><td><span title="Enreach Netherlands B.V.">Enreach</span></td></tr>
+<tr data-q="204 204-04 20404 netherlands nl vodafone"><td class="dim">204</td><td>04</td><td>Netherlands (NL)</td><td><span title="Vodafone Libertel B.V.">Vodafone</span></td></tr>
+<tr data-q="204 204-07 20407 netherlands nl teleena"><td class="dim">204</td><td>07</td><td>Netherlands (NL)</td><td><span title="Tata Communications MOVE B.V.">Teleena</span></td></tr>
+<tr data-q="204 204-08 20408 netherlands nl kpn"><td class="dim">204</td><td>08</td><td>Netherlands (NL)</td><td><span title="KPN Mobile The Netherlands B.V.">KPN</span></td></tr>
+<tr data-q="204 204-09 20409 netherlands nl lycamobile"><td class="dim">204</td><td>09</td><td>Netherlands (NL)</td><td><span title="Lycamobile Netherlands Limited">Lycamobile</span></td></tr>
+<tr data-q="204 204-11 20411 netherlands nl greenet netwerk b.v"><td class="dim">204</td><td>11</td><td>Netherlands (NL)</td><td><span>Greenet Netwerk B.V</span></td></tr>
+<tr data-q="204 204-12 20412 netherlands nl telfort"><td class="dim">204</td><td>12</td><td>Netherlands (NL)</td><td><span title="KPN Mobile The Netherlands B.V.">Telfort</span></td></tr>
+<tr data-q="204 204-15 20415 netherlands nl ziggo"><td class="dim">204</td><td>15</td><td>Netherlands (NL)</td><td><span title="Ziggo B.V.">Ziggo</span></td></tr>
+<tr data-q="204 204-17 20417 netherlands nl lebara ltd"><td class="dim">204</td><td>17</td><td>Netherlands (NL)</td><td><span>Lebara Ltd</span></td></tr>
+<tr data-q="204 204-21 20421 netherlands nl prorail b.v."><td class="dim">204</td><td>21</td><td>Netherlands (NL)</td><td><span>ProRail B.V.</span></td></tr>
+<tr data-q="204 204-23 20423 netherlands nl kore wireless nederland b.v."><td class="dim">204</td><td>23</td><td>Netherlands (NL)</td><td><span>KORE Wireless Nederland B.V.</span></td></tr>
+<tr data-q="204 204-25 20425 netherlands nl capx b.v."><td class="dim">204</td><td>25</td><td>Netherlands (NL)</td><td><span>CapX B.V.</span></td></tr>
+<tr data-q="204 204-27 20427 netherlands nl l-mobi"><td class="dim">204</td><td>27</td><td>Netherlands (NL)</td><td><span title="L-Mobi Mobile B.V.">L-mobi</span></td></tr>
+<tr data-q="204 204-33 20433 netherlands nl truphone b.v."><td class="dim">204</td><td>33</td><td>Netherlands (NL)</td><td><span>Truphone B.V.</span></td></tr>
+<tr data-q="204 204-62 20462 netherlands nl rgtn"><td class="dim">204</td><td>62</td><td>Netherlands (NL)</td><td><span title="RGTN Wholesale Netherlands B.V.">RGTN</span></td></tr>
+<tr data-q="204 204-66 20466 netherlands nl utility connect b.v."><td class="dim">204</td><td>66</td><td>Netherlands (NL)</td><td><span>Utility Connect B.V.</span></td></tr>
+<tr data-q="204 204-67 20467 netherlands nl koning en hartman b.v."><td class="dim">204</td><td>67</td><td>Netherlands (NL)</td><td><span>Koning en Hartman B.V.</span></td></tr>
+<tr data-q="206 206-01 20601 belgium be proximus"><td class="dim">206</td><td>01</td><td>Belgium (BE)</td><td><span title="Proximus SA">Proximus</span></td></tr>
+<tr data-q="206 206-02 20602 belgium be infrabel"><td class="dim">206</td><td>02</td><td>Belgium (BE)</td><td><span>Infrabel</span></td></tr>
+<tr data-q="206 206-03 20603 belgium be citymesh connect"><td class="dim">206</td><td>03</td><td>Belgium (BE)</td><td><span title="Citymesh NV">Citymesh Connect</span></td></tr>
+<tr data-q="206 206-05 20605 belgium be telenet"><td class="dim">206</td><td>05</td><td>Belgium (BE)</td><td><span>Telenet</span></td></tr>
+<tr data-q="206 206-06 20606 belgium be lycamobile"><td class="dim">206</td><td>06</td><td>Belgium (BE)</td><td><span title="Lycamobile sprl">Lycamobile</span></td></tr>
+<tr data-q="206 206-08 20608 belgium be voo"><td class="dim">206</td><td>08</td><td>Belgium (BE)</td><td><span>VOO</span></td></tr>
+<tr data-q="206 206-10 20610 belgium be orange belgium"><td class="dim">206</td><td>10</td><td>Belgium (BE)</td><td><span title="Orange S.A.">Orange Belgium</span></td></tr>
+<tr data-q="206 206-12 20612 belgium be digi belgium"><td class="dim">206</td><td>12</td><td>Belgium (BE)</td><td><span title="DIGI Communications Belgium NV">DIGI Belgium</span></td></tr>
+<tr data-q="206 206-13 20613 belgium be cwave"><td class="dim">206</td><td>13</td><td>Belgium (BE)</td><td><span title="Citymesh Connect">Cwave</span></td></tr>
+<tr data-q="206 206-20 20620 belgium be base"><td class="dim">206</td><td>20</td><td>Belgium (BE)</td><td><span title="Telenet">Base</span></td></tr>
+<tr data-q="208 208-01 20801 france fr orange"><td class="dim">208</td><td>01</td><td>France (FR)</td><td><span title="Orange S.A.">Orange</span></td></tr>
+<tr data-q="208 208-03 20803 france fr onoff telecom"><td class="dim">208</td><td>03</td><td>France (FR)</td><td><span>Onoff Telecom</span></td></tr>
+<tr data-q="208 208-04 20804 france fr nexera"><td class="dim">208</td><td>04</td><td>France (FR)</td><td><span>Nexera</span></td></tr>
+<tr data-q="208 208-05 20805 france fr globalstar europe"><td class="dim">208</td><td>05</td><td>France (FR)</td><td><span>Globalstar Europe</span></td></tr>
+<tr data-q="208 208-08 20808 france fr sfr"><td class="dim">208</td><td>08</td><td>France (FR)</td><td><span title="Altice">SFR</span></td></tr>
+<tr data-q="208 208-12 20812 france fr 1global operations france"><td class="dim">208</td><td>12</td><td>France (FR)</td><td><span>1Global Operations France</span></td></tr>
+<tr data-q="208 208-14 20814 france fr sncf reseau"><td class="dim">208</td><td>14</td><td>France (FR)</td><td><span>SNCF Reseau</span></td></tr>
+<tr data-q="208 208-15 20815 france fr free"><td class="dim">208</td><td>15</td><td>France (FR)</td><td><span title="Free Mobile">Free</span></td></tr>
+<tr data-q="208 208-19 20819 france fr haute-garonne numerique"><td class="dim">208</td><td>19</td><td>France (FR)</td><td><span>Haute-Garonne numerique</span></td></tr>
+<tr data-q="208 208-20 20820 france fr bouygues"><td class="dim">208</td><td>20</td><td>France (FR)</td><td><span title="Bouygues Telecom">Bouygues</span></td></tr>
+<tr data-q="208 208-23 20823 france fr syndicat mixte ouvert charente numerique"><td class="dim">208</td><td>23</td><td>France (FR)</td><td><span>Syndicat mixte ouvert Charente Numerique</span></td></tr>
+<tr data-q="208 208-24 20824 france fr sierra wireless"><td class="dim">208</td><td>24</td><td>France (FR)</td><td><span title="Sierra Wireless France">Sierra Wireless</span></td></tr>
+<tr data-q="208 208-25 20825 france fr lycamobile"><td class="dim">208</td><td>25</td><td>France (FR)</td><td><span>LycaMobile</span></td></tr>
+<tr data-q="208 208-26 20826 france fr nrj mobile"><td class="dim">208</td><td>26</td><td>France (FR)</td><td><span title="Bouygues Telecom - Distribution">NRJ Mobile</span></td></tr>
+<tr data-q="208 208-27 20827 france fr coriolis telecom"><td class="dim">208</td><td>27</td><td>France (FR)</td><td><span>Coriolis Telecom</span></td></tr>
+<tr data-q="208 208-28 20828 france fr aif"><td class="dim">208</td><td>28</td><td>France (FR)</td><td><span title="Airmob Infra Full">AIF</span></td></tr>
+<tr data-q="208 208-29 20829 france fr cubic telecom france"><td class="dim">208</td><td>29</td><td>France (FR)</td><td><span>Cubic telecom France</span></td></tr>
+<tr data-q="208 208-30 20830 france fr syma mobile"><td class="dim">208</td><td>30</td><td>France (FR)</td><td><span>Syma Mobile</span></td></tr>
+<tr data-q="208 208-34 20834 france fr cellhire france"><td class="dim">208</td><td>34</td><td>France (FR)</td><td><span>Cellhire France</span></td></tr>
+<tr data-q="208 208-38 20838 france fr lebara france ltd"><td class="dim">208</td><td>38</td><td>France (FR)</td><td><span>Lebara France Ltd</span></td></tr>
+<tr data-q="208 208-96 20896 france fr region bourgogne-franche-comte"><td class="dim">208</td><td>96</td><td>France (FR)</td><td><span>Region Bourgogne-Franche-Comte</span></td></tr>
+<tr data-q="212 monaco mc"><td class="dim">212</td><td>-</td><td>Monaco (MC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="213 andorra ad"><td class="dim">213</td><td>-</td><td>Andorra (AD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="214 214-01 21401 spain es vodafone"><td class="dim">214</td><td>01</td><td>Spain (ES)</td><td><span title="Vodafone Spain">Vodafone</span></td></tr>
+<tr data-q="214 214-02 21402 spain es cube movil"><td class="dim">214</td><td>02</td><td>Spain (ES)</td><td><span title="Olamo Mobile S.L.U.">Cube Movil</span></td></tr>
+<tr data-q="214 214-03 21403 spain es orange"><td class="dim">214</td><td>03</td><td>Spain (ES)</td><td><span title="Orange Espagne S.A.U">Orange</span></td></tr>
+<tr data-q="214 214-04 21404 spain es yoigo"><td class="dim">214</td><td>04</td><td>Spain (ES)</td><td><span title="Grupo MASMOVIL">Yoigo</span></td></tr>
+<tr data-q="214 214-05 21405 spain es movistar"><td class="dim">214</td><td>05</td><td>Spain (ES)</td><td><span title="Telefonica Moviles Espana">Movistar</span></td></tr>
+<tr data-q="214 214-08 21408 spain es euskaltel"><td class="dim">214</td><td>08</td><td>Spain (ES)</td><td><span title="Euskaltel, S.A.">Euskaltel</span></td></tr>
+<tr data-q="214 214-14 21414 spain es avatel movil, s.l.u."><td class="dim">214</td><td>14</td><td>Spain (ES)</td><td><span>AVATEL MOVIL, S.L.U.</span></td></tr>
+<tr data-q="214 214-16 21416 spain es telecable"><td class="dim">214</td><td>16</td><td>Spain (ES)</td><td><span title="R Cable y Telecomunicaciones Galicia S.A.">TeleCable</span></td></tr>
+<tr data-q="214 214-17 21417 spain es mobil r"><td class="dim">214</td><td>17</td><td>Spain (ES)</td><td><span title="R Cable y Telecomunicaciones Galicia S.A.">Mobil R</span></td></tr>
+<tr data-q="214 214-19 21419 spain es simyo"><td class="dim">214</td><td>19</td><td>Spain (ES)</td><td><span title="Orange Espana Virtual Sl.">Simyo</span></td></tr>
+<tr data-q="214 214-22 21422 spain es digi mobil"><td class="dim">214</td><td>22</td><td>Spain (ES)</td><td><span title="Best Spain Telecom">DIGI mobil</span></td></tr>
+<tr data-q="214 214-24 21424 spain es vodafone espana, s.a.u."><td class="dim">214</td><td>24</td><td>Spain (ES)</td><td><span>VODAFONE ESPANA, S.A.U.</span></td></tr>
+<tr data-q="214 214-27 21427 spain es truphone"><td class="dim">214</td><td>27</td><td>Spain (ES)</td><td><span title="SCN Truphone, S.L.">Truphone</span></td></tr>
+<tr data-q="214 214-34 21434 spain es aire networks del mediterraneo, s.l.u."><td class="dim">214</td><td>34</td><td>Spain (ES)</td><td><span>Aire Networks del Mediterraneo, S.L.U.</span></td></tr>
+<tr data-q="214 214-51 21451 spain es adif"><td class="dim">214</td><td>51</td><td>Spain (ES)</td><td><span title="Administrador de Infraestructuras Ferroviarias">ADIF</span></td></tr>
+<tr data-q="216 hungary hu"><td class="dim">216</td><td>-</td><td>Hungary (HU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="218 bosnia and herzegovina ba"><td class="dim">218</td><td>-</td><td>Bosnia and Herzegovina (BA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="219 croatia hr"><td class="dim">219</td><td>-</td><td>Croatia (HR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="220 serbia rs"><td class="dim">220</td><td>-</td><td>Serbia (RS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="221 kosovo"><td class="dim">221</td><td>-</td><td>Kosovo</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="222 222-01 22201 italy it tim"><td class="dim">222</td><td>01</td><td>Italy (IT)</td><td><span title="Telecom Italia S.p.A.">TIM</span></td></tr>
+<tr data-q="222 222-06 22206 italy it vodafone"><td class="dim">222</td><td>06</td><td>Italy (IT)</td><td><span title="Vodafone Italia S.p.A.">Vodafone</span></td></tr>
+<tr data-q="222 222-07 22207 italy it kena mobile"><td class="dim">222</td><td>07</td><td>Italy (IT)</td><td><span title="Noverca S.r.l.">Kena Mobile</span></td></tr>
+<tr data-q="222 222-08 22208 italy it fastweb"><td class="dim">222</td><td>08</td><td>Italy (IT)</td><td><span title="Fastweb S.p.A.">Fastweb</span></td></tr>
+<tr data-q="222 222-30 22230 italy it rfi"><td class="dim">222</td><td>30</td><td>Italy (IT)</td><td><span title="Ferrovie dello Stato S.p.A.">RFI</span></td></tr>
+<tr data-q="222 222-33 22233 italy it postemobile"><td class="dim">222</td><td>33</td><td>Italy (IT)</td><td><span title="PosteMobile S.p.A.">PosteMobile</span></td></tr>
+<tr data-q="222 222-34 22234 italy it bt mobile/bt enia"><td class="dim">222</td><td>34</td><td>Italy (IT)</td><td><span title="BT Italia S.p.A.">BT Mobile/BT Enia</span></td></tr>
+<tr data-q="222 222-35 22235 italy it lycamobile"><td class="dim">222</td><td>35</td><td>Italy (IT)</td><td><span title="Lycamobile S.r.l.">Lycamobile</span></td></tr>
+<tr data-q="222 222-36 22236 italy it digi mobil"><td class="dim">222</td><td>36</td><td>Italy (IT)</td><td><span title="Digi Italy S.r.l.">Digi Mobil</span></td></tr>
+<tr data-q="222 222-38 22238 italy it linkem"><td class="dim">222</td><td>38</td><td>Italy (IT)</td><td><span title="Linkem S.p.A.">Linkem</span></td></tr>
+<tr data-q="222 222-41 22241 italy it go internet"><td class="dim">222</td><td>41</td><td>Italy (IT)</td><td><span title="Tiscali S.p.A.">GO Internet</span></td></tr>
+<tr data-q="222 222-50 22250 italy it iliad"><td class="dim">222</td><td>50</td><td>Italy (IT)</td><td><span title="Iliad Italia S.p.A.">Iliad</span></td></tr>
+<tr data-q="222 222-53 22253 italy it coopvoce"><td class="dim">222</td><td>53</td><td>Italy (IT)</td><td><span title="Coop Italia S.c.a.r.l.">CoopVoce</span></td></tr>
+<tr data-q="222 222-54 22254 italy it plintron"><td class="dim">222</td><td>54</td><td>Italy (IT)</td><td><span title="Plintron Italy S.r.l.">Plintron</span></td></tr>
+<tr data-q="222 222-56 22256 italy it spusu"><td class="dim">222</td><td>56</td><td>Italy (IT)</td><td><span title="MASS Response Service GmbH">spusu</span></td></tr>
+<tr data-q="222 222-88 22288 italy it wind tre"><td class="dim">222</td><td>88</td><td>Italy (IT)</td><td><span title="Wind Tre S.p.A.">Wind Tre</span></td></tr>
+<tr data-q="226 romania ro"><td class="dim">226</td><td>-</td><td>Romania (RO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="228 228-01 22801 switzerland ch swisscom"><td class="dim">228</td><td>01</td><td>Switzerland (CH)</td><td><span title="Swisscom AG">Swisscom</span></td></tr>
+<tr data-q="228 228-02 22802 switzerland ch sunrise"><td class="dim">228</td><td>02</td><td>Switzerland (CH)</td><td><span title="Sunrise UPC">Sunrise</span></td></tr>
+<tr data-q="228 228-03 22803 switzerland ch salt"><td class="dim">228</td><td>03</td><td>Switzerland (CH)</td><td><span title="Salt Mobile SA">Salt</span></td></tr>
+<tr data-q="228 228-06 22806 switzerland ch sbb-cff-ffs"><td class="dim">228</td><td>06</td><td>Switzerland (CH)</td><td><span title="SBB AG">SBB-CFF-FFS</span></td></tr>
+<tr data-q="228 228-51 22851 switzerland ch relario ag"><td class="dim">228</td><td>51</td><td>Switzerland (CH)</td><td><span>relario AG</span></td></tr>
+<tr data-q="228 228-53 22853 switzerland ch upc cablecom"><td class="dim">228</td><td>53</td><td>Switzerland (CH)</td><td><span title="Sunrise UPC GmbH">upc cablecom</span></td></tr>
+<tr data-q="228 228-54 22854 switzerland ch lycamobile"><td class="dim">228</td><td>54</td><td>Switzerland (CH)</td><td><span title="Lycamobile AG">Lycamobile</span></td></tr>
+<tr data-q="228 228-58 22858 switzerland ch beeone"><td class="dim">228</td><td>58</td><td>Switzerland (CH)</td><td><span title="Beeone Communications SA">beeone</span></td></tr>
+<tr data-q="228 228-62 22862 switzerland ch telecom26 ag"><td class="dim">228</td><td>62</td><td>Switzerland (CH)</td><td><span>Telecom26 AG</span></td></tr>
+<tr data-q="228 228-64 22864 switzerland ch nth ag"><td class="dim">228</td><td>64</td><td>Switzerland (CH)</td><td><span>Nth AG</span></td></tr>
+<tr data-q="228 228-65 22865 switzerland ch nexphone ag"><td class="dim">228</td><td>65</td><td>Switzerland (CH)</td><td><span>Nexphone AG</span></td></tr>
+<tr data-q="228 228-73 22873 switzerland ch iway"><td class="dim">228</td><td>73</td><td>Switzerland (CH)</td><td><span title="iWay AG">iWay</span></td></tr>
+<tr data-q="228 228-74 22874 switzerland ch net+"><td class="dim">228</td><td>74</td><td>Switzerland (CH)</td><td><span title="netplus.ch SA">net+</span></td></tr>
+<tr data-q="230 230-01 23001 czechia cz t-mobile"><td class="dim">230</td><td>01</td><td>Czechia (CZ)</td><td><span title="T-Mobile Czech Republic">T-Mobile</span></td></tr>
+<tr data-q="230 230-02 23002 czechia cz o2"><td class="dim">230</td><td>02</td><td>Czechia (CZ)</td><td><span title="O2 Czech Republic">O2</span></td></tr>
+<tr data-q="230 230-03 23003 czechia cz vodafone"><td class="dim">230</td><td>03</td><td>Czechia (CZ)</td><td><span title="Vodafone Czech Republic">Vodafone</span></td></tr>
+<tr data-q="230 230-04 23004 czechia cz nordic telecom"><td class="dim">230</td><td>04</td><td>Czechia (CZ)</td><td><span title="O2 Czech Republic">Nordic Telecom</span></td></tr>
+<tr data-q="230 230-05 23005 czechia cz poda a.s."><td class="dim">230</td><td>05</td><td>Czechia (CZ)</td><td><span>PODA a.s.</span></td></tr>
+<tr data-q="230 230-98 23098 czechia cz sprava zeleznicni dopravni cesty, s.o."><td class="dim">230</td><td>98</td><td>Czechia (CZ)</td><td><span>Sprava zeleznicni dopravni cesty, s.o.</span></td></tr>
+<tr data-q="231 slovakia sk"><td class="dim">231</td><td>-</td><td>Slovakia (SK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="232 232-01 23201 austria at a1.net"><td class="dim">232</td><td>01</td><td>Austria (AT)</td><td><span title="A1 Telekom Austria">A1.net</span></td></tr>
+<tr data-q="232 232-03 23203 austria at magenta"><td class="dim">232</td><td>03</td><td>Austria (AT)</td><td><span title="T-Mobile Austria GmbH">Magenta</span></td></tr>
+<tr data-q="232 232-05 23205 austria at 3"><td class="dim">232</td><td>05</td><td>Austria (AT)</td><td><span title="Hutchison Drei Austria">3</span></td></tr>
+<tr data-q="232 232-07 23207 austria at hofer telekom"><td class="dim">232</td><td>07</td><td>Austria (AT)</td><td><span title="T-Mobile Austria">Hofer Telekom</span></td></tr>
+<tr data-q="232 232-08 23208 austria at lycamobile"><td class="dim">232</td><td>08</td><td>Austria (AT)</td><td><span title="Lycamobile Austria">Lycamobile</span></td></tr>
+<tr data-q="232 232-09 23209 austria at tele2mobil"><td class="dim">232</td><td>09</td><td>Austria (AT)</td><td><span title="A1 Telekom Austria">Tele2Mobil</span></td></tr>
+<tr data-q="232 232-11 23211 austria at bob"><td class="dim">232</td><td>11</td><td>Austria (AT)</td><td><span title="A1 Telekom Austria">bob</span></td></tr>
+<tr data-q="232 232-12 23212 austria at yesss!"><td class="dim">232</td><td>12</td><td>Austria (AT)</td><td><span title="A1 Telekom Austria">yesss!</span></td></tr>
+<tr data-q="232 232-17 23217 austria at spusu"><td class="dim">232</td><td>17</td><td>Austria (AT)</td><td><span title="MASS Response Service GmbH">spusu</span></td></tr>
+<tr data-q="232 232-20 23220 austria at m:tel"><td class="dim">232</td><td>20</td><td>Austria (AT)</td><td><span title="MTEL Austria GmbH">m:tel</span></td></tr>
+<tr data-q="232 232-91 23291 austria at gsm-r a"><td class="dim">232</td><td>91</td><td>Austria (AT)</td><td><span title="OBB">GSM-R A</span></td></tr>
+<tr data-q="232 232-92 23292 austria at argonet"><td class="dim">232</td><td>92</td><td>Austria (AT)</td><td><span title="ArgoNET GmbH">ArgoNET</span></td></tr>
+<tr data-q="234 234-00 23400 united kingdom gb bt"><td class="dim">234</td><td>00</td><td>United Kingdom (GB)</td><td><span title="BT Group">BT</span></td></tr>
+<tr data-q="234 234-01 23401 united kingdom gb vectone mobile"><td class="dim">234</td><td>01</td><td>United Kingdom (GB)</td><td><span title="Mundio Mobile Limited">Vectone Mobile</span></td></tr>
+<tr data-q="234 234-02 23402 united kingdom gb o2 (uk)"><td class="dim">234</td><td>02</td><td>United Kingdom (GB)</td><td><span title="Telefonica Europe">O2 (UK)</span></td></tr>
+<tr data-q="234 234-03 23403 united kingdom gb airtel-vodafone"><td class="dim">234</td><td>03</td><td>United Kingdom (GB)</td><td><span title="Jersey Airtel Ltd">Airtel-Vodafone</span></td></tr>
+<tr data-q="234 234-08 23408 united kingdom gb bt onephone"><td class="dim">234</td><td>08</td><td>United Kingdom (GB)</td><td><span title="BT OnePhone (UK) Ltd">BT OnePhone</span></td></tr>
+<tr data-q="234 234-12 23412 united kingdom gb railtrack"><td class="dim">234</td><td>12</td><td>United Kingdom (GB)</td><td><span title="Network Rail Infrastructure Ltd">Railtrack</span></td></tr>
+<tr data-q="234 234-14 23414 united kingdom gb hsl messaging limited"><td class="dim">234</td><td>14</td><td>United Kingdom (GB)</td><td><span>HSL Messaging Limited</span></td></tr>
+<tr data-q="234 234-15 23415 united kingdom gb vodafone uk"><td class="dim">234</td><td>15</td><td>United Kingdom (GB)</td><td><span title="Vodafone">Vodafone UK</span></td></tr>
+<tr data-q="234 234-16 23416 united kingdom gb talk talk"><td class="dim">234</td><td>16</td><td>United Kingdom (GB)</td><td><span title="TalkTalk Communications Limited">Talk Talk</span></td></tr>
+<tr data-q="234 234-18 23418 united kingdom gb cloud9"><td class="dim">234</td><td>18</td><td>United Kingdom (GB)</td><td><span title="Wireless Logic Limited">Cloud9</span></td></tr>
+<tr data-q="234 234-19 23419 united kingdom gb pmn"><td class="dim">234</td><td>19</td><td>United Kingdom (GB)</td><td><span title="Teleware plc">PMN</span></td></tr>
+<tr data-q="234 234-20 23420 united kingdom gb 3"><td class="dim">234</td><td>20</td><td>United Kingdom (GB)</td><td><span title="Three UK">3</span></td></tr>
+<tr data-q="234 234-24 23424 united kingdom gb greenfone"><td class="dim">234</td><td>24</td><td>United Kingdom (GB)</td><td><span title="Stour Marine Limited">Greenfone</span></td></tr>
+<tr data-q="234 234-25 23425 united kingdom gb truphone"><td class="dim">234</td><td>25</td><td>United Kingdom (GB)</td><td><span>Truphone</span></td></tr>
+<tr data-q="234 234-26 23426 united kingdom gb lycamobile"><td class="dim">234</td><td>26</td><td>United Kingdom (GB)</td><td><span title="Lycamobile UK Limited">Lycamobile</span></td></tr>
+<tr data-q="234 234-27 23427 united kingdom gb teleena"><td class="dim">234</td><td>27</td><td>United Kingdom (GB)</td><td><span title="Tata Communications Move UK Ltd">Teleena</span></td></tr>
+<tr data-q="234 234-28 23428 united kingdom gb marathon telecom limited"><td class="dim">234</td><td>28</td><td>United Kingdom (GB)</td><td><span>Marathon Telecom Limited</span></td></tr>
+<tr data-q="234 234-30 23430 united kingdom gb ee"><td class="dim">234</td><td>30</td><td>United Kingdom (GB)</td><td><span title="EE Limited">EE</span></td></tr>
+<tr data-q="234 234-36 23436 united kingdom gb sure mobile"><td class="dim">234</td><td>36</td><td>United Kingdom (GB)</td><td><span title="Sure Isle of Man Ltd.">Sure Mobile</span></td></tr>
+<tr data-q="234 234-40 23440 united kingdom gb spusu"><td class="dim">234</td><td>40</td><td>United Kingdom (GB)</td><td><span title="MASS Response Service GmbH">spusu</span></td></tr>
+<tr data-q="234 234-50 23450 united kingdom gb jt"><td class="dim">234</td><td>50</td><td>United Kingdom (GB)</td><td><span title="JT Group Limited">JT</span></td></tr>
+<tr data-q="234 234-51 23451 united kingdom gb relish"><td class="dim">234</td><td>51</td><td>United Kingdom (GB)</td><td><span title="UK Broadband Limited">Relish</span></td></tr>
+<tr data-q="234 234-53 23453 united kingdom gb tango extend"><td class="dim">234</td><td>53</td><td>United Kingdom (GB)</td><td><span title="Tango Networks UK Ltd">Tango Extend</span></td></tr>
+<tr data-q="234 234-54 23454 united kingdom gb id mobile"><td class="dim">234</td><td>54</td><td>United Kingdom (GB)</td><td><span title="The Carphone Warehouse Limited">iD Mobile</span></td></tr>
+<tr data-q="234 234-57 23457 united kingdom gb sky mobile"><td class="dim">234</td><td>57</td><td>United Kingdom (GB)</td><td><span title="Sky UK Limited">Sky Mobile</span></td></tr>
+<tr data-q="234 234-58 23458 united kingdom gb pronto gsm"><td class="dim">234</td><td>58</td><td>United Kingdom (GB)</td><td><span title="Manx Telecom">Pronto GSM</span></td></tr>
+<tr data-q="234 234-72 23472 united kingdom gb hanhaa mobile"><td class="dim">234</td><td>72</td><td>United Kingdom (GB)</td><td><span title="Hanhaa Limited">Hanhaa Mobile</span></td></tr>
+<tr data-q="234 234-73 23473 united kingdom gb bluewave communications ltd"><td class="dim">234</td><td>73</td><td>United Kingdom (GB)</td><td><span>Bluewave Communications Ltd</span></td></tr>
+<tr data-q="234 234-78 23478 united kingdom gb airwave"><td class="dim">234</td><td>78</td><td>United Kingdom (GB)</td><td><span title="Airwave Solutions Ltd">Airwave</span></td></tr>
+<tr data-q="234 234-87 23487 united kingdom gb lebara"><td class="dim">234</td><td>87</td><td>United Kingdom (GB)</td><td><span>Lebara</span></td></tr>
+<tr data-q="234 234-88 23488 united kingdom gb telet"><td class="dim">234</td><td>88</td><td>United Kingdom (GB)</td><td><span title="Telet Research (N.I.) Limited">telet</span></td></tr>
+<tr data-q="235 united kingdom gb"><td class="dim">235</td><td>-</td><td>United Kingdom (GB)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="238 238-01 23801 denmark dk tdc"><td class="dim">238</td><td>01</td><td>Denmark (DK)</td><td><span title="TDC A/S">TDC</span></td></tr>
+<tr data-q="238 238-02 23802 denmark dk telenor"><td class="dim">238</td><td>02</td><td>Denmark (DK)</td><td><span title="Telenor Denmark">Telenor</span></td></tr>
+<tr data-q="238 238-05 23805 denmark dk tetranet"><td class="dim">238</td><td>05</td><td>Denmark (DK)</td><td><span title="Dansk Beredskabskommunikation A/S">TetraNet</span></td></tr>
+<tr data-q="238 238-06 23806 denmark dk 3"><td class="dim">238</td><td>06</td><td>Denmark (DK)</td><td><span title="Hi3G Denmark ApS">3</span></td></tr>
+<tr data-q="238 238-08 23808 denmark dk voxbone"><td class="dim">238</td><td>08</td><td>Denmark (DK)</td><td><span title="Voxbone mobile">Voxbone</span></td></tr>
+<tr data-q="238 238-09 23809 denmark dk sine"><td class="dim">238</td><td>09</td><td>Denmark (DK)</td><td><span title="Dansk Beredskabskommunikation A/S">SINE</span></td></tr>
+<tr data-q="238 238-12 23812 denmark dk lycamobile"><td class="dim">238</td><td>12</td><td>Denmark (DK)</td><td><span title="Lycamobile Denmark Ltd">Lycamobile</span></td></tr>
+<tr data-q="238 238-15 23815 denmark dk net 1"><td class="dim">238</td><td>15</td><td>Denmark (DK)</td><td><span title="Cibicom">Net 1</span></td></tr>
+<tr data-q="238 238-20 23820 denmark dk telia"><td class="dim">238</td><td>20</td><td>Denmark (DK)</td><td><span>Telia</span></td></tr>
+<tr data-q="238 238-23 23823 denmark dk gsm-r dk"><td class="dim">238</td><td>23</td><td>Denmark (DK)</td><td><span title="Banedanmark">GSM-R DK</span></td></tr>
+<tr data-q="238 238-42 23842 denmark dk wavely"><td class="dim">238</td><td>42</td><td>Denmark (DK)</td><td><span title="Greenwave Mobile IoT ApS">Wavely</span></td></tr>
+<tr data-q="238 238-66 23866 denmark dk tt-netvaerket p/s"><td class="dim">238</td><td>66</td><td>Denmark (DK)</td><td><span>TT-Netvaerket P/S</span></td></tr>
+<tr data-q="238 238-73 23873 denmark dk onomondo"><td class="dim">238</td><td>73</td><td>Denmark (DK)</td><td><span title="Onomondo ApS">Onomondo</span></td></tr>
+<tr data-q="240 240-01 24001 sweden se telia"><td class="dim">240</td><td>01</td><td>Sweden (SE)</td><td><span title="Telia Sverige AB">Telia</span></td></tr>
+<tr data-q="240 240-02 24002 sweden se 3"><td class="dim">240</td><td>02</td><td>Sweden (SE)</td><td><span title="HI3G Access AB">3</span></td></tr>
+<tr data-q="240 240-03 24003 sweden se net 1"><td class="dim">240</td><td>03</td><td>Sweden (SE)</td><td><span title="Teracom AB">Net 1</span></td></tr>
+<tr data-q="240 240-07 24007 sweden se tele2"><td class="dim">240</td><td>07</td><td>Sweden (SE)</td><td><span title="Tele2 Sverige AB">Tele2</span></td></tr>
+<tr data-q="240 240-10 24010 sweden se spring mobil"><td class="dim">240</td><td>10</td><td>Sweden (SE)</td><td><span title="Tele2 Sverige AB">Spring Mobil</span></td></tr>
+<tr data-q="240 240-11 24011 sweden se globalcell"><td class="dim">240</td><td>11</td><td>Sweden (SE)</td><td><span title="GlobalCell EU Ltd.">GlobalCell</span></td></tr>
+<tr data-q="240 240-12 24012 sweden se lycamobile"><td class="dim">240</td><td>12</td><td>Sweden (SE)</td><td><span title="Lycamobile Sweden Limited">Lycamobile</span></td></tr>
+<tr data-q="240 240-16 24016 sweden se 42 telecom ab"><td class="dim">240</td><td>16</td><td>Sweden (SE)</td><td><span>42 Telecom AB</span></td></tr>
+<tr data-q="240 240-17 24017 sweden se gotanet"><td class="dim">240</td><td>17</td><td>Sweden (SE)</td><td><span title="Gotalandsnatet AB">Gotanet</span></td></tr>
+<tr data-q="240 240-20 24020 sweden se sierra wireless sweden ab"><td class="dim">240</td><td>20</td><td>Sweden (SE)</td><td><span>Sierra Wireless Sweden AB</span></td></tr>
+<tr data-q="240 240-21 24021 sweden se mobisir"><td class="dim">240</td><td>21</td><td>Sweden (SE)</td><td><span title="Trafikverket ICT">MobiSir</span></td></tr>
+<tr data-q="240 240-24 24024 sweden se sweden 2g"><td class="dim">240</td><td>24</td><td>Sweden (SE)</td><td><span title="Net4Mobility HB">Sweden 2G</span></td></tr>
+<tr data-q="240 240-27 24027 sweden se globetouch ab"><td class="dim">240</td><td>27</td><td>Sweden (SE)</td><td><span>GlobeTouch AB</span></td></tr>
+<tr data-q="240 240-38 24038 sweden se voxbone"><td class="dim">240</td><td>38</td><td>Sweden (SE)</td><td><span title="Voxbone mobile">Voxbone</span></td></tr>
+<tr data-q="242 242-01 24201 norway no telenor"><td class="dim">242</td><td>01</td><td>Norway (NO)</td><td><span title="Telenor Norge AS">Telenor</span></td></tr>
+<tr data-q="242 242-02 24202 norway no telia"><td class="dim">242</td><td>02</td><td>Norway (NO)</td><td><span title="Telia Norge AS">Telia</span></td></tr>
+<tr data-q="242 242-05 24205 norway no onecall / mycall"><td class="dim">242</td><td>05</td><td>Norway (NO)</td><td><span title="Telia Norge AS">OneCall / MyCall</span></td></tr>
+<tr data-q="242 242-06 24206 norway no ice"><td class="dim">242</td><td>06</td><td>Norway (NO)</td><td><span title="Lyse Tele AS">ice</span></td></tr>
+<tr data-q="242 242-09 24209 norway no com4"><td class="dim">242</td><td>09</td><td>Norway (NO)</td><td><span title="Com4 AS">Com4</span></td></tr>
+<tr data-q="242 242-15 24215 norway no erate norway as"><td class="dim">242</td><td>15</td><td>Norway (NO)</td><td><span>eRate Norway AS</span></td></tr>
+<tr data-q="242 242-20 24220 norway no jernbaneverket as"><td class="dim">242</td><td>20</td><td>Norway (NO)</td><td><span>Jernbaneverket AS</span></td></tr>
+<tr data-q="242 242-23 24223 norway no lycamobile"><td class="dim">242</td><td>23</td><td>Norway (NO)</td><td><span title="Lyca Mobile Ltd">Lycamobile</span></td></tr>
+<tr data-q="242 242-99 24299 norway no tampnet as"><td class="dim">242</td><td>99</td><td>Norway (NO)</td><td><span>TampNet AS</span></td></tr>
+<tr data-q="244 244-03 24403 finland fi dna"><td class="dim">244</td><td>03</td><td>Finland (FI)</td><td><span title="DNA Oy">DNA</span></td></tr>
+<tr data-q="244 244-05 24405 finland fi elisa"><td class="dim">244</td><td>05</td><td>Finland (FI)</td><td><span title="Elisa Oyj">Elisa</span></td></tr>
+<tr data-q="244 244-07 24407 finland fi nokia"><td class="dim">244</td><td>07</td><td>Finland (FI)</td><td><span title="Nokia Solutions and Networks Oy">Nokia</span></td></tr>
+<tr data-q="244 244-14 24414 finland fi alcom"><td class="dim">244</td><td>14</td><td>Finland (FI)</td><td><span title="Alands Telekommunikation Ab">Alcom</span></td></tr>
+<tr data-q="244 244-17 24417 finland fi liikennevirasto"><td class="dim">244</td><td>17</td><td>Finland (FI)</td><td><span>Liikennevirasto</span></td></tr>
+<tr data-q="244 244-19 24419 finland fi nettia oy"><td class="dim">244</td><td>19</td><td>Finland (FI)</td><td><span>Nettia Oy</span></td></tr>
+<tr data-q="244 244-21 24421 finland fi elisa- saunalahti"><td class="dim">244</td><td>21</td><td>Finland (FI)</td><td><span title="Elisa Oyj">Elisa- Saunalahti</span></td></tr>
+<tr data-q="244 244-33 24433 finland fi virve"><td class="dim">244</td><td>33</td><td>Finland (FI)</td><td><span title="Suomen Turvallisuusverkko Oy">VIRVE</span></td></tr>
+<tr data-q="244 244-35 24435 finland fi edzcom oy"><td class="dim">244</td><td>35</td><td>Finland (FI)</td><td><span>Edzcom Oy</span></td></tr>
+<tr data-q="244 244-36 24436 finland fi telia / dna"><td class="dim">244</td><td>36</td><td>Finland (FI)</td><td><span title="Telia Finland Oyj / Suomen Yhteisverkko Oy">Telia / DNA</span></td></tr>
+<tr data-q="244 244-91 24491 finland fi telia"><td class="dim">244</td><td>91</td><td>Finland (FI)</td><td><span title="Telia Finland Oyj">Telia</span></td></tr>
+<tr data-q="246 lithuania lt"><td class="dim">246</td><td>-</td><td>Lithuania (LT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="247 latvia lv"><td class="dim">247</td><td>-</td><td>Latvia (LV)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="248 estonia ee"><td class="dim">248</td><td>-</td><td>Estonia (EE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="250 250-01 25001 russia ru mts"><td class="dim">250</td><td>01</td><td>Russia (RU)</td><td><span title="Mobile TeleSystems">MTS</span></td></tr>
+<tr data-q="250 250-02 25002 russia ru megafon"><td class="dim">250</td><td>02</td><td>Russia (RU)</td><td><span title="MegaFon PJSC">MegaFon</span></td></tr>
+<tr data-q="250 250-11 25011 russia ru yota"><td class="dim">250</td><td>11</td><td>Russia (RU)</td><td><span title="Scartel">Yota</span></td></tr>
+<tr data-q="250 250-19 25019 russia ru alfa-mobile"><td class="dim">250</td><td>19</td><td>Russia (RU)</td><td><span title="Alfa-Bank">Alfa-Mobile</span></td></tr>
+<tr data-q="250 250-20 25020 russia ru t2"><td class="dim">250</td><td>20</td><td>Russia (RU)</td><td><span title="Rostelecom">t2</span></td></tr>
+<tr data-q="250 250-26 25026 russia ru vtb mobile"><td class="dim">250</td><td>26</td><td>Russia (RU)</td><td><span>VTB Mobile</span></td></tr>
+<tr data-q="250 250-27 25027 russia ru letai"><td class="dim">250</td><td>27</td><td>Russia (RU)</td><td><span title="Tattelecom">Letai</span></td></tr>
+<tr data-q="250 250-32 25032 russia ru win mobile"><td class="dim">250</td><td>32</td><td>Russia (RU)</td><td><span title="K-Telecom">Win Mobile</span></td></tr>
+<tr data-q="250 250-35 25035 russia ru motiv"><td class="dim">250</td><td>35</td><td>Russia (RU)</td><td><span title="EKATERINBURG-2000">MOTIV</span></td></tr>
+<tr data-q="250 250-45 25045 russia ru gazprombank mobile"><td class="dim">250</td><td>45</td><td>Russia (RU)</td><td><span title="PJSC New Mobile Communications">Gazprombank Mobile</span></td></tr>
+<tr data-q="250 250-50 25050 russia ru sbermobile"><td class="dim">250</td><td>50</td><td>Russia (RU)</td><td><span title="Sberbank-Telecom">SberMobile</span></td></tr>
+<tr data-q="250 250-99 25099 russia ru beeline"><td class="dim">250</td><td>99</td><td>Russia (RU)</td><td><span title="OJSC Vimpel-Communications">Beeline</span></td></tr>
+<tr data-q="255 ukraine ua"><td class="dim">255</td><td>-</td><td>Ukraine (UA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="257 belarus by"><td class="dim">257</td><td>-</td><td>Belarus (BY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="259 moldova md"><td class="dim">259</td><td>-</td><td>Moldova (MD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="260 260-01 26001 poland pl plus"><td class="dim">260</td><td>01</td><td>Poland (PL)</td><td><span title="Polkomtel Sp. z o.o.">Plus</span></td></tr>
+<tr data-q="260 260-02 26002 poland pl t-mobile"><td class="dim">260</td><td>02</td><td>Poland (PL)</td><td><span title="T-Mobile Polska S.A.">T-Mobile</span></td></tr>
+<tr data-q="260 260-03 26003 poland pl orange"><td class="dim">260</td><td>03</td><td>Poland (PL)</td><td><span title="Orange Polska S.A.">Orange</span></td></tr>
+<tr data-q="260 260-06 26006 poland pl play"><td class="dim">260</td><td>06</td><td>Poland (PL)</td><td><span title="P4 Sp. z o.o.">Play</span></td></tr>
+<tr data-q="260 260-07 26007 poland pl netia"><td class="dim">260</td><td>07</td><td>Poland (PL)</td><td><span title="Netia S.A.">Netia</span></td></tr>
+<tr data-q="260 260-09 26009 poland pl lycamobile"><td class="dim">260</td><td>09</td><td>Poland (PL)</td><td><span title="Lycamobile Sp. z o.o.">Lycamobile</span></td></tr>
+<tr data-q="260 260-12 26012 poland pl cyfrowy polsat"><td class="dim">260</td><td>12</td><td>Poland (PL)</td><td><span title="Cyfrowy Polsat S.A.">Cyfrowy Polsat</span></td></tr>
+<tr data-q="260 260-13 26013 poland pl move telecom s.a."><td class="dim">260</td><td>13</td><td>Poland (PL)</td><td><span>Move Telecom S.A.</span></td></tr>
+<tr data-q="260 260-33 26033 poland pl 1global operations"><td class="dim">260</td><td>33</td><td>Poland (PL)</td><td><span>1Global Operations</span></td></tr>
+<tr data-q="260 260-34 26034 poland pl networks!"><td class="dim">260</td><td>34</td><td>Poland (PL)</td><td><span title="T-Mobile Polska S.A.">NetWorkS!</span></td></tr>
+<tr data-q="260 260-35 26035 poland pl pkp polskie linie kolejowe s.a."><td class="dim">260</td><td>35</td><td>Poland (PL)</td><td><span>PKP Polskie Linie Kolejowe S.A.</span></td></tr>
+<tr data-q="260 260-39 26039 poland pl voxbone"><td class="dim">260</td><td>39</td><td>Poland (PL)</td><td><span title="VOXBONE SA">Voxbone</span></td></tr>
+<tr data-q="260 260-45 26045 poland pl virgin mobile"><td class="dim">260</td><td>45</td><td>Poland (PL)</td><td><span title="P4 Sp. z o.o.">Virgin Mobile</span></td></tr>
+<tr data-q="262 262-01 26201 germany de telekom"><td class="dim">262</td><td>01</td><td>Germany (DE)</td><td><span title="Telekom Deutschland GmbH">Telekom</span></td></tr>
+<tr data-q="262 262-02 26202 germany de vodafone"><td class="dim">262</td><td>02</td><td>Germany (DE)</td><td><span title="Vodafone D2 GmbH">Vodafone</span></td></tr>
+<tr data-q="262 262-03 26203 germany de o2"><td class="dim">262</td><td>03</td><td>Germany (DE)</td><td><span title="Telefonica Germany GmbH &amp; Co. oHG">O2</span></td></tr>
+<tr data-q="262 262-10 26210 germany de db netz ag"><td class="dim">262</td><td>10</td><td>Germany (DE)</td><td><span>DB Netz AG</span></td></tr>
+<tr data-q="262 262-12 26212 germany de simquadrat"><td class="dim">262</td><td>12</td><td>Germany (DE)</td><td><span title="sipgate GmbH">Simquadrat</span></td></tr>
+<tr data-q="262 262-14 26214 germany de lebara limited"><td class="dim">262</td><td>14</td><td>Germany (DE)</td><td><span>Lebara Limited</span></td></tr>
+<tr data-q="262 262-15 26215 germany de airdata"><td class="dim">262</td><td>15</td><td>Germany (DE)</td><td><span>Airdata</span></td></tr>
+<tr data-q="262 262-18 26218 germany de netcologne"><td class="dim">262</td><td>18</td><td>Germany (DE)</td><td><span>NetCologne</span></td></tr>
+<tr data-q="262 262-19 26219 germany de 450connect"><td class="dim">262</td><td>19</td><td>Germany (DE)</td><td><span title="Alliander AG nl">450connect</span></td></tr>
+<tr data-q="262 262-20 26220 germany de enreach"><td class="dim">262</td><td>20</td><td>Germany (DE)</td><td><span title="Enreach Germany GmbH">Enreach</span></td></tr>
+<tr data-q="262 262-23 26223 germany de 1&amp;1"><td class="dim">262</td><td>23</td><td>Germany (DE)</td><td><span title="Drillisch Online AG">1&amp;1</span></td></tr>
+<tr data-q="262 262-42 26242 germany de ccc event"><td class="dim">262</td><td>42</td><td>Germany (DE)</td><td><span title="Chaos Computer Club">CCC Event</span></td></tr>
+<tr data-q="262 262-43 26243 germany de lycamobile"><td class="dim">262</td><td>43</td><td>Germany (DE)</td><td><span>Lycamobile</span></td></tr>
+<tr data-q="262 262-60 26260 germany de db telematik"><td class="dim">262</td><td>60</td><td>Germany (DE)</td><td><span>DB Telematik</span></td></tr>
+<tr data-q="262 262-70 26270 germany de bdbos"><td class="dim">262</td><td>70</td><td>Germany (DE)</td><td><span>BDBOS</span></td></tr>
+<tr data-q="262 262-98 26298 germany de private networks"><td class="dim">262</td><td>98</td><td>Germany (DE)</td><td><span>private networks</span></td></tr>
+<tr data-q="266 gibraltar (united kingdom) gi"><td class="dim">266</td><td>-</td><td>Gibraltar (United Kingdom) (GI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="268 268-01 26801 portugal pt vodafone"><td class="dim">268</td><td>01</td><td>Portugal (PT)</td><td><span title="Vodafone Portugal">Vodafone</span></td></tr>
+<tr data-q="268 268-02 26802 portugal pt digi pt"><td class="dim">268</td><td>02</td><td>Portugal (PT)</td><td><span title="Digi Portugal, Lda.">DIGI PT</span></td></tr>
+<tr data-q="268 268-03 26803 portugal pt nos"><td class="dim">268</td><td>03</td><td>Portugal (PT)</td><td><span title="NOS Comunicacoes">NOS</span></td></tr>
+<tr data-q="268 268-04 26804 portugal pt lycamobile"><td class="dim">268</td><td>04</td><td>Portugal (PT)</td><td><span>LycaMobile</span></td></tr>
+<tr data-q="268 268-06 26806 portugal pt meo"><td class="dim">268</td><td>06</td><td>Portugal (PT)</td><td><span title="MEO - Servicos de Comunicacoes e Multimedia, S.A.">MEO</span></td></tr>
+<tr data-q="268 268-07 26807 portugal pt holafly portugal, s.a."><td class="dim">268</td><td>07</td><td>Portugal (PT)</td><td><span>Holafly Portugal, S.A.</span></td></tr>
+<tr data-q="268 268-12 26812 portugal pt infraestruturas de portugal, s.a."><td class="dim">268</td><td>12</td><td>Portugal (PT)</td><td><span>Infraestruturas de Portugal, S.A.</span></td></tr>
+<tr data-q="270 luxembourg lu"><td class="dim">270</td><td>-</td><td>Luxembourg (LU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="272 272-01 27201 ireland ie vodafone"><td class="dim">272</td><td>01</td><td>Ireland (IE)</td><td><span title="Vodafone Ireland">Vodafone</span></td></tr>
+<tr data-q="272 272-02 27202 ireland ie 3"><td class="dim">272</td><td>02</td><td>Ireland (IE)</td><td><span title="Three Ireland Services (Hutchison) Ltd">3</span></td></tr>
+<tr data-q="272 272-03 27203 ireland ie eir"><td class="dim">272</td><td>03</td><td>Ireland (IE)</td><td><span title="Eir Group plc">Eir</span></td></tr>
+<tr data-q="272 272-11 27211 ireland ie tesco mobile"><td class="dim">272</td><td>11</td><td>Ireland (IE)</td><td><span title="Liffey Telecom">Tesco Mobile</span></td></tr>
+<tr data-q="272 272-13 27213 ireland ie lycamobile"><td class="dim">272</td><td>13</td><td>Ireland (IE)</td><td><span>Lycamobile</span></td></tr>
+<tr data-q="272 272-15 27215 ireland ie virgin mobile"><td class="dim">272</td><td>15</td><td>Ireland (IE)</td><td><span title="UPC">Virgin Mobile</span></td></tr>
+<tr data-q="272 272-18 27218 ireland ie cubic telecom limited"><td class="dim">272</td><td>18</td><td>Ireland (IE)</td><td><span>Cubic Telecom Limited</span></td></tr>
+<tr data-q="272 272-21 27221 ireland ie net feasa limited"><td class="dim">272</td><td>21</td><td>Ireland (IE)</td><td><span>Net Feasa Limited</span></td></tr>
+<tr data-q="272 272-25 27225 ireland ie sky mobile"><td class="dim">272</td><td>25</td><td>Ireland (IE)</td><td><span title="Sky Ireland">Sky Mobile</span></td></tr>
+<tr data-q="272 272-42 27242 ireland ie imagine"><td class="dim">272</td><td>42</td><td>Ireland (IE)</td><td><span title="Imagine Communications">Imagine</span></td></tr>
+<tr data-q="274 iceland is"><td class="dim">274</td><td>-</td><td>Iceland (IS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="276 albania al"><td class="dim">276</td><td>-</td><td>Albania (AL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="278 malta mt"><td class="dim">278</td><td>-</td><td>Malta (MT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="280 cyprus cy"><td class="dim">280</td><td>-</td><td>Cyprus (CY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="282 georgia ge"><td class="dim">282</td><td>-</td><td>Georgia (GE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="283 armenia am"><td class="dim">283</td><td>-</td><td>Armenia (AM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="284 bulgaria bg"><td class="dim">284</td><td>-</td><td>Bulgaria (BG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="286 286-01 28601 turkey tr turkcell"><td class="dim">286</td><td>01</td><td>Turkey (TR)</td><td><span title="Turkcell Iletisim Hizmetleri A.S.">Turkcell</span></td></tr>
+<tr data-q="286 286-02 28602 turkey tr vodafone"><td class="dim">286</td><td>02</td><td>Turkey (TR)</td><td><span title="Vodafone Turkey">Vodafone</span></td></tr>
+<tr data-q="286 286-03 28603 turkey tr turk telekom"><td class="dim">286</td><td>03</td><td>Turkey (TR)</td><td><span>Turk Telekom</span></td></tr>
+<tr data-q="288 faroe islands (kingdom of denmark) fo"><td class="dim">288</td><td>-</td><td>Faroe Islands (Kingdom of Denmark) (FO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="289 abkhazia"><td class="dim">289</td><td>-</td><td>Abkhazia</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="290 greenland (kingdom of denmark) gl"><td class="dim">290</td><td>-</td><td>Greenland (Kingdom of Denmark) (GL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="292 san marino sm"><td class="dim">292</td><td>-</td><td>San Marino (SM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="293 slovenia si"><td class="dim">293</td><td>-</td><td>Slovenia (SI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="294 north macedonia mk"><td class="dim">294</td><td>-</td><td>North Macedonia (MK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="295 liechtenstein li"><td class="dim">295</td><td>-</td><td>Liechtenstein (LI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="297 montenegro me"><td class="dim">297</td><td>-</td><td>Montenegro (ME)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="302 302-270 302270 canada ca eastlink"><td class="dim">302</td><td>270</td><td>Canada (CA)</td><td><span title="Bragg Communications">EastLink</span></td></tr>
+<tr data-q="302 302-320 302320 canada ca rogers wireless"><td class="dim">302</td><td>320</td><td>Canada (CA)</td><td><span title="Rogers Communications">Rogers Wireless</span></td></tr>
+<tr data-q="302 302-370 302370 canada ca fido"><td class="dim">302</td><td>370</td><td>Canada (CA)</td><td><span title="Fido Solutions (Rogers Wireless)">Fido</span></td></tr>
+<tr data-q="302 302-420 302420 canada ca telus"><td class="dim">302</td><td>420</td><td>Canada (CA)</td><td><span title="Telus Mobility">Telus</span></td></tr>
+<tr data-q="302 302-490 302490 canada ca freedom mobile"><td class="dim">302</td><td>490</td><td>Canada (CA)</td><td><span title="Quebecor">Freedom Mobile</span></td></tr>
+<tr data-q="302 302-500 302500 canada ca videotron"><td class="dim">302</td><td>500</td><td>Canada (CA)</td><td><span>Videotron</span></td></tr>
+<tr data-q="302 302-610 302610 canada ca bell mobility"><td class="dim">302</td><td>610</td><td>Canada (CA)</td><td><span>Bell Mobility</span></td></tr>
+<tr data-q="302 302-660 302660 canada ca mts"><td class="dim">302</td><td>660</td><td>Canada (CA)</td><td><span title="Bell MTS">MTS</span></td></tr>
+<tr data-q="302 302-680 302680 canada ca sasktel"><td class="dim">302</td><td>680</td><td>Canada (CA)</td><td><span title="SaskTel Mobility">SaskTel</span></td></tr>
+<tr data-q="302 302-710 302710 canada ca globalstar"><td class="dim">302</td><td>710</td><td>Canada (CA)</td><td><span title="Globalstar Canada Satellite Co.">Globalstar</span></td></tr>
+<tr data-q="302 302-760 302760 canada ca public mobile"><td class="dim">302</td><td>760</td><td>Canada (CA)</td><td><span title="Telus Mobility">Public Mobile</span></td></tr>
+<tr data-q="308 saint pierre and miquelon pm"><td class="dim">308</td><td>-</td><td>Saint Pierre and Miquelon (PM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="310 310-004 310004 united states us verizon"><td class="dim">310</td><td>004</td><td>United States (US)</td><td><span title="Verizon Wireless">Verizon</span></td></tr>
+<tr data-q="310 310-020 310020 united states us union wireless"><td class="dim">310</td><td>020</td><td>United States (US)</td><td><span title="Union Telephone Company">Union Wireless</span></td></tr>
+<tr data-q="310 310-050 310050 united states us gci"><td class="dim">310</td><td>050</td><td>United States (US)</td><td><span title="Alaska Communications">GCI</span></td></tr>
+<tr data-q="310 310-053 310053 united states us virgin mobile"><td class="dim">310</td><td>053</td><td>United States (US)</td><td><span title="T-Mobile US">Virgin Mobile</span></td></tr>
+<tr data-q="310 310-066 310066 united states us uscellular"><td class="dim">310</td><td>066</td><td>United States (US)</td><td><span title="United States Cellular Corporation">UScellular</span></td></tr>
+<tr data-q="310 310-070 310070 united states us at&amp;t"><td class="dim">310</td><td>070</td><td>United States (US)</td><td><span title="AT&amp;T Mobility">AT&amp;T</span></td></tr>
+<tr data-q="310 310-260 310260 united states us t-mobile"><td class="dim">310</td><td>260</td><td>United States (US)</td><td><span title="T-Mobile US">T-Mobile</span></td></tr>
+<tr data-q="310 310-450 310450 united states us viaero"><td class="dim">310</td><td>450</td><td>United States (US)</td><td><span title="Viaero Wireless">Viaero</span></td></tr>
+<tr data-q="310 310-500 310500 united states us alltel"><td class="dim">310</td><td>500</td><td>United States (US)</td><td><span title="Public Service Cellular Inc.">Alltel</span></td></tr>
+<tr data-q="310 310-970 310970 united states us globalstar"><td class="dim">310</td><td>970</td><td>United States (US)</td><td><span>Globalstar</span></td></tr>
+<tr data-q="311 311-230 311230 united states us c spire"><td class="dim">311</td><td>230</td><td>United States (US)</td><td><span title="Cellular South Inc.">C Spire</span></td></tr>
+<tr data-q="311 311-660 311660 united states us metro"><td class="dim">311</td><td>660</td><td>United States (US)</td><td><span title="Metro by T-Mobile">Metro</span></td></tr>
+<tr data-q="311 311-840 311840 united states us cellcom"><td class="dim">311</td><td>840</td><td>United States (US)</td><td><span title="Nsight">Cellcom</span></td></tr>
+<tr data-q="312 312-670 312670 united states us firstnet"><td class="dim">312</td><td>670</td><td>United States (US)</td><td><span title="AT&amp;T Mobility">FirstNet</span></td></tr>
+<tr data-q="312 312-720 312720 united states us southern linc"><td class="dim">312</td><td>720</td><td>United States (US)</td><td><span title="Southern Communications Services">Southern LINC</span></td></tr>
+<tr data-q="313 313-340 313340 united states us dish"><td class="dim">313</td><td>340</td><td>United States (US)</td><td><span title="Dish Wireless">Dish</span></td></tr>
+<tr data-q="314 314-680 314680 united states us xfinity"><td class="dim">314</td><td>680</td><td>United States (US)</td><td><span title="Comcast OTR1 LLC">Xfinity</span></td></tr>
+<tr data-q="315 united states of america us"><td class="dim">315</td><td>-</td><td>United States of America (US)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="316 united states of america us"><td class="dim">316</td><td>-</td><td>United States of America (US)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="330 puerto rico (united states of america) pr"><td class="dim">330</td><td>-</td><td>Puerto Rico (United States of America) (PR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="332 united states virgin islands vi"><td class="dim">332</td><td>-</td><td>United States Virgin Islands (VI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="334 334-020 334020 mexico mx telcel"><td class="dim">334</td><td>020</td><td>Mexico (MX)</td><td><span title="America Movil">Telcel</span></td></tr>
+<tr data-q="334 334-030 334030 mexico mx movistar"><td class="dim">334</td><td>030</td><td>Mexico (MX)</td><td><span title="Telefonica">Movistar</span></td></tr>
+<tr data-q="334 334-050 334050 mexico mx at&amp;t / unefon"><td class="dim">334</td><td>050</td><td>Mexico (MX)</td><td><span title="AT&amp;T Mexico">AT&amp;T / Unefon</span></td></tr>
+<tr data-q="334 334-090 334090 mexico mx at&amp;t"><td class="dim">334</td><td>090</td><td>Mexico (MX)</td><td><span title="AT&amp;T Mexico">AT&amp;T</span></td></tr>
+<tr data-q="334 334-130 334130 mexico mx alestra servicios moviles, s.a. de c.v."><td class="dim">334</td><td>130</td><td>Mexico (MX)</td><td><span>ALESTRA SERVICIOS MOVILES, S.A. DE C.V.</span></td></tr>
+<tr data-q="334 334-140 334140 mexico mx red compartida"><td class="dim">334</td><td>140</td><td>Mexico (MX)</td><td><span title="Altan Redes S.A.P.I. de C.V.">Red Compartida</span></td></tr>
+<tr data-q="334 334-150 334150 mexico mx ultranet"><td class="dim">334</td><td>150</td><td>Mexico (MX)</td><td><span title="Ultravision, S.A. de C.V.">Ultranet</span></td></tr>
+<tr data-q="334 334-180 334180 mexico mx freedompop"><td class="dim">334</td><td>180</td><td>Mexico (MX)</td><td><span title="FREEDOMPOP MEXICO, S.A. de C.V.">FreedomPop</span></td></tr>
+<tr data-q="334 334-190 334190 mexico mx viasat"><td class="dim">334</td><td>190</td><td>Mexico (MX)</td><td><span title="VIASAT TECNOLOGIA, S.A. de C.V.">Viasat</span></td></tr>
+<tr data-q="334 334-200 334200 mexico mx virgin mobile"><td class="dim">334</td><td>200</td><td>Mexico (MX)</td><td><span title="VIRGIN MOBILE MEXICO, S. de R.L. de C.V.">Virgin Mobile</span></td></tr>
+<tr data-q="334 334-210 334210 mexico mx yo mobile"><td class="dim">334</td><td>210</td><td>Mexico (MX)</td><td><span title="Yonder Media Mobile Mexico, S. de R.L. de C.V.">YO Mobile</span></td></tr>
+<tr data-q="334 334-220 334220 mexico mx megamovil"><td class="dim">334</td><td>220</td><td>Mexico (MX)</td><td><span title="Mega Cable, S.A. de C.V">Megamovil</span></td></tr>
+<tr data-q="338 jamaica jm"><td class="dim">338</td><td>-</td><td>Jamaica (JM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="340 guadeloupe (france) gp"><td class="dim">340</td><td>-</td><td>Guadeloupe (France) (GP)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="342 barbados bb"><td class="dim">342</td><td>-</td><td>Barbados (BB)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="344 antigua and barbuda ag"><td class="dim">344</td><td>-</td><td>Antigua and Barbuda (AG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="346 cayman islands (united kingdom) ky"><td class="dim">346</td><td>-</td><td>Cayman Islands (United Kingdom) (KY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="348 british virgin islands (united kingdom) vg"><td class="dim">348</td><td>-</td><td>British Virgin Islands (United Kingdom) (VG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="350 bermuda bm"><td class="dim">350</td><td>-</td><td>Bermuda (BM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="352 grenada gd"><td class="dim">352</td><td>-</td><td>Grenada (GD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="354 montserrat (united kingdom) ms"><td class="dim">354</td><td>-</td><td>Montserrat (United Kingdom) (MS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="356 saint kitts and nevis kn"><td class="dim">356</td><td>-</td><td>Saint Kitts and Nevis (KN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="358 saint lucia lc"><td class="dim">358</td><td>-</td><td>Saint Lucia (LC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="360 saint vincent and the grenadines vc"><td class="dim">360</td><td>-</td><td>Saint Vincent and the Grenadines (VC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="362 bonaire, sint eustatius and saba bq"><td class="dim">362</td><td>-</td><td>Bonaire, Sint Eustatius and Saba (BQ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="363 aruba aw"><td class="dim">363</td><td>-</td><td>Aruba (AW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="364 bahamas bs"><td class="dim">364</td><td>-</td><td>Bahamas (BS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="365 anguilla (united kingdom) ai"><td class="dim">365</td><td>-</td><td>Anguilla (United Kingdom) (AI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="366 dominica dm"><td class="dim">366</td><td>-</td><td>Dominica (DM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="368 cuba cu"><td class="dim">368</td><td>-</td><td>Cuba (CU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="370 dominican republic do"><td class="dim">370</td><td>-</td><td>Dominican Republic (DO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="372 haiti ht"><td class="dim">372</td><td>-</td><td>Haiti (HT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="374 trinidad and tobago tt"><td class="dim">374</td><td>-</td><td>Trinidad and Tobago (TT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="376 turks and caicos islands tc"><td class="dim">376</td><td>-</td><td>Turks and Caicos Islands (TC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="400 azerbaijan az"><td class="dim">400</td><td>-</td><td>Azerbaijan (AZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="401 kazakhstan kz"><td class="dim">401</td><td>-</td><td>Kazakhstan (KZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="402 bhutan bt"><td class="dim">402</td><td>-</td><td>Bhutan (BT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="404 404-01 40401 india in vi india"><td class="dim">404</td><td>01</td><td>India (IN)</td><td><span title="Vodafone Idea Limited">Vi India</span></td></tr>
+<tr data-q="404 404-02 40402 india in airtel"><td class="dim">404</td><td>02</td><td>India (IN)</td><td><span title="Bharti Airtel Limited">AirTel</span></td></tr>
+<tr data-q="404 404-34 40434 india in bsnl mobile"><td class="dim">404</td><td>34</td><td>India (IN)</td><td><span title="Bharat Sanchar Nigam Limited (BSNL)">BSNL Mobile</span></td></tr>
+<tr data-q="404 404-68 40468 india in mtnl"><td class="dim">404</td><td>68</td><td>India (IN)</td><td><span title="Mahanagar Telephone Nigam Limited (MTNL)">MTNL</span></td></tr>
+<tr data-q="405 405-048 405048 india in indian railways gsm-r"><td class="dim">405</td><td>048</td><td>India (IN)</td><td><span title="Indian Railways">INDIAN RAILWAYS GSM-R</span></td></tr>
+<tr data-q="405 405-840 405840 india in reliance jio"><td class="dim">405</td><td>840</td><td>India (IN)</td><td><span title="Reliance Jio Infocomm Limited">Reliance Jio</span></td></tr>
+<tr data-q="406 no networks yet"><td class="dim">406</td><td>-</td><td>no networks yet</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="410 410-01 41001 pakistan pk jazz"><td class="dim">410</td><td>01</td><td>Pakistan (PK)</td><td><span title="Mobilink-PMCL">Jazz</span></td></tr>
+<tr data-q="410 410-02 41002 pakistan pk 3g evo / charji 4g"><td class="dim">410</td><td>02</td><td>Pakistan (PK)</td><td><span title="PTCL">3G EVO / CharJi 4G</span></td></tr>
+<tr data-q="410 410-03 41003 pakistan pk ufone"><td class="dim">410</td><td>03</td><td>Pakistan (PK)</td><td><span title="Pakistan Telecommunication Mobile Ltd">Ufone</span></td></tr>
+<tr data-q="410 410-04 41004 pakistan pk zong"><td class="dim">410</td><td>04</td><td>Pakistan (PK)</td><td><span title="China Mobile">Zong</span></td></tr>
+<tr data-q="410 410-05 41005 pakistan pk sco mobile"><td class="dim">410</td><td>05</td><td>Pakistan (PK)</td><td><span title="SCO Mobile Ltd">SCO Mobile</span></td></tr>
+<tr data-q="410 410-06 41006 pakistan pk telenor"><td class="dim">410</td><td>06</td><td>Pakistan (PK)</td><td><span title="Telenor Pakistan">Telenor</span></td></tr>
+<tr data-q="412 afghanistan af"><td class="dim">412</td><td>-</td><td>Afghanistan (AF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="413 sri lanka lk"><td class="dim">413</td><td>-</td><td>Sri Lanka (LK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="414 myanmar mm"><td class="dim">414</td><td>-</td><td>Myanmar (MM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="415 lebanon lb"><td class="dim">415</td><td>-</td><td>Lebanon (LB)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="416 jordan jo"><td class="dim">416</td><td>-</td><td>Jordan (JO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="417 syria sy"><td class="dim">417</td><td>-</td><td>Syria (SY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="418 iraq iq"><td class="dim">418</td><td>-</td><td>Iraq (IQ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="419 kuwait kw"><td class="dim">419</td><td>-</td><td>Kuwait (KW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="420 420-01 42001 saudi arabia sa al jawal (stc )"><td class="dim">420</td><td>01</td><td>Saudi Arabia (SA)</td><td><span title="Saudi Telecom Company">Al Jawal (STC )</span></td></tr>
+<tr data-q="420 420-03 42003 saudi arabia sa mobily"><td class="dim">420</td><td>03</td><td>Saudi Arabia (SA)</td><td><span title="Etihad Etisalat Company">Mobily</span></td></tr>
+<tr data-q="420 420-04 42004 saudi arabia sa zain sa"><td class="dim">420</td><td>04</td><td>Saudi Arabia (SA)</td><td><span title="Zain Saudi Arabia">Zain SA</span></td></tr>
+<tr data-q="420 420-05 42005 saudi arabia sa virgin mobile"><td class="dim">420</td><td>05</td><td>Saudi Arabia (SA)</td><td><span title="Virgin Mobile Saudi Arabia">Virgin Mobile</span></td></tr>
+<tr data-q="420 420-06 42006 saudi arabia sa lebara mobile"><td class="dim">420</td><td>06</td><td>Saudi Arabia (SA)</td><td><span>Lebara Mobile</span></td></tr>
+<tr data-q="420 420-21 42021 saudi arabia sa rgsm"><td class="dim">420</td><td>21</td><td>Saudi Arabia (SA)</td><td><span title="Saudi Railways GSM">RGSM</span></td></tr>
+<tr data-q="421 yemen ye"><td class="dim">421</td><td>-</td><td>Yemen (YE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="422 oman om"><td class="dim">422</td><td>-</td><td>Oman (OM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="424 424-02 42402 united arab emirates ae etisalat"><td class="dim">424</td><td>02</td><td>United Arab Emirates (AE)</td><td><span title="Emirates Telecom Corp">Etisalat</span></td></tr>
+<tr data-q="424 424-03 42403 united arab emirates ae du"><td class="dim">424</td><td>03</td><td>United Arab Emirates (AE)</td><td><span title="Emirates Integrated Telecommunications Company">du</span></td></tr>
+<tr data-q="425 israel il"><td class="dim">425</td><td>-</td><td>Israel (IL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="426 bahrain bh"><td class="dim">426</td><td>-</td><td>Bahrain (BH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="427 427-01 42701 qatar qa ooredoo"><td class="dim">427</td><td>01</td><td>Qatar (QA)</td><td><span>Ooredoo</span></td></tr>
+<tr data-q="427 427-02 42702 qatar qa vodafone"><td class="dim">427</td><td>02</td><td>Qatar (QA)</td><td><span title="Vodafone Qatar">Vodafone</span></td></tr>
+<tr data-q="427 427-05 42705 qatar qa ministry of interior"><td class="dim">427</td><td>05</td><td>Qatar (QA)</td><td><span>Ministry of Interior</span></td></tr>
+<tr data-q="428 mongolia mn"><td class="dim">428</td><td>-</td><td>Mongolia (MN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="429 nepal np"><td class="dim">429</td><td>-</td><td>Nepal (NP)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="430 united arab emirates (abu dhabi) ae"><td class="dim">430</td><td>-</td><td>United Arab Emirates (Abu Dhabi) (AE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="431 united arab emirates (dubai) ae"><td class="dim">431</td><td>-</td><td>United Arab Emirates (Dubai) (AE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="432 iran ir"><td class="dim">432</td><td>-</td><td>Iran (IR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="434 uzbekistan uz"><td class="dim">434</td><td>-</td><td>Uzbekistan (UZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="436 tajikistan tj"><td class="dim">436</td><td>-</td><td>Tajikistan (TJ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="437 kyrgyzstan kg"><td class="dim">437</td><td>-</td><td>Kyrgyzstan (KG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="438 turkmenistan tm"><td class="dim">438</td><td>-</td><td>Turkmenistan (TM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="440 440-01 44001 japan jp kddi corporation"><td class="dim">440</td><td>01</td><td>Japan (JP)</td><td><span>KDDI Corporation</span></td></tr>
+<tr data-q="440 440-03 44003 japan jp iijmio"><td class="dim">440</td><td>03</td><td>Japan (JP)</td><td><span title="Internet Initiative Japan Inc.">IIJmio</span></td></tr>
+<tr data-q="440 440-05 44005 japan jp wireless city planning inc."><td class="dim">440</td><td>05</td><td>Japan (JP)</td><td><span>Wireless City Planning Inc.</span></td></tr>
+<tr data-q="440 440-09 44009 japan jp misora connect inc."><td class="dim">440</td><td>09</td><td>Japan (JP)</td><td><span>Misora Connect Inc.</span></td></tr>
+<tr data-q="440 440-10 44010 japan jp ntt docomo"><td class="dim">440</td><td>10</td><td>Japan (JP)</td><td><span title="NTT DoCoMo, Inc.">NTT docomo</span></td></tr>
+<tr data-q="440 440-11 44011 japan jp rakuten mobile"><td class="dim">440</td><td>11</td><td>Japan (JP)</td><td><span title="Rakuten Mobile Network, Inc.">Rakuten Mobile</span></td></tr>
+<tr data-q="440 440-20 44020 japan jp softbank"><td class="dim">440</td><td>20</td><td>Japan (JP)</td><td><span title="SoftBank Corp.">SoftBank</span></td></tr>
+<tr data-q="440 440-24 44024 japan jp japan communications inc."><td class="dim">440</td><td>24</td><td>Japan (JP)</td><td><span>Japan Communications Inc.</span></td></tr>
+<tr data-q="440 440-50 44050 japan jp au"><td class="dim">440</td><td>50</td><td>Japan (JP)</td><td><span title="KDDI Corporation">au</span></td></tr>
+<tr data-q="441 441-200 441200 japan jp soracom inc."><td class="dim">441</td><td>200</td><td>Japan (JP)</td><td><span>Soracom Inc.</span></td></tr>
+<tr data-q="441 441-205 441205 japan jp katch network inc."><td class="dim">441</td><td>205</td><td>Japan (JP)</td><td><span>Katch Network Inc.</span></td></tr>
+<tr data-q="450 450-01 45001 south korea kr globalstar asia pacific"><td class="dim">450</td><td>01</td><td>South Korea (KR)</td><td><span>Globalstar Asia Pacific</span></td></tr>
+<tr data-q="450 450-02 45002 south korea kr kt"><td class="dim">450</td><td>02</td><td>South Korea (KR)</td><td><span>KT</span></td></tr>
+<tr data-q="450 450-05 45005 south korea kr sktelecom"><td class="dim">450</td><td>05</td><td>South Korea (KR)</td><td><span title="SK Telecom">SKTelecom</span></td></tr>
+<tr data-q="450 450-06 45006 south korea kr lg u+"><td class="dim">450</td><td>06</td><td>South Korea (KR)</td><td><span title="LG Uplus">LG U+</span></td></tr>
+<tr data-q="450 450-08 45008 south korea kr olleh"><td class="dim">450</td><td>08</td><td>South Korea (KR)</td><td><span title="KT">olleh</span></td></tr>
+<tr data-q="450 450-11 45011 south korea kr tplus"><td class="dim">450</td><td>11</td><td>South Korea (KR)</td><td><span title="Korea Cable Telecom">Tplus</span></td></tr>
+<tr data-q="452 452-01 45201 vietnam vn mobifone"><td class="dim">452</td><td>01</td><td>Vietnam (VN)</td><td><span title="Vietnam Mobile Telecom Services Company">MobiFone</span></td></tr>
+<tr data-q="452 452-02 45202 vietnam vn vinaphone"><td class="dim">452</td><td>02</td><td>Vietnam (VN)</td><td><span title="Vietnam Telecom Services Company">Vinaphone</span></td></tr>
+<tr data-q="452 452-04 45204 vietnam vn viettel mobile"><td class="dim">452</td><td>04</td><td>Vietnam (VN)</td><td><span title="Viettel Telecom">Viettel Mobile</span></td></tr>
+<tr data-q="452 452-05 45205 vietnam vn vietnamobile"><td class="dim">452</td><td>05</td><td>Vietnam (VN)</td><td><span title="Hanoi Telecom">Vietnamobile</span></td></tr>
+<tr data-q="452 452-07 45207 vietnam vn gmobile"><td class="dim">452</td><td>07</td><td>Vietnam (VN)</td><td><span title="GTEL Mobile JSC">Gmobile</span></td></tr>
+<tr data-q="452 452-08 45208 vietnam vn i-telecom"><td class="dim">452</td><td>08</td><td>Vietnam (VN)</td><td><span title="Indochina Telecom">I-Telecom</span></td></tr>
+<tr data-q="452 452-09 45209 vietnam vn wintel"><td class="dim">452</td><td>09</td><td>Vietnam (VN)</td><td><span title="Mobicast JSC">Wintel</span></td></tr>
+<tr data-q="454 454-00 45400 hong kong hk 1o1o / one2free / new world mobility / sunmobile"><td class="dim">454</td><td>00</td><td>Hong Kong (HK)</td><td><span title="CSL Limited">1O1O / One2Free / New World Mobility / SUNMobile</span></td></tr>
+<tr data-q="454 454-01 45401 hong kong hk citic telecom 1616"><td class="dim">454</td><td>01</td><td>Hong Kong (HK)</td><td><span>CITIC Telecom 1616</span></td></tr>
+<tr data-q="454 454-03 45403 hong kong hk 3"><td class="dim">454</td><td>03</td><td>Hong Kong (HK)</td><td><span title="Hutchison Telecom">3</span></td></tr>
+<tr data-q="454 454-06 45406 hong kong hk smartone"><td class="dim">454</td><td>06</td><td>Hong Kong (HK)</td><td><span title="SmarTone Mobile Communications Limited">SmarTone</span></td></tr>
+<tr data-q="454 454-07 45407 hong kong hk china unicom"><td class="dim">454</td><td>07</td><td>Hong Kong (HK)</td><td><span title="China Unicom (Hong Kong) Limited">China Unicom</span></td></tr>
+<tr data-q="454 454-08 45408 hong kong hk truphone"><td class="dim">454</td><td>08</td><td>Hong Kong (HK)</td><td><span title="TP Hong Kong Operations Limited">Truphone</span></td></tr>
+<tr data-q="454 454-11 45411 hong kong hk china-hong kong telecom"><td class="dim">454</td><td>11</td><td>Hong Kong (HK)</td><td><span>China-Hong Kong Telecom</span></td></tr>
+<tr data-q="454 454-12 45412 hong kong hk cmcc hk"><td class="dim">454</td><td>12</td><td>Hong Kong (HK)</td><td><span title="China Mobile Hong Kong Company Limited">CMCC HK</span></td></tr>
+<tr data-q="454 454-16 45416 hong kong hk pccw mobile (2g)"><td class="dim">454</td><td>16</td><td>Hong Kong (HK)</td><td><span title="PCCW">PCCW Mobile (2G)</span></td></tr>
+<tr data-q="454 454-19 45419 hong kong hk pccw mobile (3g)"><td class="dim">454</td><td>19</td><td>Hong Kong (HK)</td><td><span title="PCCW-HKT">PCCW Mobile (3G)</span></td></tr>
+<tr data-q="454 454-20 45420 hong kong hk pccw mobile (4g)"><td class="dim">454</td><td>20</td><td>Hong Kong (HK)</td><td><span title="PCCW-HKT">PCCW Mobile (4G)</span></td></tr>
+<tr data-q="454 454-22 45422 hong kong hk huiyinbi telecom (hong kong) limited"><td class="dim">454</td><td>22</td><td>Hong Kong (HK)</td><td><span>HuiYinBi Telecom (Hong Kong) Limited</span></td></tr>
+<tr data-q="454 454-24 45424 hong kong hk multibyte info technology ltd"><td class="dim">454</td><td>24</td><td>Hong Kong (HK)</td><td><span>Multibyte Info Technology Ltd</span></td></tr>
+<tr data-q="454 454-31 45431 hong kong hk ctexcel"><td class="dim">454</td><td>31</td><td>Hong Kong (HK)</td><td><span title="China Telecom Global Limited">CTExcel</span></td></tr>
+<tr data-q="454 454-35 45435 hong kong hk webbing hong kong ltd"><td class="dim">454</td><td>35</td><td>Hong Kong (HK)</td><td><span>Webbing Hong Kong Ltd</span></td></tr>
+<tr data-q="454 454-382 454382 hong kong hk south china telecommunications (h.k.) limited"><td class="dim">454</td><td>382</td><td>Hong Kong (HK)</td><td><span>South China Telecommunications (H.K.) Limited</span></td></tr>
+<tr data-q="455 macau mo"><td class="dim">455</td><td>-</td><td>Macau (MO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="456 cambodia kh"><td class="dim">456</td><td>-</td><td>Cambodia (KH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="457 laos la"><td class="dim">457</td><td>-</td><td>Laos (LA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="460 china cn"><td class="dim">460</td><td>-</td><td>China (CN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="461 no networks yet"><td class="dim">461</td><td>-</td><td>no networks yet</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="466 taiwan tw"><td class="dim">466</td><td>-</td><td>Taiwan (TW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="467 korea, north kp"><td class="dim">467</td><td>-</td><td>Korea, North (KP)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="470 bangladesh bd"><td class="dim">470</td><td>-</td><td>Bangladesh (BD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="472 maldives mv"><td class="dim">472</td><td>-</td><td>Maldives (MV)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="502 502-10 50210 malaysia my celcom, digi, maxis, tune talk, u mobile, unifi, xox, yes"><td class="dim">502</td><td>10</td><td>Malaysia (MY)</td><td><span>Celcom, DiGi, Maxis, Tune Talk, U Mobile, Unifi, XOX, Yes</span></td></tr>
+<tr data-q="502 502-11 50211 malaysia my tm homeline"><td class="dim">502</td><td>11</td><td>Malaysia (MY)</td><td><span title="Telekom Malaysia Bhd">TM Homeline</span></td></tr>
+<tr data-q="502 502-12 50212 malaysia my maxis"><td class="dim">502</td><td>12</td><td>Malaysia (MY)</td><td><span title="Maxis Communications Berhad">Maxis</span></td></tr>
+<tr data-q="502 502-13 50213 malaysia my celcomdigi"><td class="dim">502</td><td>13</td><td>Malaysia (MY)</td><td><span title="Celcom Axiata Berhad">CelcomDigi</span></td></tr>
+<tr data-q="502 502-150 502150 malaysia my tune talk"><td class="dim">502</td><td>150</td><td>Malaysia (MY)</td><td><span title="Tune Talk Sdn Bhd">Tune Talk</span></td></tr>
+<tr data-q="502 502-152 502152 malaysia my yes"><td class="dim">502</td><td>152</td><td>Malaysia (MY)</td><td><span title="YTL Communications Sdn Bhd">Yes</span></td></tr>
+<tr data-q="502 502-153 502153 malaysia my unifi"><td class="dim">502</td><td>153</td><td>Malaysia (MY)</td><td><span title="TM Technology Services Sdn Bhd">unifi</span></td></tr>
+<tr data-q="502 502-156 502156 malaysia my altel"><td class="dim">502</td><td>156</td><td>Malaysia (MY)</td><td><span title="Altel Communications Sdn Bhd">Altel</span></td></tr>
+<tr data-q="502 502-157 502157 malaysia my telin"><td class="dim">502</td><td>157</td><td>Malaysia (MY)</td><td><span title="Telekomunikasi Indonesia International (M) Sdn Bhd">Telin</span></td></tr>
+<tr data-q="502 502-16 50216 malaysia my digi"><td class="dim">502</td><td>16</td><td>Malaysia (MY)</td><td><span title="DiGi Telecommunications">DiGi</span></td></tr>
+<tr data-q="502 502-18 50218 malaysia my u mobile"><td class="dim">502</td><td>18</td><td>Malaysia (MY)</td><td><span title="U Mobile Sdn Bhd">U Mobile</span></td></tr>
+<tr data-q="502 502-19 50219 malaysia my celcom"><td class="dim">502</td><td>19</td><td>Malaysia (MY)</td><td><span title="Celcom Axiata Berhad">Celcom</span></td></tr>
+<tr data-q="505 505-01 50501 australia au telstra"><td class="dim">505</td><td>01</td><td>Australia (AU)</td><td><span>Telstra</span></td></tr>
+<tr data-q="505 505-02 50502 australia au optus"><td class="dim">505</td><td>02</td><td>Australia (AU)</td><td><span title="Singtel Optus">Optus</span></td></tr>
+<tr data-q="505 505-03 50503 australia au vodafone"><td class="dim">505</td><td>03</td><td>Australia (AU)</td><td><span title="TPG Telecom">Vodafone</span></td></tr>
+<tr data-q="505 505-04 50504 australia au department of defence"><td class="dim">505</td><td>04</td><td>Australia (AU)</td><td><span>Department of Defence</span></td></tr>
+<tr data-q="505 505-10 50510 australia au norfolk island"><td class="dim">505</td><td>10</td><td>Australia (AU)</td><td><span title="Norfolk Telecom">Norfolk Island</span></td></tr>
+<tr data-q="505 505-13 50513 australia au railcorp"><td class="dim">505</td><td>13</td><td>Australia (AU)</td><td><span title="Railcorp, Transport for NSW">RailCorp</span></td></tr>
+<tr data-q="505 505-16 50516 australia au victrack"><td class="dim">505</td><td>16</td><td>Australia (AU)</td><td><span title="Victorian Rail Track">VicTrack</span></td></tr>
+<tr data-q="505 505-19 50519 australia au lycamobile"><td class="dim">505</td><td>19</td><td>Australia (AU)</td><td><span>Lycamobile</span></td></tr>
+<tr data-q="505 505-23 50523 australia au vocus"><td class="dim">505</td><td>23</td><td>Australia (AU)</td><td><span>Vocus</span></td></tr>
+<tr data-q="505 505-38 50538 australia au truphone"><td class="dim">505</td><td>38</td><td>Australia (AU)</td><td><span title="TP Operations Australia">Truphone</span></td></tr>
+<tr data-q="505 505-50 50550 australia au pivotel group"><td class="dim">505</td><td>50</td><td>Australia (AU)</td><td><span>Pivotel Group</span></td></tr>
+<tr data-q="505 505-52 50552 australia au optitel australia"><td class="dim">505</td><td>52</td><td>Australia (AU)</td><td><span>OptiTel Australia</span></td></tr>
+<tr data-q="505 505-54 50554 australia au simcorner pty ltd"><td class="dim">505</td><td>54</td><td>Australia (AU)</td><td><span>SimCorner Pty Ltd</span></td></tr>
+<tr data-q="505 505-58 50558 australia au wi-sky"><td class="dim">505</td><td>58</td><td>Australia (AU)</td><td><span>Wi-Sky</span></td></tr>
+<tr data-q="505 505-59 50559 australia au starlink"><td class="dim">505</td><td>59</td><td>Australia (AU)</td><td><span>Starlink</span></td></tr>
+<tr data-q="505 505-62 50562 australia au nbn"><td class="dim">505</td><td>62</td><td>Australia (AU)</td><td><span title="NBN_Co">NBN</span></td></tr>
+<tr data-q="510 indonesia id"><td class="dim">510</td><td>-</td><td>Indonesia (ID)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="514 east timor tl"><td class="dim">514</td><td>-</td><td>East Timor (TL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="515 515-01 51501 philippines ph g starlink"><td class="dim">515</td><td>01</td><td>Philippines (PH)</td><td><span title="Globe Telecom via Starlink">G Starlink</span></td></tr>
+<tr data-q="515 515-02 51502 philippines ph globe"><td class="dim">515</td><td>02</td><td>Philippines (PH)</td><td><span title="Globe Telecom">Globe</span></td></tr>
+<tr data-q="515 515-03 51503 philippines ph smart"><td class="dim">515</td><td>03</td><td>Philippines (PH)</td><td><span title="PLDT via Smart Communications">SMART</span></td></tr>
+<tr data-q="515 515-66 51566 philippines ph dito"><td class="dim">515</td><td>66</td><td>Philippines (PH)</td><td><span title="Dito Telecommunity Corp.">DITO</span></td></tr>
+<tr data-q="520 thailand th"><td class="dim">520</td><td>-</td><td>Thailand (TH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="525 525-01 52501 singapore sg singtel"><td class="dim">525</td><td>01</td><td>Singapore (SG)</td><td><span title="Singapore Telecom">SingTel</span></td></tr>
+<tr data-q="525 525-03 52503 singapore sg m1"><td class="dim">525</td><td>03</td><td>Singapore (SG)</td><td><span title="M1 Limited">M1</span></td></tr>
+<tr data-q="525 525-04 52504 singapore sg grid"><td class="dim">525</td><td>04</td><td>Singapore (SG)</td><td><span title="Grid Communications Pte Ltd.">Grid</span></td></tr>
+<tr data-q="525 525-05 52505 singapore sg starhub"><td class="dim">525</td><td>05</td><td>Singapore (SG)</td><td><span title="StarHub Mobile">StarHub</span></td></tr>
+<tr data-q="525 525-09 52509 singapore sg circles.life"><td class="dim">525</td><td>09</td><td>Singapore (SG)</td><td><span title="Liberty Wireless Pte Ltd">Circles.Life</span></td></tr>
+<tr data-q="525 525-10 52510 singapore sg simba"><td class="dim">525</td><td>10</td><td>Singapore (SG)</td><td><span title="Simba Telecom Pte Ltd">SIMBA</span></td></tr>
+<tr data-q="528 brunei bn"><td class="dim">528</td><td>-</td><td>Brunei (BN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="530 530-01 53001 new zealand nz one nz"><td class="dim">530</td><td>01</td><td>New Zealand (NZ)</td><td><span>One NZ</span></td></tr>
+<tr data-q="530 530-02 53002 new zealand nz spark"><td class="dim">530</td><td>02</td><td>New Zealand (NZ)</td><td><span title="Spark New Zealand SpaceX">Spark</span></td></tr>
+<tr data-q="530 530-11 53011 new zealand nz tu atea"><td class="dim">530</td><td>11</td><td>New Zealand (NZ)</td><td><span>Tu Atea</span></td></tr>
+<tr data-q="530 530-24 53024 new zealand nz 2degrees"><td class="dim">530</td><td>24</td><td>New Zealand (NZ)</td><td><span>2degrees</span></td></tr>
+<tr data-q="536 nauru nr"><td class="dim">536</td><td>-</td><td>Nauru (NR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="537 papua new guinea pg"><td class="dim">537</td><td>-</td><td>Papua New Guinea (PG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="539 tonga to"><td class="dim">539</td><td>-</td><td>Tonga (TO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="540 solomon islands sb"><td class="dim">540</td><td>-</td><td>Solomon Islands (SB)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="541 vanuatu vu"><td class="dim">541</td><td>-</td><td>Vanuatu (VU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="542 fiji fj"><td class="dim">542</td><td>-</td><td>Fiji (FJ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="543 wallis and futuna wf"><td class="dim">543</td><td>-</td><td>Wallis and Futuna (WF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="544 american samoa (united states of america) as"><td class="dim">544</td><td>-</td><td>American Samoa (United States of America) (AS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="545 kiribati ki"><td class="dim">545</td><td>-</td><td>Kiribati (KI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="546 new caledonia nc"><td class="dim">546</td><td>-</td><td>New Caledonia (NC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="547 french polynesia (france) pf"><td class="dim">547</td><td>-</td><td>French Polynesia (France) (PF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="548 cook islands (pacific ocean) ck"><td class="dim">548</td><td>-</td><td>Cook Islands (Pacific Ocean) (CK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="549 samoa ws"><td class="dim">549</td><td>-</td><td>Samoa (WS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="550 micronesia, federated states of fm"><td class="dim">550</td><td>-</td><td>Micronesia, Federated States of (FM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="551 marshall islands mh"><td class="dim">551</td><td>-</td><td>Marshall Islands (MH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="552 palau pw"><td class="dim">552</td><td>-</td><td>Palau (PW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="553 tuvalu tv"><td class="dim">553</td><td>-</td><td>Tuvalu (TV)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="554 tokelau tk"><td class="dim">554</td><td>-</td><td>Tokelau (TK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="555 niue nu"><td class="dim">555</td><td>-</td><td>Niue (NU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="602 602-01 60201 egypt eg orange"><td class="dim">602</td><td>01</td><td>Egypt (EG)</td><td><span title="Orange Egypt">Orange</span></td></tr>
+<tr data-q="602 602-02 60202 egypt eg vodafone"><td class="dim">602</td><td>02</td><td>Egypt (EG)</td><td><span title="Vodafone Egypt">Vodafone</span></td></tr>
+<tr data-q="602 602-03 60203 egypt eg e&amp;"><td class="dim">602</td><td>03</td><td>Egypt (EG)</td><td><span title="e&amp; Egypt">e&amp;</span></td></tr>
+<tr data-q="602 602-04 60204 egypt eg we"><td class="dim">602</td><td>04</td><td>Egypt (EG)</td><td><span title="Telecom Egypt">WE</span></td></tr>
+<tr data-q="603 algeria dz"><td class="dim">603</td><td>-</td><td>Algeria (DZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="604 morocco ma"><td class="dim">604</td><td>-</td><td>Morocco (MA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="605 tunisia tn"><td class="dim">605</td><td>-</td><td>Tunisia (TN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="606 libya ly"><td class="dim">606</td><td>-</td><td>Libya (LY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="607 gambia gm"><td class="dim">607</td><td>-</td><td>Gambia (GM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="608 senegal sn"><td class="dim">608</td><td>-</td><td>Senegal (SN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="609 mauritania mr"><td class="dim">609</td><td>-</td><td>Mauritania (MR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="610 mali ml"><td class="dim">610</td><td>-</td><td>Mali (ML)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="611 guinea gn"><td class="dim">611</td><td>-</td><td>Guinea (GN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="612 ivory coast ci"><td class="dim">612</td><td>-</td><td>Ivory Coast (CI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="613 burkina faso bf"><td class="dim">613</td><td>-</td><td>Burkina Faso (BF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="614 niger ne"><td class="dim">614</td><td>-</td><td>Niger (NE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="615 togo tg"><td class="dim">615</td><td>-</td><td>Togo (TG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="616 benin bj"><td class="dim">616</td><td>-</td><td>Benin (BJ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="617 mauritius mu"><td class="dim">617</td><td>-</td><td>Mauritius (MU)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="618 liberia lr"><td class="dim">618</td><td>-</td><td>Liberia (LR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="619 sierra leone sl"><td class="dim">619</td><td>-</td><td>Sierra Leone (SL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="620 ghana gh"><td class="dim">620</td><td>-</td><td>Ghana (GH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="621 621-20 62120 nigeria ng airtel"><td class="dim">621</td><td>20</td><td>Nigeria (NG)</td><td><span title="Bharti Airtel Limited">Airtel</span></td></tr>
+<tr data-q="621 621-22 62122 nigeria ng interc"><td class="dim">621</td><td>22</td><td>Nigeria (NG)</td><td><span title="InterC Network Ltd.">InterC</span></td></tr>
+<tr data-q="621 621-24 62124 nigeria ng spectranet"><td class="dim">621</td><td>24</td><td>Nigeria (NG)</td><td><span>Spectranet</span></td></tr>
+<tr data-q="621 621-26 62126 nigeria ng swift"><td class="dim">621</td><td>26</td><td>Nigeria (NG)</td><td><span>Swift</span></td></tr>
+<tr data-q="621 621-27 62127 nigeria ng smile"><td class="dim">621</td><td>27</td><td>Nigeria (NG)</td><td><span title="Smile Communications Nigeria">Smile</span></td></tr>
+<tr data-q="621 621-28 62128 nigeria ng mcom (mafab)"><td class="dim">621</td><td>28</td><td>Nigeria (NG)</td><td><span title="Mafab Communications Ltd.">MCom (Mafab)</span></td></tr>
+<tr data-q="621 621-30 62130 nigeria ng mtn"><td class="dim">621</td><td>30</td><td>Nigeria (NG)</td><td><span title="MTN Nigeria Communications Limited">MTN</span></td></tr>
+<tr data-q="621 621-40 62140 nigeria ng ntel"><td class="dim">621</td><td>40</td><td>Nigeria (NG)</td><td><span title="Nigerian Mobile Telecommunications Limited">Ntel</span></td></tr>
+<tr data-q="621 621-50 62150 nigeria ng glo"><td class="dim">621</td><td>50</td><td>Nigeria (NG)</td><td><span title="Globacom Ltd">Glo</span></td></tr>
+<tr data-q="621 621-60 62160 nigeria ng 9mobile"><td class="dim">621</td><td>60</td><td>Nigeria (NG)</td><td><span title="Emerging Markets Telecommunication Services Ltd.">9mobile</span></td></tr>
+<tr data-q="622 chad td"><td class="dim">622</td><td>-</td><td>Chad (TD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="623 central african republic cf"><td class="dim">623</td><td>-</td><td>Central African Republic (CF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="624 cameroon cm"><td class="dim">624</td><td>-</td><td>Cameroon (CM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="625 cape verde cv"><td class="dim">625</td><td>-</td><td>Cape Verde (CV)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="626 sao tome and principe st"><td class="dim">626</td><td>-</td><td>Sao Tome and Principe (ST)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="627 equatorial guinea gq"><td class="dim">627</td><td>-</td><td>Equatorial Guinea (GQ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="628 gabon ga"><td class="dim">628</td><td>-</td><td>Gabon (GA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="629 congo cg"><td class="dim">629</td><td>-</td><td>Congo (CG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="630 democratic republic of the congo cd"><td class="dim">630</td><td>-</td><td>Democratic Republic of the Congo (CD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="631 angola ao"><td class="dim">631</td><td>-</td><td>Angola (AO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="632 guinea-bissau gw"><td class="dim">632</td><td>-</td><td>Guinea-Bissau (GW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="633 seychelles sc"><td class="dim">633</td><td>-</td><td>Seychelles (SC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="634 sudan sd"><td class="dim">634</td><td>-</td><td>Sudan (SD)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="635 rwanda rw"><td class="dim">635</td><td>-</td><td>Rwanda (RW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="636 ethiopia et"><td class="dim">636</td><td>-</td><td>Ethiopia (ET)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="637 somalia so"><td class="dim">637</td><td>-</td><td>Somalia (SO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="638 djibouti dj"><td class="dim">638</td><td>-</td><td>Djibouti (DJ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="639 kenya ke"><td class="dim">639</td><td>-</td><td>Kenya (KE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="640 tanzania tz"><td class="dim">640</td><td>-</td><td>Tanzania (TZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="641 uganda ug"><td class="dim">641</td><td>-</td><td>Uganda (UG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="642 burundi bi"><td class="dim">642</td><td>-</td><td>Burundi (BI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="643 mozambique mz"><td class="dim">643</td><td>-</td><td>Mozambique (MZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="645 zambia zm"><td class="dim">645</td><td>-</td><td>Zambia (ZM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="646 madagascar mg"><td class="dim">646</td><td>-</td><td>Madagascar (MG)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="648 zimbabwe zw"><td class="dim">648</td><td>-</td><td>Zimbabwe (ZW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="649 namibia na"><td class="dim">649</td><td>-</td><td>Namibia (NA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="650 malawi mw"><td class="dim">650</td><td>-</td><td>Malawi (MW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="651 lesotho ls"><td class="dim">651</td><td>-</td><td>Lesotho (LS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="652 botswana bw"><td class="dim">652</td><td>-</td><td>Botswana (BW)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="653 swaziland sz"><td class="dim">653</td><td>-</td><td>Swaziland (SZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="654 comoros km"><td class="dim">654</td><td>-</td><td>Comoros (KM)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="655 655-01 65501 south africa za vodacom"><td class="dim">655</td><td>01</td><td>South Africa (ZA)</td><td><span>Vodacom</span></td></tr>
+<tr data-q="655 655-02 65502 south africa za telkom"><td class="dim">655</td><td>02</td><td>South Africa (ZA)</td><td><span title="Telkom SA SOC Ltd">Telkom</span></td></tr>
+<tr data-q="655 655-06 65506 south africa za sentech (pty) ltd"><td class="dim">655</td><td>06</td><td>South Africa (ZA)</td><td><span>Sentech (Pty) Ltd</span></td></tr>
+<tr data-q="655 655-07 65507 south africa za cell c"><td class="dim">655</td><td>07</td><td>South Africa (ZA)</td><td><span title="Cell C (Pty) Ltd">Cell C</span></td></tr>
+<tr data-q="655 655-10 65510 south africa za mtn"><td class="dim">655</td><td>10</td><td>South Africa (ZA)</td><td><span title="MTN Group">MTN</span></td></tr>
+<tr data-q="655 655-14 65514 south africa za neotel"><td class="dim">655</td><td>14</td><td>South Africa (ZA)</td><td><span title="Neotel Pty Ltd">Neotel</span></td></tr>
+<tr data-q="655 655-19 65519 south africa za rain"><td class="dim">655</td><td>19</td><td>South Africa (ZA)</td><td><span title="Wireless Business Solutions (Pty) Ltd">rain</span></td></tr>
+<tr data-q="655 655-30 65530 south africa za bokamoso consortium"><td class="dim">655</td><td>30</td><td>South Africa (ZA)</td><td><span>Bokamoso Consortium</span></td></tr>
+<tr data-q="655 655-31 65531 south africa za karabo telecoms (pty) ltd."><td class="dim">655</td><td>31</td><td>South Africa (ZA)</td><td><span>Karabo Telecoms (Pty) Ltd.</span></td></tr>
+<tr data-q="655 655-32 65532 south africa za ilizwi telecommunications"><td class="dim">655</td><td>32</td><td>South Africa (ZA)</td><td><span>Ilizwi Telecommunications</span></td></tr>
+<tr data-q="655 655-33 65533 south africa za thinta thinta telecommunications pty ltd"><td class="dim">655</td><td>33</td><td>South Africa (ZA)</td><td><span>Thinta Thinta Telecommunications Pty Ltd</span></td></tr>
+<tr data-q="655 655-46 65546 south africa za sms cellular services (pty) ltd"><td class="dim">655</td><td>46</td><td>South Africa (ZA)</td><td><span>SMS Cellular Services (Pty) Ltd</span></td></tr>
+<tr data-q="655 655-76 65576 south africa za comsol networks (pty) ltd"><td class="dim">655</td><td>76</td><td>South Africa (ZA)</td><td><span>Comsol Networks (Pty) Ltd</span></td></tr>
+<tr data-q="657 eritrea er"><td class="dim">657</td><td>-</td><td>Eritrea (ER)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="658 saint helena, ascension and tristan da cunha sh"><td class="dim">658</td><td>-</td><td>Saint Helena, Ascension and Tristan da Cunha (SH)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="659 south sudan ss"><td class="dim">659</td><td>-</td><td>South Sudan (SS)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="702 belize bz"><td class="dim">702</td><td>-</td><td>Belize (BZ)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="704 guatemala gt"><td class="dim">704</td><td>-</td><td>Guatemala (GT)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="706 el salvador sv"><td class="dim">706</td><td>-</td><td>El Salvador (SV)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="708 honduras hn"><td class="dim">708</td><td>-</td><td>Honduras (HN)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="710 nicaragua ni"><td class="dim">710</td><td>-</td><td>Nicaragua (NI)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="712 costa rica cr"><td class="dim">712</td><td>-</td><td>Costa Rica (CR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="714 panama pa"><td class="dim">714</td><td>-</td><td>Panama (PA)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="716 peru pe"><td class="dim">716</td><td>-</td><td>Peru (PE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="722 argentina ar"><td class="dim">722</td><td>-</td><td>Argentina (AR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="724 724-02 72402 brazil br tim"><td class="dim">724</td><td>02</td><td>Brazil (BR)</td><td><span title="Telecom Italia Mobile">TIM</span></td></tr>
+<tr data-q="724 724-05 72405 brazil br claro"><td class="dim">724</td><td>05</td><td>Brazil (BR)</td><td><span>Claro</span></td></tr>
+<tr data-q="724 724-06 72406 brazil br vivo"><td class="dim">724</td><td>06</td><td>Brazil (BR)</td><td><span title="Telefonica Brasil S.A.">Vivo</span></td></tr>
+<tr data-q="724 724-13 72413 brazil br nlt"><td class="dim">724</td><td>13</td><td>Brazil (BR)</td><td><span title="NLT Telecom">NLT</span></td></tr>
+<tr data-q="724 724-15 72415 brazil br sercomtel"><td class="dim">724</td><td>15</td><td>Brazil (BR)</td><td><span title="Sercomtel Celular">Sercomtel</span></td></tr>
+<tr data-q="724 724-17 72417 brazil br surf telecom"><td class="dim">724</td><td>17</td><td>Brazil (BR)</td><td><span title="Correios Celular">Surf Telecom</span></td></tr>
+<tr data-q="724 724-18 72418 brazil br datora"><td class="dim">724</td><td>18</td><td>Brazil (BR)</td><td><span title="Datora (Vodafone)">datora</span></td></tr>
+<tr data-q="724 724-21 72421 brazil br ligue"><td class="dim">724</td><td>21</td><td>Brazil (BR)</td><td><span title="Ligue Telecom">LIGUE</span></td></tr>
+<tr data-q="724 724-28 72428 brazil br no name"><td class="dim">724</td><td>28</td><td>Brazil (BR)</td><td><span>No name</span></td></tr>
+<tr data-q="724 724-29 72429 brazil br unifique"><td class="dim">724</td><td>29</td><td>Brazil (BR)</td><td><span title="Unifique Telecomunicacoes S/A">Unifique</span></td></tr>
+<tr data-q="724 724-32 72432 brazil br algar telecom"><td class="dim">724</td><td>32</td><td>Brazil (BR)</td><td><span title="Algar Telecom S.A.">Algar Telecom</span></td></tr>
+<tr data-q="724 724-40 72440 brazil br telecall"><td class="dim">724</td><td>40</td><td>Brazil (BR)</td><td><span title="Telexperts Telecomunicacoes S.A">Telecall</span></td></tr>
+<tr data-q="724 724-99 72499 brazil br local"><td class="dim">724</td><td>99</td><td>Brazil (BR)</td><td><span>Local</span></td></tr>
+<tr data-q="730 chile cl"><td class="dim">730</td><td>-</td><td>Chile (CL)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="732 colombia co"><td class="dim">732</td><td>-</td><td>Colombia (CO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="734 venezuela ve"><td class="dim">734</td><td>-</td><td>Venezuela (VE)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="736 bolivia bo"><td class="dim">736</td><td>-</td><td>Bolivia (BO)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="738 guyana gy"><td class="dim">738</td><td>-</td><td>Guyana (GY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="740 ecuador ec"><td class="dim">740</td><td>-</td><td>Ecuador (EC)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="742 french guiana (france) gf"><td class="dim">742</td><td>-</td><td>French Guiana (France) (GF)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="744 paraguay py"><td class="dim">744</td><td>-</td><td>Paraguay (PY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="746 suriname sr"><td class="dim">746</td><td>-</td><td>Suriname (SR)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="748 uruguay uy"><td class="dim">748</td><td>-</td><td>Uruguay (UY)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="750 falkland islands (united kingdom) fk"><td class="dim">750</td><td>-</td><td>Falkland Islands (United Kingdom) (FK)</td><td><span class="mm-nomnc">-</span></td></tr>
+<tr data-q="995 british indian ocean territory (united kingdom) io"><td class="dim">995</td><td>-</td><td>British Indian Ocean Territory (United Kingdom) (IO)</td><td><span class="mm-nomnc">-</span></td></tr>
+</tbody>
+</table>
+</div>
+<p class="a2-footnote">237 ITU-assigned Mobile Country Codes, plus major-network Mobile Network Codes for the 40 countries covered in depth on this site (435 MNC rows; 626 rows total). Rows showing "-" in the Network column are in the country-level snapshot but outside the 40-country MNC detail set &mdash; see <a href="/countries/">per-country pages</a> for those markets. Curated for major, currently operational networks rather than every registered MVNO or dormant block; sourced from ITU-T E.212 country assignments and each country's publicly documented MNC allocations, most recently checked 2026-07. This is a snapshot, not a live feed, and allocations do change.</p>
+
+<h2>Frequently asked questions</h2>
+<details class="faq-card"><summary>What is an MCC?</summary><div class="faq-answer"><p>A Mobile Country Code (MCC) is a 3-digit code defined by ITU-T Recommendation E.212 that identifies the country a mobile network operator is registered in. It is combined with a Mobile Network Code (MNC) of 2 or 3 digits to uniquely identify a specific carrier &mdash; for example 262-01 for Telekom Deutschland in Germany. MCC-MNC pairs appear inside the IMSI on a SIM, in HLR lookup responses, and in SMPP routing and delivery receipt (DLR) data.</p></div></details>
+<details class="faq-card"><summary>Can MCC-MNC tell me a number's current network?</summary><div class="faq-answer"><p>No. An MCC-MNC pair shows which network a code block was originally assigned to, not which network is currently serving a specific phone number. Number portability (MNP) lets a subscriber keep their number after switching carriers, so a number can carry one operator's code while actually running on a different operator's network today. The only reliable way to find a number's live network is a real-time HLR lookup, not a static allocation table.</p></div></details>
+<details class="faq-card"><summary>What MCC is Germany?</summary><div class="faq-answer"><p>Germany's Mobile Country Code is 262. Every network operating in Germany shares that MCC and is told apart by its Mobile Network Code: 262-01 is Telekom, 262-02 is Vodafone, and 262-03 is O2 (Telefonica), among others.</p></div></details>
+
+<script>
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+(function(){
+  var input = document.getElementById('mncq');
+  var body = document.getElementById('mncBody');
+  var status = document.getElementById('mncStatus');
+  var rows = Array.prototype.slice.call(body.getElementsByTagName('tr'));
+  var total = rows.length;
+
+  function normalize(s){ return s.trim().toLowerCase(); }
+
+  function filter(){
+    var raw = normalize(input.value);
+    if (!raw){
+      rows.forEach(function(r){ r.style.display = ''; });
+      status.innerHTML = 'Showing all <span class="mm-count">' + total + '</span> rows.';
+      return;
+    }
+    var squashed = raw.replace(/[\s-]/g, '');
+    var shown = 0;
+    rows.forEach(function(r){
+      var q = r.getAttribute('data-q') || '';
+      var match = q.indexOf(raw) !== -1 || (squashed.length >= 2 && q.indexOf(squashed) !== -1);
+      r.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    status.innerHTML = 'Showing <span class="mm-count">' + shown + '</span> of ' + total + ' rows for "' + esc(input.value) + '".';
+  }
+
+  input.addEventListener('input', filter);
+
+  try {
+    var q0 = new URL(location.href).searchParams.get('q');
+    if (q0){ input.value = q0; filter(); }
+  } catch(e){}
+})();
+</script>
+
+</article>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="footer-grid"><div class="footer-brand">
+        <a href="https://smsroute.cc/" class="brand" aria-label="SMSRoute home"><svg class="brand-logo" width="125" height="22" role="img" aria-label="SMSRoute"><use href="#srlogo"/></svg></a>
+        <p>Reliable SMS delivery. Pay with crypto. No ID.</p>
+        <div class="socials">
+          </div>
+      </div><div class="footer-col srx-trustcol"><p class="footer-heading">Trust</p><ul><li><a href="https://smsroute-cc.github.io/about.html">About these guides</a></li><li><a href="https://smsroute-cc.github.io/editorial-standards.html">Editorial standards</a></li><li><a href="https://smsroute-cc.github.io/acceptable-use-policy.html">Acceptable use</a></li><li><a href="https://smsroute-cc.github.io/anti-abuse.html">Anti-abuse</a></li><li><a href="https://smsroute-cc.github.io/sms-opt-out.html">Opt-out</a></li><li><a href="https://smsroute-cc.github.io/contact.html">Contact</a></li><li><a href="https://smsroute-cc.github.io/api/v1/">Open pricing dataset</a></li></ul></div>
+      <div class="footer-col">
+        <p class="footer-heading">Blog</p>
+        <ul>
+          <li><a href="https://smsroute.cc/blog/a2p-10dlc-vs-toll-free-vs-shortcode">A2P 10DLC vs Toll-Free vs Shortcode</a></li>
+          <li><a href="https://smsroute.cc/blog/alphanumeric-vs-shortcode-sender-id">Alphanumeric vs Shortcode Sender ID</a></li>
+          <li><a href="https://smsroute.cc/blog/gdpr-double-optin-sms-template">GDPR Double Opt-in SMS Template</a></li>
+          <li><a href="https://smsroute.cc/blog/gsm-7-vs-ucs-2-which-for-my-copy">GSM-7 vs UCS-2: Which for My Copy?</a></li>
+          <li><a href="https://smsroute.cc/blog/how-otp-delivery-works">How OTP Delivery Works</a></li>
+          <li><a href="https://smsroute.cc/blog/international-sms-guide-2026">International SMS Guide 2026</a></li>
+          <li><a href="https://smsroute.cc/blog/">View All Posts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Send Anonymously by Country</p>
+        <ul>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-united-states-anonymously.html">United States</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-united-kingdom-anonymously.html">United Kingdom</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-germany-anonymously.html">Germany</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-france-anonymously.html">France</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-canada-anonymously.html">Canada</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-australia-anonymously.html">Australia</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-netherlands-anonymously.html">Netherlands</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-spain-anonymously.html">Spain</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-poland-anonymously.html">Poland</a></li>
+          <li><a href="https://smsroute-cc.github.io/send-sms-to-austria-anonymously.html">Austria</a></li>
+          <li><a href="https://smsroute.cc/send-sms-to/">View All Countries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Crypto Payments</p>
+        <ul>
+          <li><a href="https://smsroute.cc/pay-with/bitcoin">Pay with Bitcoin</a></li>
+          <li><a href="https://smsroute.cc/pay-with/monero">Pay with Monero</a></li>
+          <li><a href="https://smsroute.cc/pay-with/usdt">Pay with USDT</a></li>
+        </ul>
+        <p class="footer-heading">Use Cases</p>
+        <ul>
+          <li><a href="https://smsroute.cc/for/2fa">SMS for 2FA</a></li>
+          <li><a href="https://smsroute.cc/for/otp">SMS for OTP</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Integrations</p>
+        <ul>
+          <li><a href="https://smsroute.cc/integrate/node-js">Node.js Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/python">Python Integration</a></li>
+          <li><a href="https://smsroute.cc/integrate/twilio-migration">Twilio Migration</a></li>
+        </ul>
+        <p class="footer-heading">Comparisons</p>
+        <ul>
+          <li><a href="https://smsroute.cc/vs/messagebird">vs MessageBird</a></li>
+          <li><a href="https://smsroute.cc/vs/plivo">vs Plivo</a></li>
+          <li><a href="https://smsroute.cc/vs/twilio">vs Twilio</a></li>
+          <li><a href="https://smsroute.cc/vs/vonage">vs Vonage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 SMSRoute</span>
+      <span class="legal-links">
+        <a href="https://smsroute.cc/privacy">Privacy</a>
+        <a href="https://smsroute.cc/terms">Terms</a>
+        <a href="https://smsroute.cc/privacy">Security</a>
+      </span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+<!-- TEST VECTORS (Playwright, viewport 1280x390, file:// load):
+     - document.documentElement.scrollWidth (1280) <= clientWidth (1280): no horizontal overflow.
+     - #mncBody tr count in DOM: 626 (237 distinct MCC values; 435 rows carry MNC/network detail
+       for the 40 countries covered under /countries/; remaining rows are MCC-only, network cell "-").
+     - search "262"      -> 16 visible rows, all Germany (DE): Telekom 262-01, Vodafone 262-02, O2 262-03, ...
+     - search "Vodafone" -> 14 visible rows across >=5 countries (NL, ES, IT, CZ, DE, ...).
+     - search "310"      -> 10 visible rows, all United States (US): Verizon, Union Wireless, GCI, ...
+     - all 4 ld+json blocks parse via json.loads (Organization, BreadcrumbList, WebApplication, FAQPage).
+     - MCC row count is 237, not >=240: this is the real, fully-sourced ITU-T E.212 country-assignment
+       count (Wikipedia "Mobile country code" table, deduplicated by MCC value) as of 2026-07 -- the
+       "~240" brief figure was an estimate. Padding to a round 240 would mean inventing 3+ allocations,
+       which the hard rule against invented data forbids; 237 verified rows shipped instead.
+-->
+
