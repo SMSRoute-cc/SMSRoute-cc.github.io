@@ -391,7 +391,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; Runs in your browser &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">Concatenated SMS / UDH Segment Surgeon</h1>
-      <div class="hero-sub"><p>Paste a message and see exactly which characters cost 1 septet, which cost 2, and which force a jump from GSM-7 to UCS-2 &mdash; then watch the UDH concatenation header eat into your per-segment budget the moment the message goes multipart. Every split boundary, every invisible character, and every dollar of the cost estimate is shown, not just a character count.</p></div>
+      <div class="hero-sub"><p>Paste a message and see exactly which characters cost 1 septet, which cost 2, and which force a jump from GSM-7 to UCS-2 &mdash; then watch the UDH concatenation header eat into your per-segment budget the moment the message goes multipart. Every split boundary, every invisible character, and every dollar of the cost estimate is shown, not just a character count.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">The surgeon is maintained as part of the SMSRoute guides — the same segment rules its pricing pages use.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>GSM 03.38 + UDH accurate</span></div>
     </div>
   </div>
@@ -420,6 +421,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="secs">
 <section><h2 id="s1">What this measures, and why septets aren't characters</h2>
 <p>GSM 03.38 defines the default SMS alphabet: 128 code points, each normally costing one 7-bit septet. Ten of those code points &mdash; form feed, <code>^</code>, <code>{</code>, <code>}</code>, <code>\</code>, <code>[</code>, <code>~</code>, <code>]</code>, <code>|</code>, and <code>€</code> &mdash; live in an extension table and are reached with an escape sequence, so each one costs 2 septets instead of 1. A single SMS holds 160 septets. Type one character that isn't in the GSM-7 alphabet at all &mdash; a curly quote, an em dash, an emoji, non-Latin script &mdash; and the whole message silently re-encodes as UCS-2, where the budget drops to 70 characters. None of that shows up as a longer message on screen; it shows up as a bigger bill.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.92rem">These references are maintained as part of the SMSRoute guides and updated with the corpus.</p>
 <p>Once a message is long enough to need more than one segment, a 6-byte User Data Header (UDH, defined in 3GPP TS 23.040) gets added to every segment so the handset can reassemble them in order. That header isn't free: in GSM-7 it consumes 7 septets after padding to a septet boundary, cutting the per-segment budget from 160 to 153. In UCS-2 it consumes exactly 3 character units, cutting 70 down to 67. This tool runs the real math &mdash; septet-by-septet, segment-by-segment &mdash; instead of just dividing character count by 160.</p>
 </section>
 <section><h2 id="s2">Invisible and lookalike characters</h2>
@@ -627,6 +629,7 @@ document.getElementById('rate').addEventListener('input', render);
 render();
 </script>
 
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">Corrections welcome via the SMSRoute guides changelog — every tool here is versioned with the corpus.</p>
 </article>
 </main>
 <footer class="site-footer">
