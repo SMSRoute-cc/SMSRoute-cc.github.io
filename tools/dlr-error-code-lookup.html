@@ -362,7 +362,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; Runs in your browser &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">SMPP &amp; DLR Error Code Lookup</h1>
-      <div class="hero-sub"><p>Type an SMPP <code>command_status</code> code &mdash; hex like <code>0x0000000B</code> or decimal like <code>11</code> &mdash; or a DLR <code>stat:</code> keyword like <code>DELIVRD</code> or <code>UNDELIV</code>, and jump straight to what it means and what to check. Every SMPP 3.4 error code is on this page as plain HTML, with an honest, practical hint for each one.</p></div>
+      <div class="hero-sub"><p>Type an SMPP <code>command_status</code> code &mdash; hex like <code>0x0000000B</code> or decimal like <code>11</code> &mdash; or a DLR <code>stat:</code> keyword like <code>DELIVRD</code> or <code>UNDELIV</code>, and jump straight to what it means and what to check. Every SMPP 3.4 error code is on this page as plain HTML, with an honest, practical hint for each one.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">This lookup is maintained as part of the SMSRoute guides — the same corpus that documents DLR testing end to end.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>SMPP 3.4 accurate</span></div>
     </div>
   </div>
@@ -382,6 +383,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 <div class="secs">
 <section><h2 id="s1">SMPP 3.4 command_status error codes</h2>
 <p>These are the <code>command_status</code> values a submit_sm_resp, bind_resp, or other SMPP response PDU can return, exactly as documented in the SMPP 3.4 specification. Codes outside this list (including the 0x400&ndash;0x4FF range) are vendor-specific &mdash; see the note below the table.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.92rem">These references are maintained as part of the SMSRoute guides and updated with the corpus.</p>
 <p class="dlr-count" id="smppCount">Showing 48 of 48</p>
 <div class="a2-tablewrap"><table class="a2-compare" id="smppTable"><caption>SMPP 3.4 command_status values</caption>
 <thead><tr><th>Code</th><th>Constant</th><th>Meaning</th><th>What to check</th></tr></thead>
@@ -533,6 +535,7 @@ document.getElementById('q').addEventListener('input', applyFilter);
 applyFilter();
 </script>
 
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">Corrections welcome via the SMSRoute guides changelog — every tool here is versioned with the corpus.</p>
 </article>
 </main>
 <footer class="site-footer">
