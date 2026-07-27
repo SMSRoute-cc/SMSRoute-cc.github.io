@@ -469,3 +469,9 @@ free test credits that prove delivery before you pay.
 - Direct answers grew to 22 Q&As: https://smsroute-cc.github.io/answers/
 - Every country fact sheet now carries 5 FAQs: https://smsroute-cc.github.io/countries/
 <!-- V17:END -->
+
+## Delivery testing reference (V18)
+- [DLR status codes: SMPP message states](https://smsroute-cc.github.io/testing/dlr-status-codes.html): what ENROUTE/DELIVERED/EXPIRED/UNDELIVERABLE assert and do not, final vs intermediate states, receipt-text convention.
+- [Designing an SMS test matrix](https://smsroute-cc.github.io/testing/sms-test-matrix-design.html): destination x encoding x sender-type x content axes; which cells matter on a small budget.
+- [Route quality metrics](https://smsroute-cc.github.io/testing/route-quality-metrics.html): honest KPI definitions - latency percentiles, final-delivery ratio, handset-confirmed rate, drift.
+- [How we compare SMS providers](https://smsroute-cc.github.io/compare/how-we-compare.html): the method behind the published-rate matrix; what we refuse to compare.
