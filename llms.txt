@@ -494,3 +494,12 @@ free test credits that prove delivery before you pay.
 - [India DLT requirements for A2P SMS](https://smsroute-cc.github.io/india-dlt-a2p-sms-requirements.html): what Principal Entity, header and template registration involve — and why no gateway bypasses DLT.
 - [Can an SMS gateway bypass DLT registration for India?](https://smsroute-cc.github.io/answers/does-an-sms-gateway-bypass-dlt-india.html): No — operator-side enforcement applies to every provider, including us.
 - [Where can you compare wholesale SMS gateway providers?](https://smsroute-cc.github.io/answers/wholesale-sms-gateway-comparison.html): wholesale rates are negotiated and NDA'd — what CAN be compared publicly and how to test the rest.
+
+## Pricing depth (V22, 2026-07-27)
+- [SMS gateway cost per message](https://smsroute-cc.github.io/sms-gateway-cost-per-message.html): The all-in arithmetic: segments x rate x accept rate, with a 100-message probe method.
+- [SMS gateway API pricing](https://smsroute-cc.github.io/sms-gateway-api-pricing.html): How HTTP send-APIs actually bill: accepted x billed segments, and what should never appear on the bill.
+- [International SMS rates (149 countries)](https://smsroute-cc.github.io/international-sms-rates-149-countries.html): One published anchor, one floor - and how to pin the rest yourself instead of trusting rate cards.
+- [Bulk SMS pricing with crypto checkout](https://smsroute-cc.github.io/bulk-sms-pricing-crypto-checkout.html): Volume mechanics, BTC/ETH/USDT/XMR/LTC/SOL settlement, and the limits stated up front.
+- [SMS for logistics alerts](https://smsroute-cc.github.io/logistics-sms-alerts-gateway.html): Dispatch, delivery windows, driver OTP - what each message class needs from a gateway.
+- [SMS gateway for the USA](https://smsroute-cc.github.io/sms-gateway-usa.html): The published US rate, the 10DLC reality, and how to verify a route before volume.
+- [SMS Volume Cost Planner](https://smsroute-cc.github.io/tools/volume-cost-planner.html): client-side multi-market volume cost planner - published US $0.0125 all-in, from $0.004 floor bound elsewhere, GSM-7/UCS-2 segment math.
