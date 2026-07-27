@@ -1,0 +1,8 @@
+{
+ "question": "Should I use Telegram Gateway instead of an SMS API?",
+ "answer": "Use Telegram Gateway ($0.01/code) for users who opted in on Telegram and SMS for everyone else - the Gateway cannot reach anyone outside Telegram.",
+ "source_url": "https://smsroute-cc.github.io/telegram-gateway-vs-sms-api.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
