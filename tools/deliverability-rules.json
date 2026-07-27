@@ -1,0 +1,36 @@
+{
+  "rules_version": "2026-07-26",
+  "description": "Rule set used by the SMS Deliverability Pre-Flight Linter at https://smsroute-cc.github.io/tools/sms-deliverability-linter.html. Public, general-knowledge carrier filtering patterns, not legal advice.",
+  "link_shorteners": ["bit.ly", "tinyurl.com", "t.co", "goo.gl", "cutt.ly", "ow.ly", "is.gd", "buff.ly", "rebrand.ly", "tiny.cc"],
+  "caps_ratio_threshold": 0.3,
+  "sender_id_max_len": 11,
+  "shaft_c": {
+    "sex": ["sex", "porn", "xxx", "nude", "onlyfans", "escort"],
+    "hate": ["hate speech", "racist", "nazi", "slur"],
+    "alcohol": ["alcohol", "beer", "wine", "whiskey", "vodka", "liquor"],
+    "firearms": ["firearm", "gun", "ammo", "rifle", "pistol", "ammunition"],
+    "tobacco": ["cigarette", "tobacco", "vape", "nicotine", "cigar"],
+    "cannabis": ["cannabis", "marijuana", "weed", "thc", "cbd"]
+  },
+  "opt_out_keywords": ["stop", "arret", "arrêt", "baja", "sair", "ende"],
+  "promo_keywords": ["% off", "discount", "sale", "buy now", "limited time", "free gift", "offer expires", "deal", "coupon", "save now", "promo", "clearance"],
+  "segment_limits": {
+    "gsm7": {"single": 160, "concat": 153},
+    "ucs2": {"single": 70, "concat": 67}
+  },
+  "ucs2_trigger_note": "Curly quotes, em/en dash, ellipsis, arrows and emoji sit outside the GSM-7 default alphabet and force UCS-2 encoding, cutting the per-segment budget from 160/153 characters to 70/67.",
+  "countries": {
+    "US": {"name": "United States", "registration": "10DLC", "alpha_sender": "not supported (numeric only)"},
+    "GB": {"name": "United Kingdom", "registration": "none", "alpha_sender": "allowed"},
+    "DE": {"name": "Germany", "registration": "none", "alpha_sender": "allowed"},
+    "FR": {"name": "France", "registration": "none", "alpha_sender": "allowed"},
+    "PL": {"name": "Poland", "registration": "none", "alpha_sender": "allowed"},
+    "NL": {"name": "Netherlands", "registration": "none", "alpha_sender": "allowed"},
+    "IN": {"name": "India", "registration": "DLT", "alpha_sender": "pre-registration required"},
+    "NG": {"name": "Nigeria", "registration": "NCC sender ID registration", "alpha_sender": "pre-registration required"},
+    "BR": {"name": "Brazil", "registration": "none", "alpha_sender": "allowed"},
+    "PH": {"name": "Philippines", "registration": "none", "alpha_sender": "allowed"},
+    "OTHER": {"name": "Other destination", "registration": "varies", "alpha_sender": "check destination-specific rules"}
+  },
+  "cost_example": {"currency": "USD", "us_per_segment": 0.0125, "floor_per_segment": 0.004}
+}
