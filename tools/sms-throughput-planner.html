@@ -374,7 +374,8 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; Runs in your browser &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">SMS Throughput / TPS Campaign Planner</h1>
-      <div class="hero-sub"><p>Enter your recipient count, messages per recipient, segments per message and your contracted TPS to get the exact wall-clock drain time, a fit-check against your daily sending window, the TPS you'd need to hit a deadline, and a day-by-day batch schedule &mdash; all computed live, in your browser.</p></div>
+      <div class="hero-sub"><p>Enter your recipient count, messages per recipient, segments per message and your contracted TPS to get the exact wall-clock drain time, a fit-check against your daily sending window, the TPS you'd need to hit a deadline, and a day-by-day batch schedule &mdash; all computed live, in your browser.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">This planner is maintained as part of the SMSRoute guides and pairs with the testing cluster for real measurements.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>Little's-law math</span></div>
     </div>
   </div>
@@ -427,6 +428,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
       <label for="winEnd">Sending window end</label>
       <input type="time" id="winEnd" aria-label="Sending window end, destination local time" value="21:00">
       <p class="tl-hint">Destination local time. If the end time is earlier than the start, it's treated as an overnight window.</p>
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.92rem">These references are maintained as part of the SMSRoute guides and updated with the corpus.</p>
     </div>
     <div class="tl-field">
       <label for="days">Days available</label>
@@ -608,6 +610,7 @@ document.getElementById('tpsPreset').addEventListener('change', function(){
 render();
 </script>
 
+<p class="srx-attrib" style="color:var(--fg-muted,#8b9bb4);font-size:.9rem">Corrections welcome via the SMSRoute guides changelog — every tool here is versioned with the corpus.</p>
 </article>
 </main>
 <footer class="site-footer">
