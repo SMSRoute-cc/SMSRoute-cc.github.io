@@ -1,0 +1,7 @@
+{
+ "what": "Dated snapshots of api/v1/prices.json - SMS price time-series",
+ "cadence": "weekly (Mondays) + on any real price change",
+ "snapshots": [
+  "2026-07-26.json"
+ ]
+}
