@@ -1,8 +1,45 @@
 {
  "what": "Dated log of FACT changes on SMSRoute guide surfaces (not cosmetic edits)",
  "entity": "SMSRoute",
- "as_of": "2026-07-26",
+ "as_of": "2026-07-27",
  "entries": [
+  {
+   "date": "2026-07-27",
+   "change": "Trust surfaces: methodology page (sourcing rules), public corrections log, crypto payment-rails dataset (published facts only; confirmation windows listed only for the three assets whose windows the payment page publishes)",
+   "urls": [
+    "https://smsroute-cc.github.io/trust/methodology.html",
+    "https://smsroute-cc.github.io/trust/corrections.html",
+    "https://smsroute-cc.github.io/api/v2/crypto-rails.json"
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "change": "Three new free tools: DLR/SMPP error-code lookup, SMS throughput/TPS campaign planner, E.164 batch normalizer; four new developer guides (GSM-7 vs UCS-2 costs, US sender types, DLR/webhook design, why SMS prices differ by country) - two translated into all 15 locales",
+   "urls": [
+    "https://smsroute-cc.github.io/tools/dlr-error-code-lookup.html",
+    "https://smsroute-cc.github.io/tools/sms-throughput-planner.html",
+    "https://smsroute-cc.github.io/tools/e164-normalizer.html",
+    "https://smsroute-cc.github.io/gsm7-vs-ucs2-encoding-costs.html"
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "change": "Three provider comparison pages added (Twilio, Plivo, Vonage) quoting each provider's published US rates and fee wording with retrieval dates; Twilio's published long-code rate read $0.0079 on 2026-07-26 and $0.0083 on 2026-07-27 - both snapshots kept, no retroactive edits",
+   "urls": [
+    "https://smsroute-cc.github.io/compare/twilio/",
+    "https://smsroute-cc.github.io/compare/plivo/",
+    "https://smsroute-cc.github.io/compare/vonage/"
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "change": "Country program launched: 40 per-country SMS delivery fact sheets (sender-ID regime with named basis, charset class, calling code, dated published rate) + open CC-BY dataset with value/source/retrieved provenance on every field + interactive explorer tool",
+   "urls": [
+    "https://smsroute-cc.github.io/countries/",
+    "https://smsroute-cc.github.io/api/v2/countries.json",
+    "https://smsroute-cc.github.io/tools/country-sms-requirements-explorer.html"
+   ]
+  },
   {
    "date": "2026-07-26",
    "change": "US per-message rate corrected to $0.0125 all-in across all guide and blog surfaces; earlier incorrect sub-cent figures removed",
