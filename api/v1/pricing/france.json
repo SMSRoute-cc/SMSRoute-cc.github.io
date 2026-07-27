@@ -1,6 +1,6 @@
 {
  "as_of": "2026-07-25",
- "source": "Published rates parsed from https://smsroute.cc/prices on 2026-07-25. Competitor columns are as published there.",
+ "source": "Published rates parsed from https://www.smsroute.cc/prices on 2026-07-25. Competitor columns are as published there.",
  "country": "France",
  "iso2": "FR",
  "smsroute_usd_per_message": 0.022,
