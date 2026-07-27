@@ -60,7 +60,7 @@
   "aws_end_user_messaging": {
    "us_10dlc_usd_per_message_all_in": {
     "value": 0.02,
-    "note": "$0.01 base + $0.01 carrier fee; plus $4.50 company registration, $41.50 vetting, $10/mo campaign, $1/mo per number",
+    "note": "per-message: $0.01 base + $0.01 carrier fee; separate one-time/monthly program fees: $4.50 registration, $41.50 vetting, $10/mo campaign, $1/mo per number",
     "source": "https://aws.amazon.com/end-user-messaging/pricing/",
     "retrieved": "2026-07-26"
    },
