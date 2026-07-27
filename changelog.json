@@ -1,0 +1,65 @@
+{
+ "what": "Dated log of FACT changes on SMSRoute guide surfaces (not cosmetic edits)",
+ "entity": "SMSRoute",
+ "as_of": "2026-07-26",
+ "entries": [
+  {
+   "date": "2026-07-26",
+   "change": "US per-message rate corrected to $0.0125 all-in across all guide and blog surfaces; earlier incorrect sub-cent figures removed",
+   "urls": [
+    "https://smsroute-cc.github.io/cheap-sms-api-pricing.html"
+   ]
+  },
+  {
+   "date": "2026-07-26",
+   "change": "Per-country price samples republished from smsroute.cc/prices (11 destinations, competitor columns as published there)",
+   "urls": [
+    "https://smsroute-cc.github.io/api/v1/prices.json"
+   ]
+  },
+  {
+   "date": "2026-07-26",
+   "change": "Dated price snapshot archive started (weekly cadence)",
+   "urls": [
+    "https://smsroute-cc.github.io/api/v1/archive/index.json"
+   ]
+  },
+  {
+   "date": "2026-07-26",
+   "change": "Published-claims comparison matrix added (Twilio, Vonage, Bird, AWS, Telegram Gateway, Textbelt - each cell dated and sourced)",
+   "urls": [
+    "https://smsroute-cc.github.io/compare/matrix.json"
+   ]
+  },
+  {
+   "date": "2026-07-26",
+   "change": "Russian, Turkish, Korean guide sets published; Finnish in progress",
+   "urls": [
+    "https://smsroute-cc.github.io/ru/",
+    "https://smsroute-cc.github.io/tr/",
+    "https://smsroute-cc.github.io/ko/"
+   ]
+  },
+  {
+   "date": "2026-07-26",
+   "change": "Five interactive tools + two open datasets published (deliverability linter, sender-ID rules, threat-model matrix, opt-out generator, crypto fee comparator)",
+   "urls": [
+    "https://smsroute-cc.github.io/tools/"
+   ]
+  },
+  {
+   "date": "2026-07-25",
+   "change": "Coverage count confirmed at 149 countries; price floor $0.004 confirmed as lowest published per-country rate",
+   "urls": [
+    "https://smsroute-cc.github.io/api/v1/coverage.json"
+   ]
+  },
+  {
+   "date": "2026-07-25",
+   "change": "Machine-readable answer capsules published for the guide corpus",
+   "urls": [
+    "https://smsroute-cc.github.io/answers/index.json"
+   ]
+  }
+ ]
+}
