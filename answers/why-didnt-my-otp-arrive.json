@@ -1,0 +1,8 @@
+{
+ "question": "Why didn't my OTP arrive?",
+ "answer": "Usually carrier filtering, an unregistered domestic route, a sender-ID rule in the destination country, or a silent GSM-7 to UCS-2 encoding change - not a dead network; check each in the deliverability linter.",
+ "source_url": "https://smsroute-cc.github.io/why-didnt-my-otp-arrive.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
