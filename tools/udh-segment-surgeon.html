@@ -492,7 +492,7 @@ function analyze(text){
   var segments, limit;
   if (units === 0){ segments = 0; limit = singleLimit; }
   else if (units <= singleLimit){ segments = 1; limit = singleLimit; }
-  else { limit = concatLimit; segments = Math.ceil(units / concatLimit); }
+  else { limit = concatLimit; segments = splitIntoSegments(chars, encoding, concatLimit).length; } /* greedy pack: 2-unit ext chars can't split across a boundary */
   var udhOverheadUnits = encoding === 'GSM-7' ? 7 : 3;
   return {chars:chars, encoding:encoding, units:units, segments:segments, singleLimit:singleLimit, concatLimit:concatLimit, limit:limit, udhOverheadUnits:udhOverheadUnits};
 }
