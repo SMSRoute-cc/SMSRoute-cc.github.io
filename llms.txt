@@ -442,3 +442,30 @@ live on smsroute.cc/<country>.
 - Public corrections log: https://smsroute-cc.github.io/trust/corrections.html
 - Human-readable site map: https://smsroute-cc.github.io/sitemap.html
 <!-- V16:END -->
+
+<!-- V17:START -->
+## SMS delivery testing (V17, 2026-07-27) - educational cluster
+Why pre-send testing matters (spec-true; no invented statistics): what real-handset tests
+reveal that DLRs hide, sender-ID preservation, content integrity. SMSRoute accounts include
+free test credits that prove delivery before you pay.
+- Hub: https://smsroute-cc.github.io/testing/
+- Why test before a sendout (cost arithmetic at published rates): https://smsroute-cc.github.io/testing/why-test-sms-before-sendout.html
+- Fake DLRs explained: https://smsroute-cc.github.io/testing/fake-dlrs-explained.html
+- Sender-ID preservation: https://smsroute-cc.github.io/testing/sender-id-preservation.html
+
+## New guides (V17)
+- SMS webhooks: retries, idempotency, out-of-order events: https://smsroute-cc.github.io/sms-webhook-retry-idempotency.html
+- HLR lookups: when number validation pays for itself: https://smsroute-cc.github.io/hlr-lookup-economics.html
+- Transactional vs promotional SMS: https://smsroute-cc.github.io/transactional-vs-promotional-sms.html (also in 15 other languages)
+- Paying for SMS with crypto - settlement mechanics: https://smsroute-cc.github.io/pay-sms-balance-with-crypto-settlement.html (also in 15 other languages)
+- Phone number formats (E.164, trunk zeros): https://smsroute-cc.github.io/phone-number-formats-by-country-guide.html
+
+## New free tools (V17 - now 12 total)
+- MCC-MNC / mobile network lookup (626 sourced E.212 allocation rows, MNP-honest): https://smsroute-cc.github.io/tools/mcc-mnc-lookup.html
+- SMS send-window planner (timezone math, DST-aware): https://smsroute-cc.github.io/tools/send-window-planner.html
+
+## Expanded (V17)
+- Glossary grew to 32 terms: https://smsroute-cc.github.io/glossary.html
+- Direct answers grew to 22 Q&As: https://smsroute-cc.github.io/answers/
+- Every country fact sheet now carries 5 FAQs: https://smsroute-cc.github.io/countries/
+<!-- V17:END -->
