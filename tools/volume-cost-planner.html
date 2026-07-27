@@ -539,7 +539,8 @@ function isUS(label){
 }
 
 function money2(n){
-  return '$' + n.toFixed(4);
+  var s = n < 0 ? '-' : '';
+  return s + '$' + Math.abs(n).toFixed(4);
 }
 
 function esc(s){
@@ -556,8 +557,10 @@ function addRow(data){
   var div = document.createElement('div');
   div.className = 'vcp-row';
   div.dataset.rowId = id;
-  var partsOpts = [1,2,3,4].map(function(n){
-    return '<option value="'+n+'"'+(Number(data.parts||1)===n?' selected':'')+'>'+n+'</option>';
+  var pv = Number(data.parts||1);
+  var pOpts = [1,2,3,4]; if (pOpts.indexOf(pv) === -1) pOpts.push(pv);
+  var partsOpts = pOpts.map(function(n){
+    return '<option value="'+n+'"'+(pv===n?' selected':'')+'>'+n+'</option>';
   }).join('');
   div.innerHTML =
     '<div class="vcp-row-grid">' +
@@ -663,8 +666,13 @@ function usePartsOnRow(){
   var idx = parseInt(sel.value, 10);
   var rows = document.querySelectorAll('#marketRows .vcp-row');
   if (!rows[idx]) return;
-  var parts = Math.min(4, Math.max(1, a.parts));
-  rows[idx].querySelector('.vcp-parts').value = String(parts);
+  var parts = Math.max(1, a.parts); /* no ceiling: >4-part messages bill >4 parts */
+  var psel = rows[idx].querySelector('.vcp-parts');
+  if (![].some.call(psel.options, function(o){ return Number(o.value) === parts; })) {
+    var op = document.createElement('option'); op.value = String(parts); op.textContent = String(parts);
+    psel.appendChild(op);
+  }
+  psel.value = String(parts);
   rows[idx].querySelector('.vcp-cs').value = a.encoding;
   recompute();
   refreshApplyOptions();
