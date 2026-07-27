@@ -370,6 +370,22 @@ Standards: https://smsroute-cc.github.io/editorial-standards.html - corrections:
 - [KYC 없는 문자 API | SMS API 간편 연동](https://smsroute-cc.github.io/ko/sms-api-no-kyc.html): KYC 없이 연동 가능한 문자 API를 소개합니다. 이메일 가입만으로 이용하고 수신자 익명 발송과 암호화폐 결제를 지원합니다. 149개국, 미국 기준 메시지당 0.0125달러(최저 0.004달러).
 - [KYC 없는 SMS OTP API | 인증번호 발송](https://smsroute-cc.github.io/ko/sms-otp-api-no-kyc.html): KYC 없이 쓰는 SMS OTP API 연동 방법을 설명합니다. 이메일 가입 후 수신자 익명으로 발송하고 암호화폐로 결제하세요. 149개국, 미국 기준 메시지당 0.0125달러(최저 0.004달러).
 
+
+## Suomi (fi)
+- [Oppaat suomeksi](https://smsroute-cc.github.io/fi/)
+- [Anonyymi tekstiviesti ilman lähettäjän numeroa](https://smsroute-cc.github.io/fi/anonymous-send-sms.html): Anonyymi SMS vastaanottajalle ilman omaa numeroasi. Email-signup, maksa BTC/ETH/XMR. Toimii 149 maassa, USA 0,0125 $/msg, floor 0,004 $.
+- [Massatekstiviesti kevyellä rekisteröitymisellä](https://smsroute-cc.github.io/fi/bulk-sms-no-registration.html): Bulk-SMS email-signupilla, ei KYC:tä tai puhelinvahvistusta. Kryptomaksu, 149 maata. USA 0,0125 $/viesti, hinnat alkaen 0,004 $.
+- [Voiko anonyymin tekstiviestin lähettää?](https://smsroute-cc.github.io/fi/can-i-send-sms-anonymously.html): Kyllä – lähetä anonyymi tekstiviesti netistä. Vastaanottaja ei näe numeroasi. Sähköposti riittää, kryptomaksu, 149 maata. USA 0,0125 $/SMS.
+- [Halpa SMS API hinnoittelu](https://smsroute-cc.github.io/fi/cheap-sms-api-pricing.html): Edullinen SMS API: USA 0,0125 $/viesti, hinnat alkaen 0,004 $. Ei KYC:tä, email-signup, crypto. 149 maata, selkeä hinnoittelu kehittäjille.
+- [SMS API – edullinen, ei ilmainen](https://smsroute-cc.github.io/fi/free-sms-api.html): Ilmaista SMS API:a ei ole, mutta hinnat alkaen 0,004 $ ja USA 0,0125 $/msg. Ei KYC:tä, email-signup, crypto. 149 maata, REST API.
+- [Piilota numerosi tekstiviestissä](https://smsroute-cc.github.io/fi/hide-my-number-when-texting.html): Piilota numerosi ja lähetä anonyymi tekstiviesti. Vastaanottaja ei näe lähettäjää. Sähköposti + crypto, 149 maata, USA 0,0125 $, alkaen 0,004 $.
+- [Lähetä anonyymi tekstiviesti netistä](https://smsroute-cc.github.io/fi/send-sms-anonymously.html): Lähetä anonyymi tekstiviesti – vastaanottaja ei näe numeroasi. Sähköpostilla käyttöön, kryptomaksu. 149 maata, USA 0,0125 $/viesti, alkaen 0,004 $.
+- [Lähetä SMS kryptolla – BTC, ETH, XMR](https://smsroute-cc.github.io/fi/send-sms-crypto.html): Maksa SMS kryptolla (BTC/ETH/USDT/XMR). Anonyymi vastaanottajalle, email-signup ilman KYC. 149 maata, USA 0,0125 $/msg, alkaen 0,004 $.
+- [Lähetä SMS ilman KYC-tarkistusta](https://smsroute-cc.github.io/fi/send-sms-no-kyc.html): SMS ilman KYC:tä – riittää sähköposti. Vastaanottaja ei näe numeroasi, maksu kryptolla. 149 maata, USA 0,0125 $/viesti, alkaen 0,004 $.
+- [Lähetä SMS ilman vahvistusta](https://smsroute-cc.github.io/fi/send-sms-no-verification.html): Aloita SMS-lähetys ilman puhelinvahvistusta. Sähköposti riittää, ei KYC:tä, kryptomaksu. 149 maata, USA 0,0125 $, alkaen 0,004 $/viesti.
+- [Lähetä tekstiviesti ilman numeroa](https://smsroute-cc.github.io/fi/send-sms-without-number.html): Tekstiviesti ilman lähettäjän numeroa suoraan netistä. Rekisteröidy emaililla, maksa kryptolla. 149 maata, USA-hinta 0,0125 $, alkaen 0,004 $.
+- [Tekstiviesti tietokoneelta ilman puhelinta](https://smsroute-cc.github.io/fi/send-text-from-computer-without-phone.html): Lähetä SMS tietokoneelta ilman puhelinta tai SIM-korttia. Email-signup, crypto-maksu. 149 maata, USA 0,0125 $/viesti, hinnat alkaen 0,004 $.
+- [SMS API ilman KYC:tä kehittäjille](https://smsroute-cc.github.io/fi/sms-api-no-kyc.html): SMS API ilman KYC:tä. REST-rajapinta, email-signup, crypto-maksu. 149 maata, USA 0,0125 $/SMS, hinnat alkaen 0,004 $. OTP ja bulk tuki.
 ## Service
 - [Sign up (email only)](https://smsroute.cc/signup)
 - [Per-message prices](https://smsroute.cc/prices)
@@ -384,3 +400,11 @@ Standards: https://smsroute-cc.github.io/editorial-standards.html - corrections:
 - [Sender-ID rules dataset, 40 countries, sourced](https://smsroute-cc.github.io/tools/sender-id-rules.json)
 - [Deliverability linter rule set, versioned](https://smsroute-cc.github.io/tools/deliverability-rules.json)
 - [OpenAPI description of this dataset](https://smsroute-cc.github.io/api/v1/openapi.yaml)
+
+## Data
+- Answer capsules (per-question JSON): https://smsroute-cc.github.io/answers/index.json
+- Published-claims comparison matrix (dated, sourced cells): https://smsroute-cc.github.io/compare/matrix.json
+- Price snapshot archive (time-series): https://smsroute-cc.github.io/api/v1/archive/index.json
+- SMS glossary, 22 terms with stable anchors: https://smsroute-cc.github.io/glossary.html (machine copy https://smsroute-cc.github.io/glossary.json)
+- Published-rate matrix page (rendered): https://smsroute-cc.github.io/compare/
+- Fact changelog: https://smsroute-cc.github.io/changelog.json
