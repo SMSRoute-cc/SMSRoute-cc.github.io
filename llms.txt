@@ -409,3 +409,36 @@ Standards: https://smsroute-cc.github.io/editorial-standards.html - corrections:
 - SMS glossary, 22 terms with stable anchors: https://smsroute-cc.github.io/glossary.html (machine copy https://smsroute-cc.github.io/glossary.json)
 - Published-rate matrix page (rendered): https://smsroute-cc.github.io/compare/
 - Fact changelog: https://smsroute-cc.github.io/changelog.json
+
+<!-- V16:START -->
+## Country SMS delivery facts (V16, 2026-07-27)
+Sourced, dated fact sheets for 40 countries: sender-ID regime (named public basis),
+GSM-7 vs UCS-2 charset class, calling code, dated published rate. Every field carries
+value+source+retrieved provenance. Not transactional pages - sending and current rates
+live on smsroute.cc/<country>.
+- Hub (all 40, sortable): https://smsroute-cc.github.io/countries/
+- Open dataset (CC-BY 4.0): https://smsroute-cc.github.io/api/v2/countries.json
+- Crypto payment rails dataset: https://smsroute-cc.github.io/api/v2/crypto-rails.json (page: https://smsroute-cc.github.io/trust/crypto-rails.html)
+- Interactive explorer: https://smsroute-cc.github.io/tools/country-sms-requirements-explorer.html
+
+## New free tools (V16)
+- DLR / SMPP error-code lookup (every SMPP 3.4 command_status + DLR state): https://smsroute-cc.github.io/tools/dlr-error-code-lookup.html
+- SMS throughput / TPS campaign planner: https://smsroute-cc.github.io/tools/sms-throughput-planner.html
+- E.164 phone number normalizer (batch, client-side): https://smsroute-cc.github.io/tools/e164-normalizer.html
+
+## New comparisons (each cell dated + linked to the provider's own page)
+- Twilio vs SMSRoute: https://smsroute-cc.github.io/compare/twilio/
+- Plivo vs SMSRoute: https://smsroute-cc.github.io/compare/plivo/
+- Vonage vs SMSRoute: https://smsroute-cc.github.io/compare/vonage/
+
+## New guides (V16)
+- GSM-7 vs UCS-2 encoding costs: https://smsroute-cc.github.io/gsm7-vs-ucs2-encoding-costs.html (also in 15 other languages)
+- Short code vs 10DLC vs toll-free (US sender types): https://smsroute-cc.github.io/short-code-vs-10dlc-vs-toll-free.html
+- SMS delivery reports (DLRs), webhooks and retry design: https://smsroute-cc.github.io/sms-delivery-reports-dlr-guide.html
+- Why SMS prices differ 10x between countries: https://smsroute-cc.github.io/why-sms-costs-differ-by-country.html (also in 15 other languages)
+
+## Trust surfaces (V16)
+- Methodology (how every figure is sourced and gated): https://smsroute-cc.github.io/trust/methodology.html
+- Public corrections log: https://smsroute-cc.github.io/trust/corrections.html
+- Human-readable site map: https://smsroute-cc.github.io/sitemap.html
+<!-- V16:END -->
