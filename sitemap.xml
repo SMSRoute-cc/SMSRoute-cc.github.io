@@ -52,12 +52,14 @@
     <lastmod>2026-07-26</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/free-sms-api.html</loc>
     <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/glossary.html</loc>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/google-voice-alternative-no-number.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/is-sms-encrypted.html</loc>
     <lastmod>2026-07-23</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/legal-uses-of-anonymous-sms.html</loc>
@@ -78,6 +80,8 @@
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/send-sms-crypto.html</loc>
     <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/send-sms-from-ai-agents.html</loc>
+    <lastmod>2026-07-26</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/send-sms-no-kyc.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/send-sms-no-verification.html</loc>
@@ -178,19 +182,9 @@
     <lastmod>2026-07-06</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/what-is-an-sms-gateway.html</loc>
     <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/why-didnt-my-otp-arrive.html</loc>
+    <lastmod>2026-07-26</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/why-does-my-email-show-when-i-text.html</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/anonymity-threat-model.html</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/crypto-topup-fee-comparator.html</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/opt-out-footer-generator.html</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/sender-id-rules-by-country.html</loc>
-    <lastmod>2026-07-26</lastmod></url>
-  <url><loc>https://smsroute-cc.github.io/tools/sms-deliverability-linter.html</loc>
     <lastmod>2026-07-26</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/de/anonymous-send-sms.html</loc>
     <lastmod>2026-07-24</lastmod></url>
@@ -207,7 +201,7 @@
   <url><loc>https://smsroute-cc.github.io/de/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/de/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/de/send-sms-abroad.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/de/send-sms-anonymously.html</loc>
@@ -243,7 +237,7 @@
   <url><loc>https://smsroute-cc.github.io/fr/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/fr/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/fr/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/fr/send-sms-anonymously.html</loc>
@@ -279,7 +273,7 @@
   <url><loc>https://smsroute-cc.github.io/pl/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pl/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pl/send-sms-abroad.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pl/send-sms-anonymously.html</loc>
@@ -315,7 +309,7 @@
   <url><loc>https://smsroute-cc.github.io/es/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/es/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/es/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/es/send-sms-anonymously.html</loc>
@@ -351,7 +345,7 @@
   <url><loc>https://smsroute-cc.github.io/nl/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/nl/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/nl/send-sms-abroad.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/nl/send-sms-anonymously.html</loc>
@@ -387,7 +381,7 @@
   <url><loc>https://smsroute-cc.github.io/it/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/it/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/it/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/it/send-sms-anonymously.html</loc>
@@ -423,7 +417,7 @@
   <url><loc>https://smsroute-cc.github.io/sv/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/sv/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/sv/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/sv/send-sms-anonymously.html</loc>
@@ -459,7 +453,7 @@
   <url><loc>https://smsroute-cc.github.io/pt/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pt/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pt/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/pt/send-sms-anonymously.html</loc>
@@ -495,7 +489,7 @@
   <url><loc>https://smsroute-cc.github.io/cs/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/cs/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/cs/send-sms-abroad.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/cs/send-sms-anonymously.html</loc>
@@ -531,7 +525,7 @@
   <url><loc>https://smsroute-cc.github.io/da/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/da/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/da/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/da/send-sms-anonymously.html</loc>
@@ -567,7 +561,7 @@
   <url><loc>https://smsroute-cc.github.io/no/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/no/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/no/send-sms-abroad.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/no/send-sms-anonymously.html</loc>
@@ -599,7 +593,7 @@
   <url><loc>https://smsroute-cc.github.io/ru/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ru/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ru/send-sms-anonymously.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ru/send-sms-crypto.html</loc>
@@ -629,7 +623,7 @@
   <url><loc>https://smsroute-cc.github.io/tr/hide-my-number-when-texting.html</loc>
     <lastmod>2026-07-25</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/tr/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/tr/send-sms-anonymously.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/tr/send-sms-crypto.html</loc>
@@ -651,7 +645,7 @@
   <url><loc>https://smsroute-cc.github.io/ko/cheap-sms-api-pricing.html</loc>
     <lastmod>2026-07-23</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ko/</loc>
-    <lastmod>2026-07-26</lastmod></url>
+    <lastmod>2026-07-27</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ko/send-sms-anonymously.html</loc>
     <lastmod>2026-07-24</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ko/send-sms-crypto.html</loc>
@@ -668,4 +662,48 @@
     <lastmod>2026-07-23</lastmod></url>
   <url><loc>https://smsroute-cc.github.io/ko/sms-otp-api-no-kyc.html</loc>
     <lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/anonymous-send-sms.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/bulk-sms-no-registration.html</loc>
+    <lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/can-i-send-sms-anonymously.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/cheap-sms-api-pricing.html</loc>
+    <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/free-sms-api.html</loc>
+    <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/hide-my-number-when-texting.html</loc>
+    <lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/</loc>
+    <lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-sms-anonymously.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-sms-crypto.html</loc>
+    <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-sms-no-kyc.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-sms-no-verification.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-sms-without-number.html</loc>
+    <lastmod>2026-07-24</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/send-text-from-computer-without-phone.html</loc>
+    <lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/fi/sms-api-no-kyc.html</loc>
+    <lastmod>2026-07-23</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/anonymity-threat-model.html</loc>
+    <lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/crypto-topup-fee-comparator.html</loc>
+    <lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/</loc>
+    <lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/opt-out-footer-generator.html</loc>
+    <lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/sender-id-rules-by-country.html</loc>
+    <lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/tools/sms-deliverability-linter.html</loc>
+    <lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/compare/</loc>
+    <lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://smsroute-cc.github.io/api/v1/</loc>
+    <lastmod>2026-07-26</lastmod></url>
 </urlset>
