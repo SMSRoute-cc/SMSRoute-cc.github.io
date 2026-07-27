@@ -1,0 +1,8 @@
+{
+ "question": "Is a no-KYC SMS service legal?",
+ "answer": "Yes - minimal account identity is lawful in most jurisdictions; the rules that matter attach to message conduct, and SMSRoute enforces a published acceptable-use policy.",
+ "source_url": "https://smsroute-cc.github.io/no-kyc-sms-acceptable-use-what-we-refuse.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
