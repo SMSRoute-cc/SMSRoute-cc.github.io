@@ -629,7 +629,7 @@ function renderResults(){
   var senderNowStr = fmtLocal(now, senderTz);
 
   var html = '<div class="tl-hint" style="margin-bottom:10px">Reference: <b style="color:var(--fg-primary)">' + esc(senderTz) + '</b> is currently <b style="color:var(--fg-primary)">' + esc(senderNowStr) + '</b>. Policy window: <b style="color:var(--fg-primary)">' + esc(document.getElementById('winStart').value) + ' - ' + esc(document.getElementById('winEnd').value) + '</b> local at each destination.</div>';
-  html += '<div class="swp-table-wrap"><table class="swp-table"><thead><tr><th>Destination</th><th>Local time now</th><th>Send window (your time)</th><th>Send now?</th></tr></thead><tbody>';
+  html += '<div class="swp-table-wrap"><div class="a2-tablewrap" style="overflow-x:auto"><table class="swp-table"><thead><tr><th>Destination</th><th>Local time now</th><th>Send window (your time)</th><th>Send now?</th></tr></thead><tbody>';
 
   checked.forEach(function(cb){
     var tz = cb.value, name = cb.dataset.name || tz;
@@ -646,7 +646,7 @@ function renderResults(){
     html += '<td>' + badge(canSend ? 'ok' : 'na', canSend ? 'yes' : 'no') + '</td></tr>';
   });
 
-  html += '</tbody></table></div>';
+  html += '</tbody></table></div></div>';
   out.innerHTML = html;
 }
 
