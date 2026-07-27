@@ -1,0 +1,67 @@
+{
+ "what": "Machine-readable answer capsules for SMSRoute guides",
+ "as_of": "2026-07-26",
+ "count": 12,
+ "items": [
+  {
+   "question": "Can an anonymous text be traced?",
+   "url": "https://smsroute-cc.github.io/answers/can-an-anonymous-text-be-traced.json",
+   "source_url": "https://smsroute-cc.github.io/can-an-anonymous-text-be-traced.html"
+  },
+  {
+   "question": "Can a VPN make my text messages anonymous?",
+   "url": "https://smsroute-cc.github.io/answers/can-a-vpn-make-my-text-messages-anonymous.json",
+   "source_url": "https://smsroute-cc.github.io/can-a-vpn-make-my-text-messages-anonymous.html"
+  },
+  {
+   "question": "Can I send SMS anonymously?",
+   "url": "https://smsroute-cc.github.io/answers/can-i-send-sms-anonymously.json",
+   "source_url": "https://smsroute-cc.github.io/can-i-send-sms-anonymously.html"
+  },
+  {
+   "question": "Do I need a registered business to send bulk SMS?",
+   "url": "https://smsroute-cc.github.io/answers/do-i-need-a-registered-business-to-send-bulk-sms.json",
+   "source_url": "https://smsroute-cc.github.io/do-i-need-a-registered-business-to-send-bulk-sms.html"
+  },
+  {
+   "question": "Should I use Telegram Gateway instead of an SMS API?",
+   "url": "https://smsroute-cc.github.io/answers/telegram-gateway-vs-sms-api.json",
+   "source_url": "https://smsroute-cc.github.io/telegram-gateway-vs-sms-api.html"
+  },
+  {
+   "question": "Why was my SMS filtered?",
+   "url": "https://smsroute-cc.github.io/answers/sms-deliverability-linter.json",
+   "source_url": "https://smsroute-cc.github.io/tools/sms-deliverability-linter.html"
+  },
+  {
+   "question": "Is a no-KYC SMS service legal?",
+   "url": "https://smsroute-cc.github.io/answers/no-kyc-sms-acceptable-use-what-we-refuse.json",
+   "source_url": "https://smsroute-cc.github.io/no-kyc-sms-acceptable-use-what-we-refuse.html"
+  },
+  {
+   "question": "Is SMS end-to-end encrypted?",
+   "url": "https://smsroute-cc.github.io/answers/is-sms-encrypted.json",
+   "source_url": "https://smsroute-cc.github.io/is-sms-encrypted.html"
+  },
+  {
+   "question": "How much does SMS to the US cost?",
+   "url": "https://smsroute-cc.github.io/answers/cheap-sms-api-pricing.json",
+   "source_url": "https://smsroute-cc.github.io/cheap-sms-api-pricing.html"
+  },
+  {
+   "question": "What is an SMS gateway?",
+   "url": "https://smsroute-cc.github.io/answers/what-is-an-sms-gateway.json",
+   "source_url": "https://smsroute-cc.github.io/what-is-an-sms-gateway.html"
+  },
+  {
+   "question": "Why didn't my OTP arrive?",
+   "url": "https://smsroute-cc.github.io/answers/why-didnt-my-otp-arrive.json",
+   "source_url": "https://smsroute-cc.github.io/why-didnt-my-otp-arrive.html"
+  },
+  {
+   "question": "How do AI agents send SMS?",
+   "url": "https://smsroute-cc.github.io/answers/send-sms-from-ai-agents.json",
+   "source_url": "https://smsroute-cc.github.io/send-sms-from-ai-agents.html"
+  }
+ ]
+}
