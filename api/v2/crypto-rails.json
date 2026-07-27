@@ -1,0 +1,83 @@
+{
+ "name": "SMSRoute crypto payment rails",
+ "description": "Payment assets accepted for SMSRoute top-ups, with networks and confirmation windows where published. Every field carries {value, source, retrieved} provenance; unpublished details are omitted rather than estimated.",
+ "license": "https://creativecommons.org/licenses/by/4.0/",
+ "version": "1.0.0",
+ "generated": "2026-07-27",
+ "minimum_topup": {
+  "value": "$5 USD equivalent in any supported cryptocurrency",
+  "source": "https://www.smsroute.cc/crypto-payments",
+  "retrieved": "2026-07-27"
+ },
+ "assets": [
+  {
+   "asset": "Bitcoin (BTC)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   },
+   "confirmation_window": {
+    "value": "~10-30 min",
+    "source": "https://www.smsroute.cc/crypto-payments",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "asset": "Ethereum (ETH)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   },
+   "confirmation_window": {
+    "value": "~1-5 min",
+    "source": "https://www.smsroute.cc/crypto-payments",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "asset": "Tether (USDT)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   },
+   "network_note": {
+    "value": "TRC-20 preferred",
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   },
+   "confirmation_window": {
+    "value": "~1-5 min",
+    "source": "https://www.smsroute.cc/crypto-payments",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "asset": "Litecoin (LTC)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "asset": "Monero (XMR)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   }
+  },
+  {
+   "asset": "Solana (SOL)",
+   "accepted": {
+    "value": true,
+    "source": "https://www.smsroute.cc/prices",
+    "retrieved": "2026-07-27"
+   }
+  }
+ ],
+ "coverage_note": "Confirmation windows are published on the crypto-payments page for BTC/ETH/USDT only; fields for other assets are omitted until published (no estimates)."
+}
