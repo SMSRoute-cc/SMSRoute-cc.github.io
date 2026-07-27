@@ -5,6 +5,31 @@
  "entries": [
   {
    "date": "2026-07-27",
+   "change": "Sitewide metadata perfection pass: every page now has unique in-bound titles and descriptions plus complete OpenGraph tags (112 legacy defects fixed); locale hub footers and palette normalized; Spanish pages' unqualified 'sin registro' wording qualified to 'solo email' (signup exists - email-only)",
+   "urls": [
+    "https://smsroute-cc.github.io/trust/corrections.html"
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "change": "Two new tools (12 total): MCC-MNC allocation lookup with portability disclaimer, and a timezone-math send-window planner; glossary grew to 32 terms, direct answers to 22, country fact sheets to 5 FAQs each",
+   "urls": [
+    "https://smsroute-cc.github.io/tools/mcc-mnc-lookup.html",
+    "https://smsroute-cc.github.io/tools/send-window-planner.html",
+    "https://smsroute-cc.github.io/glossary.html"
+   ]
+  },
+  {
+   "date": "2026-07-27",
+   "change": "SMS delivery-testing educational cluster launched (why test before sendout, fake DLRs, sender-ID preservation) plus five developer guides (webhooks/idempotency, HLR economics, transactional vs promotional, crypto settlement, number formats) - two translated into all 15 locales",
+   "urls": [
+    "https://smsroute-cc.github.io/testing/",
+    "https://smsroute-cc.github.io/sms-webhook-retry-idempotency.html",
+    "https://smsroute-cc.github.io/pay-sms-balance-with-crypto-settlement.html"
+   ]
+  },
+  {
+   "date": "2026-07-27",
    "change": "Trust surfaces: methodology page (sourcing rules), public corrections log, crypto payment-rails dataset (published facts only; confirmation windows listed only for the three assets whose windows the payment page publishes)",
    "urls": [
     "https://smsroute-cc.github.io/trust/methodology.html",
