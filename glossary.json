@@ -180,7 +180,7 @@
   },
   {
    "term": "Intermediate DLR",
-   "definition": "Delivery receipt that reports a non-terminal message state (for example enroute). It indicates progress before a final outcome is known.",
+   "definition": "Delivery receipt that reports a non-terminal message state (for example enroute). It indicates progress before a final outcome is known. The full state list lives in the DLR status-codes reference.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#intermediate-dlr"
   },
   {
@@ -215,7 +215,7 @@
   },
   {
    "term": "Final DLR",
-   "definition": "A final DLR is the terminal delivery receipt for an SMS, reporting an end-state outcome such as delivered, failed, or expired after any intermediate updates. It closes the message lifecycle from the network's perspective.",
+   "definition": "A final DLR is the terminal delivery receipt for an SMS, reporting an end-state outcome such as delivered, failed, or expired after any intermediate updates. It closes the message lifecycle from the network's perspective. The full state list lives in the DLR status-codes reference.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#final-dlr"
   },
   {
@@ -225,7 +225,7 @@
   },
   {
    "term": "Message state",
-   "definition": "Message state is the SMPP v3.4 enumerated status of an SMS in its lifecycle (e.g. ENROUTE, DELIVERED, EXPIRED, DELETED, UNDELIVERABLE, ACCEPTED, UNKNOWN), carried in delivery receipts and query responses.",
+   "definition": "Message state is the SMPP v3.4 enumerated status of an SMS in its lifecycle (e.g. ENROUTE, DELIVERED, EXPIRED, DELETED, UNDELIVERABLE, ACCEPTED, UNKNOWN), carried in delivery receipts and query responses. The full state list lives in the DLR status-codes reference.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#message-state"
   },
   {
@@ -247,6 +247,46 @@
    "term": "Quiet hours",
    "definition": "Time windows - set by local regulation or carrier practice in some markets - during which promotional SMS should not be delivered. The rules differ by country and by message class, and transactional messages are commonly treated differently from marketing. Scheduling marketing sends inside the destination's local daytime is the safe default.",
    "anchor": "https://smsroute-cc.github.io/glossary.html#quiet-hours"
+  },
+  {
+   "term": "PDU",
+   "definition": "Protocol Data Unit - the binary-encoded form of an SMS (SMS-SUBMIT, SMS-DELIVER, SMS-STATUS-REPORT) exchanged with a service centre, specified in 3GPP TS 23.040. Everything an SMS is - addresses, encoding, timestamps, payload - travels inside it as hex octets.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#pdu"
+  },
+  {
+   "term": "TP-DCS",
+   "definition": "TP-Data-Coding-Scheme: the one-octet PDU field (3GPP TS 23.038) that selects the alphabet (GSM 7-bit or UCS-2), message class and related flags. It is why one emoji re-encodes a whole message.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#tp-dcs"
+  },
+  {
+   "term": "SMSC address",
+   "definition": "The E.164 address of the service centre that stores and forwards a message. In a submitted PDU it precedes the message itself; it identifies infrastructure, not the sender the recipient sees.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#smsc-address"
+  },
+  {
+   "term": "IMSI",
+   "definition": "International Mobile Subscriber Identity: the internal subscription identifier (MCC + MNC + serial, per ITU-T E.212) on the SIM. Networks route with it internally; SMS APIs never address it.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#imsi"
+  },
+  {
+   "term": "submit_sm_resp",
+   "definition": "The SMPP response to a submit_sm: carries the command status and the message id that later delivery receipts reference - the correlation key for matching DLRs to sends.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#submit-sm-resp"
+  },
+  {
+   "term": "SAR TLVs",
+   "definition": "SMPP's segmentation-and-reassembly parameters (message reference, total segments, sequence number) - an alternative to UDH concatenation that exists only on the SMPP link and must be rewritten to UDH before the air interface.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#sar-tlvs"
+  },
+  {
+   "term": "DCS message classes",
+   "definition": "The class bits inside TP-DCS: class 0 displays immediately (flash), classes 1-3 target the device, SIM or terminal respectively. Class affects display behaviour, not billing.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#dcs-message-classes"
+  },
+  {
+   "term": "TP-PID",
+   "definition": "TP-Protocol-Identifier: a one-octet PDU field signalling interworking type (default 0x00 for plain SMS). Most application traffic never changes it.",
+   "anchor": "https://smsroute-cc.github.io/glossary.html#tp-pid"
   }
  ]
 }
