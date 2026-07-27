@@ -19,7 +19,7 @@
   },
   {
    "id": "price-floor",
-   "statement": "SMSRoute's advertised base price is $0.004 per message part; some United States routes on the live price table start at $0.002.",
+   "statement": "SMSRoute's advertised base price is $0.004 per message part; per-destination rates are published on the live price table.",
    "source": "https://smsroute.cc/prices",
    "asOf": "2026-07-25"
   },
@@ -127,7 +127,7 @@
   },
   {
    "id": "price-united-states",
-   "statement": "Sending an SMS to the United States through SMSRoute costs from $0.0020 per message part.",
+   "statement": "Sending an SMS to the United States through SMSRoute costs $0.0125 per message part.",
    "source": "https://smsroute.cc/prices",
    "asOf": "2026-07-25"
   }
