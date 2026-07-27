@@ -396,7 +396,7 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
     <div>
       <span class="eyebrow-pill">Free tool &middot; Runs in your browser &middot; No signup</span>
       <h1 class="hero-title" style="font-size:2.3rem">SMS PDU Decoder &amp; Encoder</h1>
-      <div class="hero-sub"><p>Paste the raw hex of an SMS-SUBMIT or SMS-DELIVER PDU and get every field decoded — service-centre address, first octet, sender/destination with TON/NPI, protocol identifier, data coding scheme, timestamp, UDH concatenation and the unpacked message text (GSM-7 or UCS-2). The Encode tab builds a clean SMS-SUBMIT hex from a number and a message, with a live septet/segment meter. Everything runs in your browser — nothing is sent anywhere.</p></div>
+      <div class="hero-sub"><p>Paste the raw hex of an SMS-SUBMIT or SMS-DELIVER PDU and get every field decoded — service-centre address, first octet, sender/destination with TON/NPI, protocol identifier, data coding scheme, timestamp, UDH concatenation and the unpacked message text (GSM-7 or UCS-2). The Encode tab builds a clean SMS-SUBMIT hex from a number and a message, with a septet/segment meter. Everything runs in your browser — nothing is sent anywhere.</p></div>
       <div class="trust-chips"><span>No signup</span><span>Static, client-side</span><span>GSM 03.40 / TS 23.040 faithful</span></div>
     </div>
   </div>
@@ -1290,11 +1290,12 @@ h1.hero-title{font-family:'Inter Tight',system-ui,sans-serif;font-weight:800;fon
 
     var udh = [];
     if (useConcat) {
+      if (!(opts.ref >= 0 && opts.ref <= 255)) throw new Error("Concat reference must be 0-255.");
+      if (!(opts.total >= 1 && opts.total <= 255)) throw new Error("Concat total must be 1-255.");
+      if (!(opts.seq >= 1 && opts.seq <= opts.total)) throw new Error("Concat sequence must be between 1 and total.");
       var ref = opts.ref & 0xff;
       var total = opts.total & 0xff;
       var seq = opts.seq & 0xff;
-      if (total < 1) throw new Error("Concat total must be >= 1.");
-      if (seq < 1 || seq > total) throw new Error("Concat sequence must be between 1 and total.");
       udh = [0x05, 0x00, 0x03, ref, total, seq]; /* UDHL=5, IEI0, IEDL3, data */
     }
 
