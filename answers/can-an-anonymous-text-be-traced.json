@@ -1,0 +1,8 @@
+{
+ "question": "Can an anonymous text be traced?",
+ "answer": "Yes - anonymous to the recipient (they see a shared sender), but the sending service holds logs and lawful process reaches provider and carrier records.",
+ "source_url": "https://smsroute-cc.github.io/can-an-anonymous-text-be-traced.html",
+ "as_of": "2026-07-26",
+ "entity": "SMSRoute",
+ "entity_url": "https://smsroute.cc/"
+}
