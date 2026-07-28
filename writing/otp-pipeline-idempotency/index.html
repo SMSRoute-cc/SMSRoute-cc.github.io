@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your OTP resend button is a race condition (and it's charging you twice)</title>
+<meta name="description" content="Every product I've seen ship SMS one-time codes has the same bug on day one. It doesn't show up in
+staging, it shows up in the bill and in support tickets: **us">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/otp-pipeline-idempotency/">
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}
+h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}
+pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}
+code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}
+a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}
+.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<p>Every product I've seen ship SMS one-time codes has the same bug on day one. It doesn't show up in</p>
+<p>staging, it shows up in the bill and in support tickets: **users receive two codes, and the second</p>
+<p>one invalidates the first.**</p>
+
+<p>Here's the sequence that causes it.</p>
+
+<h2>The race</h2>
+
+<pre><code>
+user taps "Resend"  ──▶  POST /otp/send  ──▶ generate code A ──▶ provider call (slow, 900ms)
+user taps again     ──▶  POST /otp/send  ──▶ generate code B ──▶ provider call
+                                              store code B (overwrites A)
+SMS with code A arrives first. User types A. Server compares to B. "Invalid code."
+</code></pre>
+
+<p>Two charges, one angry user, and a support ticket that says "your OTP doesn't work." The naive fix</p>
+<p>— disable the button for 30 seconds client-side — moves the bug rather than removing it. Mobile</p>
+<p>clients retry on flaky networks without any human tapping anything.</p>
+
+<h2>Fix 1: one challenge, many deliveries</h2>
+
+<p>The core mistake is treating <em>send</em> as the unit of work. The unit is the <strong>challenge</strong>. A challenge</p>
+<p>has one code and a TTL; a resend delivers the <em>same</em> challenge again.</p>
+
+<pre><code>
+def start_challenge(user_id: str) -&gt; Challenge:
+    existing = store.get_active(user_id)          # not expired, not consumed
+    if existing and existing.age &lt; timedelta(minutes=2):
+        return existing                            # resend delivers THIS code again
+    code = secrets.randbelow(1_000_000)
+    return store.put(Challenge(
+        user_id=user_id,
+        code_hash=hash_code(f"{code:06d}"),        # never store the code itself
+        expires_at=now() + timedelta(minutes=5),
+        attempts=0,
+    ))
+</code></pre>
+
+<p>Store the <strong>hash</strong>, not the code. Your OTP store is a credential store; treat it like one.</p>
+
+<h2>Fix 2: an idempotency key on the send</h2>
+
+<p>Even with one challenge, network retries can duplicate the <em>delivery</em>. Attach an idempotency key</p>
+<p>derived from the challenge and the attempt number, and let the provider (or your own dedupe layer)</p>
+<p>collapse repeats:</p>
+
+<pre><code>
+key = f"{challenge.id}:{challenge.delivery_count}"
+sms.send(to=phone, text=f"Your code is {code}", idempotency_key=key)
+</code></pre>
+
+<p>Any provider worth using either honours an idempotency header or gives you a message ID you can</p>
+<p>reconcile. If yours does neither, wrap it: a Redis <code>SET key NX EX 300</code> before the call costs one</p>
+<p>round trip and kills the duplicate-charge class of bugs outright.</p>
+
+<h2>Fix 3: rate limit on two axes, not one</h2>
+
+<p>Limit <strong>per phone number</strong> and <strong>per IP</strong>. Per-IP alone lets one attacker drain your balance across</p>
+<p>many numbers (SMS pumping — the fraud where an attacker cycles premium-rate numbers to farm</p>
+<p>carrier revenue share). Per-phone alone lets a botnet hammer from everywhere.</p>
+
+<pre><code>
+allow = limiter.check(f"otp:phone:{phone}", limit=5, window=3600) and \
+        limiter.check(f"otp:ip:{ip}",       limit=20, window=3600)
+</code></pre>
+
+<h2>Fix 4: a verify path that actually fails closed</h2>
+
+<pre><code>
+def verify(user_id: str, submitted: str) -&gt; bool:
+    ch = store.get_active(user_id)
+    if not ch or ch.attempts &gt;= 5 or ch.expires_at &lt; now():
+        return False
+    ch.attempts += 1                                  # increment BEFORE comparing
+    store.save(ch)
+    if not hmac.compare_digest(ch.code_hash, hash_code(submitted)):
+        return False
+    store.consume(ch)                                 # single-use, always
+    return True
+</code></pre>
+
+<p>Three details people skip: increment attempts <em>before</em> the comparison (or a crash mid-verify gives</p>
+<p>free retries), use a constant-time compare, and consume the challenge on success so a replayed code</p>
+<p>can't authenticate twice.</p>
+
+<h2>The part nobody tells you: the code may never arrive</h2>
+
+<p>None of this matters if the message is filtered. In a large share of countries an alphanumeric</p>
+<p>sender ID ("MyBrand") must be <strong>pre-registered</strong> before messages are delivered, and in some it's</p>
+<p>blocked outright — your perfectly correct pipeline silently drops traffic in exactly one country</p>
+<p>and you find out from a churn report.</p>
+
+<p>We maintain an open dataset of those rules — sender-ID regime, registration requirement, regulatory</p>
+<p>basis and last-verified date per country — as CSV/JSON:</p>
+
+<p><strong><a href="https://github.com/SMSRoute-cc/sms-sender-id-regulations">github.com/SMSRoute-cc/sms-sender-id-regulations</a></strong> (CC-BY-4.0)</p>
+
+<p>There's a second trap in the same table: the <code>charset_class</code> column. If the local language forces</p>
+<p>UCS-2 encoding, a segment holds <strong>70 characters instead of 160</strong> — so a message you sized for one</p>
+<p>segment silently bills as two or three. Worth checking before you write your template copy, not</p>
+<p>after.</p>
+
+<h2>Checklist</h2>
+
+<ul>
+<li>One challenge per user; resend re-delivers, never regenerates</li>
+<li>Store a hash of the code, never the code</li>
+<li>Idempotency key on every send</li>
+<li>Rate limit per phone <strong>and</strong> per IP</li>
+<li>Attempt counter incremented before comparison; constant-time compare</li>
+<li>Single-use consumption on success</li>
+<li>Sender-ID rules checked for every country you actually ship to</li>
+<li>Encoding checked — accented/non-Latin copy costs 2–3× per message</li>
+</ul>
+
+<p>The code samples above are provider-agnostic; any HTTP SMS API fits behind that interface. I work on</p>
+<p><a href="https://www.smsroute.cc">smsroute.cc</a>, which is where the dataset comes from — new accounts get free</p>
+<p>credits if you want to test a delivery path, and the client libraries are</p>
+<p><a href="https://github.com/SMSRoute-cc/smsroute-python">Python</a> /</p>
+<p><a href="https://github.com/SMSRoute-cc/smsroute-node">Node</a>, both MIT.</p>
+</body></html>
