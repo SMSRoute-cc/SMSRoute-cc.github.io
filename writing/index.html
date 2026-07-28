@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMS engineering notes — smsroute.cc</title>
+<meta name="description" content="Engineering notes on SMS delivery, OTP pipelines and sender-ID regulations.">
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}
+h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}
+pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}
+code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}
+a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}
+.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<h1>SMS engineering notes</h1>
+<p>Notes from operating SMS routes, by <a href="https://www.smsroute.cc">smsroute.cc</a>.</p>
+<ul><li><a href="/writing/otp-pipeline-idempotency/">Your OTP resend button is a race condition (and it's charging you twice)</a></li>
+<li><a href="/writing/sms-delivered-is-a-lie/">"Delivered" doesn't mean delivered: reading SMS status callbacks honestly</a></li></ul>
+<h2>Open data</h2>
+<p><a href="/sender-id-rules/">Sender ID rules by country</a> —
+<a href="https://github.com/SMSRoute-cc/sms-sender-id-regulations">dataset on GitHub</a> (CC-BY-4.0).</p>
+</body></html>
