@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Parsing Phone Numbers Is Harder Than Parsing Dates: E.164, libphonenumber, and the Inputs That Break You</title>
+<meta name="description" content="Store one canonical E.164 form or your uniqueness constraints and OTP dedupe will silently fail. Parse with region, validate correctly, migrate legacy junk.">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/parsing-phone-numbers-is-harder-than-parsing-dates-e-164-libphonenumber-and-the/">
+<meta property="og:title" content="Parsing Phone Numbers Is Harder Than Parsing Dates: E.164, libphonenumber, and the Inputs That Break You">
+<meta property="og:description" content="Store one canonical E.164 form or your uniqueness constraints and OTP dedupe will silently fail. Parse with region, validate correctly, migrate legacy junk.">
+<meta property="og:url" content="https://smsroute-cc.github.io/writing/parsing-phone-numbers-is-harder-than-parsing-dates-e-164-libphonenumber-and-the/">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Parsing Phone Numbers Is Harder Than Parsing Dates: E.164, libphonenumber, and the Inputs That Break You", "description": "Store one canonical E.164 form or your uniqueness constraints and OTP dedupe will silently fail. Parse with region, validate correctly, migrate legacy junk.", "url": "https://smsroute-cc.github.io/writing/parsing-phone-numbers-is-harder-than-parsing-dates-e-164-libphonenumber-and-the/", "author": {"@type": "Organization", "name": "SMSRoute", "url": "https://www.smsroute.cc"}, "publisher": {"@type": "Organization", "name": "SMSRoute"}, "datePublished": "2026-07-29", "inLanguage": "en"}</script>
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #e3e3e6;padding:6px 10px;text-align:left}.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<article>
+<h2>One user, five spellings</h2>
+<p>Support opened a ticket: a user could not log in because "that phone number is already registered." The account in the database had <code>0171 5550134</code>. The form submission had <code>+49 171 5550134</code>. Same German mobile. Two rows. The unique index on <code>phone</code> did nothing useful because we stored whatever the user typed.</p>
+<p>That same number shows up in the wild as:</p>
+<ul>
+<li><code>0171 5550134</code> (national, trunk prefix)</li>
+<li><code>+491715550134</code> (E.164-ish, no spaces)</li>
+<li><code>00491715550134</code> (international exit code)</li>
+<li><code>49 (0) 171 5550134</code> (country code plus explicit trunk)</li>
+<li><code>+49.171.555.0134</code> (punctuation cosplay)</li>
+</ul>
+<p>If you persist the raw string, uniqueness is fiction, OTP dedupe keys fragment, and "send code to the number on file" becomes a coin flip. You need one canonical form at the boundary, every time.</p>
+<h2>E.164 in one paragraph, honestly</h2>
+<p>E.164 is the ITU recommendation for the international public telecommunication numbering plan. The shape is simple: a leading <code>+</code>, then a country code (1–3 digits), then the subscriber number, for a maximum of 15 digits total after the <code>+</code>. No spaces, dashes, parentheses, or dots. <code>+491715550134</code> is E.164. <code>+49 171 5550134</code> is not. What E.164 does <strong>not</strong> tell you: whether the number is assigned, whether it is mobile, whether it can receive SMS, or whether it will ring. It is a formatting and addressing contract, not a reachability oracle. libphonenumber will not fill that gap either — it checks structure against national numbering plans, not live carrier state.</p>
+<h2>Never regex this: use libphonenumber</h2>
+<p>Google's libphonenumber (and its ports) encodes the numbering plans you will not keep current by hand. Parse with an explicit default region when the input lacks a <code>+</code> country code; format to E.164 for storage.</p>
+<p>Python (<code>phonenumbers</code>):</p>
+<pre><code class="language-python">import phonenumbers
+from phonenumbers import NumberParseException
+
+def to_e164(raw: str, default_region: str = &quot;DE&quot;) -&gt; str | None:
+    try:
+        num = phonenumbers.parse(raw, default_region)
+    except NumberParseException:
+        return None
+    if not phonenumbers.is_valid_number(num):
+        return None
+    return phonenumbers.format_number(
+        num, phonenumbers.PhoneNumberFormat.E164
+    )
+
+print(to_e164(&quot;0171 5550134&quot;, &quot;DE&quot;))   # +491715550134
+print(to_e164(&quot;+49 171 5550134&quot;, &quot;DE&quot;)) # +491715550134
+print(to_e164(&quot;00491715550134&quot;, &quot;DE&quot;))  # +491715550134
+</code></pre>
+<p>JavaScript (<code>libphonenumber-js</code>):</p>
+<pre><code class="language-javascript">import { parsePhoneNumberFromString } from 'libphonenumber-js';
+
+function toE164(raw, defaultCountry = 'DE') {
+  const num = parsePhoneNumberFromString(raw, defaultCountry);
+  if (!num || !num.isValid()) return null;
+  return num.format('E.164');
+}
+
+console.log(toE164('0171 5550134', 'DE'));   // +491715550134
+console.log(toE164('+49 171 5550134', 'DE')); // +491715550134
+console.log(toE164('00491715550134', 'DE'));  // +491715550134
+</code></pre>
+<p>Two predicates matter and they are not interchangeable:</p>
+<ul>
+<li><code>is_valid_number</code> / <code>isValid()</code> — the number is possible <strong>and</strong> matches a known length/pattern for that region. Use this on signup and OTP forms.</li>
+<li><code>is_possible_number</code> / <code>isPossible()</code> — length only, against broad regional bounds. Use this when ingesting legacy CRM dumps where you would rather keep a maybe-number than drop the row.</li>
+</ul>
+<p>Form validation wants <code>valid</code>. Bulk migration of ten-year-old CSV wants <code>possible</code>, plus a report of everything that failed even that bar. Do not ship a "phone validation regex." National plans change; your one-liner will not.</p>
+<h2>The gotcha gallery</h2>
+<p>These are numbers that hand-rolled normalizers mangle. Each line is input → wrong output you might emit → correct E.164.</p>
+<p><strong>Argentina mobiles insert a <code>9</code> after the country code for international dialing (and SMS gateways expect it).</strong><br />
+Input: <code>11 2345-6789</code> with region <code>AR</code> (Buenos Aires mobile, national form).<br />
+Wrong: <code>+541123456789</code> (missing the mobile <code>9</code>).<br />
+Correct: <code>+5491123456789</code>.<br />
+libphonenumber's AR rules add the <code>9</code> when the number is typed as mobile; a strip-non-digits routine will not.</p>
+<p><strong>Mexico dropped the trunk <code>1</code> after country code <code>52</code> for mobiles in 2019.</strong><br />
+Input (legacy stored value): <code>+5215512345678</code>.<br />
+Wrong if you "trust stored E.164 forever": keep <code>+5215512345678</code> and watch modern routes reject or misroute it.<br />
+Correct today: <code>+525512345678</code>.<br />
+Re-parse legacy rows; do not assume yesterday's E.164 string is still the dialable form.</p>
+<p><strong>UK numbers written with an explicit trunk zero inside parentheses.</strong><br />
+Input: <code>+44 (0)7911 123456</code>.<br />
+Wrong: <code>+4407911123456</code> (naively deleting punctuation but keeping the <code>0</code>).<br />
+Correct: <code>+447911123456</code>.<br />
+The <code>(0)</code> is a national trunk prefix reminder for domestic dialing; it must not appear after <code>+44</code>.</p>
+<p><strong>Trunk-prefix <code>0</code> means different things by country.</strong><br />
+German input <code>0171 5550134</code> → correct <code>+491715550134</code> (drop the leading <code>0</code> after applying country code <code>49</code>).<br />
+Italian landline input <code>06 12345678</code> (Rome) → correct <code>+390612345678</code> (the leading <code>0</code> is <strong>significant</strong> and stays part of the national number).<br />
+Wrong generic rule "always strip one leading zero after the country code" produces <code>+39612345678</code> for the Italian case — a different, invalid number. Region-aware parse is the only safe path.</p>
+<p><strong>Italian landlines keep the leading zero; mobiles do not share the same shape.</strong><br />
+Input: <code>02 1234567</code> region <code>IT</code>.<br />
+Wrong (strip-all-leading-zeros policy): <code>+3921234567</code>.<br />
+Correct: <code>+39021234567</code>.<br />
+If your normalizer is a pair of regex replacements, you will get this wrong for at least one of DE/IT/AT/CH on day one.</p>
+<h2>Leading zeros, spreadsheets, and other data-loss machines</h2>
+<p>Phone numbers are not integers. Store them as integers and you lose the leading <code>+</code>, every leading zero, and any chance of round-tripping national forms. A column typed as <code>BIGINT</code> turns <code>+491715550134</code> into <code>491715550134</code> and <code>01632 960775</code> into <code>1632960775</code> — both irreversible without guessing the region.</p>
+<p>CSV is worse when Excel touches it. Open a export containing <code>+447911123456</code>, save, re-upload: you get <code>4.47911E+11</code> or <code>447911123456</code>. The <code>+</code> is gone. Leading zeros on national numbers are gone. Downstream parse then guesses wrong region or fails <code>is_valid_number</code>.</p>
+<p>Rules that survive contact with finance teams:</p>
+<ul>
+<li>Column type <code>TEXT</code> / <code>VARCHAR</code> (at least 16 chars for E.164, more if you also keep a display field).</li>
+<li>Always persist the canonical value <strong>with</strong> the leading <code>+</code>.</li>
+<li>Quote the field in CSV (<code>"+447911123456"</code>) and prefer <code>.xlsx</code> with an explicit text column when non-engineers will open the file.</li>
+<li>Never cast through numeric types in ETL "for cleanup."</li>
+</ul>
+<h2>Validation UX that doesn't lose signups</h2>
+<p>Canonical storage is a backend concern. The form still has to accept how humans type.</p>
+<ul>
+<li>Put a country selector next to the input. That selection is the <code>default_region</code> / <code>defaultCountry</code> you pass to parse. Do not infer country only from <code>Accept-Language</code> or IP; roaming users exist.</li>
+<li>Run <code>AsYouTypeFormatter</code> (Python: <code>phonenumbers.AsYouTypeFormatter</code>; JS: <code>AsYouType</code> from <code>libphonenumber-js</code>) on input so <code>0171555…</code> becomes a readable national pattern for the chosen country while the user types.</li>
+<li>Validate on blur, not on every keystroke with a hard error. Empty-while-typing is not an error.</li>
+<li>On failure, show the expected national example for <strong>that</strong> country (<code>phonenumbers.example_number_for_type(region, PhoneNumberType.MOBILE)</code> / <code>getExampleNumber</code>), not a generic "invalid phone."</li>
+<li>Never block paste. Users paste from contacts, WhatsApp, and email signatures. Strip formatting on paste, then re-run the as-you-type formatter; do not <code>preventDefault</code> on <code>paste</code>.</li>
+</ul>
+<p>Sketch for the blur path in JS:</p>
+<pre><code class="language-javascript">import parsePhoneNumberFromString, { AsYouType } from 'libphonenumber-js';
+
+const input = document.querySelector('#phone');
+const country = () =&gt; document.querySelector('#country').value;
+
+input.addEventListener('input', () =&gt; {
+  const formatter = new AsYouType(country());
+  input.value = formatter.input(input.value);
+});
+
+input.addEventListener('blur', () =&gt; {
+  const num = parsePhoneNumberFromString(input.value, country());
+  if (!num || !num.isValid()) {
+    input.setCustomValidity(
+      `Use a valid number for ${country()}, e.g. the national format for that country.`
+    );
+  } else {
+    input.setCustomValidity('');
+    // send num.format('E.164') to the API
+  }
+});
+</code></pre>
+<p>The API accepts only E.164. The client may show national format. Those are different layers; do not store what the input visually contains at submit time without parsing first.</p>
+<h2>Type detection and what it's worth</h2>
+<p>libphonenumber can classify a parsed number:</p>
+<pre><code class="language-python">import phonenumbers
+from phonenumbers import phonenumberutil
+
+num = phonenumbers.parse(&quot;+491715550134&quot;, None)
+print(phonenumberutil.number_type(num))
+# PhoneNumberType.MOBILE
+</code></pre>
+<pre><code class="language-javascript">import { parsePhoneNumberFromString } from 'libphonenumber-js';
+
+const num = parsePhoneNumberFromString('+491715550134');
+console.log(num.getType()); // 'MOBILE'
+</code></pre>
+<p>Useful values: <code>MOBILE</code>, <code>FIXED_LINE</code>, <code>FIXED_LINE_OR_MOBILE</code>, <code>VOIP</code>, <code>TOLL_FREE</code>, and a handful of others. Practical use: a soft signal before you fire an OTP SMS — if the type is clearly <code>FIXED_LINE</code> or <code>TOLL_FREE</code> in a region where that distinction is reliable, warn the user and offer voice call instead of silently failing delivery.</p>
+<p>Unreliable cases you must not hard-block on:</p>
+<ul>
+<li>United States and Canada: huge slices land in <code>FIXED_LINE_OR_MOBILE</code> because the plan does not cleanly separate them; number portability makes yesterday's landline a mobile.</li>
+<li>Ported numbers anywhere: the library's type is plan metadata, not current carrier assignment.</li>
+<li>VOIP and virtual ranges: often valid, sometimes SMS-capable, sometimes not — structure alone cannot decide.</li>
+</ul>
+<p>libphonenumber does not verify reachability. It has never claimed to. Treat <code>number_type</code> as a UX hint, not an authorization gate. In practice I normalize to E.164 at the edge and let <a href="https://www.smsroute.cc">the SMS API I send through</a> reject the truly undeliverable ones, logging its per-number error codes rather than trying to pre-guess carrier reachability myself.</p>
+<h2>The storage and comparison contract</h2>
+<p>Contract:</p>
+<ol>
+<li><strong>Store</strong> a single E.164 string (<code>TEXT</code>, including <code>+</code>).</li>
+<li><strong>Compare</strong> E.164 strings only (<code>a.phone = b.phone</code>, hash sets of E.164 for OTP cooldown keys).</li>
+<li><strong>Display</strong> at the edge with national or international formatting — never re-format on the way into the database.</li>
+</ol>
+<pre><code class="language-python">import phonenumbers
+from phonenumbers import PhoneNumberFormat, NumberParseException
+
+def display_national(e164: str) -&gt; str:
+    num = phonenumbers.parse(e164, None)
+    return phonenumbers.format_number(num, PhoneNumberFormat.NATIONAL)
+</code></pre>
+<p>Migration for a table already full of free-text junk: parse, write E.164 into a new column, and <strong>report</strong> failures instead of deleting rows.</p>
+<pre><code class="language-python">import csv
+import phonenumbers
+from phonenumbers import PhoneNumberFormat, NumberParseException
+
+def migrate_row(raw: str, default_region: str) -&gt; tuple[str | None, str | None]:
+    &quot;&quot;&quot;Returns (e164, error_reason).&quot;&quot;&quot;
+    if raw is None or not str(raw).strip():
+        return None, &quot;empty&quot;
+    try:
+        num = phonenumbers.parse(str(raw).strip(), default_region)
+    except NumberParseException as e:
+        return None, f&quot;parse: {e.error_type.name}&quot;
+    if not phonenumbers.is_possible_number(num):
+        return None, &quot;not_possible&quot;
+    # Prefer valid; still keep possibles for manual review
+    e164 = phonenumbers.format_number(num, PhoneNumberFormat.E164)
+    if not phonenumbers.is_valid_number(num):
+        return e164, &quot;possible_but_not_valid&quot;
+    return e164, None
+
+# Example batch with a side-car report
+report_path = &quot;phone_migration_report.csv&quot;
+with open(report_path, &quot;w&quot;, newline=&quot;&quot;, encoding=&quot;utf-8&quot;) as report:
+    writer = csv.writer(report)
+    writer.writerow([&quot;id&quot;, &quot;raw&quot;, &quot;e164&quot;, &quot;status&quot;])
+    for row_id, raw, region in load_legacy_rows():  # your DB cursor
+        e164, err = migrate_row(raw, region or &quot;US&quot;)
+        if err == &quot;possible_but_not_valid&quot;:
+            writer.writerow([row_id, raw, e164, err])
+            save_e164(row_id, e164)  # keep, flag for review
+        elif err:
+            writer.writerow([row_id, raw, &quot;&quot;, err])
+            # do not save — leave old value, page a human
+        else:
+            writer.writerow([row_id, raw, e164, &quot;ok&quot;])
+            save_e164(row_id, e164)
+</code></pre>
+<p>Unparseable rows stay in the report with a reason (<code>EMPTY</code>, <code>INVALID_COUNTRY_CODE</code>, <code>NOT_A_NUMBER</code>, <code>TOO_SHORT_NSN</code>, <code>TOO_LONG</code> — those names are the <code>NumberParseException</code> error types). Silent drops create support tickets you cannot reconstruct.</p>
+<h3>Checklist</h3>
+<ul>
+<li>[ ] Parse with libphonenumber (or port), never a hand-rolled regex</li>
+<li>[ ] Pass an explicit default region when input lacks <code>+</code></li>
+<li>[ ] Persist E.164 only (<code>TEXT</code>/<code>VARCHAR</code>, leading <code>+</code> kept)</li>
+<li>[ ] Uniqueness, OTP cooldown, and account lookup keys use the E.164 string</li>
+<li>[ ] Forms: country selector → region; AsYouType on input; validate on blur; paste allowed</li>
+<li>[ ] <code>is_valid_number</code> on interactive signup; <code>is_possible_number</code> only for legacy ingest</li>
+<li>[ ] <code>number_type</code> is a soft warning before SMS, not a hard block</li>
+<li>[ ] Do not expect libphonenumber to confirm deliverability or carrier</li>
+<li>[ ] Argentina mobiles: expect <code>+54 9 …</code>; Mexico: re-parse pre-2019 <code>+521…</code> values</li>
+<li>[ ] UK <code>+44 (0)…</code> drops the trunk <code>0</code>; Italian landlines keep their leading <code>0</code></li>
+<li>[ ] Migrate free-text columns with a failure report, not <code>UPDATE … WHERE parsed IS NULL</code> deletes</li>
+<li>[ ] Format national/international only in UI or notification templates</li>
+</ul>
+</article>
+<hr><p class="meta">From the SMSRoute engineering blog. More notes at <a href="https://smsroute-cc.github.io/writing/">/writing</a>.</p>
+</body></html>
