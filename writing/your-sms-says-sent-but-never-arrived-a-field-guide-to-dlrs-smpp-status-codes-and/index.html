@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Your SMS Says &quot;Sent&quot; but Never Arrived: A Field Guide to DLRs, SMPP Status Codes, and Carrier Filtering</title>
+<meta name="description" content="Messages show sent but users get nothing. How to read DLR stat values, SMPP errors, carrier filter codes, and build an idempotent webhook receiver that doesn&#x27;t lie to you.">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/your-sms-says-sent-but-never-arrived-a-field-guide-to-dlrs-smpp-status-codes-and/">
+<meta property="og:title" content="Your SMS Says &quot;Sent&quot; but Never Arrived: A Field Guide to DLRs, SMPP Status Codes, and Carrier Filtering">
+<meta property="og:description" content="Messages show sent but users get nothing. How to read DLR stat values, SMPP errors, carrier filter codes, and build an idempotent webhook receiver that doesn&#x27;t lie to you.">
+<meta property="og:url" content="https://smsroute-cc.github.io/writing/your-sms-says-sent-but-never-arrived-a-field-guide-to-dlrs-smpp-status-codes-and/">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Your SMS Says \"Sent\" but Never Arrived: A Field Guide to DLRs, SMPP Status Codes, and Carrier Filtering", "description": "Messages show sent but users get nothing. How to read DLR stat values, SMPP errors, carrier filter codes, and build an idempotent webhook receiver that doesn't lie to you.", "url": "https://smsroute-cc.github.io/writing/your-sms-says-sent-but-never-arrived-a-field-guide-to-dlrs-smpp-status-codes-and/", "author": {"@type": "Organization", "name": "SMSRoute", "url": "https://www.smsroute.cc"}, "publisher": {"@type": "Organization", "name": "SMSRoute"}, "datePublished": "2026-07-29", "inLanguage": "en"}</script>
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #e3e3e6;padding:6px 10px;text-align:left}.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<article>
+<p>Your dashboard says <code>sent</code>. Your logs say <code>accepted</code>. Support is forwarding screenshots of empty inboxes. You re-send the same payload three times, the provider accepts all three, and still nothing lands on the handset. This is the gap between "the SMSC took your message" and "the phone actually displayed it" — and almost every SMS debugging session that goes sideways starts by collapsing those two states into one.</p>
+<h2>"Sent" is not "delivered": the four-hop lifecycle</h2>
+<p>An outbound SMS crosses four hops. Each hop can only honestly report what it controls:</p>
+<pre><code>app  →  provider API  →  SMSC  →  carrier  →  handset
+         [accepted]     [sent]   [DLR...]    [DELIVRD?]
+</code></pre>
+<ul>
+<li><strong>queued</strong> — your side enqueued the request; nothing has left your process yet.</li>
+<li><strong>accepted / sent</strong> — the SMSC acknowledged <code>submit_sm</code>. The message is in the carrier network's hands. This is the last status many dashboards ever show.</li>
+<li><strong>delivered</strong> — a delivery report (DLR) came back saying the handset accepted it.</li>
+<li><strong>undelivered / expired / rejected</strong> — a DLR (or a terminal error) says it will not arrive.</li>
+</ul>
+<p>The operational rule: treat <code>accepted</code>/<code>sent</code> as "handed off," not "done." Anything you build on top of handoff-as-success — confirmation emails, unlock codes, "we texted you" UI — will lie to users the first time a carrier filters the traffic.</p>
+<p>State machine you actually want:</p>
+<pre><code>queued → sent → delivered
+              → undelivered
+              → expired
+              → rejected
+</code></pre>
+<p>Only move forward. Never overwrite <code>delivered</code> with a late <code>sent</code>.</p>
+<h2>Reading raw DLR states</h2>
+<p>Providers that speak SMPP under the hood (most of them, even over HTTP) surface a <code>stat</code> field on the DLR webhook. These are the values that matter and what each one implies you should do:</p>
+<table>
+<thead>
+<tr>
+<th><code>stat</code></th>
+<th>Where it died</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DELIVRD</code></td>
+<td>Nowhere — handset got it</td>
+<td>Mark success. Stop.</td>
+</tr>
+<tr>
+<td><code>EXPIRED</code></td>
+<td>Handset unreachable for the validity period (off, airplane mode, no signal)</td>
+<td>Transient device issue. One delayed retry later is fine; do not hammer.</td>
+</tr>
+<tr>
+<td><code>UNDELIV</code></td>
+<td>Carrier could not deliver</td>
+<td>Often number/porting/route. Check destination, try alternate route if you have one.</td>
+</tr>
+<tr>
+<td><code>REJECTD</code></td>
+<td>Carrier-side policy rejected it</td>
+<td>Do <strong>not</strong> retry identical content. Inspect sender ID, template, content.</td>
+</tr>
+<tr>
+<td><code>ACCEPTD</code></td>
+<td>Intermediate ack only</td>
+<td>Not terminal. Wait for a final DLR.</td>
+</tr>
+<tr>
+<td><code>UNKNOWN</code></td>
+<td>Carrier will not say</td>
+<td>Common on some routes. Design UI/ops for "we don't know." Don't invent a status.</td>
+</tr>
+</tbody>
+</table>
+<p><code>EXPIRED</code> is about reachability over time, not content. <code>REJECTD</code> is almost always policy — content, sender reputation, or destination rules. <code>UNKNOWN</code> is not a bug in your parser; some carriers simply never return a final disposition. Store the raw <code>stat</code> string. Normalizing everything to a three-color enum before it hits the database is how you lose the only signal that explains a route failure three weeks later.</p>
+<h2>SMPP command_status errors worth knowing even over HTTP</h2>
+<p>HTTP APIs frequently re-expose SMPP <code>command_status</code> values in an <code>error_code</code> / <code>error_message</code> field when <code>submit_sm</code> itself fails. These fire <em>before</em> any DLR exists — the SMSC refused the submit.</p>
+<ul>
+<li><strong><code>ESME_RTHROTTLED</code> (<code>0x58</code>)</strong> — you exceeded the bind-level submit rate. Back off and retry with jitter. Fix: lower sustained send rate or request a higher window. Do not open more binds to "get around" it; you will make throttling worse.</li>
+<li><strong><code>ESME_RINVDSTADR</code> (<code>0x0B</code>)</strong> — destination address invalid (format, length, or obviously not a mobile number). Drop. Fix the input. Retrying the same MSISDN will fail the same way.</li>
+<li><strong><code>ESME_RMSGQFUL</code> (<code>0x14</code>)</strong> — SMSC message queue is full. Transient. Retry with exponential backoff. If it persists across minutes, the route is unhealthy — page ops, don't keep dumping traffic into it.</li>
+<li><strong><code>ESME_RSUBMITFAIL</code> (<code>0x45</code>)</strong> — generic submit failure. Treat as retryable a small number of times, then dead-letter. Correlate with provider status; this one often rides along with upstream carrier outages.</li>
+</ul>
+<p>Map on ingest:</p>
+<pre><code>0x58  → retry (slow down)
+0x0B  → drop  (fix input)
+0x14  → retry (transient)
+0x45  → retry then dead-letter
+</code></pre>
+<p>Do not collapse all non-zero <code>command_status</code> values into one <code>provider_error</code> bucket. The retry policy is different for each.</p>
+<h2>HTTP-era equivalents</h2>
+<p>Twilio-style error codes show up across the industry as either direct codes or documented equivalents:</p>
+<ul>
+<li><strong><code>30007</code> — Carrier violated / filtered.</strong> The carrier rejected the message on content or sender-reputation grounds. This is <strong>not</strong> a connectivity problem. Retrying the identical body from the same sender ID is worse than useless: it reinforces the reputation hit that got you filtered. Change content, review sender registration, or stop.</li>
+<li><strong><code>30003</code> — Unreachable handset.</strong> Phone off, out of coverage, or otherwise not accepting traffic right now. Comparable to <code>EXPIRED</code>/<code>UNDELIV</code> territory. One later retry is reasonable.</li>
+<li><strong><code>30005</code> — Unknown destination.</strong> Number is not a valid reachable mobile subscriber (landline, decommissioned, wrong country code). Drop and cleanse the list.</li>
+<li><strong><code>429</code> — Throttled.</strong> Same class as <code>ESME_RTHROTTLED</code>. Honor <code>Retry-After</code> if present; otherwise exponential backoff with jitter.</li>
+</ul>
+<p>The key operational distinction: connectivity failures (<code>30003</code>, <code>EXPIRED</code>) tolerate a patient retry. Filter failures (<code>30007</code>, <code>REJECTD</code>) demand a content/sender change. Automating retries on <code>30007</code> is how teams dig the hole deeper.</p>
+<h2>Building the DLR webhook receiver correctly</h2>
+<p>Providers retry DLR webhooks that do not return <code>2xx</code> quickly. If you do heavy work inline — DB joins, downstream HTTP, template rendering — you will double-process. Pattern that holds up:</p>
+<ol>
+<li>Verify signature (next section).</li>
+<li>Enqueue the raw payload.</li>
+<li>Return <code>200</code> in under two seconds.</li>
+<li>Process async with idempotency on <code>(message_id, stat)</code>.</li>
+</ol>
+<p>DLRs arrive twice. DLRs arrive out of order. A <code>DELIVRD</code> before your local <code>sent</code> transition is real and common under load. Your state machine only moves forward:</p>
+<pre><code class="language-python">import json
+import hashlib
+import hmac
+import time
+from flask import Flask, request, abort
+from queue import Queue
+
+app = Flask(__name__)
+work = Queue()
+
+# message_id -&gt; terminal-ish status rank
+RANK = {
+    &quot;queued&quot;: 0,
+    &quot;ACCEPTD&quot;: 1,
+    &quot;sent&quot;: 1,
+    &quot;DELIVRD&quot;: 5,
+    &quot;EXPIRED&quot;: 5,
+    &quot;UNDELIV&quot;: 5,
+    &quot;REJECTD&quot;: 5,
+    &quot;UNKNOWN&quot;: 4,
+}
+
+def advance(current: str | None, incoming: str) -&gt; str:
+    if current is None:
+        return incoming
+    return incoming if RANK.get(incoming, 0) &gt;= RANK.get(current, 0) else current
+
+# stand-in for durable store
+STATE: dict[str, str] = {}
+SEEN: set[tuple[str, str]] = set()
+
+def process_dlr(payload: dict) -&gt; None:
+    mid = payload[&quot;message_id&quot;]
+    stat = payload[&quot;stat&quot;]
+    key = (mid, stat)
+    if key in SEEN:
+        return
+    SEEN.add(key)
+    STATE[mid] = advance(STATE.get(mid), stat)
+    # fan out to metrics, user-visible status, etc.
+
+@app.post(&quot;/webhooks/dlr&quot;)
+def dlr_webhook():
+    raw = request.get_data()  # raw bytes — keep for HMAC
+    if not verify_signature(raw, request.headers):
+        abort(401)
+    payload = json.loads(raw)
+    work.put(payload)         # async worker calls process_dlr
+    return {&quot;ok&quot;: True}, 200
+</code></pre>
+<p>The receiver pattern above is what I run against <a href="https://www.smsroute.cc">a provider I use for transactional sends</a>, whose DLR callbacks include the raw <code>stat</code> value — keeping the original SMPP state in your database beats normalizing it away when you're debugging a route weeks later.</p>
+<p>Worker side is a single consumer loop over <code>work</code>. Swap <code>Queue</code> for Redis/SQS in production; the contract stays the same: ack HTTP fast, dedupe on <code>(message_id, stat)</code>, only advance.</p>
+<h2>Verifying the webhook is really from your provider</h2>
+<p>Unauthenticated DLR endpoints get garbage, and eventually get spoofed statuses that flip user state. Verify HMAC-SHA256 over the <strong>raw body bytes</strong> with a shared secret. Three hard requirements:</p>
+<ol>
+<li>Use the raw request body, not <code>json.dumps(parsed)</code> — re-serialization changes key order and whitespace and breaks valid signatures. This is the classic bug.</li>
+<li>Compare with <code>hmac.compare_digest</code>, not <code>==</code> (timing-safe).</li>
+<li>Enforce a timestamp tolerance window against replay.</li>
+</ol>
+<pre><code class="language-python">import hmac
+import hashlib
+import time
+import os
+
+SECRET = os.environ[&quot;DLR_WEBHOOK_SECRET&quot;].encode()
+MAX_SKEW_SEC = 300  # 5 minutes
+
+def verify_signature(raw_body: bytes, headers) -&gt; bool:
+    ts = headers.get(&quot;X-Signature-Timestamp&quot;, &quot;&quot;)
+    sig = headers.get(&quot;X-Signature&quot;, &quot;&quot;)
+    if not ts or not sig:
+        return False
+    try:
+        ts_int = int(ts)
+    except ValueError:
+        return False
+    if abs(time.time() - ts_int) &gt; MAX_SKEW_SEC:
+        return False
+    # Many providers: hex(hmac_sha256(secret, f&quot;{ts}.&quot; + body))
+    message = ts.encode() + b&quot;.&quot; + raw_body
+    expected = hmac.new(SECRET, message, hashlib.sha256).hexdigest()
+    # strip a leading &quot;sha256=&quot; if the provider uses that form
+    given = sig.removeprefix(&quot;sha256=&quot;)
+    return hmac.compare_digest(expected, given)
+</code></pre>
+<p>Reject missing headers, reject skew, reject bad digests — all as <code>401</code>, before enqueue. Log the failure reason internally; do not echo it to the caller.</p>
+<h2>What to do with the data: delivery-rate observability</h2>
+<p>Store each terminal DLR with <code>country</code>, <code>route</code>/<code>sender</code>, <code>stat</code>, and timestamp. Build two ratios, not raw counts:</p>
+<ul>
+<li><code>delivered / (delivered + undelivered + expired + rejected)</code> per country</li>
+<li>same ratio per route/sender</li>
+</ul>
+<p>A sudden <code>UNDELIV</code> spike isolated to one carrier or route is a route problem — shift traffic, open a ticket with the provider, leave content alone. A uniform drop across routes that coincides with a template or sender-ID change is a content/reputation problem — stop the send, fix the template, do not retry the filtered body.</p>
+<p>Alert on the <strong>ratio</strong> crossing a floor (for example, delivered ratio &lt; 0.92 over a 15-minute window, minimum volume threshold so low-traffic countries do not page you). Alerting on absolute undelivered count fires every time you send more volume.</p>
+<p><code>UNKNOWN</code> should be tracked as its own bucket. Spiking <code>UNKNOWN</code> is a visibility regression, not necessarily a delivery regression — treat it differently in dashboards or you will chase ghosts.</p>
+<h2>The triage flowchart</h2>
+<pre><code>&quot;sent&quot; in dashboard, user got nothing
+│
+├─ Do you have a DLR at all?
+│   ├─ NO  → check submit errors
+│   │         ├─ 0x0B / 30005     → fix MSISDN, drop
+│   │         ├─ 0x58 / 429       → slow down, retry
+│   │         ├─ 0x14 / 0x45      → retry w/ backoff; if persistent, route down
+│   │         └─ none, just &quot;sent&quot;→ DLR path broken (webhook 4xx/slow, sig fail)
+│   │
+│   └─ YES → read stat / error
+│             ├─ DELIVRD          → not an SMS issue; check handset/UI
+│             ├─ EXPIRED / 30003  → handset unreachable; one delayed retry
+│             ├─ UNDELIV          → number/route; try alt route, validate porting
+│             ├─ REJECTD / 30007  → carrier filter; change content/sender, NO retry
+│             └─ UNKNOWN          → carrier won't say; check ratio by route, don't invent status
+│
+└─ Ratios: one-route UNDELIV spike → route
+           uniform drop after template change → content/sender
+</code></pre>
+<h2>Cheat-sheet</h2>
+<ul>
+<li><code>accepted</code>/<code>sent</code> = SMSC took it. Not delivered.</li>
+<li>Store raw <code>stat</code>: <code>DELIVRD</code>, <code>EXPIRED</code>, <code>UNDELIV</code>, <code>REJECTD</code>, <code>ACCEPTD</code>, <code>UNKNOWN</code>.</li>
+<li><code>EXPIRED</code>/<code>30003</code> → patient retry. <code>REJECTD</code>/<code>30007</code> → fix content/sender, never identical retry.</li>
+<li><code>0x58</code> throttle, <code>0x0B</code> bad dest (drop), <code>0x14</code> queue full (retry), <code>0x45</code> submit fail (retry then dead-letter).</li>
+<li>Webhook: verify HMAC on <strong>raw bytes</strong> with <code>compare_digest</code>, enqueue, <code>200</code> in &lt;2s.</li>
+<li>Dedupe <code>(message_id, stat)</code>; state machine only advances.</li>
+<li>Alert on delivered <strong>ratio</strong> per country and per route, not absolute counts.</li>
+<li>One-route spike → route. Uniform drop after template change → content.</li>
+</ul>
+</article>
+<hr><p class="meta">From the SMSRoute engineering blog. More notes at <a href="https://smsroute-cc.github.io/writing/">/writing</a>.</p>
+</body></html>
