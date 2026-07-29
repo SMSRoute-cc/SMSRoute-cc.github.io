@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Someone Is Draining Your SMS Budget: Rate-Limiting OTP Endpoints Against Enumeration and SMS Pumping</title>
+<meta name="description" content="Rate-limit OTP send endpoints against SMS pumping and enumeration with Redis token buckets, circuit breakers, and a minute-zero incident runbook.">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/someone-is-draining-your-sms-budget-rate-limiting-otp-endpoints-against-enumerat/">
+<meta property="og:title" content="Someone Is Draining Your SMS Budget: Rate-Limiting OTP Endpoints Against Enumeration and SMS Pumping">
+<meta property="og:description" content="Rate-limit OTP send endpoints against SMS pumping and enumeration with Redis token buckets, circuit breakers, and a minute-zero incident runbook.">
+<meta property="og:url" content="https://smsroute-cc.github.io/writing/someone-is-draining-your-sms-budget-rate-limiting-otp-endpoints-against-enumerat/">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Someone Is Draining Your SMS Budget: Rate-Limiting OTP Endpoints Against Enumeration and SMS Pumping", "description": "Rate-limit OTP send endpoints against SMS pumping and enumeration with Redis token buckets, circuit breakers, and a minute-zero incident runbook.", "url": "https://smsroute-cc.github.io/writing/someone-is-draining-your-sms-budget-rate-limiting-otp-endpoints-against-enumerat/", "author": {"@type": "Organization", "name": "SMSRoute", "url": "https://www.smsroute.cc"}, "publisher": {"@type": "Organization", "name": "SMSRoute"}, "datePublished": "2026-07-29", "inLanguage": "en"}</script>
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #e3e3e6;padding:6px 10px;text-align:left}.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<article>
+<h2>The attack you find on your invoice</h2>
+<p>Finance forwarded a carrier invoice triple the usual size. The SMS provider dashboard showed a clean spike starting 02:14 UTC. Application logs told the rest: thousands of <code>POST /v1/auth/otp/send</code> calls, each body a different MSISDN, almost no follow-up <code>POST /v1/auth/otp/verify</code>.</p>
+<p>The numbers themselves were the signature. Sorted, they looked like this:</p>
+<pre><code>+251911000001
++251911000002
++251911000003
++251911000004
+...
+</code></pre>
+<p>One request per number. No retries on the same MSISDN. Zero verify attempts against any of them. That pattern is SMS pumping: a bot feeds premium-route destinations into an unauthenticated (or weakly authenticated) "send code" endpoint. The terminating network shares revenue on those messages; the attacker and the terminating party split the inflated traffic. Your budget is the third party in that arrangement.</p>
+<p>If your send endpoint accepts any E.164 string and immediately hands it to the provider, you are the open hose.</p>
+<h2>Layer 1 — per-destination throttling with a real algorithm</h2>
+<p>Cap how often any single destination can receive a code. A token bucket works: capacity 1, refill one token every 60 seconds, plus a hard daily ceiling so a patient bot cannot drip forever.</p>
+<p>Naive <code>GET</code> then <code>SET</code> is racy under concurrency — two requests read <code>tokens=1</code>, both decrement, both send. Use an atomic path. Redis Lua is the portable one:</p>
+<pre><code class="language-python">import redis
+import time
+
+r = redis.Redis(host=&quot;localhost&quot;, port=6379, decode_responses=True)
+
+# KEYS[1] = bucket key for this MSISDN
+# ARGV[1] = now (ms), ARGV[2] = capacity, ARGV[3] = refill_ms
+# ARGV[4] = daily key, ARGV[5] = daily_cap, ARGV[6] = day_ttl_sec
+TOKEN_BUCKET_LUA = &quot;&quot;&quot;
+local key = KEYS[1]
+local now = tonumber(ARGV[1])
+local capacity = tonumber(ARGV[2])
+local refill_ms = tonumber(ARGV[3])
+local day_key = ARGV[4]
+local day_cap = tonumber(ARGV[5])
+local day_ttl = tonumber(ARGV[6])
+
+local day_count = tonumber(redis.call('GET', day_key) or '0')
+if day_count &gt;= day_cap then
+  return {0, -1, day_count}
+end
+
+local data = redis.call('HMGET', key, 'tokens', 'ts')
+local tokens = tonumber(data[1])
+local ts = tonumber(data[2])
+
+if tokens == nil then
+  tokens = capacity
+  ts = now
+end
+
+local elapsed = math.max(0, now - ts)
+local refill = math.floor(elapsed / refill_ms)
+tokens = math.min(capacity, tokens + refill)
+if refill &gt; 0 then
+  ts = ts + refill * refill_ms
+end
+
+if tokens &lt; 1 then
+  local wait = refill_ms - (now - ts)
+  return {0, wait, day_count}
+end
+
+tokens = tokens - 1
+redis.call('HMSET', key, 'tokens', tokens, 'ts', ts)
+redis.call('PEXPIRE', key, capacity * refill_ms * 2)
+
+day_count = redis.call('INCR', day_key)
+if day_count == 1 then
+  redis.call('EXPIRE', day_key, day_ttl)
+end
+
+return {1, 0, day_count}
+&quot;&quot;&quot;
+
+token_bucket = r.register_script(TOKEN_BUCKET_LUA)
+
+def allow_send(msisdn: str) -&gt; tuple[bool, int]:
+    now_ms = int(time.time() * 1000)
+    day_key = f&quot;otp:day:{time.strftime('%Y%m%d')}:{msisdn}&quot;
+    allowed, wait_ms, _ = token_bucket(
+        keys=[f&quot;otp:bucket:{msisdn}&quot;],
+        args=[now_ms, 1, 60_000, day_key, 5, 90_000],
+    )
+    return bool(allowed), int(wait_ms)
+</code></pre>
+<p>Call <code>allow_send</code> before you touch the provider. On <code>allowed=False</code>, return <code>429</code> and do not enqueue an SMS. The <code>INCR</code>+<code>EXPIRE</code> daily counter and the hash update live in one script evaluation, so concurrent workers cannot double-spend a token.</p>
+<h2>Layer 2 — resend cooldown with exponential step-up</h2>
+<p>Per-destination limits stop fan-out. Resend abuse on one number still burns budget and annoys a real user. Track a verification session (server-side id bound to the MSISDN after the first accepted send) and step the cooldown: 30s, then 60s, then 300s.</p>
+<pre><code class="language-python">import math
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+COOLDOWNS = [30, 60, 300]  # seconds
+
+def next_cooldown(attempt_index: int) -&gt; int:
+    return COOLDOWNS[min(attempt_index, len(COOLDOWNS) - 1)]
+
+@app.post(&quot;/v1/auth/otp/send&quot;)
+def send_otp():
+    body = request.get_json(force=True)
+    msisdn = body[&quot;msisdn&quot;]
+    session_id = body.get(&quot;session_id&quot;)  # issued after first send
+
+    ok, wait_ms = allow_send(msisdn)
+    if not ok:
+        resp = jsonify({&quot;error&quot;: &quot;rate_limited&quot;, &quot;scope&quot;: &quot;destination&quot;})
+        resp.status_code = 429
+        resp.headers[&quot;Retry-After&quot;] = str(max(1, math.ceil(wait_ms / 1000)))
+        return resp
+
+    if session_id:
+        attempt = int(r.get(f&quot;otp:sess:attempts:{session_id}&quot;) or &quot;0&quot;)
+        last = r.get(f&quot;otp:sess:last:{session_id}&quot;)
+        if last is not None:
+            elapsed = time.time() - float(last)
+            need = next_cooldown(attempt - 1 if attempt &gt; 0 else 0)
+            if elapsed &lt; need:
+                retry = int(math.ceil(need - elapsed))
+                resp = jsonify({&quot;error&quot;: &quot;rate_limited&quot;, &quot;scope&quot;: &quot;resend&quot;})
+                resp.status_code = 429
+                resp.headers[&quot;Retry-After&quot;] = str(retry)
+                return resp
+        pipe = r.pipeline()
+        pipe.incr(f&quot;otp:sess:attempts:{session_id}&quot;)
+        pipe.set(f&quot;otp:sess:last:{session_id}&quot;, str(time.time()), ex=3600)
+        pipe.execute()
+
+    # ... generate code, store hash, dispatch SMS, mint session_id on first send ...
+    return jsonify({&quot;session_id&quot;: session_id or &quot;new-session-id&quot;}), 200
+</code></pre>
+<p>The disabled "Resend" button is UX. The server enforces the timer and speaks <code>429</code> with <code>Retry-After</code> so honest clients back off without spinning.</p>
+<h2>Layer 3 — cost-centre guards</h2>
+<p>Pumping clusters in a handful of country prefixes. Per-MSISDN buckets alone will still let a bot walk a prefix at one-message-per-number pace. Add three controls above the destination bucket.</p>
+<p><strong>Prefix velocity.</strong> Maintain a sliding window counter per E.164 prefix (first 4–6 digits after <code>+</code>). Alarm and auto-throttle when sends/minute for that prefix exceed a baseline multiple of your real user traffic.</p>
+<p><strong>Global circuit breaker for unauthenticated send.</strong> Fail CLOSED: when tripped, unauthenticated <code>/otp/send</code> returns <code>503</code> immediately and never reaches the provider. Authenticated recovery flows can stay open on a separate path if you need them.</p>
+<p><strong>Prefix allow/deny policy.</strong> If you have zero users in a country, deny that prefix at the edge. Keep the list in config, not hardcoded in the handler.</p>
+<pre><code class="language-python">from enum import Enum
+
+class BreakerState(Enum):
+    CLOSED = &quot;closed&quot;       # normal
+    OPEN = &quot;open&quot;           # blocking unauthenticated sends
+    HALF_OPEN = &quot;half_open&quot; # probe
+
+class SendCircuitBreaker:
+    def __init__(self, redis_client, threshold_per_min=120, open_for_sec=300):
+        self.r = redis_client
+        self.threshold = threshold_per_min
+        self.open_for = open_for_sec
+
+    def _state_key(self):
+        return &quot;otp:breaker:state&quot;
+
+    def record_send(self) -&gt; None:
+        key = f&quot;otp:global:{int(time.time() // 60)}&quot;
+        count = self.r.incr(key)
+        if count == 1:
+            self.r.expire(key, 120)
+        if count &gt;= self.threshold:
+            self.trip()
+
+    def trip(self) -&gt; None:
+        self.r.set(self._state_key(), BreakerState.OPEN.value, ex=self.open_for)
+
+    def allow_unauthenticated(self) -&gt; bool:
+        state = self.r.get(self._state_key()) or BreakerState.CLOSED.value
+        if state == BreakerState.OPEN.value:
+            ttl = self.r.ttl(self._state_key())
+            if ttl is not None and ttl &lt;= 0:
+                self.r.set(self._state_key(), BreakerState.HALF_OPEN.value, ex=30)
+                return True  # single probe window
+            return False
+        return True
+
+    def probe_success(self) -&gt; None:
+        self.r.set(self._state_key(), BreakerState.CLOSED.value)
+
+    def probe_failure(self) -&gt; None:
+        self.trip()
+
+DENIED_PREFIXES = (&quot;+2519&quot;, &quot;+23480&quot;, &quot;+22507&quot;)  # example: regions you do not serve
+
+def prefix_allowed(msisdn: str) -&gt; bool:
+    return not any(msisdn.startswith(p) for p in DENIED_PREFIXES)
+</code></pre>
+<p>Wire <code>prefix_allowed</code> and <code>allow_unauthenticated</code> before <code>allow_send</code>. Whatever guards you build application-side, mirror the ceiling at the provider: <a href="https://www.smsroute.cc">the HTTP SMS API I use</a> lets me cap outbound volume per key, which turned a 3 a.m. pumping attempt into a bounded few-dollar incident instead of an invoice conversation.</p>
+<h2>Layer 4 — make requests expensive before they reach SMS</h2>
+<p>Do not put a CAPTCHA on every send. Spend friction only when velocity rules say you are under attack: prefix counter above baseline, breaker half-open, or global 429 rate climbing.</p>
+<p>When those signals fire, require an invisible challenge or a small proof-of-work on the request-code form only. Bind the solved challenge to a server session id, and bind that session to at most N distinct MSISDNs (N=1 is fine for login OTP). A bot that solved one challenge then cannot fan the same cookie across ten thousand numbers without solving again.</p>
+<pre><code class="language-python">def session_may_target(session_id: str, msisdn: str, max_numbers: int = 1) -&gt; bool:
+    key = f&quot;otp:sess:numbers:{session_id}&quot;
+    already = r.sismember(key, msisdn)
+    if already:
+        return True
+    size = r.scard(key)
+    if size &gt;= max_numbers:
+        return False
+    pipe = r.pipeline()
+    pipe.sadd(key, msisdn)
+    pipe.expire(key, 3600)
+    pipe.execute()
+    return True
+</code></pre>
+<p>Under calm traffic the path stays one round-trip. Under pumping, compute and session cardinality become the tax, not a permanent UX tax on every real user.</p>
+<h2>Don't leak account existence while you're at it</h2>
+<p>The same send endpoint is often an oracle: <code>{"error":"no_account"}</code> for unknown numbers and <code>{"ok":true}</code> for known ones. Enumerators and pumpers both love that. Respond with the same body, same status, and comparable timing whether the number is registered or not. Always run the throttle layers first; only then branch into "create pending registration" versus "login OTP" behind a constant response shape.</p>
+<p>If you must avoid sending SMS to unknown numbers for product reasons, still return the identical payload and schedule a no-op delay that matches the provider's p50 latency so timing does not re-open the oracle.</p>
+<h2>Verify-side limits</h2>
+<p>A code that is never checked is a pure cost event. Give verify its own bucket.</p>
+<ul>
+<li>5 attempts per code, then invalidate the code.</li>
+<li>Constant-time comparison (<code>hmac.compare_digest</code> in Python, <code>timingSafeEqual</code> in Node's standard library).</li>
+<li>Single-use: delete or rotate on first success.</li>
+<li>TTL 5–10 minutes (RFC 6238-style windows are a reasonable default for SMS OTP).</li>
+</ul>
+<pre><code class="language-python">import hmac
+import hashlib
+import secrets
+
+def store_code(session_id: str, code: str, ttl_sec: int = 600) -&gt; None:
+    digest = hashlib.sha256(code.encode(&quot;utf-8&quot;)).hexdigest()
+    r.setex(f&quot;otp:code:{session_id}&quot;, ttl_sec, digest)
+    r.setex(f&quot;otp:code:tries:{session_id}&quot;, ttl_sec, 0)
+
+def verify_code(session_id: str, candidate: str) -&gt; bool:
+    tries_key = f&quot;otp:code:tries:{session_id}&quot;
+    tries = int(r.incr(tries_key))
+    if tries == 1:
+        r.expire(tries_key, 600)
+    if tries &gt; 5:
+        r.delete(f&quot;otp:code:{session_id}&quot;)
+        return False
+    expected = r.get(f&quot;otp:code:{session_id}&quot;)
+    if not expected:
+        return False
+    got = hashlib.sha256(candidate.encode(&quot;utf-8&quot;)).hexdigest()
+    ok = hmac.compare_digest(got, expected)
+    if ok:
+        r.delete(f&quot;otp:code:{session_id}&quot;, tries_key)
+    return ok
+</code></pre>
+<p>Track <code>send_count / verify_count</code> per prefix over a rolling window. A prefix with hundreds of sends and near-zero verifies is your cleanest automated detection signal — page on that ratio before finance pages on the invoice.</p>
+<h2>Incident runbook</h2>
+<p>When the spend graph bends up, execute in order. Do not start with root-cause analysis.</p>
+<ol>
+<li>Flip the global unauthenticated send breaker to OPEN. Confirm <code>/otp/send</code> returns <code>503</code> without provider calls.</li>
+<li>Snapshot the last 60 minutes of send logs (MSISDN, prefix, IP, session id, timestamp) to cold storage before retention rotates them.</li>
+<li>Identify the top prefixes by send volume; add them to <code>DENIED_PREFIXES</code> or the provider-side block list immediately.</li>
+<li>Lower the global per-minute threshold to a known-safe floor so HALF_OPEN probes cannot reopen the hose.</li>
+<li>Invalidate in-flight OTP sessions created during the spike window.</li>
+<li>Verify provider-side key caps are still enforced; tighten if the application breaker lagged.</li>
+<li>Only then inspect bot signatures (UA, IP ASN, sequential MSISDN ranges) and write the permanent prefix/velocity rules.</li>
+<li>Reopen the breaker in HALF_OPEN with a single canary prefix you actually serve; watch send:verify ratio for 15 minutes before CLOSED.</li>
+</ol>
+<h2>Monitoring dashboard spec</h2>
+<p>Graph these five series on one screen with 1-minute resolution:</p>
+<table>
+<thead>
+<tr>
+<th>Series</th>
+<th>Source</th>
+<th>Alert sketch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sends by prefix</td>
+<td>log/counter <code>otp.send</code> labeled by prefix</td>
+<td>3× 7-day baseline for any prefix</td>
+</tr>
+<tr>
+<td>Send:verify ratio by prefix</td>
+<td><code>otp.send</code> / <code>otp.verify_success</code></td>
+<td>ratio &gt; 20 for 10 minutes</td>
+</tr>
+<tr>
+<td>429 rate</td>
+<td>HTTP status on <code>/otp/send</code> and <code>/otp/verify</code></td>
+<td>sustained &gt; 30% of traffic</td>
+</tr>
+<tr>
+<td>Breaker state</td>
+<td>gauge 0=CLOSED 1=HALF_OPEN 2=OPEN</td>
+<td>any transition to OPEN pages on-call</td>
+</tr>
+<tr>
+<td>Spend rate</td>
+<td>provider callback or local cost accumulator</td>
+<td>absolute $/min ceiling</td>
+</tr>
+</tbody>
+</table>
+<p>Checklist to ship before the next spike:</p>
+<ul>
+<li>[ ] Atomic per-MSISDN token bucket (Lua or equivalent), daily cap included</li>
+<li>[ ] Server-side resend cooldown with <code>429</code> + <code>Retry-After</code></li>
+<li>[ ] Prefix velocity counters + deny list for regions you do not serve</li>
+<li>[ ] Global fail-CLOSED breaker on unauthenticated send</li>
+<li>[ ] Challenge/PoW only when velocity rules trip; session-to-MSISDN cardinality bind</li>
+<li>[ ] Identical responses (body + timing) for known and unknown numbers</li>
+<li>[ ] Verify bucket: 5 tries, constant-time compare, single-use, 5–10 min TTL</li>
+<li>[ ] send:verify ratio alert per prefix</li>
+<li>[ ] Provider-side volume cap mirroring app limits</li>
+<li>[ ] Runbook steps 1–8 posted where on-call actually looks</li>
+</ul>
+</article>
+<hr><p class="meta">From the SMSRoute engineering blog. More notes at <a href="https://smsroute-cc.github.io/writing/">/writing</a>.</p>
+</body></html>
