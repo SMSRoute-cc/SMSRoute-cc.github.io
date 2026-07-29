@@ -10,7 +10,12 @@ a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}
 .meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
 <h1>SMS engineering notes</h1>
 <p>Notes from operating SMS routes, by <a href="https://www.smsroute.cc">smsroute.cc</a>.</p>
-<ul><li><a href="/writing/otp-pipeline-idempotency/">Your OTP resend button is a race condition (and it's charging you twice)</a></li>
+<ul>
+<li><a href="/writing/why-your-160-character-sms-became-3-messages-gsm-7-ucs-2-and-the-segmentation-ma/">Why Your 160-Character SMS Became 3 Messages: GSM-7, UCS-2, and the Segmentation Math Nobody Reads</a></li>
+<li><a href="/writing/exactly-once-is-a-lie-building-idempotent-sms-sending-with-retries-that-don-t-do/">Exactly-Once Is a Lie: Building Idempotent SMS Sending with Retries That Don't Double-Text Your Users</a></li>
+<li><a href="/writing/your-sms-says-sent-but-never-arrived-a-field-guide-to-dlrs-smpp-status-codes-and/">Your SMS Says "Sent" but Never Arrived: A Field Guide to DLRs, SMPP Status Codes, and Carrier Filtering</a></li>
+<li><a href="/writing/parsing-phone-numbers-is-harder-than-parsing-dates-e-164-libphonenumber-and-the/">Parsing Phone Numbers Is Harder Than Parsing Dates: E.164, libphonenumber, and the Inputs That Break You</a></li>
+<li><a href="/writing/someone-is-draining-your-sms-budget-rate-limiting-otp-endpoints-against-enumerat/">Someone Is Draining Your SMS Budget: Rate-Limiting OTP Endpoints Against Enumeration and SMS Pumping</a></li><li><a href="/writing/otp-pipeline-idempotency/">Your OTP resend button is a race condition (and it's charging you twice)</a></li>
 <li><a href="/writing/sms-delivered-is-a-lie/">"Delivered" doesn't mean delivered: reading SMS status callbacks honestly</a></li></ul>
 <h2>Open data</h2>
 <p><a href="/sender-id-rules/">Sender ID rules by country</a> —
