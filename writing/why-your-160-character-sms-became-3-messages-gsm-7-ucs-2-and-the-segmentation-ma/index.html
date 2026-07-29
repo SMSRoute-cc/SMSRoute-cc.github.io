@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Why Your 160-Character SMS Became 3 Messages: GSM-7, UCS-2, and the Segmentation Math Nobody Reads</title>
+<meta name="description" content="One em-dash flipped a 1-segment OTP SMS to UCS-2 and doubled billing. GSM-7 septets, UDH tax, and a paste-ready segment counter with edge-case tests.">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/why-your-160-character-sms-became-3-messages-gsm-7-ucs-2-and-the-segmentation-ma/">
+<meta property="og:title" content="Why Your 160-Character SMS Became 3 Messages: GSM-7, UCS-2, and the Segmentation Math Nobody Reads">
+<meta property="og:description" content="One em-dash flipped a 1-segment OTP SMS to UCS-2 and doubled billing. GSM-7 septets, UDH tax, and a paste-ready segment counter with edge-case tests.">
+<meta property="og:url" content="https://smsroute-cc.github.io/writing/why-your-160-character-sms-became-3-messages-gsm-7-ucs-2-and-the-segmentation-ma/">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Why Your 160-Character SMS Became 3 Messages: GSM-7, UCS-2, and the Segmentation Math Nobody Reads", "description": "One em-dash flipped a 1-segment OTP SMS to UCS-2 and doubled billing. GSM-7 septets, UDH tax, and a paste-ready segment counter with edge-case tests.", "url": "https://smsroute-cc.github.io/writing/why-your-160-character-sms-became-3-messages-gsm-7-ucs-2-and-the-segmentation-ma/", "author": {"@type": "Organization", "name": "SMSRoute", "url": "https://www.smsroute.cc"}, "publisher": {"@type": "Organization", "name": "SMSRoute"}, "datePublished": "2026-07-29", "inLanguage": "en"}</script>
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #e3e3e6;padding:6px 10px;text-align:left}.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<article>
+<h2>The bug report that starts it all</h2>
+<p>Support pasted this payload from a production OTP template:</p>
+<pre><code class="language-text">Your code is 123456 — don't share it
+</code></pre>
+<p>Length check in the admin UI: 38 characters. Expected cost: 1 segment. Provider invoice: 2 segments per send. Volume was high enough that the discrepancy showed up as a real line item within a week.</p>
+<p>The straight-looking string is not GSM-7. It contains U+2014 EM DASH (<code>—</code>) and U+2019 RIGHT SINGLE QUOTATION MARK (<code>'</code> in <code>don't</code>). Neither code point exists in the GSM-7 basic or extension tables. One out-of-table character forces the entire message into UCS-2 (UTF-16BE on the wire). The single-segment cap drops from 160 septets to 70 code units. Thirty-eight UCS-2 characters still fit in one segment — until marketing prepends a brand prefix and a URL, the total crosses 70, and you pay for two.</p>
+<p>Byte-level view of the first offending character:</p>
+<pre><code class="language-text">—  U+2014  →  UTF-16BE  20 14     (2 bytes, not a GSM septet)
+'  U+2019  →  UTF-16BE  20 19     (2 bytes, not a GSM septet)
+</code></pre>
+<p>If those two glyphs had been ASCII hyphen-minus <code>U+002D</code> and apostrophe <code>U+0027</code>, the message would have stayed GSM-7 at 38 septets, one segment. The rest of this article is the exact math that turns “looks fine in the editor” into “3× billing.”</p>
+<h2>GSM-7 in 5 minutes: septets, not bytes</h2>
+<p>GSM-7 packs characters into 7-bit units called septets. A 140-byte SMS user-data field holds:</p>
+<pre><code class="language-text">140 bytes × 8 bits = 1120 bits
+1120 / 7 = 160 septets
+</code></pre>
+<p>So the familiar “160 characters” number is 160 septets, not 160 bytes.</p>
+<p>Most printable ASCII plus a handful of Latin-1 letters live in the <strong>basic</strong> table and cost <strong>1 septet</strong> each: <code>A–Z</code>, <code>a–z</code>, <code>0–9</code>, space, <code>!</code>, <code>?</code>, <code>*</code>, <code>#</code>, <code>ä</code>, <code>ö</code>, <code>ñ</code>, <code>ü</code>, <code>à</code>, <code>Æ</code>, <code>ß</code>, and so on.</p>
+<p>A second <strong>extension</strong> table is reached by the escape septet <code>0x1B</code>. Each extended character therefore costs <strong>2 septets</strong>:</p>
+<pre><code class="language-text">€  [  ]  {  }  \  ~  ^  |  and form feed
+</code></pre>
+<p>Common trap: a price string <code>"Total: 12€"</code>. The <code>€</code> alone burns two septets. A template that was sized to 160 basic characters silently overflows when someone localizes the currency symbol.</p>
+<p>Bit packing is why you cannot reason about SMS length with <code>Buffer.byteLength(str, 'utf8')</code>. UTF-8 byte length and GSM-7 septet length diverge as soon as an escape or a non-GSM code point appears.</p>
+<h2>When the encoding flips to UCS-2</h2>
+<p>The rule is absolute: if <strong>any</strong> character in the message is outside both GSM-7 tables, the full payload is re-encoded as UCS-2. Every character then occupies 16 bits. Capacity becomes:</p>
+<pre><code class="language-text">140 bytes / 2 = 70 characters per single-segment message
+</code></pre>
+<p>No partial mode exists. One emoji, one smart quote, one en-dash — the whole message pays the UCS-2 tax.</p>
+<p>Culprits injected daily by CMSes, Google Docs, and macOS “smart punctuation”:</p>
+<table>
+<thead>
+<tr>
+<th>Glyph</th>
+<th>Code point</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'</code></td>
+<td>U+2018</td>
+<td>LEFT SINGLE QUOTATION MARK</td>
+</tr>
+<tr>
+<td><code>'</code></td>
+<td>U+2019</td>
+<td>RIGHT SINGLE QUOTATION MARK</td>
+</tr>
+<tr>
+<td><code>"</code></td>
+<td>U+201C</td>
+<td>LEFT DOUBLE QUOTATION MARK</td>
+</tr>
+<tr>
+<td><code>"</code></td>
+<td>U+201D</td>
+<td>RIGHT DOUBLE QUOTATION MARK</td>
+</tr>
+<tr>
+<td><code>–</code></td>
+<td>U+2013</td>
+<td>EN DASH</td>
+</tr>
+<tr>
+<td><code>—</code></td>
+<td>U+2014</td>
+<td>EM DASH</td>
+</tr>
+<tr>
+<td><code>…</code></td>
+<td>U+2026</td>
+<td>HORIZONTAL ELLIPSIS</td>
+</tr>
+<tr>
+<td><code></code></td>
+<td>U+00A0</td>
+<td>NO-BREAK SPACE</td>
+</tr>
+<tr>
+<td>any emoji</td>
+<td>various</td>
+<td>outside BMP or non-GSM</td>
+</tr>
+</tbody>
+</table>
+<p>Detection regex you can drop into a pre-send lint:</p>
+<pre><code class="language-javascript">// Matches common smart punctuation + anything outside GSM-7-ish ASCII range
+// for a quick reject/flag. Full classification is in the counter below.
+const SMART_PUNCT = /[\u2018\u2019\u201C\u201D\u2013\u2014\u2026\u00A0]/;
+
+function hasNonGsmHint(text) {
+  if (SMART_PUNCT.test(text)) return true;
+  // Emoji and most non-Latin scripts fall outside basic Latin + Latin-1 supplement used by GSM
+  for (const ch of text) {
+    const cp = ch.codePointAt(0);
+    if (cp &gt; 0xff) return true;
+  }
+  return false;
+}
+</code></pre>
+<p><code>hasNonGsmHint</code> is a fast tripwire, not a segment counter. Segment math needs the full tables.</p>
+<h2>Concatenation and the UDH tax</h2>
+<p>When a message exceeds one segment, the SMPP/SS7 stack splits it and attaches a User Data Header (UDH) so the handset can reassemble parts. The standard concatenation UDH is 6 bytes (length, IEI, IEL, ref, total, seq). Those 6 bytes steal space from the user-data field:</p>
+<pre><code class="language-text">GSM-7 multipart:  (140 - 6) × 8 / 7 = 153.xx → 153 septets per segment
+UCS-2 multipart:  (140 - 6) / 2           → 67 code units per segment
+</code></pre>
+<p>Cliff table (this is where invoices jump):</p>
+<table>
+<thead>
+<tr>
+<th>Encoding</th>
+<th>Chars / septets</th>
+<th>Segments</th>
+<th>Cost factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GSM-7</td>
+<td>1–160</td>
+<td>1</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>GSM-7</td>
+<td>161–306</td>
+<td>2</td>
+<td>2×</td>
+</tr>
+<tr>
+<td>GSM-7</td>
+<td>307–459</td>
+<td>3</td>
+<td>3×</td>
+</tr>
+<tr>
+<td>UCS-2</td>
+<td>1–70</td>
+<td>1</td>
+<td>1×</td>
+</tr>
+<tr>
+<td>UCS-2</td>
+<td>71–134</td>
+<td>2</td>
+<td>2×</td>
+</tr>
+<tr>
+<td>UCS-2</td>
+<td>135–201</td>
+<td>3</td>
+<td>3×</td>
+</tr>
+</tbody>
+</table>
+<p>161 GSM-7 characters → 2 segments. 71 UCS-2 characters → 2 segments. There is no soft landing.</p>
+<p>Segment-count formula, including the extension-character double-count:</p>
+<pre><code class="language-javascript">function septetCount(text, basic, extended) {
+  let septets = 0;
+  for (const ch of text) {
+    if (basic.has(ch)) septets += 1;
+    else if (extended.has(ch)) septets += 2;
+    else return null; // forces UCS-2 path
+  }
+  return septets;
+}
+
+function segmentCountFromSeptets(septets) {
+  if (septets &lt;= 160) return 1;
+  return Math.ceil(septets / 153);
+}
+
+function segmentCountFromUcs2(chars) {
+  if (chars &lt;= 70) return 1;
+  return Math.ceil(chars / 67);
+}
+</code></pre>
+<h2>A correct segment counter you can paste</h2>
+<p>Full classifier. Paste into Node 18+ and run.</p>
+<pre><code class="language-javascript">const GSM7_BASIC = new Set([
+  '@','£','$','¥','è','é','ù','ì','ò','Ç','\n','Ø','ø','\r',
+  'Å','å','Δ','_','Φ','Γ','Λ','Ω','Π','Ψ','Σ','Θ','Ξ',
+  'Æ','æ','ß','É',' ','!','&quot;','#','¤','%','&amp;','\'','(',')',
+  '*','+',',','-','.','/','0','1','2','3','4','5','6','7',
+  '8','9',':',';','&lt;','=','&gt;','?','¡',
+  'A','B','C','D','E','F','G','H','I','J','K','L','M','N',
+  'O','P','Q','R','S','T','U','V','W','X','Y','Z',
+  'Ä','Ö','Ñ','Ü','§','¿',
+  'a','b','c','d','e','f','g','h','i','j','k','l','m','n',
+  'o','p','q','r','s','t','u','v','w','x','y','z',
+  'ä','ö','ñ','ü','à'
+]);
+
+// Each of these costs 2 septets (ESC 0x1B + code)
+const GSM7_EXTENDED = new Set([
+  '\f','^','{','}', '\\','[','~',']','|','€'
+]);
+
+/**
+ * @param {string} text
+ * @returns {{ encoding: 'GSM-7'|'UCS-2', segments: number,
+ *             charsRemaining: number, septets: number|null, length: number }}
+ */
+function smsSegments(text) {
+  let septets = 0;
+  let gsm = true;
+
+  for (const ch of text) {
+    if (GSM7_BASIC.has(ch)) {
+      septets += 1;
+    } else if (GSM7_EXTENDED.has(ch)) {
+      septets += 2;
+    } else {
+      gsm = false;
+      break;
+    }
+  }
+
+  const length = [...text].length; // code points, not UTF-16 code units
+
+  if (gsm) {
+    const segments = septets &lt;= 160 ? 1 : Math.ceil(septets / 153);
+    const capacity = segments === 1 ? 160 : segments * 153;
+    return {
+      encoding: 'GSM-7',
+      segments,
+      charsRemaining: capacity - septets,
+      septets,
+      length
+    };
+  }
+
+  const segments = length &lt;= 70 ? 1 : Math.ceil(length / 67);
+  const capacity = segments === 1 ? 70 : segments * 67;
+  return {
+    encoding: 'UCS-2',
+    segments,
+    charsRemaining: capacity - length,
+    septets: null,
+    length
+  };
+}
+
+// --- edge-case tests ---
+function assert(cond, msg) {
+  if (!cond) throw new Error(msg);
+}
+
+// exactly 160 basic chars → 1 segment
+assert(smsSegments('a'.repeat(160)).segments === 1, '160 basic');
+assert(smsSegments('a'.repeat(160)).encoding === 'GSM-7', '160 enc');
+
+// 161 basic → 2 segments
+assert(smsSegments('a'.repeat(161)).segments === 2, '161 basic');
+
+// € costs 2 septets: 159 basic + € = 161 septets → 2 segments
+const euroBoundary = 'a'.repeat(159) + '€';
+assert(smsSegments(euroBoundary).septets === 161, '€ septet count');
+assert(smsSegments(euroBoundary).segments === 2, '€ segments');
+
+// € at position 152 of an otherwise 160-char attempt:
+// 151 basic + €(2) + 8 basic = 161 septets → 2 segments
+const euro152 = 'a'.repeat(151) + '€' + 'a'.repeat(8);
+assert(smsSegments(euro152).septets === 161, '€@152 septets');
+assert(smsSegments(euro152).segments === 2, '€@152 segments');
+
+// one emoji → UCS-2, 1 segment if total code points ≤ 70
+assert(smsSegments('hello 😀').encoding === 'UCS-2', 'emoji enc');
+assert(smsSegments('hello 😀').segments === 1, 'emoji seg');
+
+// 71 UCS-2 chars → 2 segments
+assert(smsSegments('你'.repeat(71)).segments === 2, '71 ucs2');
+assert(smsSegments('你'.repeat(70)).segments === 1, '70 ucs2');
+
+// original bug payload
+const bug = &quot;Your code is 123456 — don't share it&quot;;
+assert(smsSegments(bug).encoding === 'UCS-2', 'bug enc');
+
+console.log('all tests passed');
+console.log(smsSegments(bug));
+console.log(smsSegments(euroBoundary));
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">node sms_segments.js
+</code></pre>
+<p>If any assertion fires, the tables or the UDH constants are wrong — fix before shipping the helper to production.</p>
+<h2>Sanitizing without mangling</h2>
+<p>Transliterate only the punctuation that never carries linguistic meaning:</p>
+<pre><code class="language-javascript">const PUNCT_MAP = {
+  '\u2018': &quot;'&quot;, '\u2019': &quot;'&quot;,
+  '\u201C': '&quot;', '\u201D': '&quot;',
+  '\u2013': '-', '\u2014': '-',
+  '\u2026': '...',
+  '\u00A0': ' ' // nbsp → space
+};
+
+function sanitizePunct(text) {
+  return text.replace(
+    /[\u2018\u2019\u201C\u201D\u2013\u2014\u2026\u00A0]/g,
+    (ch) =&gt; PUNCT_MAP[ch]
+  );
+}
+</code></pre>
+<p>Apply <code>sanitizePunct</code> before <code>smsSegments</code>. The OTP example becomes:</p>
+<pre><code class="language-text">Your code is 123456 - don't share it
+</code></pre>
+<p>GSM-7, 38 septets, 1 segment.</p>
+<p>Do <strong>not</strong> strip or force-Latin user language. Turkish <code>İ</code> / <code>ı</code>, Greek, Cyrillic, CJK — those characters are intentional. Folding them to ASCII to save a segment corrupts the message. Detect, measure, and either accept UCS-2 cost or ask the product owner for a shorter copy in that locale.</p>
+<p>NFKC normalization looks tempting (<code>"ﬁ".normalize('NFKC') === "fi"</code>) but is unsafe as a blanket pre-pass. It can change Turkish dotted/dotless I behaviour and will decompose characters your legal copy deck required to stay composed. If you normalize, do it only on the punctuation set you control, not on the full string.</p>
+<h2>What the API actually tells you</h2>
+<p>Never trust only your local counter for billing reconciliation. Providers recompute segments against their own table revision and will bill what their SMSC emits. Read the segment count from the send response body, log it next to your local estimate, and diff them.</p>
+<p>On <a href="https://www.smsroute.cc">the HTTP SMS API I use</a> the send response includes the computed segment count, so I export it as a Prometheus metric and page when a deploy suddenly doubles it.</p>
+<p>Practical wiring:</p>
+<pre><code class="language-javascript">// after a successful send
+const { segments } = providerResponse; // field name varies
+metrics.smsSegments.observe(segments);
+metrics.smsSegmentsPerBody.labels(templateId).observe(segments);
+
+// alert: p95(segments) by template jumps after deploy
+// e.g. from 1.0 → 2.0 within 15 minutes of a content change
+</code></pre>
+<p>A p95 jump from 1.0 to 2.0 on a single template ID almost always means smart quotes or an emoji landed in the copy. Pair the alert with the pre-send <code>hasNonGsmHint</code> lint in CI so the deploy never ships.</p>
+<h2>Cheat sheet</h2>
+<p><strong>Four numbers</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Single segment</th>
+<th>Multipart (per segment)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GSM-7</td>
+<td>160 septets</td>
+<td>153 septets</td>
+</tr>
+<tr>
+<td>UCS-2</td>
+<td>70 chars</td>
+<td>67 chars</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Extension characters (2 septets each)</strong><br />
+<code>€ [ ] { } \ ~ ^ |</code> and form feed (<code>\f</code>)</p>
+<p><strong>Detection</strong></p>
+<pre><code class="language-javascript">/[\u2018\u2019\u201C\u201D\u2013\u2014\u2026\u00A0]/
+</code></pre>
+<p><strong>Rules of thumb</strong></p>
+<ul>
+<li>One non-GSM character → whole message UCS-2.</li>
+<li>161 GSM-7 septets or 71 UCS-2 chars → instant 2× cost.</li>
+<li><code>€</code> in a 159-character body → 161 septets → 2 segments.</li>
+<li>Sanitize curly quotes and dashes; never transliterate real language text.</li>
+<li>Log provider-reported segments; alert on p95 regression per template.</li>
+</ul>
+</article>
+<hr><p class="meta">From the SMSRoute engineering blog. More notes at <a href="https://smsroute-cc.github.io/writing/">/writing</a>.</p>
+</body></html>
