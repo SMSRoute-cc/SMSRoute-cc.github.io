@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<title>Exactly-Once Is a Lie: Building Idempotent SMS Sending with Retries That Don&#x27;t Double-Text Your Users</title>
+<meta name="description" content="Naive SMS retries double-text users on timeouts. Idempotency keys, status-aware retry rules, jittered backoff, and an outbox worker stop duplicate OTPs cold.">
+<link rel="canonical" href="https://smsroute-cc.github.io/writing/exactly-once-is-a-lie-building-idempotent-sms-sending-with-retries-that-don-t-do/">
+<meta property="og:title" content="Exactly-Once Is a Lie: Building Idempotent SMS Sending with Retries That Don&#x27;t Double-Text Your Users">
+<meta property="og:description" content="Naive SMS retries double-text users on timeouts. Idempotency keys, status-aware retry rules, jittered backoff, and an outbox worker stop duplicate OTPs cold.">
+<meta property="og:url" content="https://smsroute-cc.github.io/writing/exactly-once-is-a-lie-building-idempotent-sms-sending-with-retries-that-don-t-do/">
+<meta property="og:type" content="article">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Exactly-Once Is a Lie: Building Idempotent SMS Sending with Retries That Don't Double-Text Your Users", "description": "Naive SMS retries double-text users on timeouts. Idempotency keys, status-aware retry rules, jittered backoff, and an outbox worker stop duplicate OTPs cold.", "url": "https://smsroute-cc.github.io/writing/exactly-once-is-a-lie-building-idempotent-sms-sending-with-retries-that-don-t-do/", "author": {"@type": "Organization", "name": "SMSRoute", "url": "https://www.smsroute.cc"}, "publisher": {"@type": "Organization", "name": "SMSRoute"}, "datePublished": "2026-07-29", "inLanguage": "en"}</script>
+<style>body{font:17px/1.65 system-ui,Segoe UI,sans-serif;max-width:760px;margin:0 auto;padding:32px 18px;color:#16181d}h1{font-size:30px;line-height:1.25;margin-bottom:8px}h2{font-size:21px;margin:30px 0 8px}pre{background:#0f1117;color:#e6e9ef;padding:14px 16px;border-radius:8px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{background:#f0f1f4;padding:1px 5px;border-radius:4px;font-size:14px}pre code{background:none;padding:0}a{color:#1a4fd6}hr{border:0;border-top:1px solid #e3e3e6;margin:26px 0}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #e3e3e6;padding:6px 10px;text-align:left}.meta{color:#666;font-size:14px;margin-bottom:26px}li{margin:4px 0}</style></head><body>
+<p class="meta"><a href="https://smsroute-cc.github.io/">SMSRoute engineering notes</a></p>
+<article>
+<h2>The double-send postmortem</h2>
+<p>Tuesday 14:02. Support escalates: a user received the same OTP four times in ninety seconds. Logs show one logical "send login code" call from the app. The SMS provider dashboard shows four delivered messages. Billing shows four charges.</p>
+<p>Here is the sequence that produced it.</p>
+<ol>
+<li>Client <code>POST /v1/messages</code> with the OTP payload.</li>
+<li>Provider accepts the message, enqueues delivery, begins writing <code>201 {"id":"msg_9f3a…"}</code>.</li>
+<li>The TCP connection stalls. Client-side read deadline fires at 10s. The client library surfaces <code>TimeoutError</code>.</li>
+<li>Retry middleware treats timeout as retryable, fires the same POST again.</li>
+<li>Provider has no memory of the first attempt from the client's point of view. It accepts a second message. User's phone buzzes again.</li>
+</ol>
+<p>The message <strong>was</strong> sent on attempt one. The client simply never learned the outcome. Naive retry-on-timeout is the bug — not the network, not the provider. Every path where you cannot distinguish "never reached the server" from "server finished, response lost" will double-send unless you give the server a stable identity for the logical operation.</p>
+<p>That identity is an idempotency key. Everything below exists because of this failure mode.</p>
+<h2>Idempotency keys done properly</h2>
+<p>Generate one UUIDv4 per <strong>logical</strong> message — once, when the business intent is created — not per HTTP attempt. Send it on every try:</p>
+<pre><code class="language-http">POST /v1/messages HTTP/1.1
+Host: api.example-sms.invalid
+Content-Type: application/json
+Idempotency-Key: 6b8e4f2a-9c1d-4e3f-a7b2-1d5c8e9f0a3b
+
+{&quot;to&quot;:&quot;+15551234567&quot;,&quot;body&quot;:&quot;Your code is 482901&quot;}
+</code></pre>
+<p>Server contract you need (and must verify in the provider docs):</p>
+<ul>
+<li>If the key has not been seen: process normally, store the response body and status keyed by the idempotency key, return that response.</li>
+<li>If the key has been seen inside the retention window (typically 24h): return the <strong>stored</strong> status and body byte-for-byte. Do not send another SMS.</li>
+<li>Concurrent requests with the same key: one wins; the other blocks or receives the same replay once the first completes.</li>
+</ul>
+<p>Client generation (do this at intent time, persist the key next to the outbox row — see later):</p>
+<pre><code class="language-python">import uuid
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class SmsIntent:
+    to: str
+    body: str
+    idempotency_key: str
+
+def new_sms_intent(to: str, body: str) -&gt; SmsIntent:
+    return SmsIntent(
+        to=to,
+        body=body,
+        idempotency_key=str(uuid.uuid4()),
+    )
+</code></pre>
+<p><strong>Key scoping gotcha.</strong> The server must bind the key to a hash of the request body (method + path + body). If it only keys on the string you send, a retry that accidentally changes <code>body</code> (template fix, different OTP digit, locale tweak) silently returns the original response while your logs claim you "sent" the new content. I first hit the body-hash scoping issue against <a href="https://www.smsroute.cc">an SMS HTTP API</a> where my retry wrapper reused the key after a template change — the server correctly replayed the old response, which is exactly what the spec says should happen and exactly not what I expected.</p>
+<p>Rule: one key ↔ one immutable payload. Change the payload → new key. Never mint a fresh key inside the retry loop.</p>
+<h2>Which failures to retry (and which never)</h2>
+<p>Retrying the wrong status is how you turn one bad number into five failed API calls and a support ticket that looks like an outage.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Retry?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect timeout / TCP reset before request bytes leave</td>
+<td>Yes</td>
+<td>Safe; server never saw the request</td>
+</tr>
+<tr>
+<td>Read timeout <strong>after</strong> request body fully sent</td>
+<td>Yes, <strong>only</strong> with idempotency key</td>
+<td>This is the double-send case above</td>
+</tr>
+<tr>
+<td><code>408 Request Timeout</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>425 Too Early</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>429 Too Many Requests</code></td>
+<td>Yes</td>
+<td>Honor <code>Retry-After</code> (next section)</td>
+</tr>
+<tr>
+<td><code>500 / 502 / 503 / 504</code></td>
+<td>Yes</td>
+<td>Cap attempts; provider may be partial</td>
+</tr>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td><strong>Never</strong></td>
+<td>Fix the payload</td>
+</tr>
+<tr>
+<td><code>401 Unauthorized</code> / <code>403 Forbidden</code></td>
+<td><strong>Never</strong></td>
+<td>Fix credentials / permissions</td>
+</tr>
+<tr>
+<td><code>404 Not Found</code></td>
+<td><strong>Never</strong></td>
+<td>Wrong path or resource</td>
+</tr>
+<tr>
+<td>Provider validation, e.g. Twilio-style <code>21211</code> invalid <code>To</code></td>
+<td><strong>Never</strong></td>
+<td>Five retries = five log lines of noise; some providers still meter lookup</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">import httpx
+
+RETRYABLE_STATUS = frozenset({408, 425, 429, 500, 502, 503, 504})
+NON_RETRYABLE_STATUS = frozenset({400, 401, 403, 404, 422})
+
+# Provider-specific permanent failures (example codes from public Twilio error docs)
+PERMANENT_PROVIDER_CODES = frozenset({
+    21211,  # Invalid 'To' Phone Number
+    21214,  # 'To' phone number cannot be reached
+    21614,  # 'To' number is not a valid mobile number
+})
+
+def should_retry(exc: BaseException | None, response: httpx.Response | None) -&gt; bool:
+    if response is None:
+        # connect error, DNS failure, or read timeout with no response object
+        return isinstance(exc, (
+            httpx.ConnectError,
+            httpx.ConnectTimeout,
+            httpx.ReadTimeout,
+            httpx.RemoteProtocolError,
+        ))
+    if response.status_code in NON_RETRYABLE_STATUS:
+        return False
+    try:
+        code = response.json().get(&quot;code&quot;)
+        if code in PERMANENT_PROVIDER_CODES:
+            return False
+    except Exception:
+        pass
+    return response.status_code in RETRYABLE_STATUS
+</code></pre>
+<p>Timeout classification matters: a connect timeout never delivered bytes, so retry without fear of duplication even before keys exist. A read timeout after <code>httpx</code> finished writing the body is only safe when the same <code>Idempotency-Key</code> rides along.</p>
+<h2>Backoff that survives a real outage</h2>
+<p>Fixed 200ms retries during a provider blip synchronize every worker onto the same recovery second. Use full jitter, cap the sleep, and let <code>Retry-After</code> win on 429.</p>
+<pre><code class="language-python">import random
+import time
+from email.utils import parsedate_to_datetime
+from datetime import datetime, timezone
+
+def backoff_seconds(attempt: int, base: float = 0.5, cap: float = 60.0) -&gt; float:
+    # Full jitter: sleep ~ U(0, min(cap, base * 2^attempt))
+    # AWS Architecture Blog (&quot;Exponential Backoff And Jitter&quot;) measured
+    # full jitter as lower-tail latency and less herd correlation than
+    # equal jitter or decorrelated forms under client thundering.
+    exp = min(cap, base * (2 ** attempt))
+    return random.uniform(0, exp)
+
+def retry_after_seconds(response: httpx.Response) -&gt; float | None:
+    raw = response.headers.get(&quot;Retry-After&quot;)
+    if raw is None:
+        return None
+    try:
+        return max(0.0, float(raw))
+    except ValueError:
+        try:
+            dt = parsedate_to_datetime(raw)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return max(0.0, (dt - datetime.now(timezone.utc)).total_seconds())
+        except (TypeError, ValueError, IndexError):
+            return None
+
+def send_with_retries(
+    client: httpx.Client,
+    intent: SmsIntent,
+    max_attempts: int = 8,
+) -&gt; httpx.Response:
+    last_exc: BaseException | None = None
+    for attempt in range(max_attempts):
+        try:
+            resp = client.post(
+                &quot;/v1/messages&quot;,
+                json={&quot;to&quot;: intent.to, &quot;body&quot;: intent.body},
+                headers={&quot;Idempotency-Key&quot;: intent.idempotency_key},
+                timeout=httpx.Timeout(connect=5.0, read=15.0, write=10.0, pool=5.0),
+            )
+            if not should_retry(None, resp):
+                return resp
+            delay = retry_after_seconds(resp)
+            if delay is None:
+                delay = backoff_seconds(attempt)
+            time.sleep(delay)
+        except (httpx.ConnectError, httpx.ConnectTimeout,
+                httpx.ReadTimeout, httpx.RemoteProtocolError) as exc:
+            last_exc = exc
+            if not should_retry(exc, None) or attempt == max_attempts - 1:
+                raise
+            time.sleep(backoff_seconds(attempt))
+    if last_exc:
+        raise last_exc
+    raise RuntimeError(&quot;send_with_retries exhausted without response&quot;)
+</code></pre>
+<p><code>Retry-After</code> on 429 is authoritative over your schedule — the provider is telling you when its limiter opens. Full jitter (<code>U(0, capped_exp)</code>) desynchronizes waiters better than equal jitter (<code>half_exp + U(0, half_exp)</code>); the AWS architecture blog on exponential backoff and jitter is the measurement reference most teams lean on here.</p>
+<h2>The outbox pattern for SMS</h2>
+<p>Do not call the SMS HTTP API inside the request handler or inside the DB transaction that creates the user session. A crash between <code>COMMIT</code> and the HTTP response leaves you with no durable record of intent — or worse, a commit and a half-finished retry storm.</p>
+<p>Write the send intent into an <code>sms_outbox</code> table in the <strong>same</strong> transaction as the business change. A worker drains the table. The outbox row ID (or a dedicated UUID column) <strong>is</strong> the idempotency key.</p>
+<pre><code class="language-sql">CREATE TABLE sms_outbox (
+    id              UUID PRIMARY KEY,
+    to_e164         TEXT NOT NULL,
+    body            TEXT NOT NULL,
+    status          TEXT NOT NULL DEFAULT 'pending'
+                    CHECK (status IN ('pending','in_progress','sent','dead')),
+    attempt_count   INT  NOT NULL DEFAULT 0,
+    max_attempts    INT  NOT NULL DEFAULT 8,
+    next_attempt_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    last_error      TEXT,
+    provider_ref    TEXT,
+    created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+    updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX sms_outbox_drain_idx
+    ON sms_outbox (next_attempt_at)
+    WHERE status = 'pending';
+</code></pre>
+<p>Business handler (same transaction):</p>
+<pre><code class="language-python">import uuid
+import psycopg
+
+def create_login_challenge(conn: psycopg.Connection, user_id: int, e164: str, code: str) -&gt; None:
+    body = f&quot;Your code is {code}&quot;
+    outbox_id = uuid.uuid4()
+    with conn.transaction():
+        conn.execute(
+            &quot;INSERT INTO login_challenges (user_id, code) VALUES (%s, %s)&quot;,
+            (user_id, code),
+        )
+        conn.execute(
+            &quot;&quot;&quot;
+            INSERT INTO sms_outbox (id, to_e164, body)
+            VALUES (%s, %s, %s)
+            &quot;&quot;&quot;,
+            (outbox_id, e164, body),
+        )
+</code></pre>
+<p>Worker loop (~30 lines, runnable-shaped):</p>
+<pre><code class="language-python">import os
+import time
+import httpx
+import psycopg
+from psycopg.rows import dict_row
+
+DSN = os.environ[&quot;DATABASE_URL&quot;]
+BASE_URL = os.environ[&quot;SMS_API_BASE&quot;]
+
+def claim_batch(conn: psycopg.Connection, limit: int = 32) -&gt; list[dict]:
+    with conn.transaction():
+        rows = conn.execute(
+            &quot;&quot;&quot;
+            UPDATE sms_outbox
+            SET status = 'in_progress',
+                updated_at = now()
+            WHERE id IN (
+                SELECT id FROM sms_outbox
+                WHERE status = 'pending'
+                  AND next_attempt_at &lt;= now()
+                ORDER BY next_attempt_at
+                FOR UPDATE SKIP LOCKED
+                LIMIT %s
+            )
+            RETURNING *
+            &quot;&quot;&quot;,
+            (limit,),
+        ).fetchall()
+    return rows
+
+def mark_sent(conn: psycopg.Connection, row_id, provider_ref: str) -&gt; None:
+    conn.execute(
+        &quot;&quot;&quot;
+        UPDATE sms_outbox
+        SET status = 'sent', provider_ref = %s, updated_at = now()
+        WHERE id = %s
+        &quot;&quot;&quot;,
+        (provider_ref, row_id),
+    )
+
+def mark_retry_or_dead(conn: psycopg.Connection, row: dict, err: str) -&gt; None:
+    attempt = row[&quot;attempt_count&quot;] + 1
+    if attempt &gt;= row[&quot;max_attempts&quot;]:
+        conn.execute(
+            &quot;&quot;&quot;
+            UPDATE sms_outbox
+            SET status = 'dead', attempt_count = %s,
+                last_error = %s, updated_at = now()
+            WHERE id = %s
+            &quot;&quot;&quot;,
+            (attempt, err[:1000], row[&quot;id&quot;]),
+        )
+        return
+    delay = backoff_seconds(attempt)
+    conn.execute(
+        &quot;&quot;&quot;
+        UPDATE sms_outbox
+        SET status = 'pending',
+            attempt_count = %s,
+            last_error = %s,
+            next_attempt_at = now() + (%s || ' seconds')::interval,
+            updated_at = now()
+        WHERE id = %s
+        &quot;&quot;&quot;,
+        (attempt, err[:1000], str(delay), row[&quot;id&quot;]),
+    )
+
+def worker_once(client: httpx.Client) -&gt; int:
+    with psycopg.connect(DSN, row_factory=dict_row) as conn:
+        batch = claim_batch(conn)
+        for row in batch:
+            intent = SmsIntent(to=row[&quot;to_e164&quot;], body=row[&quot;body&quot;],
+                               idempotency_key=str(row[&quot;id&quot;]))
+            try:
+                resp = send_with_retries(client, intent)
+                if resp.status_code &gt;= 400 and not should_retry(None, resp):
+                    mark_retry_or_dead(conn, row, resp.text)
+                    conn.commit()
+                    continue
+                resp.raise_for_status()
+                ref = resp.json().get(&quot;id&quot;, &quot;&quot;)
+                mark_sent(conn, row[&quot;id&quot;], ref)
+                conn.commit()
+            except Exception as exc:
+                mark_retry_or_dead(conn, row, repr(exc))
+                conn.commit()
+        return len(batch)
+
+def main() -&gt; None:
+    with httpx.Client(base_url=BASE_URL) as client:
+        while True:
+            n = worker_once(client)
+            if n == 0:
+                time.sleep(0.5)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Crash between provider accept and <code>mark_sent</code>: row stays <code>in_progress</code> or returns to <code>pending</code> via a sweeper that reclaims stale <code>in_progress</code> rows older than 2× your max HTTP budget. The next attempt reuses <code>id</code> as <code>Idempotency-Key</code>, so the provider replays the original accept. Effect on the user's phone: once.</p>
+<h2>Poison messages and the DLQ</h2>
+<p>A permanent failure that keeps cycling (<code>21211</code>, malformed body that slipped validation, destination that started rejecting) burns worker capacity and drowns metrics.</p>
+<ul>
+<li><code>attempt_count</code> + <code>max_attempts</code> on every row (schema above).</li>
+<li><code>next_attempt_at</code> advances with the same jittered exponential schedule so one bad row does not hot-loop.</li>
+<li>At <code>attempt_count &gt;= max_attempts</code>, set <code>status = 'dead'</code>. That row <strong>is</strong> the dead-letter queue; no separate system required on day one.</li>
+<li>Alert on <code>SELECT count(*) FROM sms_outbox WHERE status = 'dead' AND updated_at &gt; now() - interval '1 hour'</code> crossing a threshold — not on each individual failure. Individual failures during a provider incident are expected; DLQ depth growing while the provider is healthy means a code or data bug.</li>
+</ul>
+<p>Optional sweeper for stuck claims:</p>
+<pre><code class="language-sql">UPDATE sms_outbox
+SET status = 'pending',
+    next_attempt_at = now(),
+    updated_at = now()
+WHERE status = 'in_progress'
+  AND updated_at &lt; now() - interval '5 minutes';
+</code></pre>
+<h2>Verifying it actually works</h2>
+<p>Patterns without a chaos test are articles. Reproduce the original postmortem under control.</p>
+<ol>
+<li>Run the provider (or a stub that records deliveries) behind <a href="https://github.com/Shopify/toxiproxy">toxiproxy</a>.</li>
+<li>Configure a toxic: <code>timeout</code> with <code>timeout=0</code> on the response path after the stub has accepted the body — response never reaches the client, message is "delivered" server-side.</li>
+<li>Drive one logical send through the outbox worker.</li>
+<li>Assert: stub's delivery log length == 1 for that idempotency key; outbox row ends as <code>sent</code>; worker attempt_count may be &gt; 1.</li>
+</ol>
+<pre><code class="language-python"># stub_provider.py — records by idempotency key
+from fastapi import FastAPI, Header, Request
+from fastapi.responses import JSONResponse
+import uuid
+
+app = FastAPI()
+delivered: dict[str, dict] = {}
+
+@app.post(&quot;/v1/messages&quot;)
+async def send(request: Request, idempotency_key: str = Header(alias=&quot;Idempotency-Key&quot;)):
+    body = await request.json()
+    if idempotency_key in delivered:
+        prev = delivered[idempotency_key]
+        return JSONResponse(prev[&quot;body&quot;], status_code=prev[&quot;status&quot;])
+    msg_id = f&quot;msg_{uuid.uuid4().hex[:12]}&quot;
+    payload = {&quot;id&quot;: msg_id, &quot;to&quot;: body[&quot;to&quot;], &quot;status&quot;: &quot;queued&quot;}
+    delivered[idempotency_key] = {&quot;body&quot;: payload, &quot;status&quot;: 201}
+    return JSONResponse(payload, status_code=201)
+</code></pre>
+<pre><code class="language-bash"># toxiproxy: after stub is up on 9090
+toxiproxy-cli create sms --listen 127.0.0.1:8888 --upstream 127.0.0.1:9090
+toxiproxy-cli toxic add sms -t timeout -a timeout=0 -d downstream
+# point SMS_API_BASE at http://127.0.0.1:8888 and run worker_once twice
+# then: curl http://127.0.0.1:9090/admin/delivered | jq 'length'  → 1 per key
+</code></pre>
+<p>If the count is 2, your key is not stable across retries or the stub is not replaying. Fix that before shipping the backoff knobs.</p>
+<h2>Checklist</h2>
+<ul>
+<li>[ ] Idempotency key minted once per logical SMS, stored before any HTTP attempt</li>
+<li>[ ] Key sent on every retry; never regenerated inside the retry loop</li>
+<li>[ ] Provider confirmed to dedupe on the key and bind it to body hash for the retention window</li>
+<li>[ ] Retry only <code>408/425/429/5xx</code>, connect failures, and read timeouts — never <code>400/401/403/404</code> or permanent provider codes like <code>21211</code></li>
+<li>[ ] Read-timeout retries gated on idempotency key presence</li>
+<li>[ ] Full jitter backoff with ~60s cap; <code>Retry-After</code> overrides the local schedule on 429</li>
+<li>[ ] SMS intent written to <code>sms_outbox</code> in the same DB transaction as the business write; worker drains with <code>FOR UPDATE SKIP LOCKED</code></li>
+<li>[ ] <code>max_attempts</code> + DLQ (<code>status = 'dead'</code>) with alerts on DLQ depth; chaos test with timeout-after-accept proves one delivery per key</li>
+</ul>
+</article>
+<hr><p class="meta">From the SMSRoute engineering blog. More notes at <a href="https://smsroute-cc.github.io/writing/">/writing</a>.</p>
+</body></html>
